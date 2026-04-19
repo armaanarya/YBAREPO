@@ -1,0 +1,1036 @@
+'use client'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
+import Image from 'next/image'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { track } from '../lib/track'
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register'
+
+// ─── Design Tokens ───────────────────────────────────────────────────────────
+const T = {
+  manrope: 'Manrope, sans-serif',
+  inter:   'Inter, sans-serif',
+  dark:    '#161c25',
+  muted:   '#595e69',
+  cta:     '#000101',
+  bg:      '#f9f9ff',
+  alt:     '#f0f3ff',
+  chip:    '#e3e8f5',
+  chipHover: '#d0d6ee',
+  accent:  '#4f46e5',
+  accentLight: 'rgba(79,70,229,0.08)',
+  accentMid: 'rgba(79,70,229,0.14)',
+  white:   '#ffffff',
+  border:  'rgba(22,28,37,0.08)',
+  borderHover: 'rgba(22,28,37,0.18)',
+  shadowSm: '0 1px 3px rgba(22,28,37,0.06)',
+  shadowMd: '0 4px 16px rgba(22,28,37,0.08), 0 1px 4px rgba(22,28,37,0.04)',
+  shadowLg: '0 24px 48px -12px rgba(22,28,37,0.12), 0 8px 16px rgba(22,28,37,0.06)',
+}
+
+// ─── Press feedback helper ────────────────────────────────────────────────────
+const pressHandlers = {
+  onMouseDown: (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.transform = 'scale(0.96)' },
+  onMouseUp:   (e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.transform = '' },
+  onMouseLeave:(e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.transform = '' },
+}
+
+// ─── Spinning Logo ────────────────────────────────────────────────────────────
+function SpinningLogo({ size = 220 }: { size?: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const markRef = useRef<Element | null>(null)
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([])
+
+  const play = useCallback(() => {
+    const mark = markRef.current as HTMLElement | null
+    if (!mark) return
+    timers.current.forEach(clearTimeout)
+    timers.current = []
+    mark.style.cssText = 'transform-box:fill-box;transform-origin:center;transition:none;'
+    mark.getBoundingClientRect()
+    mark.style.animation = 'yba-spin 1.4s cubic-bezier(0.4,0,1,1) forwards'
+    timers.current.push(setTimeout(() => {
+      mark.style.animation = 'none'
+      mark.style.transform = 'rotate(0deg)'
+      mark.style.filter = 'none'
+    }, 1400))
+  }, [])
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    fetch('/yba-mark.svg').then(r => r.text()).then(svg => {
+      el.innerHTML = svg
+      const s = el.querySelector('svg')
+      if (!s) return
+      s.setAttribute('width', '100%')
+      s.setAttribute('height', '100%')
+      s.style.display = 'block'
+      const kids = Array.from(s.children).filter(n => !['defs','rect'].includes(n.tagName.toLowerCase()))
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      g.style.cssText = 'transform-box:fill-box;transform-origin:center;'
+      if (kids.length) { s.insertBefore(g, kids[0]); kids.forEach(k => g.appendChild(k)) }
+      markRef.current = g
+      timers.current.push(setTimeout(play, 500))
+    })
+    return () => timers.current.forEach(clearTimeout)
+  }, [play])
+
+  return (
+    <div
+      ref={ref}
+      onClick={play}
+      title="Click to replay"
+      style={{ width: size, height: size, flexShrink: 0, cursor: 'pointer' }}
+      role="img"
+      aria-label="YBA spinning logo"
+    />
+  )
+}
+
+// ─── Nav ──────────────────────────────────────────────────────────────────────
+const NAV_LINKS: { label: string; page: Page }[] = [
+  { label: 'Home', page: 'home' },
+  { label: 'About', page: 'about' },
+  { label: 'Goals', page: 'goals' },
+  { label: 'Curriculum', page: 'curriculum' },
+  { label: 'Podcast', page: 'podcast' },
+]
+
+function Nav({ current, nav }: { current: Page; nav: (p: Page) => void }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 12)
+    window.addEventListener('scroll', h, { passive: true })
+    return () => window.removeEventListener('scroll', h)
+  }, [])
+
+  useEffect(() => { setMenuOpen(false) }, [current])
+
+  const go = (p: Page) => { nav(p); setMenuOpen(false) }
+
+  return (
+    <>
+      <nav
+        aria-label="Main navigation"
+        style={{
+          position: 'sticky', top: 0, zIndex: 100,
+          background: scrolled ? 'rgba(249,249,255,0.92)' : 'rgba(249,249,255,0.72)',
+          backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: scrolled ? `1px solid ${T.border}` : '1px solid transparent',
+          transition: 'border-color 0.25s, background 0.25s',
+          padding: '0 clamp(1.25rem,4vw,3rem)',
+          height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}
+      >
+        {/* Logo */}
+        <button
+          onClick={() => go('home')}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center', borderRadius: 8 }}
+          aria-label="Go to home"
+        >
+          <Image src="/yba-mark.svg" alt="YBA" width={34} height={34} priority />
+        </button>
+
+        {/* Desktop links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} role="list">
+          {NAV_LINKS.map(l => {
+            const active = current === l.page
+            return (
+              <button
+                key={l.page}
+                role="listitem"
+                onClick={() => go(l.page)}
+                style={{
+                  fontFamily: T.inter, fontSize: '0.875rem', fontWeight: active ? 600 : 500,
+                  color: active ? T.dark : T.muted,
+                  background: 'transparent',
+                  border: 'none', borderRadius: 8,
+                  padding: '6px 14px', cursor: 'pointer',
+                  transition: 'color 0.18s',
+                  display: 'none',
+                  position: 'relative',
+                }}
+                className={`nav-link${active ? ' nav-link-active' : ''}`}
+                aria-current={active ? 'page' : undefined}
+                onMouseEnter={e => { if (!active) e.currentTarget.style.color = T.dark }}
+                onMouseLeave={e => { if (!active) e.currentTarget.style.color = T.muted }}
+              >
+                {l.label}
+              </button>
+            )
+          })}
+
+          {/* Social icons */}
+          <div style={{ display: 'flex', gap: 4, marginLeft: 8, alignItems: 'center' }}>
+            <a
+              href="https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg"
+              target="_blank" rel="noopener noreferrer"
+              aria-label="YBA TikTok"
+              style={{ padding: 8, borderRadius: 8, color: T.muted, display: 'flex', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
+              onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ=="
+              target="_blank" rel="noopener noreferrer"
+              aria-label="YBA Instagram"
+              style={{ padding: 8, borderRadius: 8, color: T.muted, display: 'flex', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
+              onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+
+            {/* Join CTA */}
+            <button
+              onClick={() => go('register')}
+              style={{
+                fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 600,
+                background: T.cta, color: '#fff',
+                border: 'none', borderRadius: 8,
+                padding: '8px 18px', cursor: 'pointer',
+                transition: 'background 0.2s, transform 0.12s',
+                marginLeft: 4,
+                display: 'none',
+              }}
+              className="nav-join"
+              onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+              onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
+              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.95)')}
+              onMouseUp={e => (e.currentTarget.style.transform = '')}
+            >
+              Join
+            </button>
+
+            {/* Hamburger */}
+            <button
+              onClick={() => setMenuOpen(v => !v)}
+              style={{
+                padding: 8, borderRadius: 8, background: 'none', border: 'none',
+                cursor: 'pointer', color: T.dark, display: 'flex', flexDirection: 'column', gap: 5,
+              }}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              className="nav-hamburger"
+            >
+              <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'transform 0.2s', transform: menuOpen ? 'rotate(45deg) translateY(7px)' : 'none', display: 'block' }}/>
+              <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'opacity 0.2s', opacity: menuOpen ? 0 : 1, display: 'block' }}/>
+              <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'transform 0.2s', transform: menuOpen ? 'rotate(-45deg) translateY(-7px)' : 'none', display: 'block' }}/>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            style={{
+              position: 'fixed', top: 64, left: 0, right: 0, zIndex: 99,
+              background: 'rgba(249,249,255,0.98)', backdropFilter: 'blur(16px)',
+              borderBottom: `1px solid ${T.border}`,
+              padding: '1rem 1.5rem 1.5rem',
+            }}
+          >
+            {NAV_LINKS.map(l => (
+              <button
+                key={l.page}
+                onClick={() => go(l.page)}
+                style={{
+                  display: 'block', width: '100%', textAlign: 'left',
+                  fontFamily: T.inter, fontSize: '1.0625rem', fontWeight: current === l.page ? 600 : 400,
+                  color: current === l.page ? T.dark : T.muted,
+                  background: 'none', border: 'none',
+                  padding: '12px 0', cursor: 'pointer',
+                  borderBottom: `1px solid ${T.border}`,
+                }}
+              >
+                {l.label}
+              </button>
+            ))}
+            <button
+              onClick={() => go('register')}
+              style={{
+                marginTop: '1rem', width: '100%',
+                fontFamily: T.inter, fontSize: '1rem', fontWeight: 600,
+                background: T.cta, color: '#fff',
+                border: 'none', borderRadius: 10,
+                padding: '14px', cursor: 'pointer',
+              }}
+            >
+              Join the Movement
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        @media (min-width: 768px) {
+          .nav-link { display: block !important; }
+          .nav-join { display: block !important; }
+          .nav-hamburger { display: none !important; }
+        }
+      `}</style>
+    </>
+  )
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+function Footer({ nav }: { nav: (p: Page) => void }) {
+  return (
+    <footer style={{ background: T.alt, marginTop: '6rem', padding: 'clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem)' }}>
+      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
+          <div>
+            <Image src="/yba-mark.svg" alt="YBA" width={40} height={40}/>
+            <p style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.dark, opacity: 0.55, marginTop: '0.625rem', lineHeight: 1.6 }}>
+              Architecting the Future,<br/>One Block at a Time.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '2.5rem', flexWrap: 'wrap' }}>
+            <div>
+              <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Pages</p>
+              {NAV_LINKS.map(l => (
+                <button key={l.page} onClick={() => nav(l.page)}
+                  style={{ display: 'block', fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', textAlign: 'left', transition: 'color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
+                  onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
+            <div>
+              <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Social</p>
+              <a href="https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, padding: '4px 0', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
+                onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                TikTok
+              </a>
+              <a href="https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, marginTop: '0.375rem', padding: '4px 0', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
+                onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/></svg>
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: `1px solid ${T.border}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.dark, opacity: 0.35 }}>© 2026 Youth Blockchain Association. All rights reserved.</p>
+          <button onClick={() => nav('register')}
+            style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 8, padding: '8px 20px', cursor: 'pointer', transition: 'background 0.2s, transform 0.12s' }}
+            onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+            onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
+            onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.95)')}
+            onMouseUp={e => (e.currentTarget.style.transform = '')}
+          >
+            Join YBA →
+          </button>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+// ─── Shared Components ────────────────────────────────────────────────────────
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span style={{
+      fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600,
+      letterSpacing: '0.06em', textTransform: 'uppercase',
+      background: T.chip, color: '#44474a', borderRadius: 999,
+      padding: '0.375rem 1rem', display: 'inline-block',
+    }}>
+      {children}
+    </span>
+  )
+}
+
+function SectionHeading({ children, size = 'lg' }: { children: React.ReactNode; size?: 'sm' | 'lg' }) {
+  return (
+    <h2 style={{
+      fontFamily: T.manrope,
+      fontSize: size === 'lg' ? 'clamp(2rem,4vw,3rem)' : 'clamp(1.5rem,3vw,2rem)',
+      fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.08,
+    }}>
+      {children}
+    </h2>
+  )
+}
+
+// ─── Scroll Reveal Card ───────────────────────────────────────────────────────
+function ScrollRevealSection() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref as React.RefObject<HTMLElement>, offset: ['start end', 'end start'] })
+  const rotate = useTransform(scrollYProgress, [0, 0.5], [18, 0])
+  const scale  = useTransform(scrollYProgress, [0, 0.5], [0.92, 1])
+  const y      = useTransform(scrollYProgress, [0, 1], [0, -60])
+
+  const MODULES = [
+    { num: '01', title: 'Blockchain Fundamentals', tag: 'Core' },
+    { num: '02', title: 'Decentralized Finance (DeFi)', tag: 'Core' },
+    { num: '03', title: 'Smart Contracts & Solidity', tag: 'Advanced' },
+    { num: '04', title: 'Real-World Use Cases', tag: 'Applied' },
+    { num: '05', title: 'Building Your First DApp', tag: 'Project' },
+    { num: '06', title: 'Advanced Tokenomics', tag: 'Advanced' },
+  ]
+
+  return (
+    <section ref={ref} style={{ padding: 'clamp(4rem,8vw,8rem) clamp(1.25rem,4vw,2rem)', overflow: 'hidden' }} aria-label="Curriculum preview">
+      {/* @ts-ignore */}
+      <motion.div style={{ translateY: y }}>
+        <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center', marginBottom: '3rem' }}>
+          <Badge>Curriculum — Coming Soon</Badge>
+          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.08, marginTop: '1rem' }}>
+            The curriculum that<br />changes everything.
+          </h2>
+          <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.65, maxWidth: '48ch', margin: '1.25rem auto 0' }}>
+            Peer-reviewed, built for high schoolers, inspired by the world's top blockchain programs.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Scroll-reveal card */}
+      <div style={{ perspective: '1200px', maxWidth: 900, margin: '0 auto' }}>
+        {/* @ts-ignore */}
+        <motion.div
+          style={{
+            rotateX: rotate, scale,
+            background: '#1a1d24',
+            borderRadius: 28, border: '1px solid rgba(255,255,255,0.08)',
+            boxShadow: '0 0 0 1px rgba(0,0,0,0.3), 0 40px 80px -20px rgba(0,0,0,0.5)',
+            padding: '4px',
+            transformOrigin: 'top center',
+          }}
+        >
+          {/* Window chrome */}
+          <div style={{ background: '#111318', borderRadius: 24, overflow: 'hidden' }}>
+            <div style={{ padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f57' }}/>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }}/>
+              <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28ca41' }}/>
+              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', marginLeft: 8 }}>YBA Learning Platform</span>
+            </div>
+            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+              {MODULES.map((m, i) => (
+                <div key={m.num} style={{
+                  display: 'flex', alignItems: 'center', gap: '1rem',
+                  background: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent',
+                  borderRadius: 10, padding: '0.75rem 1rem',
+                  border: '1px solid rgba(255,255,255,0.04)',
+                }}>
+                  <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)', minWidth: '2rem' }}>{m.num}</span>
+                  <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.85)', flex: 1 }}>{m.title}</span>
+                  <span style={{
+                    fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em',
+                    background: m.tag === 'Advanced' ? 'rgba(79,70,229,0.25)' : m.tag === 'Project' ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.08)',
+                    color: m.tag === 'Advanced' ? '#a5b4fc' : m.tag === 'Project' ? '#86efac' : 'rgba(255,255,255,0.5)',
+                    borderRadius: 999, padding: '3px 10px',
+                  }}>{m.tag}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Home ─────────────────────────────────────────────────────────────────────
+const PILLARS = [
+  { icon: '◈', title: 'Foundational Literacy', desc: 'Peer-to-peer learning that breaks down blockchain barriers — decentralization, immutability, and transparency made accessible for teenagers.' },
+  { icon: '◉', title: 'Real-World Application', desc: 'From DeFi and CBDCs to digital identity and supply chain — we study how blockchain is actively reshaping global industries right now.' },
+  { icon: '◎', title: "Build, Don't Just Learn", desc: 'Hackathons, guest speakers, team-based projects, and professional networking — all before you graduate high school.' },
+]
+const CHIPS = ['Capital Markets','Digital Identity','CBDCs','Supply Chain','Healthcare','Media','DeFi','Stablecoins','Web3','NFTs']
+
+function HomePage({ nav }: { nav: (p: Page) => void }) {
+  return (
+    <div>
+      {/* Hero */}
+      <section
+        aria-label="Hero"
+        style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(4rem,10vw,8rem) clamp(1.25rem,4vw,3rem) clamp(2rem,5vw,4rem)', position: 'relative' }}
+      >
+        {/* Ambient gradient behind logo */}
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', overflow: 'hidden', zIndex: 0 }} aria-hidden="true">
+          <div style={{ position: 'absolute', top: '10%', left: '5%', width: 440, height: 440, borderRadius: '50%', background: 'radial-gradient(circle, rgba(79,70,229,0.07) 0%, transparent 70%)', filter: 'blur(30px)' }}/>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(2rem,4vw,4rem)', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
+          <div className="animate-fade-in">
+            <SpinningLogo size={220} />
+          </div>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div className="animate-fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: T.accentLight, border: `1px solid ${T.accentMid}`, borderRadius: 999, padding: '6px 14px', marginBottom: '1.25rem' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, display: 'inline-block' }}/>
+              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.04em', color: T.accent }}>Registration 2026 Open</span>
+            </div>
+            <h1 className="animate-fade-up" style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5.5vw,4rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.dark, lineHeight: 1.06, marginBottom: '1.25rem' }}>
+              The Next Generation<br />of Blockchain Builders<br />Starts Here.
+            </h1>
+            <p className="animate-fade-up-2" style={{ fontFamily: T.inter, fontSize: 'clamp(1rem,1.75vw,1.125rem)', color: T.muted, lineHeight: 1.7, maxWidth: '48ch', marginBottom: '2rem' }}>
+              YBA empowers high school students to understand, build, and lead within the decentralized future — through peer learning, real events, and direct industry access.
+            </p>
+            <div className="animate-fade-up-3" style={{ display: 'flex', gap: '0.875rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
+                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', transition: 'background 0.2s, transform 0.12s, box-shadow 0.2s', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#1a1c1e'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.28)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
+                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+                onMouseUp={e => (e.currentTarget.style.transform = '')}
+              >
+                Join the Movement →
+              </button>
+              <button
+                onClick={() => nav('goals')}
+                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500, background: 'transparent', color: T.dark, border: `1.5px solid ${T.border}`, borderRadius: 10, padding: '12px 24px', cursor: 'pointer', transition: 'border-color 0.2s, background 0.2s, transform 0.12s' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = T.alt }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = '' }}
+                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+                onMouseUp={e => (e.currentTarget.style.transform = '')}
+              >
+                See Our Goals
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pillar Cards */}
+      <section aria-label="Mission pillars" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.25rem' }}>
+          {PILLARS.map((p, i) => (
+            <div key={i}
+              className="pillar-card"
+              style={{ background: T.white, borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: T.shadowMd }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = T.shadowLg; e.currentTarget.style.borderLeftColor = T.accent }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = T.shadowMd; e.currentTarget.style.borderLeftColor = 'transparent' }}
+            >
+              <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
+              </div>
+              <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
+              <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Scroll-reveal curriculum section */}
+      <ScrollRevealSection />
+
+      {/* Industry chips */}
+      <section aria-label="Industries we cover" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,5vw,4rem)' }}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '1rem' }}>
+          Industries We Study
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem' }}>
+          {CHIPS.map(c => (
+            <span
+              key={c}
+              className="chip"
+              style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 500, background: T.chip, color: T.dark, borderRadius: 999, padding: '7px 16px', display: 'inline-block' }}
+              onMouseEnter={e => { e.currentTarget.style.background = T.chipHover; e.currentTarget.style.transform = 'translateY(-1px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = T.chip; e.currentTarget.style.transform = '' }}
+            >{c}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* Bridge CTA */}
+      <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)' }}>
+        <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
+          <div>
+            <SectionHeading>We Don't Just Study<br />the Future. We Build It.</SectionHeading>
+            <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '1.125rem' }}>
+              Our Guest Speaker Series connects members with developers, founders, and VCs from the blockchain world — Q&A sessions, career pathfinding, and network-building before you even graduate.
+            </p>
+          </div>
+          <button
+            onClick={() => nav('register')}
+            style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '14px 32px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'background 0.2s, transform 0.12s' }}
+            onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+            onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
+            onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+            onMouseUp={e => (e.currentTarget.style.transform = '')}
+          >
+            Apply Now →
+          </button>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+// ─── About ────────────────────────────────────────────────────────────────────
+function AboutPage() {
+  return (
+    <div>
+      <section aria-label="Founder" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)', display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 'clamp(2rem,5vw,5rem)', alignItems: 'center' }} className="about-grid">
+        <div style={{ width: '100%', aspectRatio: '4/5', borderRadius: 20, overflow: 'hidden', background: T.chip, boxShadow: T.shadowLg }}>
+          <Image src="/armaan.png" alt="Armaan Arya, Founder of YBA" width={560} height={700} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        </div>
+        <div>
+          <Badge>Founder &amp; President</Badge>
+          <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,4.5vw,3.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.08, marginTop: '1rem' }}>Armaan Arya</h1>
+          <div style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75, marginTop: '1.25rem' }}>
+            <p>A high school student with a mission to bring blockchain literacy to the next generation. Where most students first encounter decentralized technology in college — if at all — Armaan saw the gap and decided to fill it.</p>
+            <p style={{ marginTop: '1rem' }}>The Youth Blockchain Association was born from a simple belief: teenagers shouldn't have to wait until university to understand the technology that will define their careers.</p>
+          </div>
+          <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem', flexWrap: 'wrap' }}>
+            {[
+              { href: 'https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg', label: 'TikTok', icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg> },
+              { href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==', label: 'Instagram', icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> },
+            ].map(s => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '8px 18px', transition: 'background 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#d6daf0')}
+                onMouseLeave={e => (e.currentTarget.style.background = T.chip)}
+                aria-label={`YBA ${s.label}`}
+              >
+                {s.icon} {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quote */}
+      <section aria-label="Founder quote" style={{ maxWidth: 1160, margin: '0 auto', padding: '2rem clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(2rem,4vw,4rem)', alignItems: 'start' }} className="quote-grid">
+        <blockquote style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,2.5vw,1.75rem)', fontWeight: 700, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, borderLeft: `3px solid ${T.accent}`, paddingLeft: '1.5rem', margin: 0, position: 'relative' }}>
+          <span style={{ position: 'absolute', top: '-0.5rem', left: '1.25rem', fontFamily: T.manrope, fontSize: '4rem', color: T.accent, opacity: 0.12, lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }} aria-hidden="true">"</span>
+          "Traditional education wasn't preparing my generation for what's coming. So I built the bridge myself."
+        </blockquote>
+        <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75 }}>
+          Blockchain isn't just a financial tool — it's a foundational shift in how the world handles data, ownership, and trust. By introducing these concepts early, YBA prepares young adults to be creators — not just consumers — of the digital economy.
+        </p>
+      </section>
+
+      {/* Vision */}
+      <section aria-label="Vision" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', textAlign: 'center' }}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '1rem' }}>Our Vision</p>
+        <p style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,3vw,2rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, maxWidth: '38ch', margin: '0 auto' }}>
+          A global network of YBA chapters where teenagers are the primary drivers of decentralized innovation.
+        </p>
+      </section>
+    </div>
+  )
+}
+
+// ─── Goals ────────────────────────────────────────────────────────────────────
+const STEPS = [
+  { num: '01', title: 'Form Your Team', desc: 'Collaborate across schools and disciplines to tackle real blockchain challenges.' },
+  { num: '02', title: 'Build Something Real', desc: '24–48 hours to prototype a smart contract or DApp addressing a social or economic problem.' },
+  { num: '03', title: 'Pitch to Judges', desc: 'Present to industry professionals for feedback, mentorship, and competitive recognition.' },
+]
+const YEAR_ONE = [
+  'Launch first YBA Hackathon with 50+ participants',
+  'Host 10 Guest Speaker sessions in Year 1',
+  'Establish YBA chapters at 5+ schools',
+  'Partner with collegiate blockchain associations',
+  'Create a certified blockchain literacy curriculum for high schoolers',
+]
+
+function GoalsPage() {
+  return (
+    <div>
+      <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 2rem' }}>
+        <SectionHeading>Where Learning Meets Building.</SectionHeading>
+        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
+          YBA is action-driven. We organize real events where members apply knowledge under pressure, collaborate in teams, and ship real blockchain projects.
+        </p>
+      </section>
+
+      {/* Hackathon card */}
+      <section aria-label="Hackathon" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) 3rem' }}>
+        <div style={{ background: T.white, borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(2rem,4vw,3rem)', overflow: 'hidden', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, right: 0, width: 320, height: 320, background: `radial-gradient(circle at top right, rgba(79,70,229,0.06), transparent 70%)`, pointerEvents: 'none' }}/>
+          <Badge>Coming Soon</Badge>
+          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginTop: '1rem' }}>YBA Hackathon Series</h2>
+          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '58ch', marginTop: '0.875rem' }}>
+            Team-based blockchain hackathons mirroring agile startup environments. Members rapidly prototype smart contracts and DApps — then pitch to industry judges for feedback and mentorship.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: '1.125rem', marginTop: '2rem' }}>
+            {STEPS.map((s, i) => (
+              <div key={s.num}
+                style={{ background: T.alt, borderRadius: 14, padding: '1.375rem', border: `1px solid ${T.border}`, transition: 'border-color 0.2s, box-shadow 0.2s, transform 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = T.accentMid; e.currentTarget.style.boxShadow = T.shadowMd; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = '' }}
+              >
+                <div style={{ fontFamily: T.manrope, fontSize: '1.75rem', fontWeight: 800, color: T.accent, opacity: 0.25 }}>{s.num}</div>
+                <div style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.dark, marginTop: '0.375rem' }}>{s.title}</div>
+                <div style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, lineHeight: 1.6, marginTop: '0.5rem' }}>{s.desc}</div>
+              </div>
+            ))}
+          </div>
+          <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '2rem', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#1a1c1e'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.28)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
+            onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+            onMouseUp={e => (e.currentTarget.style.transform = '')}
+            aria-label="Get notified about YBA hackathon"
+          >
+            Get Notified
+          </button>
+        </div>
+      </section>
+
+      {/* Speaker */}
+      <section aria-label="Guest Speaker Series" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', marginTop: '3rem' }}>
+        <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+          <Badge>Coming Soon</Badge>
+          <SectionHeading size="sm">
+            <span style={{ display: 'block', marginTop: '0.875rem' }}>The Bridge to Industry</span>
+          </SectionHeading>
+          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
+            Direct access to developers, founders, VCs, and tokenomics specialists. Build your network years ahead of your peers.
+          </p>
+          <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+            {['Direct Q&A','Career Pathfinding','Network Before You Graduate'].map(t => (
+              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0, display: 'inline-block' }}/>
+                <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark }}>{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Year One Goals */}
+      <section aria-label="Year one goals" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)' }}>
+        <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>Year One Goals</h2>
+        {YEAR_ONE.map((g, i) => (
+          <div
+            key={i}
+            className="goal-row"
+            style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
+            onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
+          >
+            <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.accent, opacity: 0.5, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
+            <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
+          </div>
+        ))}
+      </section>
+    </div>
+  )
+}
+
+// ─── Curriculum ───────────────────────────────────────────────────────────────
+const MODULES = ['Blockchain Fundamentals','Decentralized Finance (DeFi)','Smart Contracts & Solidity','Real-World Use Cases','Building Your First DApp','Advanced Tokenomics']
+
+function CurriculumPage() {
+  return (
+    <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
+      <Badge>Coming Soon</Badge>
+      <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The Curriculum<br/>Is Being Built.</h1>
+      <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
+        A rigorous, peer-reviewed blockchain curriculum — from foundational concepts to DeFi protocols. Crafted for high schoolers. Inspired by the best university programs in the world.
+      </p>
+      <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginTop: '2.5rem', marginBottom: '0.875rem' }}>What's Coming</p>
+      <div style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}` }}>
+        {MODULES.map((m, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.125rem 1.5rem', background: i % 2 === 0 ? T.white : '#fafaff', borderBottom: i < MODULES.length - 1 ? `1px solid ${T.border}` : 'none' }}>
+            <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: T.dark, opacity: 0.2, minWidth: '4rem' }}>Module {i+1}</span>
+            <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark }}>{m}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+        <input aria-label="Email for curriculum updates" placeholder="your@email.com" style={{ fontFamily: T.inter, fontSize: '0.9375rem', background: T.chip, border: 'none', borderRadius: 10, padding: '12px 18px', width: 260, outline: 'none', color: T.dark }} />
+        <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 24px', cursor: 'pointer' }}>Get Notified</button>
+      </div>
+    </section>
+  )
+}
+
+// ─── Podcast ──────────────────────────────────────────────────────────────────
+function PodcastPage() {
+  return (
+    <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem' }}>
+      <Badge>Coming Soon</Badge>
+      <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The YBA Podcast.</h1>
+      <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
+        Conversations with the builders, thinkers, and founders shaping the decentralized world — hosted by the next generation asking the real questions.
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
+        {['001','002','003'].map(ep => (
+          <div key={ep} style={{ background: T.white, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden' }}>
+            <div style={{ width: '100%', aspectRatio: '16/9', background: T.chip, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: T.dark, display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg>
+              </div>
+            </div>
+            <div style={{ padding: '1.25rem' }}>
+              <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: T.dark, opacity: 0.35 }}>Episode {ep}</p>
+              <p style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.muted, marginTop: '0.5rem' }}>Coming Soon</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
+        {[
+          { href: 'https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg', label: 'Follow on TikTok' },
+          { href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==', label: 'Follow on Instagram' },
+        ].map(s => (
+          <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '10px 20px', transition: 'background 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.background = '#d6daf0')}
+            onMouseLeave={e => (e.currentTarget.style.background = T.chip)}
+          >
+            {s.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+// ─── Register ─────────────────────────────────────────────────────────────────
+function RegisterPage({ nav }: { nav: (p: Page) => void }) {
+  const [done, setDone]       = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [errors, setErrors]   = useState<Record<string,string>>({})
+  const startTracked           = useRef(false)
+  const trackStart = () => { if (!startTracked.current) { startTracked.current = true; track('form_start', 'register') } }
+
+  const validate = (fd: FormData) => {
+    const e: Record<string,string> = {}
+    if (!fd.get('name'))   e.name   = 'Name is required'
+    if (!fd.get('email'))  e.email  = 'Email is required'
+    if (!fd.get('school')) e.school = 'School is required'
+    if (!fd.get('grade'))  e.grade  = 'Please select your grade'
+    return e
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+    const errs = validate(fd)
+    if (Object.keys(errs).length) { setErrors(errs); return }
+
+    setLoading(true)
+    track('form_submit', 'register')
+
+    try {
+      const res = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:       fd.get('name'),
+          email:      fd.get('email'),
+          school:     fd.get('school'),
+          grade:      fd.get('grade'),
+          build_idea: fd.get('build'),
+        }),
+      })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error ?? 'Unknown error')
+      setDone(true)
+    } catch (err) {
+      console.error(err)
+      setErrors({ submit: 'Something went wrong — please try again.' })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (done) return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.97 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', textAlign: 'center', padding: '4rem 1.5rem', background: `linear-gradient(135deg, ${T.bg} 0%, ${T.alt} 100%)` }}
+    >
+      <motion.div
+        initial={{ scale: 0, rotate: -30 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: 0.15, type: 'spring', stiffness: 260, damping: 20 }}
+        style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg, #dcfce7, #bbf7d0)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(22,163,74,0.2)' }}
+        aria-hidden="true"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </motion.div>
+      <div>
+        <h2 style={{ fontFamily: T.manrope, fontSize: '2.5rem', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em' }}>You're in.</h2>
+        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '34ch', marginTop: '0.75rem' }}>Welcome to YBA. We'll reach out with your next steps shortly.</p>
+      </div>
+      <button
+        onClick={() => nav('home')}
+        style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '0.5rem', transition: 'background 0.2s, transform 0.12s' }}
+        onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+        onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
+        onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+        onMouseUp={e => (e.currentTarget.style.transform = '')}
+      >Back to Home</button>
+    </motion.div>
+  )
+
+  const fieldStyle: React.CSSProperties = { width: '100%', padding: '12px 16px', background: T.chip, border: `1.5px solid transparent`, borderRadius: 10, fontFamily: T.inter, fontSize: '1rem', color: T.dark, outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }
+  const labelStyle: React.CSSProperties = { fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#44474a', display: 'block', marginBottom: '0.5rem' }
+  const errStyle: React.CSSProperties   = { fontFamily: T.inter, fontSize: '0.8125rem', color: '#dc2626', marginTop: '0.375rem' }
+
+  return (
+    <div style={{ minHeight: '100vh', background: `linear-gradient(135deg, ${T.bg} 0%, ${T.alt} 100%)`, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: 'clamp(5rem,10vw,8rem) 1.25rem 4rem' }}>
+      <div style={{ width: '100%', maxWidth: 920, display: 'grid', gridTemplateColumns: '1fr 1.35fr', gap: 'clamp(2rem,4vw,4rem)', alignItems: 'start' }} className="reg-grid">
+        {/* Left copy */}
+        <div style={{ paddingTop: '0.5rem' }}>
+          <Badge>Registration 2026</Badge>
+          <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.05, marginTop: '1rem' }}>Join the<br/>Movement.</h1>
+          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '34ch', marginTop: '1.125rem' }}>
+            Become part of the next generation of blockchain builders. Your journey into decentralized technology starts here.
+          </p>
+          <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {['No experience required','Real events & hackathons','Direct industry access'].map(f => (
+              <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.accent} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark }}>{f}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — form */}
+        <div>
+          {/* Glass card */}
+          <div style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(1.75rem,4vw,2.5rem)' }}>
+            <form onSubmit={handleSubmit} noValidate aria-label="YBA Registration form">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label htmlFor="reg-name" style={labelStyle}>Name</label>
+                  <input id="reg-name" name="name" type="text" placeholder="Your name" style={{ ...fieldStyle, borderColor: errors.name ? '#dc2626' : 'transparent' }}
+                    onFocus={e => { e.target.style.borderColor = T.accent; trackStart() }} onBlur={e => (e.target.style.borderColor = errors.name ? '#dc2626' : 'transparent')} required aria-describedby={errors.name ? 'err-name' : undefined} aria-invalid={!!errors.name} />
+                  {errors.name && <p id="err-name" role="alert" style={errStyle}>{errors.name}</p>}
+                </div>
+                <div>
+                  <label htmlFor="reg-email" style={labelStyle}>Email</label>
+                  <input id="reg-email" name="email" type="email" placeholder="your@email.com" style={{ ...fieldStyle, borderColor: errors.email ? '#dc2626' : 'transparent' }}
+                    onFocus={e => (e.target.style.borderColor = T.accent)} onBlur={e => (e.target.style.borderColor = errors.email ? '#dc2626' : 'transparent')} required aria-describedby={errors.email ? 'err-email' : undefined} aria-invalid={!!errors.email} />
+                  {errors.email && <p id="err-email" role="alert" style={errStyle}>{errors.email}</p>}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label htmlFor="reg-school" style={labelStyle}>School</label>
+                  <input id="reg-school" name="school" type="text" placeholder="Your high school" style={{ ...fieldStyle, borderColor: errors.school ? '#dc2626' : 'transparent' }}
+                    onFocus={e => (e.target.style.borderColor = T.accent)} onBlur={e => (e.target.style.borderColor = errors.school ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.school} />
+                  {errors.school && <p role="alert" style={errStyle}>{errors.school}</p>}
+                </div>
+                <div>
+                  <label htmlFor="reg-grade" style={labelStyle}>Grade</label>
+                  <select id="reg-grade" name="grade" style={{ ...fieldStyle, appearance: 'none', cursor: 'pointer', borderColor: errors.grade ? '#dc2626' : 'transparent' }}
+                    onFocus={e => (e.currentTarget.style.borderColor = T.accent)} onBlur={e => (e.currentTarget.style.borderColor = errors.grade ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.grade}>
+                    <option value="">Select grade</option>
+                    <option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option>
+                  </select>
+                  {errors.grade && <p role="alert" style={errStyle}>{errors.grade}</p>}
+                </div>
+              </div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label htmlFor="reg-build" style={labelStyle}>What do you want to build? (Put N/A if you don't know)</label>
+                <textarea id="reg-build" name="build" rows={3} placeholder="I want to build a decentralized app that..."
+                  style={{ ...fieldStyle, resize: 'none' }}
+                  onFocus={e => (e.target.style.borderColor = T.accent)} onBlur={e => (e.target.style.borderColor = 'transparent')} />
+              </div>
+              {errors.submit && (
+                <p role="alert" style={{ fontFamily: T.inter, fontSize: '0.875rem', color: '#dc2626', marginBottom: '0.875rem', padding: '0.75rem 1rem', background: '#fef2f2', borderRadius: 8 }}>
+                  {errors.submit}
+                </p>
+              )}
+              <button type="submit" disabled={loading}
+                style={{ width: '100%', background: loading ? '#44474a' : T.cta, color: '#fff', border: 'none', borderRadius: 12, padding: '14px', fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, cursor: loading ? 'default' : 'pointer', transition: 'background 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#1a1c1e' }}
+                onMouseLeave={e => { if (!loading) e.currentTarget.style.background = T.cta }}
+                aria-busy={loading}
+              >
+                {loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ animation: 'spin 0.8s linear infinite' }}><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>}
+                {loading ? 'Processing…' : 'Complete Registration'}
+              </button>
+              <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.muted, textAlign: 'center', marginTop: '1rem' }}>
+                By joining, you agree to our Terms of Service and Privacy Policy.
+              </p>
+            </form>
+          </div>
+
+          {/* Officer link — BELOW the white box */}
+          <a
+            href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSenAFo38AY_SVwQkZxSfRKwD02WtL9WvTbiLDDR6nueIeXeBw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleARQvtxleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeopVqsE6hVUDF8yxmdF6HdYnAx2RW1lP8jIrTMJ-AE2GuKgxuQW-UGaW3K_g_aem_Rl0RZ3E5hOtb2g0W09rogw"
+            target="_blank" rel="noopener noreferrer"
+            onClick={() => track('officer_click', 'register')}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginTop: '0.875rem', padding: '1rem 1.25rem',
+              background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+              borderRadius: 14, border: `1.5px solid ${T.border}`,
+              fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark,
+              transition: 'background 0.2s, border-color 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.95)'; e.currentTarget.style.borderColor = 'rgba(22,28,37,0.2)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = T.border }}
+          >
+            <span>Interested in Being a YBA Officer?</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── App ──────────────────────────────────────────────────────────────────────
+export default function App() {
+  const [page, setPage] = useState<Page>('home')
+
+  const nav = (p: Page) => {
+    setPage(p)
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }))
+    track('page_view', p)
+  }
+
+  // Track initial page load
+  useEffect(() => { track('page_view', 'home') }, [])
+
+  return (
+    <>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      <Nav current={page} nav={nav} />
+      <main id="main-content">
+        <AnimatePresence mode="wait">
+          <motion.div key={page} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}>
+            {page === 'home'       && <HomePage nav={nav} />}
+            {page === 'about'      && <AboutPage />}
+            {page === 'goals'      && <GoalsPage />}
+            {page === 'curriculum' && <CurriculumPage />}
+            {page === 'podcast'    && <PodcastPage />}
+            {page === 'register'   && <RegisterPage nav={nav} />}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+      {page !== 'register' && <Footer nav={nav} />}
+    </>
+  )
+}

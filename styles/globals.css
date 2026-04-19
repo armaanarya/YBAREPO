@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --bg:        #f9f9ff;
+  --surface:   #ffffff;
+  --alt:       #f0f3ff;
+  --dark:      #161c25;
+  --cta:       #000101;
+  --muted:     #595e69;
+  --chip:      #e3e8f5;
+  --chip-hover:#d6daf0;
+  --accent:    #4f46e5;
+  --accent-light: rgba(79,70,229,0.08);
+  --border:    rgba(22,28,37,0.08);
+  --shadow-sm: 0 1px 3px rgba(22,28,37,0.06), 0 1px 2px rgba(22,28,37,0.04);
+  --shadow-md: 0 4px 16px rgba(22,28,37,0.08), 0 1px 4px rgba(22,28,37,0.04);
+  --shadow-lg: 0 24px 48px -12px rgba(22,28,37,0.12);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::selection {
+  background: rgba(79,70,229,0.12);
+  color: var(--dark);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--chip); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--chip-hover); }
+
+/* Focus rings - accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Spin animation for logo */
+@keyframes yba-spin {
+  0%   { transform: rotate(0deg);    filter: blur(0px); }
+  25%  { transform: rotate(360deg);  filter: blur(1px); }
+  55%  { transform: rotate(900deg);  filter: blur(5px); }
+  80%  { transform: rotate(1260deg); filter: blur(12px); }
+  100% { transform: rotate(1440deg); filter: blur(16px); }
+}
+
+/* Fade animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up   { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-up-2 { animation: fadeUp 0.6s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-up-3 { animation: fadeUp 0.6s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-in   { animation: fadeIn 0.5s ease-out both; }
+
+/* Button press scale */
+@keyframes pressScale {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+.btn-press:active { transform: scale(0.96); }
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #e3e8f5 25%, #eef1fa 50%, #e3e8f5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* Industry chip hover */
+.chip {
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+  cursor: default;
+}
+.chip:hover {
+  background: #d0d6ee !important;
+  transform: translateY(-1px);
+}
+
+/* Pillar card accent */
+.pillar-card {
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s;
+  border-left: 3px solid transparent !important;
+}
+.pillar-card:hover {
+  border-left-color: #4f46e5 !important;
+}
+
+/* Goals list row hover */
+.goal-row {
+  transition: background 0.18s, padding-left 0.18s;
+  border-radius: 10px;
+  padding-left: 0;
+}
+.goal-row:hover {
+  background: rgba(79,70,229,0.04);
+  padding-left: 8px;
+}
+
+/* Nav link active indicator */
+.nav-link-active {
+  position: relative;
+}
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background: #4f46e5;
+  border-radius: 2px;
+}
+
+/* Mobile nav overlay */
+@media (max-width: 768px) {
+  .about-grid  { grid-template-columns: 1fr !important; }
+  .quote-grid  { grid-template-columns: 1fr !important; }
+  .reg-grid    { grid-template-columns: 1fr !important; }
+}
