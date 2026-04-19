@@ -665,8 +665,46 @@ function GoalsPage() {
         </p>
       </section>
 
+      {/* Year One Goals — shown first so visitors see the full picture */}
+      <section aria-label="Year one goals" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) 3rem' }}>
+        <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>Year One Goals</h2>
+        {YEAR_ONE.map((g, i) => (
+          <div
+            key={i}
+            className="goal-row"
+            style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
+            onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
+          >
+            <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.accent, opacity: 0.5, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
+            <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* Speaker */}
+      <section aria-label="Guest Speaker Series" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', marginTop: '1rem' }}>
+        <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+          <Badge>Coming Soon</Badge>
+          <SectionHeading size="sm">
+            <span style={{ display: 'block', marginTop: '0.875rem' }}>The Bridge to Industry</span>
+          </SectionHeading>
+          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
+            Direct access to developers, founders, VCs, and tokenomics specialists. Build your network years ahead of your peers.
+          </p>
+          <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+            {['Direct Q&A','Career Pathfinding','Network Before You Graduate'].map(t => (
+              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0, display: 'inline-block' }}/>
+                <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark }}>{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Hackathon card */}
-      <section aria-label="Hackathon" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) 3rem' }}>
+      <section aria-label="Hackathon" style={{ maxWidth: 1160, margin: '3rem auto 0', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)' }}>
         <div style={{ background: T.white, borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(2rem,4vw,3rem)', overflow: 'hidden', position: 'relative' }}>
           <div style={{ position: 'absolute', top: 0, right: 0, width: 320, height: 320, background: `radial-gradient(circle at top right, rgba(79,70,229,0.06), transparent 70%)`, pointerEvents: 'none' }}/>
           <Badge>Coming Soon</Badge>
@@ -698,50 +736,103 @@ function GoalsPage() {
           </button>
         </div>
       </section>
-
-      {/* Speaker */}
-      <section aria-label="Guest Speaker Series" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', marginTop: '3rem' }}>
-        <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-          <Badge>Coming Soon</Badge>
-          <SectionHeading size="sm">
-            <span style={{ display: 'block', marginTop: '0.875rem' }}>The Bridge to Industry</span>
-          </SectionHeading>
-          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
-            Direct access to developers, founders, VCs, and tokenomics specialists. Build your network years ahead of your peers.
-          </p>
-          <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-            {['Direct Q&A','Career Pathfinding','Network Before You Graduate'].map(t => (
-              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0, display: 'inline-block' }}/>
-                <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark }}>{t}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Year One Goals */}
-      <section aria-label="Year one goals" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)' }}>
-        <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>Year One Goals</h2>
-        {YEAR_ONE.map((g, i) => (
-          <div
-            key={i}
-            className="goal-row"
-            style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
-            onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
-          >
-            <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.accent, opacity: 0.5, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
-            <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
-          </div>
-        ))}
-      </section>
     </div>
   )
 }
 
 // ─── Curriculum ───────────────────────────────────────────────────────────────
 const MODULES = ['Blockchain Fundamentals','Decentralized Finance (DeFi)','Smart Contracts & Solidity','Real-World Use Cases','Building Your First DApp','Advanced Tokenomics']
+
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December']
+const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+const MEETING_START = new Date(2026, 4, 31) // May 31 2026
+
+function YBACalendar() {
+  const [month, setMonth] = useState(4) // May = 4 (0-indexed)
+  const year = 2026
+  const START_M = 4, END_M = 11
+
+  const daysInMonth  = new Date(year, month + 1, 0).getDate()
+  const firstDayOfWk = new Date(year, month, 1).getDay()
+
+  const isMeeting = (day: number) => {
+    const d = new Date(year, month, day)
+    return d.getDay() === 0 && d >= MEETING_START
+  }
+
+  const cells: (number | null)[] = [
+    ...Array(firstDayOfWk).fill(null),
+    ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+  ]
+
+  return (
+    <div style={{ marginTop: '3.5rem' }}>
+      <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '1rem' }}>YBA Calendar 2026</p>
+
+      <div style={{ background: T.white, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden' }}>
+        {/* Month nav */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.125rem 1.5rem', borderBottom: `1px solid ${T.border}`, background: T.alt }}>
+          <button
+            onClick={() => setMonth(m => Math.max(START_M, m - 1))}
+            disabled={month === START_M}
+            style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${T.border}`, background: month === START_M ? 'transparent' : T.white, cursor: month === START_M ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: month === START_M ? T.muted : T.dark, opacity: month === START_M ? 0.3 : 1, transition: 'background 0.15s' }}
+            aria-label="Previous month"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <span style={{ fontFamily: T.manrope, fontWeight: 700, fontSize: '1.0625rem', color: T.dark }}>{MONTH_NAMES[month]} {year}</span>
+          <button
+            onClick={() => setMonth(m => Math.min(END_M, m + 1))}
+            disabled={month === END_M}
+            style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${T.border}`, background: month === END_M ? 'transparent' : T.white, cursor: month === END_M ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: month === END_M ? T.muted : T.dark, opacity: month === END_M ? 0.3 : 1, transition: 'background 0.15s' }}
+            aria-label="Next month"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        {/* Day headers */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', padding: '0.875rem 1rem 0.25rem' }}>
+          {DAY_NAMES.map(d => (
+            <div key={d} style={{ textAlign: 'center', fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, color: d === 'Sun' ? T.accent : T.muted, paddingBottom: '0.5rem' }}>{d}</div>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: '2px', padding: '0 1rem 1.25rem' }}>
+          {cells.map((day, i) => {
+            if (!day) return <div key={`empty-${i}`} />
+            const meeting = isMeeting(day)
+            return (
+              <div key={day} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0.375rem 0.125rem', borderRadius: 8, background: meeting ? T.accentLight : 'transparent', cursor: meeting ? 'default' : 'default', minHeight: 52 }}>
+                <span style={{ fontFamily: T.inter, fontSize: '0.875rem', fontWeight: meeting ? 700 : 400, color: meeting ? T.accent : T.dark }}>{day}</span>
+                {meeting && (
+                  <span style={{ fontFamily: T.inter, fontSize: '0.5625rem', fontWeight: 600, color: T.accent, textAlign: 'center', lineHeight: 1.3, marginTop: 3 }}>YBA Weekly<br/>Meeting</span>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Legend dots */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem' }}>
+        <span style={{ width: 10, height: 10, borderRadius: 3, background: T.accentLight, border: `1.5px solid ${T.accent}`, display: 'inline-block', flexShrink: 0 }}/>
+        <span style={{ fontFamily: T.inter, fontSize: '0.8125rem', color: T.muted }}>Weekly Meeting</span>
+      </div>
+
+      {/* Info card */}
+      <div style={{ marginTop: '1.25rem', padding: '1.25rem 1.5rem', background: T.alt, borderRadius: 14, border: `1px solid ${T.border}` }}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark, lineHeight: 1.7 }}>
+          This calendar reflects all YBA activities for 2026 — weekly meetings, seminars, guest speaker sessions, hackathons, and everything in between.
+        </p>
+        <p style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, lineHeight: 1.7, marginTop: '0.625rem' }}>
+          If Sundays don't work for your schedule, we're always open to a change — reach out and we'll make it work.
+        </p>
+      </div>
+    </div>
+  )
+}
 
 function CurriculumPage() {
   return (
@@ -764,6 +855,8 @@ function CurriculumPage() {
         <input aria-label="Email for curriculum updates" placeholder="your@email.com" style={{ fontFamily: T.inter, fontSize: '0.9375rem', background: T.chip, border: 'none', borderRadius: 10, padding: '12px 18px', width: 260, outline: 'none', color: T.dark }} />
         <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 24px', cursor: 'pointer' }}>Get Notified</button>
       </div>
+
+      <YBACalendar />
     </section>
   )
 }
