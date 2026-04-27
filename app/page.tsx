@@ -67,6 +67,7 @@ function SpinningLogo({ size = 220 }: { size?: number }) {
       s.setAttribute('width', '100%')
       s.setAttribute('height', '100%')
       s.style.display = 'block'
+      s.querySelectorAll('text, tspan').forEach(el => el.remove())
       const kids = Array.from(s.children).filter(n => !['defs','rect'].includes(n.tagName.toLowerCase()))
       const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       g.style.cssText = 'transform-box:fill-box;transform-origin:center;'
