@@ -71,13 +71,10 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-/* Spin animation for logo */
+/* Spin animation for logo — smooth slow→fast acceleration */
 @keyframes yba-spin {
   0%   { transform: rotate(0deg);    filter: blur(0px); }
-  25%  { transform: rotate(360deg);  filter: blur(1px); }
-  55%  { transform: rotate(900deg);  filter: blur(5px); }
-  80%  { transform: rotate(1260deg); filter: blur(12px); }
-  100% { transform: rotate(1440deg); filter: blur(16px); }
+  100% { transform: rotate(1440deg); filter: blur(14px); }
 }
 
 /* Fade animations */

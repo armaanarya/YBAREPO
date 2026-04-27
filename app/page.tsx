@@ -49,7 +49,7 @@ function SpinningLogo({ size = 220 }: { size?: number }) {
     timers.current = []
     mark.style.cssText = 'transform-box:fill-box;transform-origin:center;transition:none;'
     mark.getBoundingClientRect()
-    mark.style.animation = 'yba-spin 1.4s cubic-bezier(0.4,0,1,1) forwards'
+    mark.style.animation = 'yba-spin 1.5s cubic-bezier(0.85, 0, 0.95, 0.4) forwards'
     timers.current.push(setTimeout(() => {
       mark.style.animation = 'none'
       mark.style.transform = 'rotate(0deg)'
@@ -835,7 +835,64 @@ function YBACalendar() {
   )
 }
 
+function ModuleDetailPage({ index, title, onBack }: { index: number; title: string; onBack: () => void }) {
+  const moduleNum = String(index + 1).padStart(2, '0')
+
+  return (
+    <section style={{ maxWidth: 920, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
+      {/* Back button */}
+      <button
+        onClick={onBack}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.muted, background: 'none', border: 'none', cursor: 'pointer', padding: '6px 10px', marginLeft: '-10px', borderRadius: 8, transition: 'color 0.18s, background 0.18s', marginBottom: '1.75rem' }}
+        onMouseEnter={e => { e.currentTarget.style.color = T.dark; e.currentTarget.style.background = T.alt }}
+        onMouseLeave={e => { e.currentTarget.style.color = T.muted; e.currentTarget.style.background = 'transparent' }}
+        aria-label="Back to curriculum"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Curriculum
+      </button>
+
+      <Badge>Module {moduleNum}</Badge>
+      <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.5rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>{title}</h1>
+
+      {/* Reading section */}
+      <div style={{ marginTop: '3rem' }}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Reading</p>
+        <div style={{ background: T.white, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowSm, padding: 'clamp(1.75rem,3vw,2.5rem)', minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, fontStyle: 'italic' }}>Reading content — TBD</p>
+        </div>
+      </div>
+
+      {/* Video section */}
+      <div style={{ marginTop: '2.5rem' }}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Video</p>
+        <div style={{ width: '100%', aspectRatio: '16/9', background: T.dark, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, rgba(79,70,229,0.18), transparent 60%)' }} aria-hidden="true"/>
+          <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1.5px solid rgba(255,255,255,0.25)', position: 'relative', zIndex: 1 }} aria-label="Play video placeholder">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)" aria-hidden="true"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <span style={{ position: 'absolute', bottom: 16, left: 18, fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.04em', zIndex: 1 }}>TBD</span>
+        </div>
+      </div>
+
+      {/* Activity section */}
+      <div style={{ marginTop: '2.5rem' }}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Activity</p>
+        <div style={{ background: T.alt, borderRadius: 16, border: `1px dashed ${T.borderHover}`, padding: 'clamp(1.75rem,3vw,2.5rem)', minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, fontStyle: 'italic' }}>Activity — TBD</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function CurriculumPage() {
+  const [selectedModule, setSelectedModule] = useState<number | null>(null)
+
+  if (selectedModule !== null) {
+    return <ModuleDetailPage index={selectedModule} title={MODULES[selectedModule]} onBack={() => setSelectedModule(null)} />
+  }
+
   return (
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
       <Badge>Coming Soon</Badge>
@@ -846,10 +903,18 @@ function CurriculumPage() {
       <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginTop: '2.5rem', marginBottom: '0.875rem' }}>What's Coming</p>
       <div style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}` }}>
         {MODULES.map((m, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.125rem 1.5rem', background: i % 2 === 0 ? T.white : '#fafaff', borderBottom: i < MODULES.length - 1 ? `1px solid ${T.border}` : 'none' }}>
+          <button
+            key={i}
+            onClick={() => setSelectedModule(i)}
+            style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.125rem 1.5rem', background: i % 2 === 0 ? T.white : '#fafaff', borderBottom: i < MODULES.length - 1 ? `1px solid ${T.border}` : 'none', border: 'none', borderTop: 'none', borderLeft: 'none', borderRight: 'none', width: '100%', textAlign: 'left', cursor: 'pointer', transition: 'background 0.18s, padding-left 0.18s', fontFamily: 'inherit' }}
+            onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.75rem' }}
+            onMouseLeave={e => { e.currentTarget.style.background = i % 2 === 0 ? T.white : '#fafaff'; e.currentTarget.style.paddingLeft = '1.5rem' }}
+            aria-label={`Open Module ${i+1}: ${m}`}
+          >
             <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: T.dark, opacity: 0.2, minWidth: '4rem' }}>Module {i+1}</span>
-            <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark }}>{m}</span>
-          </div>
+            <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark, flex: 1 }}>{m}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         ))}
       </div>
       <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
