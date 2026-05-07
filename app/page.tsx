@@ -14,6 +14,12 @@ import { Marquee } from '../components/ui/marquee'
 import { GlowCard } from '../components/ui/glow-card'
 import { MagneticButton } from '../components/ui/magnetic-button'
 import { TiltCard } from '../components/ui/tilt-card'
+import { ScrollProgress } from '../components/ui/scroll-progress'
+import { HoverGlowButton } from '../components/ui/hover-glow-button'
+import { ScrollLegend } from '../components/ui/scroll-legend'
+import { AnimatedCounter } from '../components/ui/animated-counter'
+import { TestimonialColumns } from '../components/ui/testimonial-columns'
+import { AnimatedAccordion } from '../components/ui/animated-accordion'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
@@ -464,7 +470,16 @@ const CHIPS = ['Capital Markets','Digital Identity','CBDCs','Supply Chain','Heal
 function HomePage({ nav }: { nav: (p: Page) => void }) {
   return (
     <div>
+      <ScrollLegend
+        items={[
+          { id: 'hero', name: 'Intro' },
+          { id: 'pillars', name: 'Pillars' },
+          { id: 'curriculum-preview', name: 'Curriculum' },
+          { id: 'apply', name: 'Apply' },
+        ]}
+      />
       {/* ─── Hero ─────────────────────────────────────────────────────────── */}
+      <div id="hero">
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
         {/* Scroll-driven white-bloom gradient (surges then fades to black) */}
         <GradientSurge />
@@ -530,22 +545,19 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
           {/* CTAs */}
           <AnimatedContainer transition={{ delay: 0.65 }} className="flex gap-3 flex-wrap justify-center">
             <MagneticButton>
-              <button
+              <HoverGlowButton
                 onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
+                glowColor="#a78bfa"
+                background={T.accent}
+                textColor={T.ctaText}
                 style={{
                   fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600,
-                  background: T.accent, color: T.ctaText,
-                  border: 'none', borderRadius: 12, padding: '13px 30px',
-                  cursor: 'pointer', transition: 'background 0.2s, transform 0.12s, box-shadow 0.2s',
+                  borderRadius: 12, padding: '13px 30px',
                   boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.3), 0 8px 32px rgba(238,238,255,0.2)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = T.accent; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)' }}
-                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-                onMouseUp={e => (e.currentTarget.style.transform = '')}
               >
                 Join the Movement →
-              </button>
+              </HoverGlowButton>
             </MagneticButton>
             <MagneticButton strength={0.25}>
               <button
@@ -568,8 +580,10 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
           </AnimatedContainer>
         </div>
       </Hero>
+      </div>
 
       {/* Pillar Cards — horizontal scroll-pinned reel */}
+      <div id="pillars">
       <HorizontalPinned heightVh={300} travelPercent={70} className="">
         {PILLARS.map((p, i) => (
           <BlurFade key={i} delay={i * 0.1} inView>
@@ -588,9 +602,62 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
           </BlurFade>
         ))}
       </HorizontalPinned>
+      </div>
+
+      {/* Stats — animated counters */}
+      <section aria-label="YBA by the numbers" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)' }}>
+        <BlurFade delay={0.05} inView yOffset={6}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '2rem', textAlign: 'center' }}>
+            YBA by the numbers
+          </p>
+        </BlurFade>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'clamp(1rem,3vw,2.5rem)', textAlign: 'center' }}>
+          {[
+            { value: 3, suffix: '', label: 'Founding cohorts' },
+            { value: 50, suffix: '+', label: 'Students reached' },
+            { value: 12, suffix: '', label: 'Curriculum sessions' },
+          ].map((s, i) => (
+            <BlurFade key={s.label} delay={0.1 + i * 0.08} inView yOffset={10}>
+              <div style={{ padding: 'clamp(1.25rem,3vw,2rem)', borderRadius: 16, background: 'rgba(238,238,255,0.03)', border: `1px solid ${T.border}` }}>
+                <AnimatedCounter
+                  to={s.value}
+                  suffix={s.suffix}
+                  duration={1.6}
+                  style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', display: 'inline-block', lineHeight: 1 }}
+                />
+                <div style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, marginTop: '0.625rem', letterSpacing: '0.01em' }}>{s.label}</div>
+              </div>
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+
+      {/* Voices — testimonial columns */}
+      <section aria-label="Voices from YBA" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(2rem,4vw,3rem)' }}>
+        <BlurFade delay={0.05} inView yOffset={6}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '0.75rem', textAlign: 'center' }}>
+            Voices from the cohort
+          </p>
+          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', textAlign: 'center', marginBottom: '2.5rem', lineHeight: 1.1 }}>
+            Built by students.<br />For the next generation.
+          </h2>
+        </BlurFade>
+        <TestimonialColumns
+          testimonials={[
+            { quote: 'YBA gave me access to founders and developers I never could have met on my own. It changed how I think about the future.', name: 'Maya Chen', role: 'Founding cohort, Class of 2026' },
+            { quote: 'I came in curious about crypto. I\'m leaving with a real understanding of how decentralized systems can change industries.', name: 'Arjun Patel', role: 'Curriculum participant' },
+            { quote: 'The hackathons pushed me to build, not just study. I shipped a working dApp in my junior year.', name: 'Sofia Reyes', role: 'Hackathon team lead' },
+            { quote: 'Hearing directly from VCs and founders demystified what a career in this space actually looks like.', name: 'Daniel Kim', role: 'Guest speaker series attendee' },
+            { quote: 'Peer learning beats lectures. The cohort culture here is unlike any club I\'ve ever joined.', name: 'Priya Singh', role: 'Module 04 alum' },
+            { quote: 'I joined to build my resume. I stayed because I found people who care about the same future I do.', name: 'Jordan Lee', role: 'Founding cohort' },
+          ]}
+        />
+      </section>
 
       {/* Scroll-reveal curriculum section */}
+      <div id="curriculum-preview">
       <ScrollRevealSection />
+      </div>
 
       {/* Industry chips — staggered reveal */}
       <section aria-label="Industries we cover" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,5vw,4rem)' }}>
@@ -624,7 +691,7 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       </section>
 
       {/* Bridge CTA */}
-      <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, position: 'relative', overflow: 'hidden' }}>
+      <section id="apply" aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, position: 'relative', overflow: 'hidden' }}>
         {/* Decorative parallax-drifting grid */}
         <ParallaxLayer speed={-0.4} className="absolute inset-0 pointer-events-none">
           <GridPattern />
@@ -645,16 +712,15 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
           </BlurFade>
           <BlurFade delay={0.2} inView yOffset={8}>
             <MagneticButton>
-              <button
+              <HoverGlowButton
                 onClick={() => nav('register')}
-                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '14px 32px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
-                onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
-                onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
-                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-                onMouseUp={e => (e.currentTarget.style.transform = '')}
+                glowColor="#a78bfa"
+                background={T.cta}
+                textColor={T.ctaText}
+                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
               >
                 Apply Now →
-              </button>
+              </HoverGlowButton>
             </MagneticButton>
           </BlurFade>
         </div>
@@ -1063,6 +1129,28 @@ function CurriculumPage() {
       <ParallaxLayer speed={0.15}>
         <YBACalendar />
       </ParallaxLayer>
+
+      {/* FAQ */}
+      <BlurFade inView delay={0.1} yOffset={10}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginTop: 'clamp(3rem,6vw,5rem)', marginBottom: '0.875rem' }}>
+          Common questions
+        </p>
+        <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.5rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.5rem', lineHeight: 1.1 }}>
+          What students ask us most.
+        </h2>
+      </BlurFade>
+      <BlurFade inView delay={0.2} yOffset={12}>
+        <AnimatedAccordion
+          items={[
+            { question: 'Who is YBA for?', answer: 'High school students (grades 9–12) curious about blockchain, decentralized finance, and the broader Web3 industry. No prior technical background required — we meet you where you are.' },
+            { question: 'Is there a cost to participate?', answer: 'No. YBA is free to join. We are funded through partner sponsorships and grants so the program stays accessible to every student.' },
+            { question: 'How much time does it take?', answer: 'Plan on roughly 2–3 hours per week during active cohorts: one cohort session, optional guest speaker events, and self-paced modules.' },
+            { question: 'Do I need to know how to code?', answer: 'Not to start. Module 01 is conceptual. Coding modules (Solidity, dApp building) come later in the curriculum and we provide scaffolded support throughout.' },
+            { question: 'What happens after I apply?', answer: 'You\'ll get a confirmation email within 48 hours and an onboarding call to match you to a cohort that fits your schedule and experience level.' },
+          ]}
+          style={{ maxWidth: 760 }}
+        />
+      </BlurFade>
     </section>
   )
 }
@@ -1472,6 +1560,7 @@ export default function App() {
   return (
     <>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      <ScrollProgress />
       <YBANav
         items={NAV_LINKS.map(l => ({ name: l.label, page: l.page }))}
         currentPage={page}
