@@ -8,7 +8,6 @@ import { BlurFade } from '../components/ui/blur-fade'
 import { Hero, BgGradient, TextStagger, AnimatedContainer, HeroSpotlight } from '../components/ui/hero-animated'
 import { GridPattern } from '../components/ui/grid-pattern'
 import { Marquee } from '../components/ui/marquee'
-import { NumberCounter } from '../components/ui/number-counter'
 import { GlowCard } from '../components/ui/glow-card'
 import { MagneticButton } from '../components/ui/magnetic-button'
 import { TiltCard } from '../components/ui/tilt-card'
@@ -775,27 +774,6 @@ function GoalsPage() {
             YBA is action-driven. We organize real events where members apply knowledge under pressure, collaborate in teams, and ship real blockchain projects.
           </p>
         </BlurFade>
-      </section>
-
-      {/* Stats band */}
-      <section aria-label="Year one targets" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) 2.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: '1rem' }}>
-          {[
-            { value: 50,  suffix: '+', label: 'Hackathon spots' },
-            { value: 10,  suffix: '+', label: 'Guest speakers' },
-            { value: 5,   suffix: '+', label: 'Partner schools' },
-            { value: 100, suffix: '%', label: 'Peer-reviewed' },
-          ].map((s, i) => (
-            <BlurFade key={s.label} inView delay={0.05 + i * 0.08} yOffset={10}>
-              <div style={{ background: T.surface, borderRadius: 14, border: `1px solid ${T.border}`, padding: '1.5rem 1.25rem' }}>
-                <div style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,3.5vw,2.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1 }}>
-                  <NumberCounter to={s.value} suffix={s.suffix} />
-                </div>
-                <div style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 500, color: T.muted, marginTop: '0.5rem' }}>{s.label}</div>
-              </div>
-            </BlurFade>
-          ))}
-        </div>
       </section>
 
       {/* Year One Goals — staggered reveal */}
