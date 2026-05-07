@@ -1060,7 +1060,9 @@ function CurriculumPage() {
         </div>
       </BlurFade>
 
-      <YBACalendar />
+      <ParallaxLayer speed={0.15}>
+        <YBACalendar />
+      </ParallaxLayer>
     </section>
   )
 }
