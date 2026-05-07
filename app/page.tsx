@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { track } from '../lib/track'
@@ -47,26 +47,9 @@ const pressHandlers = {
   onMouseLeave:(e: React.MouseEvent<HTMLElement>) => { e.currentTarget.style.transform = '' },
 }
 
-// ─── Spinning Logo ────────────────────────────────────────────────────────────
+// ─── Static Logo ─────────────────────────────────────────────────────────────
 function SpinningLogo({ size = 220 }: { size?: number }) {
   const ref = useRef<HTMLDivElement>(null)
-  const markRef = useRef<Element | null>(null)
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([])
-
-  const play = useCallback(() => {
-    const mark = markRef.current as HTMLElement | null
-    if (!mark) return
-    timers.current.forEach(clearTimeout)
-    timers.current = []
-    mark.style.cssText = 'transform-box:fill-box;transform-origin:center;transition:none;'
-    mark.getBoundingClientRect()
-    mark.style.animation = 'yba-spin 1.5s cubic-bezier(0.85, 0, 0.95, 0.4) forwards'
-    timers.current.push(setTimeout(() => {
-      mark.style.animation = 'none'
-      mark.style.transform = 'rotate(0deg)'
-      mark.style.filter = 'none'
-    }, 1400))
-  }, [])
 
   useEffect(() => {
     const el = ref.current
@@ -79,24 +62,15 @@ function SpinningLogo({ size = 220 }: { size?: number }) {
       s.setAttribute('height', '100%')
       s.style.display = 'block'
       s.querySelectorAll('text, tspan').forEach(el => el.remove())
-      const kids = Array.from(s.children).filter(n => !['defs','rect'].includes(n.tagName.toLowerCase()))
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-      g.style.cssText = 'transform-box:fill-box;transform-origin:center;'
-      if (kids.length) { s.insertBefore(g, kids[0]); kids.forEach(k => g.appendChild(k)) }
-      markRef.current = g
-      timers.current.push(setTimeout(play, 500))
     })
-    return () => timers.current.forEach(clearTimeout)
-  }, [play])
+  }, [])
 
   return (
     <div
       ref={ref}
-      onClick={play}
-      title="Click to replay"
-      style={{ width: size, height: size, flexShrink: 0, cursor: 'pointer' }}
+      style={{ width: size, height: size, flexShrink: 0 }}
       role="img"
-      aria-label="YBA spinning logo"
+      aria-label="YBA logo"
     />
   )
 }
