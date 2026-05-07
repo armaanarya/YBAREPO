@@ -17,8 +17,6 @@ import { TiltCard } from '../components/ui/tilt-card'
 import { ScrollProgress } from '../components/ui/scroll-progress'
 import { HoverGlowButton } from '../components/ui/hover-glow-button'
 import { ScrollLegend } from '../components/ui/scroll-legend'
-import { AnimatedCounter } from '../components/ui/animated-counter'
-import { TestimonialColumns } from '../components/ui/testimonial-columns'
 import { AnimatedAccordion } from '../components/ui/animated-accordion'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -604,56 +602,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       </HorizontalPinned>
       </div>
 
-      {/* Stats — animated counters */}
-      <section aria-label="YBA by the numbers" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)' }}>
-        <BlurFade delay={0.05} inView yOffset={6}>
-          <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '2rem', textAlign: 'center' }}>
-            YBA by the numbers
-          </p>
-        </BlurFade>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'clamp(1rem,3vw,2.5rem)', textAlign: 'center' }}>
-          {[
-            { value: 3, suffix: '', label: 'Founding cohorts' },
-            { value: 50, suffix: '+', label: 'Students reached' },
-            { value: 12, suffix: '', label: 'Curriculum sessions' },
-          ].map((s, i) => (
-            <BlurFade key={s.label} delay={0.1 + i * 0.08} inView yOffset={10}>
-              <div style={{ padding: 'clamp(1.25rem,3vw,2rem)', borderRadius: 16, background: 'rgba(238,238,255,0.03)', border: `1px solid ${T.border}` }}>
-                <AnimatedCounter
-                  to={s.value}
-                  suffix={s.suffix}
-                  duration={1.6}
-                  style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', display: 'inline-block', lineHeight: 1 }}
-                />
-                <div style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, marginTop: '0.625rem', letterSpacing: '0.01em' }}>{s.label}</div>
-              </div>
-            </BlurFade>
-          ))}
-        </div>
-      </section>
-
-      {/* Voices — testimonial columns */}
-      <section aria-label="Voices from YBA" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(2rem,4vw,3rem)' }}>
-        <BlurFade delay={0.05} inView yOffset={6}>
-          <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '0.75rem', textAlign: 'center' }}>
-            Voices from the cohort
-          </p>
-          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', textAlign: 'center', marginBottom: '2.5rem', lineHeight: 1.1 }}>
-            Built by students.<br />For the next generation.
-          </h2>
-        </BlurFade>
-        <TestimonialColumns
-          testimonials={[
-            { quote: 'YBA gave me access to founders and developers I never could have met on my own. It changed how I think about the future.', name: 'Maya Chen', role: 'Founding cohort, Class of 2026' },
-            { quote: 'I came in curious about crypto. I\'m leaving with a real understanding of how decentralized systems can change industries.', name: 'Arjun Patel', role: 'Curriculum participant' },
-            { quote: 'The hackathons pushed me to build, not just study. I shipped a working dApp in my junior year.', name: 'Sofia Reyes', role: 'Hackathon team lead' },
-            { quote: 'Hearing directly from VCs and founders demystified what a career in this space actually looks like.', name: 'Daniel Kim', role: 'Guest speaker series attendee' },
-            { quote: 'Peer learning beats lectures. The cohort culture here is unlike any club I\'ve ever joined.', name: 'Priya Singh', role: 'Module 04 alum' },
-            { quote: 'I joined to build my resume. I stayed because I found people who care about the same future I do.', name: 'Jordan Lee', role: 'Founding cohort' },
-          ]}
-        />
-      </section>
-
       {/* Scroll-reveal curriculum section */}
       <div id="curriculum-preview">
       <ScrollRevealSection />
@@ -1144,9 +1092,8 @@ function CurriculumPage() {
           items={[
             { question: 'Who is YBA for?', answer: 'High school students (grades 9–12) curious about blockchain, decentralized finance, and the broader Web3 industry. No prior technical background required — we meet you where you are.' },
             { question: 'Is there a cost to participate?', answer: 'No. YBA is free to join. We are funded through partner sponsorships and grants so the program stays accessible to every student.' },
-            { question: 'How much time does it take?', answer: 'Plan on roughly 2–3 hours per week during active cohorts: one cohort session, optional guest speaker events, and self-paced modules.' },
-            { question: 'Do I need to know how to code?', answer: 'Not to start. Module 01 is conceptual. Coding modules (Solidity, dApp building) come later in the curriculum and we provide scaffolded support throughout.' },
-            { question: 'What happens after I apply?', answer: 'You\'ll get a confirmation email within 48 hours and an onboarding call to match you to a cohort that fits your schedule and experience level.' },
+            { question: 'Do I need to know how to code?', answer: 'No coding experience is required.' },
+            { question: 'What happens after I apply?', answer: 'We\'ll reach out soon with a schedule for events, podcasts, and meetings. For now, everything is on Sundays.' },
           ]}
           style={{ maxWidth: 760 }}
         />
@@ -1477,7 +1424,7 @@ function ContactPage() {
       <section aria-label="Contact methods" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(4rem,8vw,6rem)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '1.25rem' }}>
           {CONTACT_METHODS.map((m, i) => (
-            <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={20} direction={i % 2 === 0 ? 'left' : 'right'}>
+            <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={12}>
             <TiltCard maxTilt={6}>
             <GlowCard
               as="a"
