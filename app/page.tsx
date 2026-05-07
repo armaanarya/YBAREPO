@@ -675,7 +675,7 @@ function AboutPage() {
         </BlurFade>
         <BlurFade inView delay={0.15} yOffset={12}>
           <Badge>Founder &amp; President</Badge>
-          <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,4.5vw,3.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.08, marginTop: '1rem' }}>Armaan Arya</h1>
+          <TextStagger as="h1" text="Armaan Arya" stagger={0.03} direction="bottom" style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,4.5vw,3.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.08, marginTop: '1rem' }} />
           <div style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75, marginTop: '1.25rem' }}>
             <p>A high school student with a mission to bring blockchain literacy to the next generation. Where most students first encounter decentralized technology in college — if at all — Armaan saw the gap and decided to fill it.</p>
             <p style={{ marginTop: '1rem' }}>The Youth Blockchain Association was born from a simple belief: teenagers shouldn't have to wait until university to understand the technology that will define their careers.</p>
