@@ -10,14 +10,16 @@ import {
 } from 'framer-motion'
 
 type MarginType = UseInViewOptions['margin']
+type Direction = 'up' | 'down' | 'left' | 'right'
 
 interface BlurFadeProps {
   children: React.ReactNode
   className?: string
-  variant?: { hidden: { y: number }; visible: { y: number } }
+  variant?: { hidden: { y?: number; x?: number }; visible: { y?: number; x?: number } }
   duration?: number
   delay?: number
   yOffset?: number
+  direction?: Direction
   inView?: boolean
   inViewMargin?: MarginType
   blur?: string
@@ -30,6 +32,7 @@ export function BlurFade({
   duration = 0.4,
   delay = 0,
   yOffset = 6,
+  direction = 'up',
   inView = false,
   inViewMargin = '-50px',
   blur = '6px',
@@ -38,9 +41,29 @@ export function BlurFade({
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin })
   const isInView = !inView || inViewResult
 
+  // Map direction → axis offsets. 'up' (default) and 'down' use Y; 'left'/'right' use X.
+  const offset = yOffset
+  const hidden =
+    direction === 'up'
+      ? { x: 0, y: offset }
+      : direction === 'down'
+      ? { x: 0, y: -offset }
+      : direction === 'left'
+      ? { x: offset, y: 0 }
+      : { x: -offset, y: 0 } // right
+
+  const visible =
+    direction === 'up'
+      ? { x: 0, y: -offset }
+      : direction === 'down'
+      ? { x: 0, y: offset }
+      : direction === 'left'
+      ? { x: -offset, y: 0 }
+      : { x: offset, y: 0 } // right
+
   const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: -yOffset, opacity: 1, filter: 'blur(0px)' },
+    hidden: { ...hidden, opacity: 0, filter: `blur(${blur})` },
+    visible: { ...visible, opacity: 1, filter: 'blur(0px)' },
   }
   const combinedVariants = variant || defaultVariants
 
