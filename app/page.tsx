@@ -625,8 +625,12 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       </section>
 
       {/* Bridge CTA */}
-      <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}` }}>
-        <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
+      <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, position: 'relative', overflow: 'hidden' }}>
+        {/* Decorative parallax-drifting grid */}
+        <ParallaxLayer speed={-0.4} className="absolute inset-0 pointer-events-none">
+          <GridPattern />
+        </ParallaxLayer>
+        <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem', position: 'relative', zIndex: 1 }}>
           <BlurFade delay={0.05} inView yOffset={12} className="flex-1 min-w-[260px]">
             <TextStagger
               text="We Don't Just Study the Future. We Build It."
