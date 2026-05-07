@@ -772,7 +772,7 @@ function GoalsPage() {
           />
         </BlurFade>
         {YEAR_ONE.map((g, i) => (
-          <BlurFade key={i} inView delay={0.1 + i * 0.08} yOffset={8}>
+          <BlurFade key={i} inView delay={0.1 + i * 0.05} yOffset={8}>
             <div
               className="goal-row"
               style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
