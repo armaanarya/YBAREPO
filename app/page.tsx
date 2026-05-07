@@ -7,6 +7,8 @@ import { YBANav } from '../components/ui/resizable-navbar'
 import { BlurFade } from '../components/ui/blur-fade'
 import { Hero, BgGradient, TextStagger, AnimatedContainer, HeroSpotlight } from '../components/ui/hero-animated'
 import { GridPattern } from '../components/ui/grid-pattern'
+import { GradientSurge } from '../components/ui/gradient-surge'
+import { ParallaxLayer } from '../components/ui/parallax-layer'
 import { Marquee } from '../components/ui/marquee'
 import { GlowCard } from '../components/ui/glow-card'
 import { MagneticButton } from '../components/ui/magnetic-button'
@@ -463,8 +465,8 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
     <div>
       {/* ─── Hero ─────────────────────────────────────────────────────────── */}
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
-        {/* Dark radial gradient bloom */}
-        <BgGradient gradientColors="indigo" gradientSize="lg" gradientPosition="top" />
+        {/* Scroll-driven white-bloom gradient (surges then fades to black) */}
+        <GradientSurge />
 
         {/* Animated dot grid */}
         <GridPattern />
