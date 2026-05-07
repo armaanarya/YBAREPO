@@ -1188,7 +1188,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </motion.div>
       <div>
-        <h2 style={{ fontFamily: T.manrope, fontSize: '2.5rem', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em' }}>You're in.</h2>
+        <TextStagger as="h2" text="You're in." stagger={0.04} direction="bottom" style={{ fontFamily: T.manrope, fontSize: '2.5rem', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em' }} />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '34ch', marginTop: '0.75rem' }}>Welcome to YBA. We'll reach out with your next steps shortly.</p>
       </div>
       <button
