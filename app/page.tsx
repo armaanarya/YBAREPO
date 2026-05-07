@@ -1087,7 +1087,7 @@ function PodcastPage() {
       </BlurFade>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
         {['001','002','003'].map((ep, i) => (
-          <BlurFade key={ep} delay={i * 0.1} inView>
+          <BlurFade key={ep} delay={i * 0.08} inView>
             <TiltCard maxTilt={5}>
               <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden', height: '100%' }}>
                 <div style={{ width: '100%', aspectRatio: '16/9', background: T.alt, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: `1px solid ${T.border}` }}>
