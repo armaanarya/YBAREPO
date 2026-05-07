@@ -9,6 +9,7 @@ import { Hero, BgGradient, TextStagger, AnimatedContainer } from '../components/
 import { GridPattern } from '../components/ui/grid-pattern'
 import { Marquee } from '../components/ui/marquee'
 import { NumberCounter } from '../components/ui/number-counter'
+import { GlowCard } from '../components/ui/glow-card'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
@@ -586,18 +587,16 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.25rem' }}>
           {PILLARS.map((p, i) => (
             <BlurFade key={i} delay={i * 0.1} inView>
-              <div
-                className="pillar-card"
-                style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: '100%' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = T.shadowLg; e.currentTarget.style.borderLeftColor = T.accent }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 16px rgba(0,0,0,0.4)'; e.currentTarget.style.borderLeftColor = 'transparent' }}
+              <GlowCard
+                className="pillar-card glow-hover-lift"
+                style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: '100%', transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s' }}
               >
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
                   <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
                 </div>
                 <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
                 <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
-              </div>
+              </GlowCard>
             </BlurFade>
           ))}
         </div>
@@ -1363,11 +1362,13 @@ function ContactPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '1.25rem' }}>
           {CONTACT_METHODS.map((m, i) => (
             <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={10}>
-            <a
+            <GlowCard
+              as="a"
               href={m.href}
               target={m.href.startsWith('http') ? '_blank' : undefined}
               rel={m.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={`${m.label}: ${m.value}`}
+              className="glow-hover-lift"
               style={{
                 display: 'block',
                 background: T.surface,
@@ -1378,40 +1379,25 @@ function ContactPage() {
                 padding: '2rem',
                 textDecoration: 'none',
                 color: 'inherit',
-                transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s',
                 height: '100%',
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-4px)'
-                e.currentTarget.style.boxShadow = T.shadowLg
-                e.currentTarget.style.borderLeftColor = T.accent
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = ''
-                e.currentTarget.style.boxShadow = T.shadowMd
-                e.currentTarget.style.borderLeftColor = 'transparent'
-              }}
             >
-              {/* Icon bubble */}
               <div style={{ width: 48, height: 48, borderRadius: 14, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', color: T.accent }}>
                 {m.icon}
               </div>
-              {/* Label */}
               <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.muted, marginBottom: '0.375rem' }}>
                 {m.label}
               </p>
-              {/* Value */}
               <p style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.875rem', wordBreak: 'break-word' }}>
                 {m.value}
               </p>
-              {/* CTA row */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 600, color: T.accent }}>
                 {m.cta}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
-            </a>
+            </GlowCard>
             </BlurFade>
           ))}
         </div>
