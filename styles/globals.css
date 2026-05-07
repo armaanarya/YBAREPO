@@ -5,20 +5,22 @@
 @tailwind utilities;
 
 :root {
-  --bg:        #f9f9ff;
-  --surface:   #ffffff;
-  --alt:       #f0f3ff;
-  --dark:      #161c25;
-  --cta:       #000101;
-  --muted:     #595e69;
-  --chip:      #e3e8f5;
-  --chip-hover:#d6daf0;
-  --accent:    #4f46e5;
-  --accent-light: rgba(79,70,229,0.08);
-  --border:    rgba(22,28,37,0.08);
-  --shadow-sm: 0 1px 3px rgba(22,28,37,0.06), 0 1px 2px rgba(22,28,37,0.04);
-  --shadow-md: 0 4px 16px rgba(22,28,37,0.08), 0 1px 4px rgba(22,28,37,0.04);
-  --shadow-lg: 0 24px 48px -12px rgba(22,28,37,0.12);
+  --bg:        #09090f;
+  --surface:   #111118;
+  --alt:       #0d0d14;
+  --dark:      #eeeeff;
+  --cta:       #eeeeff;
+  --cta-text:  #09090f;
+  --cta-hover: #d4d4d8;
+  --muted:     rgba(238,238,255,0.5);
+  --chip:      rgba(238,238,255,0.08);
+  --chip-hover:rgba(238,238,255,0.15);
+  --accent:    #eeeeff;
+  --accent-light: rgba(238,238,255,0.06);
+  --border:    rgba(238,238,255,0.1);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 24px 48px -12px rgba(0,0,0,0.7);
 }
 
 *, *::before, *::after {
@@ -40,10 +42,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   line-height: 1.6;
+  color-scheme: dark;
 }
 
 ::selection {
-  background: rgba(79,70,229,0.12);
+  background: rgba(238,238,255,0.18);
   color: var(--dark);
 }
 
@@ -118,7 +121,7 @@ a { color: inherit; text-decoration: none; }
   cursor: default;
 }
 .chip:hover {
-  background: #d0d6ee !important;
+  background: rgba(238,238,255,0.15) !important;
   transform: translateY(-1px);
 }
 
@@ -128,7 +131,7 @@ a { color: inherit; text-decoration: none; }
   border-left: 3px solid transparent !important;
 }
 .pillar-card:hover {
-  border-left-color: #4f46e5 !important;
+  border-left-color: #eeeeff !important;
 }
 
 /* Goals list row hover */
@@ -138,7 +141,7 @@ a { color: inherit; text-decoration: none; }
   padding-left: 0;
 }
 .goal-row:hover {
-  background: rgba(79,70,229,0.04);
+  background: rgba(238,238,255,0.04);
   padding-left: 8px;
 }
 
@@ -154,7 +157,7 @@ a { color: inherit; text-decoration: none; }
   transform: translateX(-50%);
   width: 16px;
   height: 2px;
-  background: #4f46e5;
+  background: #eeeeff;
   border-radius: 2px;
 }
 
@@ -163,4 +166,10 @@ a { color: inherit; text-decoration: none; }
   .about-grid  { grid-template-columns: 1fr !important; }
   .quote-grid  { grid-template-columns: 1fr !important; }
   .reg-grid    { grid-template-columns: 1fr !important; }
+}
+
+/* Marquee */
+@keyframes yba-marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }

@@ -7,6 +7,7 @@ import { YBANav } from '../components/ui/resizable-navbar'
 import { BlurFade } from '../components/ui/blur-fade'
 import { Hero, BgGradient, TextStagger, AnimatedContainer } from '../components/ui/hero-animated'
 import { GridPattern } from '../components/ui/grid-pattern'
+import { Marquee } from '../components/ui/marquee'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
@@ -611,18 +612,26 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
             Industries We Study
           </p>
         </BlurFade>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem' }}>
-          {CHIPS.map((c, i) => (
-            <BlurFade key={c} delay={0.08 + i * 0.04} inView yOffset={8}>
-              <span
-                className="chip"
-                style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 500, background: T.chip, color: T.dark, borderRadius: 999, padding: '7px 16px', display: 'inline-block', border: `1px solid ${T.border}` }}
-                onMouseEnter={e => { e.currentTarget.style.background = T.chipHover; e.currentTarget.style.transform = 'translateY(-1px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = T.chip; e.currentTarget.style.transform = '' }}
-              >{c}</span>
-            </BlurFade>
+        <Marquee speed={45}>
+          {CHIPS.map(c => (
+            <span
+              key={c}
+              className="chip"
+              style={{
+                fontFamily: T.inter,
+                fontSize: '0.8125rem',
+                fontWeight: 500,
+                background: T.chip,
+                color: T.dark,
+                borderRadius: 999,
+                padding: '7px 16px',
+                display: 'inline-block',
+                whiteSpace: 'nowrap',
+                border: `1px solid ${T.border}`,
+              }}
+            >{c}</span>
           ))}
-        </div>
+        </Marquee>
       </section>
 
       {/* Bridge CTA */}
