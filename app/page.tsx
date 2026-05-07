@@ -71,7 +71,7 @@ function SpinningLogo({ size = 220 }: { size?: number }) {
   return (
     <div
       ref={ref}
-      style={{ width: size, height: size, flexShrink: 0 }}
+      style={{ width: size, height: size, flexShrink: 0, filter: 'invert(1) brightness(2)' }}
       role="img"
       aria-label="YBA logo"
     />
