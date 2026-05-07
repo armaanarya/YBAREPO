@@ -471,8 +471,10 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         {/* Animated dot grid */}
         <GridPattern />
 
-        {/* Cursor-following spotlight */}
-        <HeroSpotlight />
+        {/* Cursor-following spotlight (with scroll parallax drift) */}
+        <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
+          <HeroSpotlight />
+        </ParallaxLayer>
 
         {/* Noise grain overlay for premium texture */}
         <div
