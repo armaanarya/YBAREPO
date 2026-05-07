@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { track } from '../lib/track'
 import { YBANav } from '../components/ui/resizable-navbar'
 import { BlurFade } from '../components/ui/blur-fade'
-import { Hero, BgGradient, TextStagger, AnimatedContainer } from '../components/ui/hero-animated'
+import { Hero, BgGradient, TextStagger, AnimatedContainer, HeroSpotlight } from '../components/ui/hero-animated'
 import { GridPattern } from '../components/ui/grid-pattern'
 import { Marquee } from '../components/ui/marquee'
 import { NumberCounter } from '../components/ui/number-counter'
@@ -495,6 +495,9 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
 
         {/* Animated dot grid */}
         <GridPattern />
+
+        {/* Cursor-following spotlight */}
+        <HeroSpotlight />
 
         {/* Noise grain overlay for premium texture */}
         <div
