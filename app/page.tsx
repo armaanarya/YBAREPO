@@ -9,6 +9,7 @@ import { Hero, BgGradient, TextStagger, AnimatedContainer, HeroSpotlight } from 
 import { GridPattern } from '../components/ui/grid-pattern'
 import { GradientSurge } from '../components/ui/gradient-surge'
 import { ParallaxLayer } from '../components/ui/parallax-layer'
+import { HorizontalPinned } from '../components/ui/horizontal-pinned'
 import { Marquee } from '../components/ui/marquee'
 import { GlowCard } from '../components/ui/glow-card'
 import { MagneticButton } from '../components/ui/magnetic-button'
@@ -568,27 +569,25 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         </div>
       </Hero>
 
-      {/* Pillar Cards */}
-      <section aria-label="Mission pillars" style={{ maxWidth: 1160, margin: '0 auto', padding: '2rem clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.25rem' }}>
-          {PILLARS.map((p, i) => (
-            <BlurFade key={i} delay={i * 0.1} inView>
-              <TiltCard maxTilt={6}>
-                <GlowCard
-                  className="pillar-card glow-hover-lift"
-                  style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: '100%', transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s' }}
-                >
-                  <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                    <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
-                  </div>
-                  <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
-                  <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
-                </GlowCard>
-              </TiltCard>
-            </BlurFade>
-          ))}
-        </div>
-      </section>
+      {/* Pillar Cards — horizontal scroll-pinned reel */}
+      <HorizontalPinned heightVh={300} travelPercent={70} className="">
+        {PILLARS.map((p, i) => (
+          <BlurFade key={i} delay={i * 0.1} inView>
+            <TiltCard maxTilt={6}>
+              <GlowCard
+                className="pillar-card glow-hover-lift"
+                style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: 'auto', minHeight: 360, width: 'min(85vw, 480px)', flexShrink: 0, scrollSnapAlign: 'center', transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s' }}
+              >
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                  <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
+                </div>
+                <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
+                <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
+              </GlowCard>
+            </TiltCard>
+          </BlurFade>
+        ))}
+      </HorizontalPinned>
 
       {/* Scroll-reveal curriculum section */}
       <ScrollRevealSection />
