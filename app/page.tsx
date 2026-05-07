@@ -1389,7 +1389,7 @@ function ContactPage() {
       <section aria-label="Contact methods" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(4rem,8vw,6rem)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '1.25rem' }}>
           {CONTACT_METHODS.map((m, i) => (
-            <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={10}>
+            <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={20} direction={i % 2 === 0 ? 'left' : 'right'}>
             <TiltCard maxTilt={6}>
             <GlowCard
               as="a"
