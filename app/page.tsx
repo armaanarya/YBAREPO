@@ -600,26 +600,28 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
             Industries We Study
           </p>
         </BlurFade>
-        <Marquee speed={45}>
-          {CHIPS.map(c => (
-            <span
-              key={c}
-              className="chip"
-              style={{
-                fontFamily: T.inter,
-                fontSize: '0.8125rem',
-                fontWeight: 500,
-                background: T.chip,
-                color: T.dark,
-                borderRadius: 999,
-                padding: '7px 16px',
-                display: 'inline-block',
-                whiteSpace: 'nowrap',
-                border: `1px solid ${T.border}`,
-              }}
-            >{c}</span>
-          ))}
-        </Marquee>
+        <ParallaxLayer speed={0.15}>
+          <Marquee speed={45}>
+            {CHIPS.map(c => (
+              <span
+                key={c}
+                className="chip"
+                style={{
+                  fontFamily: T.inter,
+                  fontSize: '0.8125rem',
+                  fontWeight: 500,
+                  background: T.chip,
+                  color: T.dark,
+                  borderRadius: 999,
+                  padding: '7px 16px',
+                  display: 'inline-block',
+                  whiteSpace: 'nowrap',
+                  border: `1px solid ${T.border}`,
+                }}
+              >{c}</span>
+            ))}
+          </Marquee>
+        </ParallaxLayer>
       </section>
 
       {/* Bridge CTA */}
