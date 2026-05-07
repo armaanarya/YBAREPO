@@ -185,3 +185,9 @@ a { color: inherit; text-decoration: none; }
 .pillar-card.glow-hover-lift:hover {
   border-left-color: #eeeeff !important;
 }
+
+/* Custom cursor — hide native on desktop */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  html, body { cursor: none; }
+  a, button, [role="button"], input, select, textarea, label { cursor: none; }
+}
