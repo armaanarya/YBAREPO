@@ -638,7 +638,14 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}` }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
           <BlurFade delay={0.05} inView yOffset={12} className="flex-1 min-w-[260px]">
-            <SectionHeading>We Don't Just Study<br />the Future. We Build It.</SectionHeading>
+            <TextStagger
+              text="We Don't Just Study the Future. We Build It."
+              stagger={0.02}
+              direction="bottom"
+              as="h2"
+              className="font-extrabold tracking-[-0.02em] leading-[1.08]"
+              style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', color: T.dark }}
+            />
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '1.125rem' }}>
               Our Guest Speaker Series connects members with developers, founders, and VCs from the blockchain world — Q&A sessions, career pathfinding, and network-building before you even graduate.
             </p>
@@ -743,7 +750,14 @@ function GoalsPage() {
     <div>
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 2rem' }}>
         <BlurFade inView delay={0.05} yOffset={12}>
-          <SectionHeading>Where Learning Meets Building.</SectionHeading>
+          <TextStagger
+            text="Where Learning Meets Building."
+            stagger={0.025}
+            direction="bottom"
+            as="h2"
+            className="font-extrabold tracking-[-0.02em] leading-[1.08]"
+            style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', color: T.dark }}
+          />
           <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
             YBA is action-driven. We organize real events where members apply knowledge under pressure, collaborate in teams, and ship real blockchain projects.
           </p>
@@ -774,7 +788,14 @@ function GoalsPage() {
       {/* Year One Goals — staggered reveal */}
       <section aria-label="Year one goals" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) 3rem' }}>
         <BlurFade inView delay={0.05} yOffset={10}>
-          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>Year One Goals</h2>
+          <TextStagger
+            text="Year One Goals"
+            stagger={0.025}
+            direction="bottom"
+            as="h2"
+            className="font-extrabold tracking-[-0.02em]"
+            style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', color: T.dark, marginBottom: '1.75rem' }}
+          />
         </BlurFade>
         {YEAR_ONE.map((g, i) => (
           <BlurFade key={i} inView delay={0.1 + i * 0.08} yOffset={8}>
@@ -822,7 +843,14 @@ function GoalsPage() {
         <div style={{ background: T.surface, borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(2rem,4vw,3rem)', overflow: 'hidden', position: 'relative' }}>
           <div style={{ position: 'absolute', top: 0, right: 0, width: 320, height: 320, background: `radial-gradient(circle at top right, rgba(238,238,255,0.05), transparent 70%)`, pointerEvents: 'none' }}/>
           <Badge>Coming Soon</Badge>
-          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginTop: '1rem' }}>YBA Hackathon Series</h2>
+          <TextStagger
+            text="YBA Hackathon Series"
+            stagger={0.025}
+            direction="bottom"
+            as="h2"
+            className="font-extrabold tracking-[-0.02em]"
+            style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.25rem)', color: T.dark, marginTop: '1rem' }}
+          />
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '58ch', marginTop: '0.875rem' }}>
             Team-based blockchain hackathons mirroring agile startup environments. Members rapidly prototype smart contracts and DApps — then pitch to industry judges for feedback and mentorship.
           </p>
@@ -967,7 +995,15 @@ function ModuleDetailPage({ index, title, onBack }: { index: number; title: stri
       </button>
 
       <Badge>Module {moduleNum}</Badge>
-      <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.5rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>{title}</h1>
+      <TextStagger
+        key={title}
+        text={title}
+        stagger={0.025}
+        direction="bottom"
+        as="h1"
+        className="font-extrabold tracking-[-0.025em] leading-[1.07]"
+        style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.5rem)', color: T.dark, marginTop: '1rem' }}
+      />
 
       {/* Reading section */}
       <div style={{ marginTop: '3rem' }}>
@@ -1011,7 +1047,14 @@ function CurriculumPage() {
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
       <BlurFade inView delay={0.05} yOffset={12}>
         <Badge>Coming Soon</Badge>
-        <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The Curriculum<br/>Is Being Built.</h1>
+        <TextStagger
+          text="The Curriculum Is Being Built."
+          stagger={0.025}
+          direction="bottom"
+          as="h1"
+          className="font-extrabold tracking-[-0.025em] leading-[1.07]"
+          style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
+        />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
           A rigorous, peer-reviewed blockchain curriculum — from foundational concepts to DeFi protocols. Crafted for high schoolers. Inspired by the best university programs in the world.
         </p>
@@ -1054,7 +1097,14 @@ function PodcastPage() {
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem' }}>
       <BlurFade inView delay={0.05} yOffset={12}>
         <Badge>Coming Soon</Badge>
-        <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The YBA Podcast.</h1>
+        <TextStagger
+          text="The YBA Podcast."
+          stagger={0.025}
+          direction="bottom"
+          as="h1"
+          className="font-extrabold tracking-[-0.025em] leading-[1.07]"
+          style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
+        />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
           Conversations with the builders, thinkers, and founders shaping the decentralized world — hosted by the next generation asking the real questions.
         </p>
