@@ -3,6 +3,10 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { track } from '../lib/track'
+import { YBANav } from '../components/ui/resizable-navbar'
+import { BlurFade } from '../components/ui/blur-fade'
+import { Hero, BgGradient, TextStagger, AnimatedContainer } from '../components/ui/hero-animated'
+import { GridPattern } from '../components/ui/grid-pattern'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
@@ -11,22 +15,25 @@ type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' |
 const T = {
   manrope: 'Manrope, sans-serif',
   inter:   'Inter, sans-serif',
-  dark:    '#161c25',
-  muted:   '#595e69',
-  cta:     '#000101',
-  bg:      '#f9f9ff',
-  alt:     '#f0f3ff',
-  chip:    '#e3e8f5',
-  chipHover: '#d0d6ee',
-  accent:  '#4f46e5',
-  accentLight: 'rgba(79,70,229,0.08)',
-  accentMid: 'rgba(79,70,229,0.14)',
-  white:   '#ffffff',
-  border:  'rgba(22,28,37,0.08)',
-  borderHover: 'rgba(22,28,37,0.18)',
-  shadowSm: '0 1px 3px rgba(22,28,37,0.06)',
-  shadowMd: '0 4px 16px rgba(22,28,37,0.08), 0 1px 4px rgba(22,28,37,0.04)',
-  shadowLg: '0 24px 48px -12px rgba(22,28,37,0.12), 0 8px 16px rgba(22,28,37,0.06)',
+  dark:    '#eeeeff',
+  muted:   'rgba(238,238,255,0.5)',
+  cta:     '#eeeeff',
+  ctaHover:'#d4d4d8',
+  ctaText: '#09090f',
+  bg:      '#09090f',
+  alt:     '#0d0d14',
+  surface: '#111118',
+  chip:    'rgba(238,238,255,0.08)',
+  chipHover: 'rgba(238,238,255,0.15)',
+  accent:  '#eeeeff',
+  accentLight: 'rgba(238,238,255,0.06)',
+  accentMid: 'rgba(238,238,255,0.18)',
+  white:   '#111118',
+  border:  'rgba(238,238,255,0.1)',
+  borderHover: 'rgba(238,238,255,0.25)',
+  shadowSm: '0 1px 3px rgba(0,0,0,0.4)',
+  shadowMd: '0 4px 16px rgba(0,0,0,0.5)',
+  shadowLg: '0 24px 48px -12px rgba(0,0,0,0.7)',
 }
 
 // ─── Press feedback helper ────────────────────────────────────────────────────
@@ -200,7 +207,7 @@ function Nav({ current, nav }: { current: Page; nav: (p: Page) => void }) {
               onClick={() => go('register')}
               style={{
                 fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 600,
-                background: T.cta, color: '#fff',
+                background: T.cta, color: T.ctaText,
                 border: 'none', borderRadius: 8,
                 padding: '8px 18px', cursor: 'pointer',
                 transition: 'background 0.2s, transform 0.12s',
@@ -208,7 +215,7 @@ function Nav({ current, nav }: { current: Page; nav: (p: Page) => void }) {
                 display: 'none',
               }}
               className="nav-join"
-              onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+              onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
               onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
               onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.95)')}
               onMouseUp={e => (e.currentTarget.style.transform = '')}
@@ -271,7 +278,7 @@ function Nav({ current, nav }: { current: Page; nav: (p: Page) => void }) {
               style={{
                 marginTop: '1rem', width: '100%',
                 fontFamily: T.inter, fontSize: '1rem', fontWeight: 600,
-                background: T.cta, color: '#fff',
+                background: T.cta, color: T.ctaText,
                 border: 'none', borderRadius: 10,
                 padding: '14px', cursor: 'pointer',
               }}
@@ -296,7 +303,7 @@ function Nav({ current, nav }: { current: Page; nav: (p: Page) => void }) {
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer({ nav }: { nav: (p: Page) => void }) {
   return (
-    <footer style={{ background: T.alt, marginTop: '6rem', padding: 'clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem)' }}>
+    <footer style={{ background: '#0a0a12', borderTop: `1px solid ${T.border}`, marginTop: '6rem', padding: 'clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem)' }}>
       <div style={{ maxWidth: 1160, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
           <div>
@@ -342,8 +349,8 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
         <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: `1px solid ${T.border}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.dark, opacity: 0.35 }}>© 2026 Youth Blockchain Association. All rights reserved.</p>
           <button onClick={() => nav('register')}
-            style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 8, padding: '8px 20px', cursor: 'pointer', transition: 'background 0.2s, transform 0.12s' }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+            style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 8, padding: '8px 20px', cursor: 'pointer', transition: 'background 0.2s, transform 0.12s' }}
+            onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
             onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
             onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.95)')}
             onMouseUp={e => (e.currentTarget.style.transform = '')}
@@ -362,8 +369,9 @@ function Badge({ children }: { children: React.ReactNode }) {
     <span style={{
       fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600,
       letterSpacing: '0.06em', textTransform: 'uppercase',
-      background: T.chip, color: '#44474a', borderRadius: 999,
+      background: T.chip, color: T.dark, borderRadius: 999,
       padding: '0.375rem 1rem', display: 'inline-block',
+      border: `1px solid ${T.border}`,
     }}>
       {children}
     </span>
@@ -437,21 +445,24 @@ function ScrollRevealSection() {
             </div>
             <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {MODULES.map((m, i) => (
-                <div key={m.num} style={{
-                  display: 'flex', alignItems: 'center', gap: '1rem',
-                  background: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent',
-                  borderRadius: 10, padding: '0.75rem 1rem',
-                  border: '1px solid rgba(255,255,255,0.04)',
-                }}>
-                  <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)', minWidth: '2rem' }}>{m.num}</span>
-                  <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.85)', flex: 1 }}>{m.title}</span>
-                  <span style={{
-                    fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em',
-                    background: m.tag === 'Advanced' ? 'rgba(79,70,229,0.25)' : m.tag === 'Project' ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.08)',
-                    color: m.tag === 'Advanced' ? '#a5b4fc' : m.tag === 'Project' ? '#86efac' : 'rgba(255,255,255,0.5)',
-                    borderRadius: 999, padding: '3px 10px',
-                  }}>{m.tag}</span>
-                </div>
+                <BlurFade key={m.num} inView delay={0.15 + i * 0.06} yOffset={6}>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: '1rem',
+                    background: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent',
+                    borderRadius: 10, padding: '0.75rem 1rem',
+                    border: '1px solid rgba(255,255,255,0.04)',
+                  }}>
+                    <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', minWidth: '2rem' }}>{m.num}</span>
+                    <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', flex: 1 }}>{m.title}</span>
+                    <span style={{
+                      fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em',
+                      background: m.tag === 'Advanced' ? 'rgba(238,238,255,0.18)' : m.tag === 'Project' ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.06)',
+                      color: m.tag === 'Advanced' ? '#eeeeff' : m.tag === 'Project' ? '#86efac' : 'rgba(255,255,255,0.5)',
+                      borderRadius: 999, padding: '3px 10px',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                    }}>{m.tag}</span>
+                  </div>
+                </BlurFade>
               ))}
             </div>
           </div>
@@ -472,72 +483,120 @@ const CHIPS = ['Capital Markets','Digital Identity','CBDCs','Supply Chain','Heal
 function HomePage({ nav }: { nav: (p: Page) => void }) {
   return (
     <div>
-      {/* Hero */}
-      <section
-        aria-label="Hero"
-        style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(4rem,10vw,8rem) clamp(1.25rem,4vw,3rem) clamp(2rem,5vw,4rem)', position: 'relative' }}
-      >
-        {/* Ambient gradient behind logo */}
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', overflow: 'hidden', zIndex: 0 }} aria-hidden="true">
-          <div style={{ position: 'absolute', top: '10%', left: '5%', width: 440, height: 440, borderRadius: '50%', background: 'radial-gradient(circle, rgba(79,70,229,0.07) 0%, transparent 70%)', filter: 'blur(30px)' }}/>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(2rem,4vw,4rem)', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
-          <div className="animate-fade-in">
-            <SpinningLogo size={220} />
-          </div>
-          <div style={{ flex: 1, minWidth: 260 }}>
-            <div className="animate-fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: T.accentLight, border: `1px solid ${T.accentMid}`, borderRadius: 999, padding: '6px 14px', marginBottom: '1.25rem' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, display: 'inline-block' }}/>
-              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.04em', color: T.accent }}>Registration 2026 Open</span>
+      {/* ─── Hero ─────────────────────────────────────────────────────────── */}
+      <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
+        {/* Dark radial gradient bloom */}
+        <BgGradient gradientColors="indigo" gradientSize="lg" gradientPosition="top" />
+
+        {/* Animated dot grid */}
+        <GridPattern />
+
+        {/* Noise grain overlay for premium texture */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E")',
+            opacity: 0.4,
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
+          {/* Spinning logo */}
+          <AnimatedContainer transition={{ delay: 0.1, duration: 0.6 }}>
+            <SpinningLogo size={160} />
+          </AnimatedContainer>
+
+          {/* Badge */}
+          <AnimatedContainer transition={{ delay: 0.2 }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+              background: T.accentLight, border: `1px solid ${T.accentMid}`,
+              borderRadius: 999, padding: '6px 16px',
+            }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, display: 'inline-block' }} />
+              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.05em', color: T.accent }}>
+                Registration 2026 Open
+              </span>
             </div>
-            <h1 className="animate-fade-up" style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5.5vw,4rem)', fontWeight: 800, letterSpacing: '-0.025em', color: T.dark, lineHeight: 1.06, marginBottom: '1.25rem' }}>
-              The Next Generation<br />of Blockchain Builders<br />Starts Here.
-            </h1>
-            <p className="animate-fade-up-2" style={{ fontFamily: T.inter, fontSize: 'clamp(1rem,1.75vw,1.125rem)', color: T.muted, lineHeight: 1.7, maxWidth: '48ch', marginBottom: '2rem' }}>
+          </AnimatedContainer>
+
+          {/* Staggered headline */}
+          <TextStagger
+            text="The Next Generation of Blockchain Builders."
+            stagger={0.03}
+            direction="bottom"
+            className="text-[clamp(2.75rem,6vw,5rem)] leading-[1.05] tracking-[-0.03em] font-extrabold"
+            style={{ fontFamily: T.manrope, color: T.dark }}
+          />
+
+          {/* Subtitle */}
+          <AnimatedContainer transition={{ delay: 0.5 }}>
+            <p style={{
+              fontFamily: T.inter, fontSize: 'clamp(1rem,1.6vw,1.125rem)',
+              color: T.muted, lineHeight: 1.75, maxWidth: '52ch',
+            }}>
               YBA empowers high school students to understand, build, and lead within the decentralized future — through peer learning, real events, and direct industry access.
             </p>
-            <div className="animate-fade-up-3" style={{ display: 'flex', gap: '0.875rem', flexWrap: 'wrap' }}>
-              <button
-                onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
-                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', transition: 'background 0.2s, transform 0.12s, box-shadow 0.2s', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#1a1c1e'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.28)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
-                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-                onMouseUp={e => (e.currentTarget.style.transform = '')}
-              >
-                Join the Movement →
-              </button>
-              <button
-                onClick={() => nav('goals')}
-                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500, background: 'transparent', color: T.dark, border: `1.5px solid ${T.border}`, borderRadius: 10, padding: '12px 24px', cursor: 'pointer', transition: 'border-color 0.2s, background 0.2s, transform 0.12s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = T.alt }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = '' }}
-                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-                onMouseUp={e => (e.currentTarget.style.transform = '')}
-              >
-                See Our Goals
-              </button>
-            </div>
-          </div>
+          </AnimatedContainer>
+
+          {/* CTAs */}
+          <AnimatedContainer transition={{ delay: 0.65 }} className="flex gap-3 flex-wrap justify-center">
+            <button
+              onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
+              style={{
+                fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600,
+                background: T.accent, color: T.ctaText,
+                border: 'none', borderRadius: 12, padding: '13px 30px',
+                cursor: 'pointer', transition: 'background 0.2s, transform 0.12s, box-shadow 0.2s',
+                boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.3), 0 8px 32px rgba(238,238,255,0.2)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = T.accent; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)' }}
+              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+              onMouseUp={e => (e.currentTarget.style.transform = '')}
+            >
+              Join the Movement →
+            </button>
+            <button
+              onClick={() => nav('goals')}
+              style={{
+                fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500,
+                background: 'rgba(238,238,255,0.05)', color: T.dark,
+                border: `1.5px solid ${T.border}`, borderRadius: 12,
+                padding: '13px 26px', cursor: 'pointer',
+                transition: 'border-color 0.2s, background 0.2s, transform 0.12s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = 'rgba(238,238,255,0.08)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'rgba(238,238,255,0.05)'; e.currentTarget.style.transform = '' }}
+              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+              onMouseUp={e => (e.currentTarget.style.transform = '')}
+            >
+              See Our Goals
+            </button>
+          </AnimatedContainer>
         </div>
-      </section>
+      </Hero>
 
       {/* Pillar Cards */}
-      <section aria-label="Mission pillars" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)' }}>
+      <section aria-label="Mission pillars" style={{ maxWidth: 1160, margin: '0 auto', padding: '2rem clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.25rem' }}>
           {PILLARS.map((p, i) => (
-            <div key={i}
-              className="pillar-card"
-              style={{ background: T.white, borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: T.shadowMd }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = T.shadowLg; e.currentTarget.style.borderLeftColor = T.accent }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = T.shadowMd; e.currentTarget.style.borderLeftColor = 'transparent' }}
-            >
-              <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
+            <BlurFade key={i} delay={i * 0.1} inView>
+              <div
+                className="pillar-card"
+                style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: '100%' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = T.shadowLg; e.currentTarget.style.borderLeftColor = T.accent }}
+                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 16px rgba(0,0,0,0.4)'; e.currentTarget.style.borderLeftColor = 'transparent' }}
+              >
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                  <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
+                </div>
+                <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
+                <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
               </div>
-              <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
-              <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
-            </div>
+            </BlurFade>
           ))}
         </div>
       </section>
@@ -545,43 +604,48 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       {/* Scroll-reveal curriculum section */}
       <ScrollRevealSection />
 
-      {/* Industry chips */}
+      {/* Industry chips — staggered reveal */}
       <section aria-label="Industries we cover" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,5vw,4rem)' }}>
-        <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '1rem' }}>
-          Industries We Study
-        </p>
+        <BlurFade delay={0.05} inView yOffset={4}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '1rem' }}>
+            Industries We Study
+          </p>
+        </BlurFade>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem' }}>
-          {CHIPS.map(c => (
-            <span
-              key={c}
-              className="chip"
-              style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 500, background: T.chip, color: T.dark, borderRadius: 999, padding: '7px 16px', display: 'inline-block' }}
-              onMouseEnter={e => { e.currentTarget.style.background = T.chipHover; e.currentTarget.style.transform = 'translateY(-1px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = T.chip; e.currentTarget.style.transform = '' }}
-            >{c}</span>
+          {CHIPS.map((c, i) => (
+            <BlurFade key={c} delay={0.08 + i * 0.04} inView yOffset={8}>
+              <span
+                className="chip"
+                style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 500, background: T.chip, color: T.dark, borderRadius: 999, padding: '7px 16px', display: 'inline-block', border: `1px solid ${T.border}` }}
+                onMouseEnter={e => { e.currentTarget.style.background = T.chipHover; e.currentTarget.style.transform = 'translateY(-1px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = T.chip; e.currentTarget.style.transform = '' }}
+              >{c}</span>
+            </BlurFade>
           ))}
         </div>
       </section>
 
       {/* Bridge CTA */}
-      <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)' }}>
+      <section aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}` }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
-          <div>
+          <BlurFade delay={0.05} inView yOffset={12} className="flex-1 min-w-[260px]">
             <SectionHeading>We Don't Just Study<br />the Future. We Build It.</SectionHeading>
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '1.125rem' }}>
               Our Guest Speaker Series connects members with developers, founders, and VCs from the blockchain world — Q&A sessions, career pathfinding, and network-building before you even graduate.
             </p>
-          </div>
-          <button
-            onClick={() => nav('register')}
-            style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '14px 32px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'background 0.2s, transform 0.12s' }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
-            onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
-            onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-            onMouseUp={e => (e.currentTarget.style.transform = '')}
-          >
-            Apply Now →
-          </button>
+          </BlurFade>
+          <BlurFade delay={0.2} inView yOffset={8}>
+            <button
+              onClick={() => nav('register')}
+              style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '14px 32px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
+              onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
+              onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
+              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+              onMouseUp={e => (e.currentTarget.style.transform = '')}
+            >
+              Apply Now →
+            </button>
+          </BlurFade>
         </div>
       </section>
     </div>
@@ -593,10 +657,12 @@ function AboutPage() {
   return (
     <div>
       <section aria-label="Founder" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)', display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 'clamp(2rem,5vw,5rem)', alignItems: 'center' }} className="about-grid">
-        <div style={{ width: '100%', aspectRatio: '4/5', borderRadius: 20, overflow: 'hidden', background: T.chip, boxShadow: T.shadowLg }}>
-          <Image src="/armaan.png" alt="Armaan Arya, Founder of YBA" width={560} height={700} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-        </div>
-        <div>
+        <BlurFade inView delay={0.05} yOffset={16}>
+          <div style={{ width: '100%', aspectRatio: '4/5', borderRadius: 20, overflow: 'hidden', background: T.surface, boxShadow: T.shadowLg, border: `1px solid ${T.border}` }}>
+            <Image src="/armaan.png" alt="Armaan Arya, Founder of YBA" width={560} height={700} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+        </BlurFade>
+        <BlurFade inView delay={0.15} yOffset={12}>
           <Badge>Founder &amp; President</Badge>
           <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,4.5vw,3.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.08, marginTop: '1rem' }}>Armaan Arya</h1>
           <div style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75, marginTop: '1.25rem' }}>
@@ -609,8 +675,8 @@ function AboutPage() {
               { href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==', label: 'Instagram', icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> },
             ].map(s => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '8px 18px', transition: 'background 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#d6daf0')}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '8px 18px', transition: 'background 0.2s', border: `1px solid ${T.border}` }}
+                onMouseEnter={e => (e.currentTarget.style.background = T.chipHover)}
                 onMouseLeave={e => (e.currentTarget.style.background = T.chip)}
                 aria-label={`YBA ${s.label}`}
               >
@@ -618,26 +684,32 @@ function AboutPage() {
               </a>
             ))}
           </div>
-        </div>
+        </BlurFade>
       </section>
 
       {/* Quote */}
       <section aria-label="Founder quote" style={{ maxWidth: 1160, margin: '0 auto', padding: '2rem clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(2rem,4vw,4rem)', alignItems: 'start' }} className="quote-grid">
-        <blockquote style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,2.5vw,1.75rem)', fontWeight: 700, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, borderLeft: `3px solid ${T.accent}`, paddingLeft: '1.5rem', margin: 0, position: 'relative' }}>
-          <span style={{ position: 'absolute', top: '-0.5rem', left: '1.25rem', fontFamily: T.manrope, fontSize: '4rem', color: T.accent, opacity: 0.12, lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }} aria-hidden="true">"</span>
-          "Traditional education wasn't preparing my generation for what's coming. So I built the bridge myself."
-        </blockquote>
-        <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75 }}>
-          Blockchain isn't just a financial tool — it's a foundational shift in how the world handles data, ownership, and trust. By introducing these concepts early, YBA prepares young adults to be creators — not just consumers — of the digital economy.
-        </p>
+        <BlurFade inView delay={0.05} yOffset={10}>
+          <blockquote style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,2.5vw,1.75rem)', fontWeight: 700, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, borderLeft: `3px solid ${T.accent}`, paddingLeft: '1.5rem', margin: 0, position: 'relative' }}>
+            <span style={{ position: 'absolute', top: '-0.5rem', left: '1.25rem', fontFamily: T.manrope, fontSize: '4rem', color: T.accent, opacity: 0.18, lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }} aria-hidden="true">"</span>
+            "Traditional education wasn't preparing my generation for what's coming. So I built the bridge myself."
+          </blockquote>
+        </BlurFade>
+        <BlurFade inView delay={0.18} yOffset={10}>
+          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75 }}>
+            Blockchain isn't just a financial tool — it's a foundational shift in how the world handles data, ownership, and trust. By introducing these concepts early, YBA prepares young adults to be creators — not just consumers — of the digital economy.
+          </p>
+        </BlurFade>
       </section>
 
       {/* Vision */}
-      <section aria-label="Vision" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', textAlign: 'center' }}>
-        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '1rem' }}>Our Vision</p>
-        <p style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,3vw,2rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, maxWidth: '38ch', margin: '0 auto' }}>
-          A global network of YBA chapters where teenagers are the primary drivers of decentralized innovation.
-        </p>
+      <section aria-label="Vision" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', textAlign: 'center', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}` }}>
+        <BlurFade inView delay={0.05} yOffset={8}>
+          <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '1rem' }}>Our Vision</p>
+          <p style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,3vw,2rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, maxWidth: '38ch', margin: '0 auto' }}>
+            A global network of YBA chapters where teenagers are the primary drivers of decentralized innovation.
+          </p>
+        </BlurFade>
       </section>
     </div>
   )
@@ -661,45 +733,54 @@ function GoalsPage() {
   return (
     <div>
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 2rem' }}>
-        <SectionHeading>Where Learning Meets Building.</SectionHeading>
-        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-          YBA is action-driven. We organize real events where members apply knowledge under pressure, collaborate in teams, and ship real blockchain projects.
-        </p>
+        <BlurFade inView delay={0.05} yOffset={12}>
+          <SectionHeading>Where Learning Meets Building.</SectionHeading>
+          <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
+            YBA is action-driven. We organize real events where members apply knowledge under pressure, collaborate in teams, and ship real blockchain projects.
+          </p>
+        </BlurFade>
       </section>
 
-      {/* Year One Goals — shown first so visitors see the full picture */}
+      {/* Year One Goals — staggered reveal */}
       <section aria-label="Year one goals" style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) 3rem' }}>
-        <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>Year One Goals</h2>
+        <BlurFade inView delay={0.05} yOffset={10}>
+          <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.75rem' }}>Year One Goals</h2>
+        </BlurFade>
         {YEAR_ONE.map((g, i) => (
-          <div
-            key={i}
-            className="goal-row"
-            style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
-            onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
-          >
-            <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.accent, opacity: 0.5, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
-            <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
-          </div>
+          <BlurFade key={i} inView delay={0.1 + i * 0.08} yOffset={8}>
+            <div
+              className="goal-row"
+              style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
+              onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
+            >
+              <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.dark, opacity: 0.4, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
+              <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
+            </div>
+          </BlurFade>
         ))}
       </section>
 
       {/* Speaker */}
-      <section aria-label="Guest Speaker Series" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', marginTop: '1rem' }}>
+      <section aria-label="Guest Speaker Series" style={{ background: T.alt, padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', marginTop: '1rem', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}` }}>
         <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-          <Badge>Coming Soon</Badge>
-          <SectionHeading size="sm">
-            <span style={{ display: 'block', marginTop: '0.875rem' }}>The Bridge to Industry</span>
-          </SectionHeading>
-          <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
-            Direct access to developers, founders, VCs, and tokenomics specialists. Build your network years ahead of your peers.
-          </p>
+          <BlurFade inView delay={0.05} yOffset={10}>
+            <Badge>Coming Soon</Badge>
+            <SectionHeading size="sm">
+              <span style={{ display: 'block', marginTop: '0.875rem' }}>The Bridge to Industry</span>
+            </SectionHeading>
+            <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
+              Direct access to developers, founders, VCs, and tokenomics specialists. Build your network years ahead of your peers.
+            </p>
+          </BlurFade>
           <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-            {['Direct Q&A','Career Pathfinding','Network Before You Graduate'].map(t => (
-              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0, display: 'inline-block' }}/>
-                <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark }}>{t}</span>
-              </div>
+            {['Direct Q&A','Career Pathfinding','Network Before You Graduate'].map((t, i) => (
+              <BlurFade key={t} inView delay={0.2 + i * 0.08} yOffset={6}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0, display: 'inline-block' }}/>
+                  <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark }}>{t}</span>
+                </div>
+              </BlurFade>
             ))}
           </div>
         </div>
@@ -707,8 +788,9 @@ function GoalsPage() {
 
       {/* Hackathon card */}
       <section aria-label="Hackathon" style={{ maxWidth: 1160, margin: '3rem auto 0', padding: '0 clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)' }}>
-        <div style={{ background: T.white, borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(2rem,4vw,3rem)', overflow: 'hidden', position: 'relative' }}>
-          <div style={{ position: 'absolute', top: 0, right: 0, width: 320, height: 320, background: `radial-gradient(circle at top right, rgba(79,70,229,0.06), transparent 70%)`, pointerEvents: 'none' }}/>
+        <BlurFade inView delay={0.05} yOffset={14}>
+        <div style={{ background: T.surface, borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(2rem,4vw,3rem)', overflow: 'hidden', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, right: 0, width: 320, height: 320, background: `radial-gradient(circle at top right, rgba(238,238,255,0.05), transparent 70%)`, pointerEvents: 'none' }}/>
           <Badge>Coming Soon</Badge>
           <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginTop: '1rem' }}>YBA Hackathon Series</h2>
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '58ch', marginTop: '0.875rem' }}>
@@ -727,9 +809,9 @@ function GoalsPage() {
               </div>
             ))}
           </div>
-          <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '2rem', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#1a1c1e'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.28)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
+          <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '2rem', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
+            onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 4px 16px rgba(238,238,255,0.18)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.4)' }}
             onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
             onMouseUp={e => (e.currentTarget.style.transform = '')}
             aria-label="Get notified about YBA hackathon"
@@ -737,6 +819,7 @@ function GoalsPage() {
             Get Notified
           </button>
         </div>
+        </BlurFade>
       </section>
     </div>
   )
@@ -771,13 +854,13 @@ function YBACalendar() {
     <div style={{ marginTop: '3.5rem' }}>
       <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '1rem' }}>YBA Calendar 2026</p>
 
-      <div style={{ background: T.white, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden' }}>
+      <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden' }}>
         {/* Month nav */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.125rem 1.5rem', borderBottom: `1px solid ${T.border}`, background: T.alt }}>
           <button
             onClick={() => setMonth(m => Math.max(START_M, m - 1))}
             disabled={month === START_M}
-            style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${T.border}`, background: month === START_M ? 'transparent' : T.white, cursor: month === START_M ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: month === START_M ? T.muted : T.dark, opacity: month === START_M ? 0.3 : 1, transition: 'background 0.15s' }}
+            style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${T.border}`, background: month === START_M ? 'transparent' : T.surface, cursor: month === START_M ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: month === START_M ? T.muted : T.dark, opacity: month === START_M ? 0.3 : 1, transition: 'background 0.15s' }}
             aria-label="Previous month"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -786,7 +869,7 @@ function YBACalendar() {
           <button
             onClick={() => setMonth(m => Math.min(END_M, m + 1))}
             disabled={month === END_M}
-            style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${T.border}`, background: month === END_M ? 'transparent' : T.white, cursor: month === END_M ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: month === END_M ? T.muted : T.dark, opacity: month === END_M ? 0.3 : 1, transition: 'background 0.15s' }}
+            style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${T.border}`, background: month === END_M ? 'transparent' : T.surface, cursor: month === END_M ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: month === END_M ? T.muted : T.dark, opacity: month === END_M ? 0.3 : 1, transition: 'background 0.15s' }}
             aria-label="Next month"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
@@ -859,7 +942,7 @@ function ModuleDetailPage({ index, title, onBack }: { index: number; title: stri
       {/* Reading section */}
       <div style={{ marginTop: '3rem' }}>
         <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Reading</p>
-        <div style={{ background: T.white, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowSm, padding: 'clamp(1.75rem,3vw,2.5rem)', minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowSm, padding: 'clamp(1.75rem,3vw,2.5rem)', minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, fontStyle: 'italic' }}>Reading content — TBD</p>
         </div>
       </div>
@@ -867,8 +950,8 @@ function ModuleDetailPage({ index, title, onBack }: { index: number; title: stri
       {/* Video section */}
       <div style={{ marginTop: '2.5rem' }}>
         <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Video</p>
-        <div style={{ width: '100%', aspectRatio: '16/9', background: T.dark, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, rgba(79,70,229,0.18), transparent 60%)' }} aria-hidden="true"/>
+        <div style={{ width: '100%', aspectRatio: '16/9', background: T.alt, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, rgba(238,238,255,0.06), transparent 60%)' }} aria-hidden="true"/>
           <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1.5px solid rgba(255,255,255,0.25)', position: 'relative', zIndex: 1 }} aria-label="Play video placeholder">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)" aria-hidden="true"><polygon points="8,5 20,12 8,19"/></svg>
           </div>
@@ -896,32 +979,39 @@ function CurriculumPage() {
 
   return (
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
-      <Badge>Coming Soon</Badge>
-      <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The Curriculum<br/>Is Being Built.</h1>
-      <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
-        A rigorous, peer-reviewed blockchain curriculum — from foundational concepts to DeFi protocols. Crafted for high schoolers. Inspired by the best university programs in the world.
-      </p>
-      <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginTop: '2.5rem', marginBottom: '0.875rem' }}>What's Coming</p>
-      <div style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}` }}>
+      <BlurFade inView delay={0.05} yOffset={12}>
+        <Badge>Coming Soon</Badge>
+        <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The Curriculum<br/>Is Being Built.</h1>
+        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
+          A rigorous, peer-reviewed blockchain curriculum — from foundational concepts to DeFi protocols. Crafted for high schoolers. Inspired by the best university programs in the world.
+        </p>
+      </BlurFade>
+      <BlurFade inView delay={0.18} yOffset={8}>
+        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginTop: '2.5rem', marginBottom: '0.875rem' }}>What's Coming</p>
+      </BlurFade>
+      <div style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}`, background: T.surface }}>
         {MODULES.map((m, i) => (
-          <button
-            key={i}
-            onClick={() => setSelectedModule(i)}
-            style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.125rem 1.5rem', background: i % 2 === 0 ? T.white : '#fafaff', borderBottom: i < MODULES.length - 1 ? `1px solid ${T.border}` : 'none', border: 'none', borderTop: 'none', borderLeft: 'none', borderRight: 'none', width: '100%', textAlign: 'left', cursor: 'pointer', transition: 'background 0.18s, padding-left 0.18s', fontFamily: 'inherit' }}
-            onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.75rem' }}
-            onMouseLeave={e => { e.currentTarget.style.background = i % 2 === 0 ? T.white : '#fafaff'; e.currentTarget.style.paddingLeft = '1.5rem' }}
-            aria-label={`Open Module ${i+1}: ${m}`}
-          >
-            <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: T.dark, opacity: 0.2, minWidth: '4rem' }}>Module {i+1}</span>
-            <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark, flex: 1 }}>{m}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
+          <BlurFade key={i} inView delay={0.22 + i * 0.06} yOffset={6}>
+            <button
+              onClick={() => setSelectedModule(i)}
+              style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.125rem 1.5rem', background: i % 2 === 0 ? T.surface : T.alt, borderBottom: i < MODULES.length - 1 ? `1px solid ${T.border}` : 'none', border: 'none', borderTop: 'none', borderLeft: 'none', borderRight: 'none', width: '100%', textAlign: 'left', cursor: 'pointer', transition: 'background 0.18s, padding-left 0.18s', fontFamily: 'inherit' }}
+              onMouseEnter={e => { e.currentTarget.style.background = T.chipHover; e.currentTarget.style.paddingLeft = '1.75rem' }}
+              onMouseLeave={e => { e.currentTarget.style.background = i % 2 === 0 ? T.surface : T.alt; e.currentTarget.style.paddingLeft = '1.5rem' }}
+              aria-label={`Open Module ${i+1}: ${m}`}
+            >
+              <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: T.muted, minWidth: '4rem' }}>Module {i+1}</span>
+              <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark, flex: 1 }}>{m}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </BlurFade>
         ))}
       </div>
-      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-        <input aria-label="Email for curriculum updates" placeholder="your@email.com" style={{ fontFamily: T.inter, fontSize: '0.9375rem', background: T.chip, border: 'none', borderRadius: 10, padding: '12px 18px', width: 260, outline: 'none', color: T.dark }} />
-        <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 24px', cursor: 'pointer' }}>Get Notified</button>
-      </div>
+      <BlurFade inView delay={0.6} yOffset={8}>
+        <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+          <input aria-label="Email for curriculum updates" placeholder="your@email.com" style={{ fontFamily: T.inter, fontSize: '0.9375rem', background: T.chip, border: `1px solid ${T.border}`, borderRadius: 10, padding: '12px 18px', width: 260, outline: 'none', color: T.dark }} />
+          <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '12px 24px', cursor: 'pointer' }}>Get Notified</button>
+        </div>
+      </BlurFade>
 
       <YBACalendar />
     </section>
@@ -932,38 +1022,44 @@ function CurriculumPage() {
 function PodcastPage() {
   return (
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem' }}>
-      <Badge>Coming Soon</Badge>
-      <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The YBA Podcast.</h1>
-      <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
-        Conversations with the builders, thinkers, and founders shaping the decentralized world — hosted by the next generation asking the real questions.
-      </p>
+      <BlurFade inView delay={0.05} yOffset={12}>
+        <Badge>Coming Soon</Badge>
+        <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.07, marginTop: '1rem' }}>The YBA Podcast.</h1>
+        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
+          Conversations with the builders, thinkers, and founders shaping the decentralized world — hosted by the next generation asking the real questions.
+        </p>
+      </BlurFade>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
-        {['001','002','003'].map(ep => (
-          <div key={ep} style={{ background: T.white, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden' }}>
-            <div style={{ width: '100%', aspectRatio: '16/9', background: T.chip, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: 44, height: 44, borderRadius: '50%', background: T.dark, display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg>
+        {['001','002','003'].map((ep, i) => (
+          <BlurFade key={ep} delay={i * 0.1} inView>
+            <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden', height: '100%' }}>
+              <div style={{ width: '100%', aspectRatio: '16/9', background: T.alt, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: `1px solid ${T.border}` }}>
+                <div style={{ width: 44, height: 44, borderRadius: '50%', background: T.cta, display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill={T.ctaText}><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+              </div>
+              <div style={{ padding: '1.25rem' }}>
+                <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: T.dark, opacity: 0.5 }}>Episode {ep}</p>
+                <p style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.dark, marginTop: '0.5rem' }}>Coming Soon</p>
               </div>
             </div>
-            <div style={{ padding: '1.25rem' }}>
-              <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: T.dark, opacity: 0.35 }}>Episode {ep}</p>
-              <p style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.muted, marginTop: '0.5rem' }}>Coming Soon</p>
-            </div>
-          </div>
+          </BlurFade>
         ))}
       </div>
       <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
         {[
           { href: 'https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg', label: 'Follow on TikTok' },
           { href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==', label: 'Follow on Instagram' },
-        ].map(s => (
-          <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '10px 20px', transition: 'background 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#d6daf0')}
-            onMouseLeave={e => (e.currentTarget.style.background = T.chip)}
-          >
-            {s.label}
-          </a>
+        ].map((s, i) => (
+          <BlurFade key={s.label} inView delay={0.5 + i * 0.08} yOffset={8}>
+            <a href={s.href} target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '10px 20px', transition: 'background 0.2s', border: `1px solid ${T.border}`, display: 'inline-block' }}
+              onMouseEnter={e => (e.currentTarget.style.background = T.chipHover)}
+              onMouseLeave={e => (e.currentTarget.style.background = T.chip)}
+            >
+              {s.label}
+            </a>
+          </BlurFade>
         ))}
       </div>
     </section>
@@ -1041,8 +1137,8 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
       </div>
       <button
         onClick={() => nav('home')}
-        style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: '#fff', border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '0.5rem', transition: 'background 0.2s, transform 0.12s' }}
-        onMouseEnter={e => (e.currentTarget.style.background = '#1a1c1e')}
+        style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '0.5rem', transition: 'background 0.2s, transform 0.12s' }}
+        onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
         onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
         onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
         onMouseUp={e => (e.currentTarget.style.transform = '')}
@@ -1050,14 +1146,16 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
     </motion.div>
   )
 
-  const fieldStyle: React.CSSProperties = { width: '100%', padding: '12px 16px', background: T.chip, border: `1.5px solid transparent`, borderRadius: 10, fontFamily: T.inter, fontSize: '1rem', color: T.dark, outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }
+  const fieldStyle: React.CSSProperties = { width: '100%', padding: '12px 16px', background: '#f4f4f5', border: `1.5px solid transparent`, borderRadius: 10, fontFamily: T.inter, fontSize: '1rem', color: '#09090f', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }
   const labelStyle: React.CSSProperties = { fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#44474a', display: 'block', marginBottom: '0.5rem' }
   const errStyle: React.CSSProperties   = { fontFamily: T.inter, fontSize: '0.8125rem', color: '#dc2626', marginTop: '0.375rem' }
+  const focusBorder = '#09090f'
 
   return (
     <div style={{ minHeight: '100vh', background: `linear-gradient(135deg, ${T.bg} 0%, ${T.alt} 100%)`, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: 'clamp(5rem,10vw,8rem) 1.25rem 4rem' }}>
       <div style={{ width: '100%', maxWidth: 920, display: 'grid', gridTemplateColumns: '1fr 1.35fr', gap: 'clamp(2rem,4vw,4rem)', alignItems: 'start' }} className="reg-grid">
         {/* Left copy */}
+        <BlurFade inView delay={0.05} yOffset={12}>
         <div style={{ paddingTop: '0.5rem' }}>
           <Badge>Registration 2026</Badge>
           <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.05, marginTop: '1rem' }}>Join the<br/>Movement.</h1>
@@ -1073,8 +1171,10 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
             ))}
           </div>
         </div>
+        </BlurFade>
 
         {/* Right — form */}
+        <BlurFade inView delay={0.18} yOffset={12}>
         <div>
           {/* Glass card */}
           <div style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(1.75rem,4vw,2.5rem)' }}>
@@ -1083,13 +1183,13 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 <div>
                   <label htmlFor="reg-name" style={labelStyle}>Name</label>
                   <input id="reg-name" name="name" type="text" placeholder="Your name" style={{ ...fieldStyle, borderColor: errors.name ? '#dc2626' : 'transparent' }}
-                    onFocus={e => { e.target.style.borderColor = T.accent; trackStart() }} onBlur={e => (e.target.style.borderColor = errors.name ? '#dc2626' : 'transparent')} required aria-describedby={errors.name ? 'err-name' : undefined} aria-invalid={!!errors.name} />
+                    onFocus={e => { e.target.style.borderColor = focusBorder; trackStart() }} onBlur={e => (e.target.style.borderColor = errors.name ? '#dc2626' : 'transparent')} required aria-describedby={errors.name ? 'err-name' : undefined} aria-invalid={!!errors.name} />
                   {errors.name && <p id="err-name" role="alert" style={errStyle}>{errors.name}</p>}
                 </div>
                 <div>
                   <label htmlFor="reg-email" style={labelStyle}>Email</label>
                   <input id="reg-email" name="email" type="email" placeholder="your@email.com" style={{ ...fieldStyle, borderColor: errors.email ? '#dc2626' : 'transparent' }}
-                    onFocus={e => (e.target.style.borderColor = T.accent)} onBlur={e => (e.target.style.borderColor = errors.email ? '#dc2626' : 'transparent')} required aria-describedby={errors.email ? 'err-email' : undefined} aria-invalid={!!errors.email} />
+                    onFocus={e => (e.target.style.borderColor = focusBorder)} onBlur={e => (e.target.style.borderColor = errors.email ? '#dc2626' : 'transparent')} required aria-describedby={errors.email ? 'err-email' : undefined} aria-invalid={!!errors.email} />
                   {errors.email && <p id="err-email" role="alert" style={errStyle}>{errors.email}</p>}
                 </div>
               </div>
@@ -1097,13 +1197,13 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 <div>
                   <label htmlFor="reg-school" style={labelStyle}>School</label>
                   <input id="reg-school" name="school" type="text" placeholder="Your high school" style={{ ...fieldStyle, borderColor: errors.school ? '#dc2626' : 'transparent' }}
-                    onFocus={e => (e.target.style.borderColor = T.accent)} onBlur={e => (e.target.style.borderColor = errors.school ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.school} />
+                    onFocus={e => (e.target.style.borderColor = focusBorder)} onBlur={e => (e.target.style.borderColor = errors.school ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.school} />
                   {errors.school && <p role="alert" style={errStyle}>{errors.school}</p>}
                 </div>
                 <div>
                   <label htmlFor="reg-grade" style={labelStyle}>Grade</label>
                   <select id="reg-grade" name="grade" style={{ ...fieldStyle, appearance: 'none', cursor: 'pointer', borderColor: errors.grade ? '#dc2626' : 'transparent' }}
-                    onFocus={e => (e.currentTarget.style.borderColor = T.accent)} onBlur={e => (e.currentTarget.style.borderColor = errors.grade ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.grade}>
+                    onFocus={e => (e.currentTarget.style.borderColor = focusBorder)} onBlur={e => (e.currentTarget.style.borderColor = errors.grade ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.grade}>
                     <option value="">Select grade</option>
                     <option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option>
                   </select>
@@ -1114,7 +1214,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 <label htmlFor="reg-build" style={labelStyle}>What do you want to build? (Put N/A if you don't know)</label>
                 <textarea id="reg-build" name="build" rows={3} placeholder="I want to build a decentralized app that..."
                   style={{ ...fieldStyle, resize: 'none' }}
-                  onFocus={e => (e.target.style.borderColor = T.accent)} onBlur={e => (e.target.style.borderColor = 'transparent')} />
+                  onFocus={e => (e.target.style.borderColor = focusBorder)} onBlur={e => (e.target.style.borderColor = 'transparent')} />
               </div>
               {errors.submit && (
                 <p role="alert" style={{ fontFamily: T.inter, fontSize: '0.875rem', color: '#dc2626', marginBottom: '0.875rem', padding: '0.75rem 1rem', background: '#fef2f2', borderRadius: 8 }}>
@@ -1122,9 +1222,9 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 </p>
               )}
               <button type="submit" disabled={loading}
-                style={{ width: '100%', background: loading ? '#44474a' : T.cta, color: '#fff', border: 'none', borderRadius: 12, padding: '14px', fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, cursor: loading ? 'default' : 'pointer', transition: 'background 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                style={{ width: '100%', background: loading ? '#44474a' : '#09090f', color: '#fff', border: 'none', borderRadius: 12, padding: '14px', fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, cursor: loading ? 'default' : 'pointer', transition: 'background 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
                 onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#1a1c1e' }}
-                onMouseLeave={e => { if (!loading) e.currentTarget.style.background = T.cta }}
+                onMouseLeave={e => { if (!loading) e.currentTarget.style.background = '#09090f' }}
                 aria-busy={loading}
               >
                 {loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ animation: 'spin 0.8s linear infinite' }}><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>}
@@ -1156,6 +1256,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+        </BlurFade>
       </div>
     </div>
   )
@@ -1229,16 +1330,16 @@ function ContactPage() {
       {/* Contact cards */}
       <section aria-label="Contact methods" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3rem) clamp(4rem,8vw,6rem)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '1.25rem' }}>
-          {CONTACT_METHODS.map((m) => (
+          {CONTACT_METHODS.map((m, i) => (
+            <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={10}>
             <a
-              key={m.label}
               href={m.href}
               target={m.href.startsWith('http') ? '_blank' : undefined}
               rel={m.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={`${m.label}: ${m.value}`}
               style={{
                 display: 'block',
-                background: T.white,
+                background: T.surface,
                 borderRadius: 16,
                 border: `1px solid ${T.border}`,
                 borderLeft: '3px solid transparent',
@@ -1247,6 +1348,7 @@ function ContactPage() {
                 textDecoration: 'none',
                 color: 'inherit',
                 transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s',
+                height: '100%',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'translateY(-4px)'
@@ -1279,16 +1381,19 @@ function ContactPage() {
                 </svg>
               </div>
             </a>
+            </BlurFade>
           ))}
         </div>
 
         {/* Info note */}
-        <div style={{ marginTop: '3rem', padding: '1.5rem 2rem', background: T.alt, borderRadius: 16, border: `1px solid ${T.border}`, display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: T.accent, flexShrink: 0, marginTop: '0.375rem' }} aria-hidden="true"/>
-          <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.7 }}>
-            For <strong style={{ color: T.dark, fontWeight: 600 }}>partnership or sponsorship inquiries</strong>, feel free to reach out via email. We typically respond within 24–48 hours.
-          </p>
-        </div>
+        <BlurFade inView delay={0.4} yOffset={10}>
+          <div style={{ marginTop: '3rem', padding: '1.5rem 2rem', background: T.alt, borderRadius: 16, border: `1px solid ${T.border}`, display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: T.accent, flexShrink: 0, marginTop: '0.375rem' }} aria-hidden="true"/>
+            <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.7 }}>
+              For <strong style={{ color: T.dark, fontWeight: 600 }}>partnership or sponsorship inquiries</strong>, feel free to reach out via email. We typically respond within 24–48 hours.
+            </p>
+          </div>
+        </BlurFade>
       </section>
     </div>
   )
@@ -1310,7 +1415,11 @@ export default function App() {
   return (
     <>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-      <Nav current={page} nav={nav} />
+      <YBANav
+        items={NAV_LINKS.map(l => ({ name: l.label, page: l.page }))}
+        currentPage={page}
+        onNavigate={nav}
+      />
       <main id="main-content">
         <AnimatePresence mode="wait">
           <motion.div key={page} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}>
