@@ -1481,6 +1481,16 @@ function ContactPage() {
 }
 
 // ─── App ──────────────────────────────────────────────────────────────────────
+const PAGE_TRANSITIONS: Record<Page, { initial: any; animate: any; exit: any }> = {
+  home:       { initial: { opacity: 0, y: 12, filter: 'blur(8px)' }, animate: { opacity: 1, y: 0, filter: 'blur(0px)' }, exit: { opacity: 0, y: -8, filter: 'blur(6px)' } },
+  about:      { initial: { opacity: 0, x: 24 },                       animate: { opacity: 1, x: 0 },                      exit: { opacity: 0, x: -16 } },
+  goals:      { initial: { opacity: 0, y: 16 },                       animate: { opacity: 1, y: 0 },                      exit: { opacity: 0, y: -10 } },
+  curriculum: { initial: { opacity: 0, scale: 0.985 },                animate: { opacity: 1, scale: 1 },                  exit: { opacity: 0, scale: 1.01 } },
+  podcast:    { initial: { opacity: 0, y: 16 },                       animate: { opacity: 1, y: 0 },                      exit: { opacity: 0, y: -10 } },
+  register:   { initial: { opacity: 0, scale: 0.97 },                 animate: { opacity: 1, scale: 1 },                  exit: { opacity: 0, scale: 0.99 } },
+  contact:    { initial: { opacity: 0, x: -24 },                      animate: { opacity: 1, x: 0 },                      exit: { opacity: 0, x: 16 } },
+}
+
 export default function App() {
   const [page, setPage] = useState<Page>('home')
 
@@ -1502,8 +1512,14 @@ export default function App() {
         onNavigate={nav}
       />
       <main id="main-content">
-        <AnimatePresence mode="wait">
-          <motion.div key={page} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={page}
+            initial={PAGE_TRANSITIONS[page].initial}
+            animate={PAGE_TRANSITIONS[page].animate}
+            exit={PAGE_TRANSITIONS[page].exit}
+            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+          >
             {page === 'home'       && <HomePage nav={nav} />}
             {page === 'about'      && <AboutPage />}
             {page === 'goals'      && <GoalsPage />}
