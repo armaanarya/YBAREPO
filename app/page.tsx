@@ -11,6 +11,7 @@ import { Marquee } from '../components/ui/marquee'
 import { NumberCounter } from '../components/ui/number-counter'
 import { GlowCard } from '../components/ui/glow-card'
 import { MagneticButton } from '../components/ui/magnetic-button'
+import { TiltCard } from '../components/ui/tilt-card'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
@@ -592,16 +593,18 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.25rem' }}>
           {PILLARS.map((p, i) => (
             <BlurFade key={i} delay={i * 0.1} inView>
-              <GlowCard
-                className="pillar-card glow-hover-lift"
-                style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: '100%', transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s' }}
-              >
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                  <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
-                </div>
-                <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
-                <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
-              </GlowCard>
+              <TiltCard maxTilt={6}>
+                <GlowCard
+                  className="pillar-card glow-hover-lift"
+                  style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: '100%', transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s' }}
+                >
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                    <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
+                  </div>
+                  <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
+                  <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
+                </GlowCard>
+              </TiltCard>
             </BlurFade>
           ))}
         </div>
@@ -1119,17 +1122,19 @@ function PodcastPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
         {['001','002','003'].map((ep, i) => (
           <BlurFade key={ep} delay={i * 0.1} inView>
-            <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden', height: '100%' }}>
-              <div style={{ width: '100%', aspectRatio: '16/9', background: T.alt, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: `1px solid ${T.border}` }}>
-                <div style={{ width: 44, height: 44, borderRadius: '50%', background: T.cta, display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill={T.ctaText}><polygon points="8,5 20,12 8,19"/></svg>
+            <TiltCard maxTilt={5}>
+              <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, overflow: 'hidden', height: '100%' }}>
+                <div style={{ width: '100%', aspectRatio: '16/9', background: T.alt, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: `1px solid ${T.border}` }}>
+                  <div style={{ width: 44, height: 44, borderRadius: '50%', background: T.cta, display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill={T.ctaText}><polygon points="8,5 20,12 8,19"/></svg>
+                  </div>
+                </div>
+                <div style={{ padding: '1.25rem' }}>
+                  <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: T.dark, opacity: 0.5 }}>Episode {ep}</p>
+                  <p style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.dark, marginTop: '0.5rem' }}>Coming Soon</p>
                 </div>
               </div>
-              <div style={{ padding: '1.25rem' }}>
-                <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: T.dark, opacity: 0.5 }}>Episode {ep}</p>
-                <p style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.dark, marginTop: '0.5rem' }}>Coming Soon</p>
-              </div>
-            </div>
+            </TiltCard>
           </BlurFade>
         ))}
       </div>
@@ -1419,6 +1424,7 @@ function ContactPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '1.25rem' }}>
           {CONTACT_METHODS.map((m, i) => (
             <BlurFade key={m.label} inView delay={0.05 + i * 0.08} yOffset={10}>
+            <TiltCard maxTilt={6}>
             <GlowCard
               as="a"
               href={m.href}
@@ -1455,6 +1461,7 @@ function ContactPage() {
                 </svg>
               </div>
             </GlowCard>
+            </TiltCard>
             </BlurFade>
           ))}
         </div>
