@@ -10,6 +10,7 @@ import { GridPattern } from '../components/ui/grid-pattern'
 import { Marquee } from '../components/ui/marquee'
 import { NumberCounter } from '../components/ui/number-counter'
 import { GlowCard } from '../components/ui/glow-card'
+import { MagneticButton } from '../components/ui/magnetic-button'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
@@ -546,38 +547,42 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
 
           {/* CTAs */}
           <AnimatedContainer transition={{ delay: 0.65 }} className="flex gap-3 flex-wrap justify-center">
-            <button
-              onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
-              style={{
-                fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600,
-                background: T.accent, color: T.ctaText,
-                border: 'none', borderRadius: 12, padding: '13px 30px',
-                cursor: 'pointer', transition: 'background 0.2s, transform 0.12s, box-shadow 0.2s',
-                boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.3), 0 8px 32px rgba(238,238,255,0.2)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = T.accent; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)' }}
-              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-              onMouseUp={e => (e.currentTarget.style.transform = '')}
-            >
-              Join the Movement →
-            </button>
-            <button
-              onClick={() => nav('goals')}
-              style={{
-                fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500,
-                background: 'rgba(238,238,255,0.05)', color: T.dark,
-                border: `1.5px solid ${T.border}`, borderRadius: 12,
-                padding: '13px 26px', cursor: 'pointer',
-                transition: 'border-color 0.2s, background 0.2s, transform 0.12s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = 'rgba(238,238,255,0.08)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'rgba(238,238,255,0.05)'; e.currentTarget.style.transform = '' }}
-              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-              onMouseUp={e => (e.currentTarget.style.transform = '')}
-            >
-              See Our Goals
-            </button>
+            <MagneticButton>
+              <button
+                onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
+                style={{
+                  fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600,
+                  background: T.accent, color: T.ctaText,
+                  border: 'none', borderRadius: 12, padding: '13px 30px',
+                  cursor: 'pointer', transition: 'background 0.2s, transform 0.12s, box-shadow 0.2s',
+                  boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.3), 0 8px 32px rgba(238,238,255,0.2)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = T.accent; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)' }}
+                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+                onMouseUp={e => (e.currentTarget.style.transform = '')}
+              >
+                Join the Movement →
+              </button>
+            </MagneticButton>
+            <MagneticButton strength={0.25}>
+              <button
+                onClick={() => nav('goals')}
+                style={{
+                  fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500,
+                  background: 'rgba(238,238,255,0.05)', color: T.dark,
+                  border: `1.5px solid ${T.border}`, borderRadius: 12,
+                  padding: '13px 26px', cursor: 'pointer',
+                  transition: 'border-color 0.2s, background 0.2s, transform 0.12s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = 'rgba(238,238,255,0.08)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'rgba(238,238,255,0.05)'; e.currentTarget.style.transform = '' }}
+                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+                onMouseUp={e => (e.currentTarget.style.transform = '')}
+              >
+                See Our Goals
+              </button>
+            </MagneticButton>
           </AnimatedContainer>
         </div>
       </Hero>
@@ -651,16 +656,18 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
             </p>
           </BlurFade>
           <BlurFade delay={0.2} inView yOffset={8}>
-            <button
-              onClick={() => nav('register')}
-              style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '14px 32px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
-              onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
-              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-              onMouseUp={e => (e.currentTarget.style.transform = '')}
-            >
-              Apply Now →
-            </button>
+            <MagneticButton>
+              <button
+                onClick={() => nav('register')}
+                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '14px 32px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
+                onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
+                onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
+                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
+                onMouseUp={e => (e.currentTarget.style.transform = '')}
+              >
+                Apply Now →
+              </button>
+            </MagneticButton>
           </BlurFade>
         </div>
       </section>
