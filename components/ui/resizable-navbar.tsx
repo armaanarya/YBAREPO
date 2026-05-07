@@ -61,7 +61,15 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           className="flex items-center gap-2 shrink-0"
           aria-label="Go to home"
         >
-          <Image src="/yba-mark.svg" alt="YBA" width={30} height={30} priority />
+          <span
+            style={{
+              filter: 'invert(1) brightness(2) drop-shadow(0 0 6px rgba(0,0,0,0.4))',
+              display: 'inline-flex',
+              lineHeight: 0,
+            }}
+          >
+            <Image src="/yba-mark.svg" alt="YBA" width={30} height={30} priority />
+          </span>
           <span style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#eeeeff', letterSpacing: '-0.01em' }}>
             YBA
           </span>
@@ -97,7 +105,15 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           className="flex items-center gap-2"
           aria-label="Go to home"
         >
-          <Image src="/yba-mark.svg" alt="YBA" width={28} height={28} priority />
+          <span
+            style={{
+              filter: 'invert(1) brightness(2) drop-shadow(0 0 6px rgba(0,0,0,0.4))',
+              display: 'inline-flex',
+              lineHeight: 0,
+            }}
+          >
+            <Image src="/yba-mark.svg" alt="YBA" width={28} height={28} priority />
+          </span>
           <span style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: '0.9375rem', color: '#eeeeff' }}>
             YBA
           </span>
