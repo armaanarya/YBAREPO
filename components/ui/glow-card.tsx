@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, ReactNode, CSSProperties, MouseEvent } from 'react'
+import { useState, ReactNode, CSSProperties, MouseEvent } from 'react'
 
 interface GlowCardProps {
   children: ReactNode
