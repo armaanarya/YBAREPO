@@ -13,7 +13,6 @@ import { Marquee } from '../components/ui/marquee'
 import { GlowCard } from '../components/ui/glow-card'
 import { MagneticButton } from '../components/ui/magnetic-button'
 import { TiltCard } from '../components/ui/tilt-card'
-import { ScrollProgress } from '../components/ui/scroll-progress'
 import { HoverGlowButton } from '../components/ui/hover-glow-button'
 import { ScrollLegend } from '../components/ui/scroll-legend'
 import { AnimatedAccordion } from '../components/ui/animated-accordion'
@@ -1496,7 +1495,6 @@ export default function App() {
   return (
     <>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-      <ScrollProgress />
       <YBANav
         items={NAV_LINKS.map(l => ({ name: l.label, page: l.page }))}
         currentPage={page}
