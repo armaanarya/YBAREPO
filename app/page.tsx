@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { track } from '../lib/track'
 import { YBANav } from '../components/ui/resizable-navbar'
 import { BlurFade } from '../components/ui/blur-fade'
-import { Hero, BgGradient, TextStagger, AnimatedContainer, HeroSpotlight } from '../components/ui/hero-animated'
+import { Hero, BgGradient, TextStagger, AnimatedContainer } from '../components/ui/hero-animated'
 import { GridPattern } from '../components/ui/grid-pattern'
 import { ParallaxLayer } from '../components/ui/parallax-layer'
 import { HorizontalPinned } from '../components/ui/horizontal-pinned'
@@ -480,11 +480,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
         {/* Animated dot grid */}
         <GridPattern />
-
-        {/* Cursor-following spotlight (with scroll parallax drift) */}
-        <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
-          <HeroSpotlight />
-        </ParallaxLayer>
 
         {/* Noise grain overlay for premium texture */}
         <div

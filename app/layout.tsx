@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import '../styles/globals.css'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { LenisProvider } from '@/components/ui/lenis-provider'
-import { CustomCursor } from '@/components/ui/custom-cursor'
 
 export const metadata: Metadata = {
   title: 'YBA — Youth Blockchain Association',
@@ -35,8 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ScrollProgress />
         <LenisProvider />
-        <CustomCursor />
-        {children}
+{children}
       </body>
     </html>
   )
