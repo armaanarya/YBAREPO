@@ -89,7 +89,7 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
       <div style={{ maxWidth: 1160, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
           <div>
-            <Image src="/yba-mark.svg" alt="YBA" width={40} height={40}/>
+            <Image src="/yba-mark.svg" alt="YBA" width={40} height={40} style={{ filter: 'invert(1) brightness(2)' }}/>
             <p style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.dark, opacity: 0.55, marginTop: '0.625rem', lineHeight: 1.6 }}>
               Architecting the Future,<br/>One Block at a Time.
             </p>
