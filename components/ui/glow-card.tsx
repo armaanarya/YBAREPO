@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, ReactNode, CSSProperties, MouseEvent } from 'react'
+import { useRef, ReactNode, CSSProperties, MouseEvent } from 'react'
 
 interface GlowCardProps {
   children: ReactNode
@@ -21,13 +21,43 @@ export function GlowCard({
   as = 'div',
   ...rest
 }: GlowCardProps) {
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(null)
+  const glowRef = useRef<HTMLDivElement>(null)
 
   const onMove = (e: MouseEvent<HTMLElement>) => {
     const r = e.currentTarget.getBoundingClientRect()
-    setPos({ x: e.clientX - r.left, y: e.clientY - r.top })
+    const x = e.clientX - r.left
+    const y = e.clientY - r.top
+    if (glowRef.current) {
+      glowRef.current.style.transform = `translate(${x - 140}px, ${y - 140}px)`
+      glowRef.current.style.opacity = '1'
+    }
   }
-  const onLeave = () => setPos(null)
+  const onLeave = () => {
+    if (glowRef.current) glowRef.current.style.opacity = '0'
+  }
+
+  const inner = (
+    <>
+      <div
+        ref={glowRef}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: 280,
+          height: 280,
+          background: 'radial-gradient(circle, rgba(238,238,255,0.18), transparent 65%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+          opacity: 0,
+          transition: 'opacity 200ms ease',
+          willChange: 'transform',
+        }}
+      />
+      <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>{children}</div>
+    </>
+  )
 
   const commonProps = {
     className: `relative overflow-hidden ${className}`,
@@ -37,27 +67,8 @@ export function GlowCard({
     ...rest,
   }
 
-  const inner = (
-    <>
-      {pos && (
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: pos.y - 140,
-            left: pos.x - 140,
-            width: 280,
-            height: 280,
-            background: 'radial-gradient(circle, rgba(238,238,255,0.18), transparent 65%)',
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        />
-      )}
-      <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>{children}</div>
-    </>
-  )
-
-  if (as === 'a') return <a {...(commonProps as any)}>{inner}</a>
-  return <div {...(commonProps as any)}>{inner}</div>
+  if (as === 'a') {
+    return <a {...(commonProps as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>{inner}</a>
+  }
+  return <div {...(commonProps as React.HTMLAttributes<HTMLDivElement>)}>{inner}</div>
 }
