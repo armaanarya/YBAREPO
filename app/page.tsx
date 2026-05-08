@@ -1471,13 +1471,13 @@ function ContactPage() {
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 const PAGE_TRANSITIONS: Record<Page, { initial: any; animate: any; exit: any }> = {
-  home:       { initial: { opacity: 0, y: 12, filter: 'blur(8px)' }, animate: { opacity: 1, y: 0, filter: 'blur(0px)' }, exit: { opacity: 0, y: -8, filter: 'blur(6px)' } },
-  about:      { initial: { opacity: 0, x: 24 },                       animate: { opacity: 1, x: 0 },                      exit: { opacity: 0, x: -16 } },
-  goals:      { initial: { opacity: 0, y: 16 },                       animate: { opacity: 1, y: 0 },                      exit: { opacity: 0, y: -10 } },
-  curriculum: { initial: { opacity: 0, scale: 0.985 },                animate: { opacity: 1, scale: 1 },                  exit: { opacity: 0, scale: 1.01 } },
-  podcast:    { initial: { opacity: 0, y: 16 },                       animate: { opacity: 1, y: 0 },                      exit: { opacity: 0, y: -10 } },
-  register:   { initial: { opacity: 0, scale: 0.97 },                 animate: { opacity: 1, scale: 1 },                  exit: { opacity: 0, scale: 0.99 } },
-  contact:    { initial: { opacity: 0, x: -24 },                      animate: { opacity: 1, x: 0 },                      exit: { opacity: 0, x: 16 } },
+  home:       { initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -6 } },
+  about:      { initial: { opacity: 0, x: 20 }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: -12 } },
+  goals:      { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
+  curriculum: { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
+  podcast:    { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
+  register:   { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
+  contact:    { initial: { opacity: 0, x: -20 }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: 12 } },
 }
 
 export default function App() {
