@@ -53,7 +53,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
         }}
         transition={{ type: 'spring', stiffness: 220, damping: 44 }}
         style={{ minWidth: 600 }}
-        className="relative z-[60] mx-auto hidden max-w-5xl flex-row items-center justify-between px-6 py-3 lg:flex"
+        className="relative z-[60] mx-auto hidden max-w-5xl flex-row items-center justify-between px-8 py-4 lg:flex"
       >
         {/* Logo */}
         <button
@@ -189,14 +189,16 @@ function DesktopLinks({ items, currentPage, onNavigate }: {
           key={item.page}
           onMouseEnter={() => setHovered(item.page)}
           onClick={() => onNavigate(item.page)}
-          className="pointer-events-auto relative px-3 py-2 text-sm transition-colors duration-150"
+          className="pointer-events-auto relative px-3 py-2 transition-colors duration-150"
           style={{
             fontFamily: 'Inter, sans-serif',
+            fontSize: '0.9375rem',
+            fontWeight: 600,
             color: currentPage === item.page
               ? '#eeeeff'
               : hovered === item.page
                 ? '#eeeeff'
-                : 'rgba(238,238,255,0.55)',
+                : 'rgba(238,238,255,0.65)',
           }}
         >
           {hovered === item.page && (
