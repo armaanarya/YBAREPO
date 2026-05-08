@@ -541,7 +541,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
             <MagneticButton>
               <HoverGlowButton
                 onClick={() => { track('button_click', 'home', { button: 'join_hero' }); nav('register') }}
-                glowColor="#a78bfa"
                 background={T.accent}
                 textColor={T.ctaText}
                 style={{
@@ -658,7 +657,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
             <MagneticButton>
               <HoverGlowButton
                 onClick={() => nav('register')}
-                glowColor="#a78bfa"
                 background={T.cta}
                 textColor={T.ctaText}
                 style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
