@@ -286,6 +286,7 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
           { id: 'hero', name: 'Intro' },
           { id: 'pillars', name: 'Pillars' },
           { id: 'curriculum-preview', name: 'Curriculum' },
+          { id: 'officers', name: 'Officers' },
           { id: 'apply', name: 'Apply' },
         ]}
       />
@@ -442,9 +443,8 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         </ParallaxLayer>
       </section>
 
-      {/* Bridge CTA */}
       {/* Officers — horizontal scroll-pinned reel grouped by team */}
-      <section aria-label="Officers" style={{ paddingTop: 'clamp(4rem,8vw,7rem)' }}>
+      <section id="officers" aria-label="Officers" style={{ paddingTop: 'clamp(4rem,8vw,7rem)' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(1.5rem,3vw,2.5rem)' }}>
           <BlurFade delay={0.05} inView yOffset={4}>
             <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '0.875rem' }}>
