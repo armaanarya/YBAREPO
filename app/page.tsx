@@ -286,7 +286,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
           { id: 'hero', name: 'Intro' },
           { id: 'pillars', name: 'Pillars' },
           { id: 'curriculum-preview', name: 'Curriculum' },
-          { id: 'officers', name: 'Officers' },
           { id: 'apply', name: 'Apply' },
         ]}
       />
@@ -443,111 +442,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         </ParallaxLayer>
       </section>
 
-      {/* Officers — horizontal scroll-pinned reel grouped by team */}
-      <section id="officers" aria-label="Officers" style={{ paddingTop: 'clamp(4rem,8vw,7rem)' }}>
-        <div style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(1.5rem,3vw,2.5rem)' }}>
-          <BlurFade delay={0.05} inView yOffset={4}>
-            <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '0.875rem' }}>
-              The Team
-            </p>
-          </BlurFade>
-          <BlurFade delay={0.1} inView yOffset={8}>
-            <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.08, color: T.dark, margin: 0 }}>
-              Meet the Officers
-            </h2>
-          </BlurFade>
-          <BlurFade delay={0.18} inView yOffset={6}>
-            <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.65, marginTop: '0.875rem', maxWidth: '54ch' }}>
-              Three teams, one mission — Curriculum, Marketing, and Operations. The students building YBA from the ground up.
-            </p>
-          </BlurFade>
-        </div>
-
-        <HorizontalPinned heightVh={300} travelPercent={72} className="">
-          {OFFICERS.map((o, i) => {
-            const accent = TEAM_ACCENT[o.team]
-            const prev = OFFICERS[i - 1]
-            const isFirstOfTeam = !prev || prev.team !== o.team
-            return (
-              <div key={o.name} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexShrink: 0 }}>
-                {isFirstOfTeam && i !== 0 && (
-                  <div aria-hidden="true" style={{ width: 1, height: 220, background: T.border, flexShrink: 0 }} />
-                )}
-                <BlurFade delay={i * 0.06} inView>
-                  <TiltCard maxTilt={6}>
-                    <GlowCard
-                      className="officer-card glow-hover-lift"
-                      style={{
-                        background: 'rgba(17,17,24,0.8)',
-                        borderRadius: 16,
-                        padding: '1.75rem 1.75rem 1.5rem',
-                        border: `1px solid ${T.border}`,
-                        borderTop: `2px solid ${accent}`,
-                        boxShadow: '0 2px 16px rgba(0,0,0,0.4)',
-                        width: 'min(78vw, 320px)',
-                        flexShrink: 0,
-                        scrollSnapAlign: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        textAlign: 'center',
-                        transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-top-color 0.22s',
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: 168,
-                          height: 168,
-                          borderRadius: '50%',
-                          overflow: 'hidden',
-                          background: T.alt,
-                          border: `1px solid ${T.border}`,
-                          boxShadow: `0 0 0 4px rgba(238,238,255,0.04), 0 8px 24px rgba(0,0,0,0.5)`,
-                          marginBottom: '1.25rem',
-                          flexShrink: 0,
-                        }}
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={o.photo}
-                          alt={`${o.name} — ${o.role}`}
-                          loading="lazy"
-                          decoding="async"
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                        />
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: T.inter,
-                          fontSize: '0.6875rem',
-                          fontWeight: 600,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          color: accent,
-                          background: `${accent}1a`,
-                          border: `1px solid ${accent}33`,
-                          borderRadius: 999,
-                          padding: '4px 10px',
-                          marginBottom: '0.75rem',
-                        }}
-                      >
-                        {o.team}
-                      </span>
-                      <div style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', lineHeight: 1.2, marginBottom: '0.25rem' }}>
-                        {o.name}
-                      </div>
-                      <div style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, lineHeight: 1.45 }}>
-                        {o.role}
-                      </div>
-                    </GlowCard>
-                  </TiltCard>
-                </BlurFade>
-              </div>
-            )
-          })}
-        </HorizontalPinned>
-      </section>
-
       <section id="apply" aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, position: 'relative', overflow: 'hidden' }}>
         {/* Decorative parallax-drifting grid */}
         <ParallaxLayer speed={-0.4} className="absolute inset-0 pointer-events-none">
@@ -643,6 +537,111 @@ function AboutPage() {
             A global network of YBA chapters where teenagers are the primary drivers of decentralized innovation.
           </p>
         </BlurFade>
+      </section>
+
+      {/* Officers — horizontal scroll-pinned reel grouped by team */}
+      <section id="officers" aria-label="Officers" style={{ paddingTop: 'clamp(4rem,8vw,7rem)' }}>
+        <div style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(1.5rem,3vw,2.5rem)' }}>
+          <BlurFade delay={0.05} inView yOffset={4}>
+            <p style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '0.875rem' }}>
+              The Team
+            </p>
+          </BlurFade>
+          <BlurFade delay={0.1} inView yOffset={8}>
+            <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.08, color: T.dark, margin: 0 }}>
+              Meet the Officers
+            </h2>
+          </BlurFade>
+          <BlurFade delay={0.18} inView yOffset={6}>
+            <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.65, marginTop: '0.875rem', maxWidth: '54ch' }}>
+              Three teams, one mission — Curriculum, Marketing, and Operations. The students building YBA from the ground up.
+            </p>
+          </BlurFade>
+        </div>
+
+        <HorizontalPinned heightVh={300} travelPercent={72} className="">
+          {OFFICERS.map((o, i) => {
+            const accent = TEAM_ACCENT[o.team]
+            const prev = OFFICERS[i - 1]
+            const isFirstOfTeam = !prev || prev.team !== o.team
+            return (
+              <div key={o.name} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexShrink: 0 }}>
+                {isFirstOfTeam && i !== 0 && (
+                  <div aria-hidden="true" style={{ width: 1, height: 220, background: T.border, flexShrink: 0 }} />
+                )}
+                <BlurFade delay={i * 0.06} inView>
+                  <TiltCard maxTilt={6}>
+                    <GlowCard
+                      className="officer-card glow-hover-lift"
+                      style={{
+                        background: 'rgba(17,17,24,0.8)',
+                        borderRadius: 16,
+                        padding: '1.75rem 1.75rem 1.5rem',
+                        border: `1px solid ${T.border}`,
+                        borderTop: `2px solid ${accent}`,
+                        boxShadow: '0 2px 16px rgba(0,0,0,0.4)',
+                        width: 'min(78vw, 320px)',
+                        flexShrink: 0,
+                        scrollSnapAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                        transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-top-color 0.22s',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 168,
+                          height: 168,
+                          borderRadius: '50%',
+                          overflow: 'hidden',
+                          background: T.alt,
+                          border: `1px solid ${T.border}`,
+                          boxShadow: `0 0 0 4px rgba(238,238,255,0.04), 0 8px 24px rgba(0,0,0,0.5)`,
+                          marginBottom: '1.25rem',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={o.photo}
+                          alt={`${o.name} — ${o.role}`}
+                          loading="lazy"
+                          decoding="async"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                        />
+                      </div>
+                      <span
+                        style={{
+                          fontFamily: T.inter,
+                          fontSize: '0.6875rem',
+                          fontWeight: 600,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          color: accent,
+                          background: `${accent}1a`,
+                          border: `1px solid ${accent}33`,
+                          borderRadius: 999,
+                          padding: '4px 10px',
+                          marginBottom: '0.75rem',
+                        }}
+                      >
+                        {o.team}
+                      </span>
+                      <div style={{ fontFamily: T.manrope, fontSize: '1.0625rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', lineHeight: 1.2, marginBottom: '0.25rem' }}>
+                        {o.name}
+                      </div>
+                      <div style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, lineHeight: 1.45 }}>
+                        {o.role}
+                      </div>
+                    </GlowCard>
+                  </TiltCard>
+                </BlurFade>
+              </div>
+            )
+          })}
+        </HorizontalPinned>
       </section>
     </div>
   )
