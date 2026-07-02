@@ -1102,6 +1102,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
           school:     fd.get('school'),
           grade:      fd.get('grade'),
           build_idea: fd.get('build'),
+          company:    fd.get('company'),
         }),
       })
       const json = await res.json()
@@ -1179,6 +1180,12 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
           {/* Glass card */}
           <div style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderRadius: 20, border: `1px solid ${T.border}`, boxShadow: T.shadowLg, padding: 'clamp(1.75rem,4vw,2.5rem)' }}>
             <form onSubmit={handleSubmit} noValidate aria-label="YBA Registration form">
+              {/* Honeypot — hidden from users, catches bots */}
+              <input
+                type="text" name="company" tabIndex={-1} autoComplete="off"
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
                   <label htmlFor="reg-name" style={labelStyle}>Name</label>
