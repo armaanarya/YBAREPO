@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import '../styles/globals.css'
-import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { LenisProvider } from '@/components/ui/lenis-provider'
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <ScrollProgress />
         <LenisProvider />
 {children}
       </body>

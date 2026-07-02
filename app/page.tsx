@@ -282,6 +282,7 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
   return (
     <div>
       <ScrollLegend
+        activeColor="#eeeeff"
         items={[
           { id: 'hero', name: 'Intro' },
           { id: 'pillars', name: 'Pillars' },
