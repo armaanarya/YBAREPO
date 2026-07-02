@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { cn } from '@/lib/utils'
-import { motion, useMotionValue, useSpring, type HTMLMotionProps, type Transition } from 'framer-motion'
+import { motion, type HTMLMotionProps, type Transition } from 'framer-motion'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -195,43 +195,3 @@ export const AnimatedContainer = React.forwardRef<HTMLDivElement, AnimatedContai
   )
 )
 AnimatedContainer.displayName = 'AnimatedContainer'
-
-// ─── Hero Spotlight (cursor-following light spot) ────────────────────────────
-export function HeroSpotlight() {
-  const ref = React.useRef<HTMLDivElement>(null)
-  const x = useMotionValue(-200)
-  const y = useMotionValue(-200)
-  const sx = useSpring(x, { stiffness: 60, damping: 18, mass: 0.6 })
-  const sy = useSpring(y, { stiffness: 60, damping: 18, mass: 0.6 })
-
-  React.useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      const r = ref.current?.getBoundingClientRect()
-      if (!r) return
-      if (e.clientY < r.top || e.clientY > r.bottom) return
-      x.set(e.clientX - r.left)
-      y.set(e.clientY - r.top)
-    }
-    window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [x, y])
-
-  return (
-    <div ref={ref} className="pointer-events-none absolute inset-0 overflow-hidden">
-      <motion.div
-        aria-hidden="true"
-        style={{
-          x: sx,
-          y: sy,
-          translateX: '-50%',
-          translateY: '-50%',
-          width: 600,
-          height: 600,
-          background: 'radial-gradient(circle, rgba(238,238,255,0.18), transparent 60%)',
-          position: 'absolute',
-          mixBlendMode: 'plus-lighter',
-        }}
-      />
-    </div>
-  )
-}
