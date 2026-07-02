@@ -6,7 +6,7 @@ import { clean } from '../../../lib/sanitize'
 export async function POST(req: NextRequest) {
   try {
     if (!rateLimit(`signup:${clientIp(req)}`, 5, 60_000)) {
-      return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429, headers: { 'Retry-After': '60' } })
     }
 
     const body = await req.json()
