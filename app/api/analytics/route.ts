@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '../../../lib/supabase'
+import { supabaseServer as supabase } from '../../../lib/supabase-server'
 
 const VALID_EVENTS = new Set([
   'page_view', 'button_click', 'form_start', 'form_submit', 'officer_click',
