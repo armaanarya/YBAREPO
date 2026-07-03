@@ -41,7 +41,7 @@ export async function GET() {
         date: pick(block, 'pubDate'),
         excerpt: excerpt.slice(0, 200),
       }
-    }).filter(a => a.title && a.link)
+    }).filter(a => a.title && a.link.startsWith('https://'))
 
     return NextResponse.json({ articles: articles.length ? articles : FALLBACK, publication: PUBLICATION })
   } catch (err) {
