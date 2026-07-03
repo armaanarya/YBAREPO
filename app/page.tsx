@@ -269,13 +269,13 @@ const TEAM_ACCENT: Record<OfficerTeam, string> = {
   Operations:  '#86efac', // green-300
 }
 const OFFICERS: { name: string; role: string; team: OfficerTeam; photo: string }[] = [
-  { name: 'Sumedh Seetharaman', role: 'Finance Lead',         team: 'Curriculum', photo: '/officers/sumedh.png' },
-  { name: 'Arnav Mani',         role: 'Engineering Lead',     team: 'Curriculum', photo: '/officers/arnav.png'  },
-  { name: 'Riday Appanagari',   role: 'Head of Mentorship',   team: 'Curriculum', photo: '/officers/riday.png'  },
-  { name: 'Manas Patel',        role: 'Marketing',            team: 'Marketing',  photo: '/officers/manas.jpg'  },
-  { name: 'Ashley Lai',         role: 'Marketing',            team: 'Marketing',  photo: '/officers/ashley.jpg' },
-  { name: 'Anay Kalchuri',      role: 'Operations',           team: 'Operations', photo: '/officers/anay.png'   },
-  { name: 'Zeqi An',            role: 'Operations',           team: 'Operations', photo: '/officers/zeqi.jpg'   },
+  { name: 'Sumedh Seetharaman', role: 'Finance Lead',         team: 'Curriculum', photo: '/officers/sumedh.webp' },
+  { name: 'Arnav Mani',         role: 'Engineering Lead',     team: 'Curriculum', photo: '/officers/arnav.webp'  },
+  { name: 'Riday Appanagari',   role: 'Head of Mentorship',   team: 'Curriculum', photo: '/officers/riday.webp'  },
+  { name: 'Manas Patel',        role: 'Marketing',            team: 'Marketing',  photo: '/officers/manas.webp'  },
+  { name: 'Ashley Lai',         role: 'Marketing',            team: 'Marketing',  photo: '/officers/ashley.webp' },
+  { name: 'Anay Kalchuri',      role: 'Operations',           team: 'Operations', photo: '/officers/anay.webp'   },
+  { name: 'Zeqi An',            role: 'Operations',           team: 'Operations', photo: '/officers/zeqi.webp'   },
 ]
 
 function HomePage({ nav }: { nav: (p: Page) => void }) {
@@ -483,7 +483,7 @@ function AboutPage() {
       <section aria-label="Founder" style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) clamp(3rem,6vw,5rem)', display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 'clamp(2rem,5vw,5rem)', alignItems: 'center' }} className="about-grid">
         <BlurFade inView delay={0.05} yOffset={16}>
           <div style={{ width: '100%', aspectRatio: '4/5', borderRadius: 20, overflow: 'hidden', background: T.surface, boxShadow: T.shadowLg, border: `1px solid ${T.border}` }}>
-            <Image src="/armaan.png" alt="Armaan Arya, Founder of YBA" width={560} height={700} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <Image src="/armaan.webp" alt="Armaan Arya, Founder of YBA" width={560} height={700} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
         </BlurFade>
         <BlurFade inView delay={0.15} yOffset={12}>
