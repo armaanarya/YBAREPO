@@ -22,8 +22,8 @@ type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' |
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
 const T = {
-  manrope: 'Manrope, sans-serif',
-  inter:   'Inter, sans-serif',
+  manrope: 'var(--font-manrope), Manrope, sans-serif',
+  inter:   'var(--font-inter), Inter, sans-serif',
   dark:    '#eeeeff',
   muted:   'rgba(238,238,255,0.5)',
   cta:     '#eeeeff',

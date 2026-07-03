@@ -115,7 +115,7 @@ export function ScrollLegend({
             />
             <span
               style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
+                fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
                 fontSize: 12,
                 fontWeight: 500,
                 letterSpacing: '0.04em',

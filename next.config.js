@@ -14,8 +14,8 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self'",
       "img-src 'self' data: https://*.medium.com https://miro.medium.com https://cdn-images-1.medium.com",
       `connect-src 'self' https://*.supabase.co${isDev ? ' ws:' : ''}`,
       "object-src 'none'",

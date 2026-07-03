@@ -70,7 +70,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           >
             <Image src="/yba-mark.svg" alt="YBA" width={30} height={30} priority />
           </span>
-          <span style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#eeeeff', letterSpacing: '-0.01em' }}>
+          <span style={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#eeeeff', letterSpacing: '-0.01em' }}>
             YBA
           </span>
         </button>
@@ -85,7 +85,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
             'relative z-[61] shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200',
             'bg-[#eeeeff] text-[#09090f] hover:bg-[#d4d4d8] active:scale-95',
           )}
-          style={{ fontFamily: 'Inter, sans-serif' }}
+          style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
         >
           Join YBA
         </button>
@@ -114,7 +114,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           >
             <Image src="/yba-mark.svg" alt="YBA" width={28} height={28} priority />
           </span>
-          <span style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 700, fontSize: '0.9375rem', color: '#eeeeff' }}>
+          <span style={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 700, fontSize: '0.9375rem', color: '#eeeeff' }}>
             YBA
           </span>
         </button>
@@ -152,7 +152,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
                       ? 'bg-[rgba(238,238,255,0.12)] text-[#eeeeff]'
                       : 'text-[rgba(238,238,255,0.6)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[#eeeeff]',
                   )}
-                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
                 >
                   {item.name}
                 </button>
@@ -160,7 +160,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
               <button
                 onClick={() => go('register')}
                 className="mt-3 w-full rounded-xl bg-[#eeeeff] py-3 text-sm font-semibold text-[#09090f] transition-colors hover:bg-[#d4d4d8]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
               >
                 Join YBA
               </button>
@@ -191,7 +191,7 @@ function DesktopLinks({ items, currentPage, onNavigate }: {
           onClick={() => onNavigate(item.page)}
           className="pointer-events-auto relative px-3 py-2 transition-colors duration-150"
           style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'var(--font-inter), Inter, sans-serif',
             fontSize: '0.9375rem',
             fontWeight: 600,
             color: currentPage === item.page
