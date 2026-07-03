@@ -7,6 +7,7 @@ const manrope = Manrope({ subsets: ['latin'], weight: ['500', '600', '700', '800
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter', display: 'swap' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://joinyba.org'),
   title: 'YBA — Youth Blockchain Association',
   description: 'Empowering the next generation of blockchain builders. Join high school students learning DeFi, smart contracts, and real-world blockchain applications.',
   keywords: 'blockchain, youth, high school, DeFi, cryptocurrency, education, hackathon',
