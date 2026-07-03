@@ -180,21 +180,12 @@ function ScrollRevealSection() {
   const scale  = useTransform(scrollYProgress, [0, 0.5], [0.92, 1])
   const y      = useTransform(scrollYProgress, [0, 1], [0, -60])
 
-  const MODULES = [
-    { num: '01', title: 'Blockchain Fundamentals', tag: 'Core' },
-    { num: '02', title: 'Decentralized Finance (DeFi)', tag: 'Core' },
-    { num: '03', title: 'Smart Contracts & Solidity', tag: 'Advanced' },
-    { num: '04', title: 'Real-World Use Cases', tag: 'Applied' },
-    { num: '05', title: 'Building Your First DApp', tag: 'Project' },
-    { num: '06', title: 'Advanced Tokenomics', tag: 'Advanced' },
-  ]
-
   return (
     <section ref={ref} style={{ position: 'relative', padding: 'clamp(4rem,8vw,8rem) clamp(1.25rem,4vw,2rem)', overflow: 'hidden' }} aria-label="Curriculum preview">
       {/* @ts-ignore */}
       <motion.div style={{ translateY: y }}>
         <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center', marginBottom: '3rem' }}>
-          <Badge>Curriculum — Coming Soon</Badge>
+          <Badge>Curriculum</Badge>
           <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.08, marginTop: '1rem' }}>
             The curriculum that<br />changes everything.
           </h2>
@@ -225,27 +216,19 @@ function ScrollRevealSection() {
               <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28ca41' }}/>
               <span style={{ fontFamily: T.inter, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', marginLeft: 8 }}>YBA Learning Platform</span>
             </div>
-            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
-              {MODULES.map((m, i) => (
-                <BlurFade key={m.num} inView delay={0.15 + i * 0.06} yOffset={6}>
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: '1rem',
-                    background: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent',
-                    borderRadius: 10, padding: '0.75rem 1rem',
-                    border: '1px solid rgba(255,255,255,0.04)',
-                  }}>
-                    <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', minWidth: '2rem' }}>{m.num}</span>
-                    <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', flex: 1 }}>{m.title}</span>
-                    <span style={{
-                      fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em',
-                      background: m.tag === 'Advanced' ? 'rgba(238,238,255,0.18)' : m.tag === 'Project' ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.06)',
-                      color: m.tag === 'Advanced' ? '#eeeeff' : m.tag === 'Project' ? '#86efac' : 'rgba(255,255,255,0.5)',
-                      borderRadius: 999, padding: '3px 10px',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                    }}>{m.tag}</span>
-                  </div>
-                </BlurFade>
-              ))}
+            <div style={{ padding: 'clamp(1.75rem,3vw,2.5rem)' }}>
+              <BlurFade inView delay={0.15} yOffset={6}>
+                <p style={{ fontFamily: T.inter, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, maxWidth: '56ch' }}>
+                  Our curriculum is published as free articles on Medium — blockchain fundamentals, DeFi, and more, written by students for students.
+                </p>
+                <a
+                  href="https://medium.com/youth-blockchain-association" target="_blank" rel="noopener noreferrer"
+                  onClick={() => track('button_click', 'home', { button: 'medium_preview' })}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: 2 }}
+                >
+                  Read on Medium →
+                </a>
+              </BlurFade>
             </div>
           </div>
         </motion.div>
@@ -776,8 +759,6 @@ function GoalsPage() {
 }
 
 // ─── Curriculum ───────────────────────────────────────────────────────────────
-const MODULES = ['Blockchain Fundamentals','Decentralized Finance (DeFi)','Smart Contracts & Solidity','Real-World Use Cases','Building Your First DApp','Advanced Tokenomics']
-
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December']
 const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 const MEETING_START = new Date(2026, 4, 31) // May 31 2026
@@ -869,114 +850,57 @@ function YBACalendar() {
   )
 }
 
-function ModuleDetailPage({ index, title, onBack }: { index: number; title: string; onBack: () => void }) {
-  const moduleNum = String(index + 1).padStart(2, '0')
-
-  return (
-    <section style={{ maxWidth: 920, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
-      {/* Back button */}
-      <button
-        onClick={onBack}
-        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.muted, background: 'none', border: 'none', cursor: 'pointer', padding: '6px 10px', marginLeft: '-10px', borderRadius: 8, transition: 'color 0.18s, background 0.18s', marginBottom: '1.75rem' }}
-        onMouseEnter={e => { e.currentTarget.style.color = T.dark; e.currentTarget.style.background = T.alt }}
-        onMouseLeave={e => { e.currentTarget.style.color = T.muted; e.currentTarget.style.background = 'transparent' }}
-        aria-label="Back to curriculum"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Curriculum
-      </button>
-
-      <Badge>Module {moduleNum}</Badge>
-      <TextStagger
-        key={title}
-        text={title}
-        stagger={0.025}
-        direction="bottom"
-        as="h1"
-        className="font-extrabold tracking-[-0.025em] leading-[1.07]"
-        style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.5rem)', color: T.dark, marginTop: '1rem' }}
-      />
-
-      {/* Reading section */}
-      <div style={{ marginTop: '3rem' }}>
-        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Reading</p>
-        <div style={{ background: T.surface, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowSm, padding: 'clamp(1.75rem,3vw,2.5rem)', minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, fontStyle: 'italic' }}>Reading content — TBD</p>
-        </div>
-      </div>
-
-      {/* Video section */}
-      <div style={{ marginTop: '2.5rem' }}>
-        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Video</p>
-        <div style={{ width: '100%', aspectRatio: '16/9', background: T.alt, borderRadius: 16, border: `1px solid ${T.border}`, boxShadow: T.shadowMd, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, rgba(238,238,255,0.06), transparent 60%)' }} aria-hidden="true"/>
-          <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1.5px solid rgba(255,255,255,0.25)', position: 'relative', zIndex: 1 }} aria-label="Play video placeholder">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)" aria-hidden="true"><polygon points="8,5 20,12 8,19"/></svg>
-          </div>
-          <span style={{ position: 'absolute', bottom: 16, left: 18, fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.04em', zIndex: 1 }}>TBD</span>
-        </div>
-      </div>
-
-      {/* Activity section */}
-      <div style={{ marginTop: '2.5rem' }}>
-        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.35, marginBottom: '0.875rem' }}>Activity</p>
-        <div style={{ background: T.alt, borderRadius: 16, border: `1px dashed ${T.borderHover}`, padding: 'clamp(1.75rem,3vw,2.5rem)', minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, fontStyle: 'italic' }}>Activity — TBD</p>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function CurriculumPage() {
-  const [selectedModule, setSelectedModule] = useState<number | null>(null)
+  const [articles, setArticles] = useState<{ title: string; author: string; link: string; date: string; excerpt: string }[]>([])
+  const PUB = 'https://medium.com/youth-blockchain-association'
 
-  if (selectedModule !== null) {
-    return <ModuleDetailPage index={selectedModule} title={MODULES[selectedModule]} onBack={() => setSelectedModule(null)} />
-  }
+  useEffect(() => {
+    fetch('/api/articles').then(r => r.json()).then(d => setArticles(d.articles ?? [])).catch(() => {})
+  }, [])
 
   return (
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
       <BlurFade inView delay={0.05} yOffset={12}>
-        <Badge>Coming Soon</Badge>
+        <Badge>Learn on Medium</Badge>
         <TextStagger
-          text="The Curriculum Is Being Built."
-          stagger={0.025}
-          direction="bottom"
+          text="Read. Learn. Build."
           as="h1"
           className="font-extrabold tracking-[-0.025em] leading-[1.07]"
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
-        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
-          A rigorous, peer-reviewed blockchain curriculum — from foundational concepts to DeFi protocols. Crafted for high schoolers. Inspired by the best university programs in the world.
+        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
+          Our curriculum lives as a growing library of articles on Medium — written by YBA students, for students. Start with the fundamentals and follow along as we publish more.
         </p>
+        <a
+          href={PUB} target="_blank" rel="noopener noreferrer"
+          onClick={() => track('button_click', 'curriculum', { button: 'medium_publication' })}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem', padding: '11px 22px', background: T.cta, color: T.ctaText, borderRadius: 10, fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem' }}
+        >
+          Visit our Medium publication
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+        </a>
       </BlurFade>
-      <BlurFade inView delay={0.18} yOffset={8}>
-        <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginTop: '2.5rem', marginBottom: '0.875rem' }}>What's Coming</p>
-      </BlurFade>
-      <div style={{ borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}`, background: T.surface }}>
-        {MODULES.map((m, i) => (
-          <BlurFade key={i} inView delay={0.22 + i * 0.06} yOffset={6}>
-            <button
-              onClick={() => setSelectedModule(i)}
-              style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.125rem 1.5rem', background: i % 2 === 0 ? T.surface : T.alt, borderBottom: i < MODULES.length - 1 ? `1px solid ${T.border}` : 'none', border: 'none', borderTop: 'none', borderLeft: 'none', borderRight: 'none', width: '100%', textAlign: 'left', cursor: 'pointer', transition: 'background 0.18s, padding-left 0.18s', fontFamily: 'inherit' }}
-              onMouseEnter={e => { e.currentTarget.style.background = T.chipHover; e.currentTarget.style.paddingLeft = '1.75rem' }}
-              onMouseLeave={e => { e.currentTarget.style.background = i % 2 === 0 ? T.surface : T.alt; e.currentTarget.style.paddingLeft = '1.5rem' }}
-              aria-label={`Open Module ${i+1}: ${m}`}
+
+      <div style={{ display: 'grid', gap: '1rem', marginTop: '2.5rem' }}>
+        {articles.map((a, i) => (
+          <BlurFade key={a.link} inView delay={0.1 + i * 0.06} yOffset={8}>
+            <a
+              href={a.link} target="_blank" rel="noopener noreferrer"
+              onClick={() => track('button_click', 'curriculum', { button: 'article', title: a.title })}
+              style={{ display: 'block', padding: '1.5rem 1.75rem', background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, transition: 'border-color 0.18s, transform 0.18s' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.transform = '' }}
             >
-              <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.75rem', color: T.muted, minWidth: '4rem' }}>Module {i+1}</span>
-              <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark, flex: 1 }}>{m}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
+              <h3 style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em' }}>{a.title}</h3>
+              <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.6, marginTop: '0.5rem' }}>{a.excerpt}</p>
+              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.muted, opacity: 0.7, marginTop: '0.75rem', display: 'inline-block' }}>{a.author}</span>
+            </a>
           </BlurFade>
         ))}
+        {articles.length === 0 && (
+          <p style={{ fontFamily: T.inter, color: T.muted }}>Loading articles…</p>
+        )}
       </div>
-      <BlurFade inView delay={0.6} yOffset={8}>
-        <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-          <input aria-label="Email for curriculum updates" placeholder="your@email.com" style={{ fontFamily: T.inter, fontSize: '0.9375rem', background: T.chip, border: `1px solid ${T.border}`, borderRadius: 10, padding: '12px 18px', width: 260, outline: 'none', color: T.dark }} />
-          <button style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, border: 'none', borderRadius: 10, padding: '12px 24px', cursor: 'pointer' }}>Get Notified</button>
-        </div>
-      </BlurFade>
 
       <ParallaxLayer speed={0.15}>
         <YBACalendar />
