@@ -123,7 +123,10 @@ export function TextStagger({
   as: Component = 'span',
   ...props
 }: TextStaggerProps) {
-  const MotionComp = motion(Component as React.ElementType)
+  const MotionComp = React.useMemo(
+    () => motion.create(Component as React.ElementType),
+    [Component],
+  )
   return (
     <MotionComp
       initial={{ opacity: 0, y: 16 }}
