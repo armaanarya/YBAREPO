@@ -27,16 +27,22 @@ export function ParallaxLayer({ children, speed = 0.3, className = '' }: Paralla
     [`${speed * 100}px`, `${-speed * 100}px`],
   )
 
+  // framer-motion's useScroll requires the target element to have a non-static
+  // position for accurate offset calculation. Only force `relative` when the
+  // caller hasn't already supplied a positioning class (e.g. `absolute`).
+  const needsPosition = !/\b(absolute|fixed|relative|sticky)\b/.test(className)
+  const positionStyle = needsPosition ? { position: 'relative' as const } : undefined
+
   if (reduceMotion) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={className} style={positionStyle}>
         {children}
       </div>
     )
   }
 
   return (
-    <motion.div ref={ref} style={{ y, willChange: 'transform' }} className={className}>
+    <motion.div ref={ref} style={{ ...positionStyle, y, willChange: 'transform' }} className={className}>
       {children}
     </motion.div>
   )

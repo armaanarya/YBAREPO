@@ -40,7 +40,9 @@ export function ScrollLegend({
 
   // Track active section
   useEffect(() => {
-    const onScroll = () => {
+    let ticking = false
+    const compute = () => {
+      ticking = false
       const y = window.scrollY + window.innerHeight * 0.35
       let current = items[0]?.id ?? ''
       for (const item of items) {
@@ -49,7 +51,8 @@ export function ScrollLegend({
       }
       setActiveId(current)
     }
-    onScroll()
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(compute) } }
+    compute()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [items])

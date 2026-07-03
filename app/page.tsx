@@ -190,7 +190,7 @@ function ScrollRevealSection() {
   ]
 
   return (
-    <section ref={ref} style={{ padding: 'clamp(4rem,8vw,8rem) clamp(1.25rem,4vw,2rem)', overflow: 'hidden' }} aria-label="Curriculum preview">
+    <section ref={ref} style={{ position: 'relative', padding: 'clamp(4rem,8vw,8rem) clamp(1.25rem,4vw,2rem)', overflow: 'hidden' }} aria-label="Curriculum preview">
       {/* @ts-ignore */}
       <motion.div style={{ translateY: y }}>
         <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center', marginBottom: '3rem' }}>
@@ -387,7 +387,7 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
 
       {/* Pillar Cards — horizontal scroll-pinned reel */}
       <div id="pillars">
-      <HorizontalPinned heightVh={300} travelPercent={70} className="">
+      <HorizontalPinned heightVh={200} travelPercent={70} className="">
         {PILLARS.map((p, i) => (
           <BlurFade key={i} delay={i * 0.1} inView>
             <TiltCard maxTilt={6}>
@@ -444,10 +444,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       </section>
 
       <section id="apply" aria-label="Bridge to industry" style={{ background: T.alt, marginTop: '4rem', padding: 'clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem)', borderTop: `1px solid ${T.border}`, borderBottom: `1px solid ${T.border}`, position: 'relative', overflow: 'hidden' }}>
-        {/* Decorative parallax-drifting grid */}
-        <ParallaxLayer speed={-0.4} className="absolute inset-0 pointer-events-none">
-          <GridPattern />
-        </ParallaxLayer>
         <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem', position: 'relative', zIndex: 1 }}>
           <BlurFade delay={0.05} inView yOffset={12} className="flex-1 min-w-[260px]">
             <TextStagger
@@ -560,7 +556,7 @@ function AboutPage() {
           </BlurFade>
         </div>
 
-        <HorizontalPinned heightVh={300} travelPercent={72} className="">
+        <HorizontalPinned heightVh={200} travelPercent={72} className="">
           {OFFICERS.map((o, i) => {
             const accent = TEAM_ACCENT[o.team]
             const prev = OFFICERS[i - 1]
