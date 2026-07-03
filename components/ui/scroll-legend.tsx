@@ -41,6 +41,7 @@ export function ScrollLegend({
   // Track active section
   useEffect(() => {
     let ticking = false
+    let rafId = 0
     const compute = () => {
       ticking = false
       const y = window.scrollY + window.innerHeight * 0.35
@@ -51,10 +52,10 @@ export function ScrollLegend({
       }
       setActiveId(current)
     }
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(compute) } }
+    const onScroll = () => { if (!ticking) { ticking = true; rafId = requestAnimationFrame(compute) } }
     compute()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(rafId) }
   }, [items])
 
   const scrollTo = (id: string) => {
