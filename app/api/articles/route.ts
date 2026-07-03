@@ -19,8 +19,14 @@ const FALLBACK: Article[] = [
 ]
 
 // Plain-regex extraction: no XML parser, so no entity expansion (XXE-safe).
+const tagPatterns = new Map<string, RegExp>()
 function pick(block: string, tag: string): string {
-  const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`))
+  let re = tagPatterns.get(tag)
+  if (!re) {
+    re = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`)
+    tagPatterns.set(tag, re)
+  }
+  const m = block.match(re)
   if (!m) return ''
   return m[1].replace(/<!\[CDATA\[|\]\]>/g, '').replace(/<[^>]+>/g, '').trim()
 }
