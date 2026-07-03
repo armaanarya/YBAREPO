@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, ReactNode, CSSProperties, MouseEvent } from 'react'
+import { useEffect, useRef, useState, ReactNode, CSSProperties, MouseEvent } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 
 interface TiltCardProps {
@@ -17,12 +17,21 @@ export function TiltCard({
   maxTilt = 8,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null)
+  const [interactive, setInteractive] = useState(false)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const sx = useSpring(x, { stiffness: 180, damping: 18 })
   const sy = useSpring(y, { stiffness: 180, damping: 18 })
   const rotateY = useTransform(sx, [-0.5, 0.5], [-maxTilt, maxTilt])
   const rotateX = useTransform(sy, [-0.5, 0.5], [maxTilt, -maxTilt])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)')
+    setInteractive(mq.matches)
+    const h = (e: MediaQueryListEvent) => setInteractive(e.matches)
+    mq.addEventListener('change', h)
+    return () => mq.removeEventListener('change', h)
+  }, [])
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const r = ref.current?.getBoundingClientRect()
@@ -33,6 +42,14 @@ export function TiltCard({
   const onLeave = () => {
     x.set(0)
     y.set(0)
+  }
+
+  if (!interactive) {
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    )
   }
 
   return (

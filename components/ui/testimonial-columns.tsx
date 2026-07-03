@@ -50,12 +50,12 @@ function Column({ items, duration, hideAt }: ColumnProps) {
                   WebkitBackdropFilter: 'blur(12px)',
                 }}
               >
-                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.9375rem', color: 'rgba(238,238,255,0.85)', lineHeight: 1.65, margin: 0 }}>
+                <p style={{ fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif', fontSize: '0.9375rem', color: 'rgba(238,238,255,0.85)', lineHeight: 1.65, margin: 0 }}>
                   {t.quote}
                 </p>
                 <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span style={{ fontFamily: 'Manrope, system-ui, sans-serif', fontSize: '0.875rem', fontWeight: 600, color: '#eeeeff' }}>{t.name}</span>
-                  <span style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.75rem', color: 'rgba(238,238,255,0.5)' }}>{t.role}</span>
+                  <span style={{ fontFamily: 'var(--font-manrope), Manrope, system-ui, sans-serif', fontSize: '0.875rem', fontWeight: 600, color: '#eeeeff' }}>{t.name}</span>
+                  <span style={{ fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif', fontSize: '0.75rem', color: 'rgba(238,238,255,0.5)' }}>{t.role}</span>
                 </div>
               </li>
             ))}

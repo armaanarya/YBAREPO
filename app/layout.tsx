@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
+import { Manrope, Inter } from 'next/font/google'
 import '../styles/globals.css'
-import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { LenisProvider } from '@/components/ui/lenis-provider'
+
+const manrope = Manrope({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-manrope', display: 'swap' })
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter', display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'YBA — Youth Blockchain Association',
@@ -30,11 +33,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>
-        <ScrollProgress />
         <LenisProvider />
-{children}
+        {children}
       </body>
     </html>
   )

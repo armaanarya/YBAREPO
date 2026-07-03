@@ -57,7 +57,7 @@ export function AnimatedAccordion({ items, className, style }: AnimatedAccordion
                 background: 'transparent',
                 border: 'none',
                 color: '#eeeeff',
-                fontFamily: 'Manrope, system-ui, sans-serif',
+                fontFamily: 'var(--font-manrope), Manrope, system-ui, sans-serif',
                 fontSize: '1rem',
                 fontWeight: 600,
                 textAlign: 'left',
@@ -110,7 +110,7 @@ export function AnimatedAccordion({ items, className, style }: AnimatedAccordion
               <div
                 style={{
                   padding: '0 1.5rem 1.5rem',
-                  fontFamily: 'Inter, system-ui, sans-serif',
+                  fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif',
                   fontSize: '0.9375rem',
                   color: 'rgba(238,238,255,0.7)',
                   lineHeight: 1.7,

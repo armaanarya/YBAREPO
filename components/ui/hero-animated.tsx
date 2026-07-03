@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { cn } from '@/lib/utils'
-import { motion, useMotionValue, useSpring, type HTMLMotionProps, type Transition } from 'framer-motion'
+import { motion, type HTMLMotionProps } from 'framer-motion'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -92,7 +92,7 @@ export function BgGradient({
   )
 }
 
-// ─── Word-by-word stagger text ────────────────────────────────────────────────
+// ─── Single-block flow-in text ────────────────────────────────────────────────
 function transformVariants(direction?: TransformDirection) {
   return {
     hidden: {
@@ -105,33 +105,11 @@ function transformVariants(direction?: TransformDirection) {
   }
 }
 
-interface WordProps {
-  word: string
-  transition?: Transition
-  direction?: TransformDirection
-}
-
-function Word({ word, transition = { ease: [0.25, 0.1, 0.25, 1], duration: 0.45 }, direction = 'bottom' }: WordProps) {
-  return (
-    <span className="inline-block text-nowrap align-top">
-      {word.split('').map((char, i) => (
-        <span key={i} className="inline-block">
-          <motion.span
-            className="inline-block"
-            variants={transformVariants(direction)}
-            transition={transition}
-          >
-            {char}
-          </motion.span>
-        </span>
-      ))}
-    </span>
-  )
-}
-
 export interface TextStaggerProps extends HTMLMotionProps<'div'> {
   text: string
+  /** Accepted for API compatibility; no longer used (single-block animation). */
   stagger?: number
+  /** Accepted for API compatibility; no longer used (single-block animation). */
   direction?: TransformDirection
   className?: string
   as?: keyof JSX.IntrinsicElements
@@ -139,30 +117,26 @@ export interface TextStaggerProps extends HTMLMotionProps<'div'> {
 
 export function TextStagger({
   text,
-  stagger = 0.04,
-  direction,
+  stagger: _stagger,
+  direction: _direction,
   className,
   as: Component = 'span',
   ...props
 }: TextStaggerProps) {
-  const words = text.split(' ')
-  const MotionComp = motion(Component as React.ElementType)
-
+  const MotionComp = React.useMemo(
+    () => motion.create(Component as React.ElementType),
+    [Component],
+  )
   return (
     <MotionComp
-      transition={{ staggerChildren: stagger }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       className={cn('relative', className)}
       {...props}
     >
-      {words.map((word, i) => (
-        <React.Fragment key={i}>
-          <Word direction={direction} word={word} />
-          {i < words.length - 1 && ' '}
-        </React.Fragment>
-      ))}
+      {text}
     </MotionComp>
   )
 }
@@ -195,43 +169,3 @@ export const AnimatedContainer = React.forwardRef<HTMLDivElement, AnimatedContai
   )
 )
 AnimatedContainer.displayName = 'AnimatedContainer'
-
-// ─── Hero Spotlight (cursor-following light spot) ────────────────────────────
-export function HeroSpotlight() {
-  const ref = React.useRef<HTMLDivElement>(null)
-  const x = useMotionValue(-200)
-  const y = useMotionValue(-200)
-  const sx = useSpring(x, { stiffness: 60, damping: 18, mass: 0.6 })
-  const sy = useSpring(y, { stiffness: 60, damping: 18, mass: 0.6 })
-
-  React.useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      const r = ref.current?.getBoundingClientRect()
-      if (!r) return
-      if (e.clientY < r.top || e.clientY > r.bottom) return
-      x.set(e.clientX - r.left)
-      y.set(e.clientY - r.top)
-    }
-    window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [x, y])
-
-  return (
-    <div ref={ref} className="pointer-events-none absolute inset-0 overflow-hidden">
-      <motion.div
-        aria-hidden="true"
-        style={{
-          x: sx,
-          y: sy,
-          translateX: '-50%',
-          translateY: '-50%',
-          width: 600,
-          height: 600,
-          background: 'radial-gradient(circle, rgba(238,238,255,0.18), transparent 60%)',
-          position: 'absolute',
-          mixBlendMode: 'plus-lighter',
-        }}
-      />
-    </div>
-  )
-}
