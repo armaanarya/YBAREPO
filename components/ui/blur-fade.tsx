@@ -22,6 +22,7 @@ interface BlurFadeProps {
   direction?: Direction
   inView?: boolean
   inViewMargin?: MarginType
+  /** Accepted for API compatibility; blur animation removed for performance. */
   blur?: string
 }
 
@@ -62,8 +63,8 @@ export function BlurFade({
       : { x: offset, y: 0 } // right
 
   const defaultVariants: Variants = {
-    hidden: { ...hidden, opacity: 0, filter: `blur(${blur})` },
-    visible: { ...visible, opacity: 1, filter: 'blur(0px)' },
+    hidden: { ...hidden, opacity: 0 },
+    visible: { ...visible, opacity: 1 },
   }
   const combinedVariants = variant || defaultVariants
 
