@@ -166,6 +166,11 @@ a { color: inherit; text-decoration: none; }
   .reg-grid    { grid-template-columns: 1fr !important; }
 }
 
+/* Registration form field pairs: stack on phones so inputs get full width */
+@media (max-width: 640px) {
+  .reg-fields  { grid-template-columns: 1fr !important; }
+}
+
 /* Marquee */
 @keyframes yba-marquee {
   0%   { transform: translate3d(0, 0, 0); }

@@ -1107,7 +1107,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 aria-hidden="true"
                 style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
               />
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div className="reg-fields" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
                   <label htmlFor="reg-name" style={labelStyle}>Name</label>
                   <input id="reg-name" name="name" type="text" placeholder="Your name" style={{ ...fieldStyle, borderColor: errors.name ? '#dc2626' : 'transparent' }}
@@ -1121,7 +1121,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                   {errors.email && <p id="err-email" role="alert" style={errStyle}>{errors.email}</p>}
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div className="reg-fields" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
                   <label htmlFor="reg-school" style={labelStyle}>School</label>
                   <input id="reg-school" name="school" type="text" placeholder="Your high school" style={{ ...fieldStyle, borderColor: errors.school ? '#dc2626' : 'transparent' }}
@@ -1130,7 +1130,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 </div>
                 <div>
                   <label htmlFor="reg-grade" style={labelStyle}>Grade</label>
-                  <select id="reg-grade" name="grade" style={{ ...fieldStyle, appearance: 'none', cursor: 'pointer', borderColor: errors.grade ? '#dc2626' : 'transparent' }}
+                  <select id="reg-grade" name="grade" style={{ ...fieldStyle, appearance: 'none', cursor: 'pointer', borderColor: errors.grade ? '#dc2626' : 'transparent', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2344474a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: 36 }}
                     onFocus={e => (e.currentTarget.style.borderColor = focusBorder)} onBlur={e => (e.currentTarget.style.borderColor = errors.grade ? '#dc2626' : 'transparent')} required aria-invalid={!!errors.grade}>
                     <option value="">Select grade</option>
                     <option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option>
@@ -1158,7 +1158,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
                 {loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ animation: 'spin 0.8s linear infinite' }}><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>}
                 {loading ? 'Processing…' : 'Complete Registration'}
               </button>
-              <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.muted, textAlign: 'center', marginTop: '1rem' }}>
+              <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: '#55555f', textAlign: 'center', marginTop: '1rem' }}>
                 By joining, you agree to our Terms of Service and Privacy Policy.
               </p>
             </form>
@@ -1174,7 +1174,7 @@ function RegisterPage({ nav }: { nav: (p: Page) => void }) {
               marginTop: '0.875rem', padding: '1rem 1.25rem',
               background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
               borderRadius: 14, border: `1.5px solid ${T.border}`,
-              fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark,
+              fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: '#09090f',
               transition: 'background 0.2s, border-color 0.2s',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.95)'; e.currentTarget.style.borderColor = 'rgba(22,28,37,0.2)' }}
