@@ -852,56 +852,20 @@ function YBACalendar() {
 }
 
 function CurriculumPage() {
-  const [articles, setArticles] = useState<{ title: string; author: string; link: string; date: string; excerpt: string }[]>([])
-  const PUB = 'https://medium.com/youth-blockchain-association'
-
-  useEffect(() => {
-    fetch('/api/articles').then(r => r.json()).then(d => setArticles(d.articles ?? [])).catch(() => {})
-  }, [])
-
   return (
     <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 4rem', minHeight: '65vh' }}>
       <BlurFade inView delay={0.05} yOffset={12}>
-        <Badge>Learn on Medium</Badge>
+        <Badge>Coming Soon</Badge>
         <TextStagger
-          text="Read. Learn. Build."
+          text="Blockchain Content coming soon."
           as="h1"
           className="font-extrabold tracking-[-0.025em] leading-[1.07]"
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-          Our curriculum lives as a growing library of articles on Medium — written by YBA students, for students. Start with the fundamentals and follow along as we publish more.
+          Our full curriculum is on the way, and it will be mainly videos. Clear and engaging video lessons made by students, for students, taking you from the fundamentals of blockchain all the way to the frontier of Web3.
         </p>
-        <a
-          href={PUB} target="_blank" rel="noopener noreferrer"
-          onClick={() => track('button_click', 'curriculum', { button: 'medium_publication' })}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem', padding: '11px 22px', background: T.cta, color: T.ctaText, borderRadius: 10, fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem' }}
-        >
-          Visit our Medium publication
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-        </a>
       </BlurFade>
-
-      <div style={{ display: 'grid', gap: '1rem', marginTop: '2.5rem' }}>
-        {articles.map((a, i) => (
-          <BlurFade key={a.link} inView delay={0.1 + i * 0.06} yOffset={8}>
-            <a
-              href={a.link} target="_blank" rel="noopener noreferrer"
-              onClick={() => track('button_click', 'curriculum', { button: 'article', title: a.title })}
-              style={{ display: 'block', padding: '1.5rem 1.75rem', background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, transition: 'border-color 0.18s, transform 0.18s' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.transform = '' }}
-            >
-              <h3 style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em' }}>{a.title}</h3>
-              <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.6, marginTop: '0.5rem' }}>{a.excerpt}</p>
-              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.muted, opacity: 0.7, marginTop: '0.75rem', display: 'inline-block' }}>{a.author}</span>
-            </a>
-          </BlurFade>
-        ))}
-        {articles.length === 0 && (
-          <p style={{ fontFamily: T.inter, color: T.muted }}>Loading articles…</p>
-        )}
-      </div>
 
       <ParallaxLayer speed={0.15}>
         <YBACalendar />
