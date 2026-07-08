@@ -18,7 +18,7 @@ import { ScrollLegend } from '../components/ui/scroll-legend'
 import { AnimatedAccordion } from '../components/ui/animated-accordion'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'podcast' | 'register' | 'contact'
+type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'articles' | 'podcast' | 'register' | 'contact'
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
 const T = {
@@ -78,6 +78,7 @@ const NAV_LINKS: { label: string; page: Page }[] = [
   { label: 'About', page: 'about' },
   { label: 'Goals', page: 'goals' },
   { label: 'Curriculum', page: 'curriculum' },
+  { label: 'Articles', page: 'articles' },
   { label: 'Podcast', page: 'podcast' },
   { label: 'Contact', page: 'contact' },
 ]
@@ -1413,6 +1414,7 @@ const PAGE_TRANSITIONS: Record<Page, { initial: any; animate: any; exit: any }> 
   about:      { initial: { opacity: 0, x: 20 }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: -12 } },
   goals:      { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
   curriculum: { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
+  articles:   { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
   podcast:    { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
   register:   { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } },
   contact:    { initial: { opacity: 0, x: -20 }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: 12 } },
@@ -1451,6 +1453,7 @@ export default function App() {
             {page === 'about'      && <AboutPage />}
             {page === 'goals'      && <GoalsPage />}
             {page === 'curriculum' && <CurriculumPage />}
+            {page === 'articles'   && <ArticlesPage />}
             {page === 'podcast'    && <PodcastPage />}
             {page === 'register'   && <RegisterPage nav={nav} />}
             {page === 'contact'    && <ContactPage />}
