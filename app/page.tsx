@@ -174,7 +174,7 @@ function SectionHeading({ children, size = 'lg' }: { children: React.ReactNode; 
 }
 
 // ─── Scroll Reveal Card ───────────────────────────────────────────────────────
-function ScrollRevealSection() {
+function ScrollRevealSection({ nav }: { nav: (p: Page) => void }) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref as React.RefObject<HTMLElement>, offset: ['start end', 'end start'] })
   const rotate = useTransform(scrollYProgress, [0, 0.5], [18, 0])
@@ -220,15 +220,14 @@ function ScrollRevealSection() {
             <div style={{ padding: 'clamp(1.75rem,3vw,2.5rem)' }}>
               <BlurFade inView delay={0.15} yOffset={6}>
                 <p style={{ fontFamily: T.inter, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, maxWidth: '56ch' }}>
-                  Our curriculum is published as free articles on Medium — blockchain fundamentals, DeFi, and more, written by students for students.
+                  Our full curriculum is coming soon, and it will be built mainly around videos. Until then, start with our first article, written by students for students.
                 </p>
-                <a
-                  href="https://medium.com/youth-blockchain-association" target="_blank" rel="noopener noreferrer"
-                  onClick={() => track('button_click', 'home', { button: 'medium_preview' })}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: 2 }}
+                <button
+                  onClick={() => { track('button_click', 'home', { button: 'articles_preview' }); nav('articles') }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer', padding: '0 0 2px' }}
                 >
-                  Read on Medium →
-                </a>
+                  Read our first article →
+                </button>
               </BlurFade>
             </div>
           </div>
@@ -393,7 +392,7 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
 
       {/* Scroll-reveal curriculum section */}
       <div id="curriculum-preview">
-      <ScrollRevealSection />
+      <ScrollRevealSection nav={nav} />
       </div>
 
       {/* Industry chips — staggered reveal */}
