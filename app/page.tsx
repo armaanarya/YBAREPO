@@ -257,7 +257,6 @@ const OFFICERS: { name: string; role: string; team: OfficerTeam; photo: string }
   { name: 'Riday Appanagari',   role: 'Head of Mentorship',   team: 'Curriculum', photo: '/officers/riday.webp'  },
   { name: 'Manas Patel',        role: 'Marketing',            team: 'Marketing',  photo: '/officers/manas.webp'  },
   { name: 'Anay Kalchuri',      role: 'Operations',           team: 'Operations', photo: '/officers/anay.webp'   },
-  { name: 'Zeqi An',            role: 'Operations',           team: 'Operations', photo: '/officers/zeqi.webp'   },
 ]
 
 function HomePage({ nav }: { nav: (p: Page) => void }) {
