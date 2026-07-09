@@ -189,3 +189,18 @@ a { color: inherit; text-decoration: none; }
   border-left-color: #eeeeff !important;
 }
 
+/* ─── Light theme via whole-page inversion ──────────────────────────────────
+   Inverts the whole canvas (dark → light), then re-inverts photos/videos so
+   they render normally. The nav logo keeps its own inline filter and comes
+   out black on the light background. Delete this block to go back to dark. */
+html {
+  filter: invert(1) hue-rotate(180deg);
+  /* The canvas background paints OUTSIDE the root filter, so set the light
+     color directly here or empty/overscroll regions flash the old dark bg. */
+  background: #f6f6f0;
+}
+img:not([src$='.svg']),
+video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
