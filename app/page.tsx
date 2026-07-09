@@ -256,7 +256,6 @@ const OFFICERS: { name: string; role: string; team: OfficerTeam; photo: string }
   { name: 'Arnav Mani',         role: 'Engineering Lead',     team: 'Curriculum', photo: '/officers/arnav.webp'  },
   { name: 'Riday Appanagari',   role: 'Head of Mentorship',   team: 'Curriculum', photo: '/officers/riday.webp'  },
   { name: 'Manas Patel',        role: 'Marketing',            team: 'Marketing',  photo: '/officers/manas.webp'  },
-  { name: 'Ashley Lai',         role: 'Marketing',            team: 'Marketing',  photo: '/officers/ashley.webp' },
   { name: 'Anay Kalchuri',      role: 'Operations',           team: 'Operations', photo: '/officers/anay.webp'   },
   { name: 'Zeqi An',            role: 'Operations',           team: 'Operations', photo: '/officers/zeqi.webp'   },
 ]
@@ -583,13 +582,17 @@ function AboutPage() {
                           flexShrink: 0,
                         }}
                       >
+                        {/* The img carries its own dark backing: the photos have alpha holes from
+                            background removal, and a background painted inside the img's filter
+                            context fills them with the same dark the card showed behind them,
+                            under any theme filter. */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={o.photo}
                           alt={`${o.name} — ${o.role}`}
                           loading="lazy"
                           decoding="async"
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block', background: T.alt }}
                         />
                       </div>
                       <span
