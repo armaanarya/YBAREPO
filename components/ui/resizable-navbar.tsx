@@ -46,14 +46,14 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           boxShadow: visible
             ? '0 0 0 1px rgba(238,238,255,0.1), 0 8px 32px rgba(0,0,0,0.5)'
             : 'none',
-          width: visible ? '60%' : '100%',
+          width: visible ? '78%' : '100%',
           y: visible ? 12 : 0,
           borderRadius: visible ? 999 : 0,
           background: visible ? 'rgba(9,9,15,0.88)' : 'rgba(9,9,15,0)',
         }}
         transition={{ type: 'spring', stiffness: 220, damping: 44 }}
-        style={{ minWidth: 600 }}
-        className="relative z-[60] mx-auto hidden max-w-5xl flex-row items-center justify-between px-8 py-4 lg:flex"
+        style={{ minWidth: 780 }}
+        className="relative z-[60] mx-auto hidden max-w-6xl flex-row items-center justify-between gap-4 px-6 py-4 lg:flex"
       >
         {/* Logo */}
         <button
@@ -182,17 +182,17 @@ function DesktopLinks({ items, currentPage, onNavigate }: {
   return (
     <div
       onMouseLeave={() => setHovered(null)}
-      className="pointer-events-none absolute inset-0 hidden flex-row items-center justify-center gap-1 lg:flex"
+      className="hidden min-w-0 flex-1 flex-row items-center justify-center gap-0.5 lg:flex"
     >
       {items.map(item => (
         <button
           key={item.page}
           onMouseEnter={() => setHovered(item.page)}
           onClick={() => onNavigate(item.page)}
-          className="pointer-events-auto relative px-3 py-2 transition-colors duration-150"
+          className="relative shrink-0 whitespace-nowrap px-2.5 py-2 transition-colors duration-150"
           style={{
             fontFamily: 'var(--font-inter), Inter, sans-serif',
-            fontSize: '0.9375rem',
+            fontSize: '0.875rem',
             fontWeight: 600,
             color: currentPage === item.page
               ? '#eeeeff'
