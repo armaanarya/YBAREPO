@@ -294,20 +294,6 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
             <SpinningLogo size={160} />
           </AnimatedContainer>
 
-          {/* Badge */}
-          <AnimatedContainer transition={{ delay: 0.2 }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              background: T.accentLight, border: `1px solid ${T.accentMid}`,
-              borderRadius: 999, padding: '6px 16px',
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, display: 'inline-block' }} />
-              <span style={{ fontFamily: T.inter, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.05em', color: T.accent }}>
-                Registration 2026 Open
-              </span>
-            </div>
-          </AnimatedContainer>
-
           {/* Staggered headline */}
           <TextStagger
             text="The Next Generation of Blockchain Builders."
