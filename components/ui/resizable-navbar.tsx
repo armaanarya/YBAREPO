@@ -11,7 +11,7 @@ import {
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 
-type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'articles' | 'podcast' | 'register' | 'contact'
+type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'hackathon' | 'articles' | 'podcast' | 'register' | 'contact'
 
 interface NavItem { name: string; page: Page }
 
@@ -189,10 +189,10 @@ function DesktopLinks({ items, currentPage, onNavigate }: {
           key={item.page}
           onMouseEnter={() => setHovered(item.page)}
           onClick={() => onNavigate(item.page)}
-          className="relative shrink-0 whitespace-nowrap px-2.5 py-2 transition-colors duration-150"
+          className="relative shrink-0 whitespace-nowrap px-2 py-2 transition-colors duration-150"
           style={{
             fontFamily: 'var(--font-inter), Inter, sans-serif',
-            fontSize: '0.875rem',
+            fontSize: '0.8125rem',
             fontWeight: 600,
             color: currentPage === item.page
               ? '#eeeeff'
