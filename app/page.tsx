@@ -119,7 +119,7 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
                 TikTok
               </a>
-              <a href="https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer"
+              <a href={'https://www.instagram.com/yba.net9?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr'} target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, marginTop: '0.375rem', padding: '4px 0', transition: 'color 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
                 onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
@@ -464,7 +464,7 @@ function AboutPage() {
           <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem', flexWrap: 'wrap' }}>
             {[
               { href: 'https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg', label: 'TikTok', icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg> },
-              { href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==', label: 'Instagram', icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> },
+              { href: 'https://www.instagram.com/yba.net9?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr', label: 'Instagram', icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> },
             ].map(s => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.875rem', fontWeight: 500, color: T.dark, background: T.chip, borderRadius: 999, padding: '8px 18px', transition: 'background 0.2s', border: `1px solid ${T.border}` }}
@@ -1327,7 +1327,7 @@ function PodcastPage() {
       <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
         {[
           { href: 'https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg', label: 'Follow on TikTok' },
-          { href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==', label: 'Follow on Instagram' },
+          { href: 'https://www.instagram.com/yba.net9?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr', label: 'Follow on Instagram' },
         ].map((s, i) => (
           <BlurFade key={s.label} inView delay={0.5 + i * 0.08} yOffset={8}>
             <a href={s.href} target="_blank" rel="noopener noreferrer"
@@ -1581,8 +1581,8 @@ const CONTACT_METHODS = [
       </svg>
     ),
     label: 'Instagram',
-    value: '@yba.network_',
-    href: 'https://www.instagram.com/yba.network_?igsh=NTc4MTIwNjQ2YQ==',
+    value: '@yba.net9',
+    href: 'https://www.instagram.com/yba.net9?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr',
     cta: 'Follow us',
   },
   {
@@ -1595,6 +1595,29 @@ const CONTACT_METHODS = [
     value: '@yba.official',
     href: 'https://www.tiktok.com/@yba.official?_r=1&_t=ZT-95eKaLZHeYg',
     cta: 'Follow us',
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+      </svg>
+    ),
+    label: 'Donation Page',
+    value: 'Support our mission',
+    href: 'https://hcb.hackclub.com/donations/start/youth-blockchain-association',
+    cta: 'Donate now',
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+    ),
+    label: 'Our Links',
+    value: 'lnk.bio/theyba',
+    href: 'https://lnk.bio/theyba',
+    cta: 'See all links',
   },
 ]
 
