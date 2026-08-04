@@ -174,6 +174,21 @@ a { color: inherit; text-decoration: none; }
   .reg-fields  { grid-template-columns: 1fr !important; }
 }
 
+/* Route enter transition (app/template.tsx).
+   No animation-fill-mode on purpose: if animations never run, the element stays
+   at its natural opacity 1 and the page is visible. A `both` fill would hold it
+   at opacity 0 and hide the whole route. */
+@keyframes route-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.route-transition {
+  animation: route-fade-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-transition { animation: none; }
+}
+
 /* Marquee */
 @keyframes yba-marquee {
   0%   { transform: translate3d(0, 0, 0); }

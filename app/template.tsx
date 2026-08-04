@@ -1,22 +1,17 @@
-'use client'
-
 import React from 'react'
-import { motion } from 'framer-motion'
 
 // template.tsx (unlike layout.tsx) remounts on every navigation, which is what
 // gives us the per-route enter animation.
 //
-// OPACITY ONLY — do not add y/translate here. ScrollLegend on the home page is
-// position: fixed, and a transform on any ancestor would make this wrapper its
-// containing block, re-anchoring it from the viewport and visibly breaking it.
+// Deliberately CSS, not framer-motion. A motion.div would server-render as
+// style="opacity:0" and depend on hydration to become visible — if the JS ever
+// failed, the entire page would be invisible. The CSS keyframe fails the other
+// way: no animation means the element simply renders at opacity 1. It also
+// keeps this a server component, so no JS ships for it at all.
+//
+// OPACITY ONLY — never add translate/transform here. ScrollLegend on the home
+// page is position: fixed, and a transform on any ancestor would make this
+// wrapper its containing block, re-anchoring it from the viewport.
 export default function Template({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
-  )
+  return <div className="route-transition">{children}</div>
 }
