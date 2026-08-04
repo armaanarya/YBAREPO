@@ -1011,8 +1011,8 @@ function PartnerCard({ p }: { p: Partner }) {
           <Image
             src={p.logo}
             alt={`${p.name} logo`}
-            width={512}
-            height={512}
+            width={400}
+            height={400}
             style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
           />
         </div>
