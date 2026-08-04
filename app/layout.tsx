@@ -2,13 +2,21 @@ import type { Metadata } from 'next'
 import { Manrope, Inter } from 'next/font/google'
 import '../styles/globals.css'
 import { LenisProvider } from '@/components/ui/lenis-provider'
+import { SiteNav } from '@/components/site/site-nav'
+import { SiteFooter } from '@/components/site/site-footer'
+import { RouteEffects } from '@/components/site/route-effects'
 
 const manrope = Manrope({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-manrope', display: 'swap' })
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter', display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://joinyba.org'),
-  title: 'YBA — Youth Blockchain Association',
+  // Per-route `metadata` exports override the default; the template appends the
+  // site name so child routes read e.g. "Institutions — YBA".
+  title: {
+    default: 'YBA — Youth Blockchain Association',
+    template: '%s — YBA',
+  },
   description: 'Empowering the next generation of blockchain builders. Join high school students learning DeFi, smart contracts, and real-world blockchain applications.',
   keywords: 'blockchain, youth, high school, DeFi, cryptocurrency, education, hackathon',
   openGraph: {
@@ -37,7 +45,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>
         <LenisProvider />
-        {children}
+        <RouteEffects />
+        {/* Nav and footer live here, outside app/template.tsx, so the transition
+            wrapper never becomes an ancestor of the position: fixed navbar. */}
+        <SiteNav />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   )
