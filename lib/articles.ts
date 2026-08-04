@@ -3,6 +3,7 @@
 // 'use client' and of any React import.
 
 export const MEDIUM_PUB  = 'https://medium.com/youth-blockchain-association'
+export const MEDIUM_POST = 'https://medium.com/youth-blockchain-association/what-is-blockchain-for-teens-c24d9a85fee1'
 
 export type ArticleMeta = {
   slug: string; title: string; author: string; date: string; dateISO: string;
