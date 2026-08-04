@@ -164,6 +164,9 @@ a { color: inherit; text-decoration: none; }
   .about-grid  { grid-template-columns: 1fr !important; }
   .quote-grid  { grid-template-columns: 1fr !important; }
   .reg-grid    { grid-template-columns: 1fr !important; }
+  /* Partner card: logo column stacks above the copy and stops at a sane width */
+  .partner-card { grid-template-columns: 1fr !important; }
+  .partner-card > div:first-child { max-width: 200px; }
 }
 
 /* Registration form field pairs: stack on phones so inputs get full width */

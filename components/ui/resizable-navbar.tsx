@@ -11,7 +11,7 @@ import {
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 
-type Page = 'home' | 'about' | 'goals' | 'curriculum' | 'hackathon' | 'articles' | 'podcast' | 'register' | 'contact'
+type Page = 'home' | 'about' | 'curriculum' | 'hackathon' | 'institutions' | 'articles' | 'podcast' | 'register' | 'contact'
 
 interface NavItem { name: string; page: Page }
 
