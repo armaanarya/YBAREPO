@@ -9,30 +9,34 @@ import {
   useMotionValueEvent,
 } from 'framer-motion'
 import Image from 'next/image'
-import React, { useRef, useState } from 'react'
-
-type Page = 'home' | 'about' | 'curriculum' | 'hackathon' | 'institutions' | 'articles' | 'podcast' | 'register' | 'contact'
-
-interface NavItem { name: string; page: Page }
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { useEffect, useRef, useState } from 'react'
+import type { NavLink } from '@/lib/site-nav'
 
 interface YBANavProps {
-  items: NavItem[]
-  currentPage: Page
-  onNavigate: (p: Page) => void
+  items: NavLink[]
   className?: string
 }
 
-export function YBANav({ items, currentPage, onNavigate, className }: YBANavProps) {
+export function YBANav({ items, className }: YBANavProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const [visible, setVisible] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setVisible(latest > 80)
   })
 
-  const go = (p: Page) => { onNavigate(p); setMobileOpen(false) }
+  // startsWith keeps Articles lit while reading /articles/<slug>; the '/' case
+  // is special-cased or Home would match every route.
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
+
+  // Link navigation does not unmount the menu, and this also covers back/forward.
+  useEffect(() => { setMobileOpen(false) }, [pathname])
 
   return (
     <motion.div
@@ -56,8 +60,8 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
         className="relative z-[60] mx-auto hidden max-w-6xl flex-row items-center justify-between gap-4 px-6 py-4 lg:flex"
       >
         {/* Logo */}
-        <button
-          onClick={() => go('home')}
+        <Link
+          href="/"
           className="flex items-center gap-2 shrink-0"
           aria-label="Go to home"
         >
@@ -73,14 +77,14 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           <span style={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#eeeeff', letterSpacing: '-0.01em' }}>
             YBA
           </span>
-        </button>
+        </Link>
 
         {/* Centered links */}
-        <DesktopLinks items={items} currentPage={currentPage} onNavigate={go} />
+        <DesktopLinks items={items} isActive={isActive} />
 
         {/* CTA */}
-        <button
-          onClick={() => go('register')}
+        <Link
+          href="/register"
           className={cn(
             'relative z-[61] shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200',
             'bg-[#eeeeff] text-[#09090f] hover:bg-[#d4d4d8] active:scale-95',
@@ -88,7 +92,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
         >
           Join YBA
-        </button>
+        </Link>
       </motion.div>
 
       {/* Mobile nav */}
@@ -100,8 +104,8 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
         }}
         className="relative z-[60] flex w-full flex-row items-center justify-between px-5 py-4 lg:hidden"
       >
-        <button
-          onClick={() => go('home')}
+        <Link
+          href="/"
           className="flex items-center gap-2"
           aria-label="Go to home"
         >
@@ -117,7 +121,7 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           <span style={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 700, fontSize: '0.9375rem', color: '#eeeeff' }}>
             YBA
           </span>
-        </button>
+        </Link>
 
         <button
           onClick={() => setMobileOpen(v => !v)}
@@ -143,27 +147,29 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
           >
             <div className="flex flex-col gap-1">
               {items.map(item => (
-                <button
-                  key={item.page}
-                  onClick={() => go(item.page)}
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
                   className={cn(
                     'w-full rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors',
-                    currentPage === item.page
+                    isActive(item.href)
                       ? 'bg-[rgba(238,238,255,0.12)] text-[#eeeeff]'
                       : 'text-[rgba(238,238,255,0.6)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[#eeeeff]',
                   )}
                   style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
                 >
-                  {item.name}
-                </button>
+                  {item.label}
+                </Link>
               ))}
-              <button
-                onClick={() => go('register')}
-                className="mt-3 w-full rounded-xl bg-[#eeeeff] py-3 text-sm font-semibold text-[#09090f] transition-colors hover:bg-[#d4d4d8]"
+              <Link
+                href="/register"
+                onClick={() => setMobileOpen(false)}
+                className="mt-3 w-full rounded-xl bg-[#eeeeff] py-3 text-center text-sm font-semibold text-[#09090f] transition-colors hover:bg-[#d4d4d8]"
                 style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
               >
                 Join YBA
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}
@@ -172,12 +178,11 @@ export function YBANav({ items, currentPage, onNavigate, className }: YBANavProp
   )
 }
 
-function DesktopLinks({ items, currentPage, onNavigate }: {
-  items: NavItem[]
-  currentPage: Page
-  onNavigate: (p: Page) => void
+function DesktopLinks({ items, isActive }: {
+  items: NavLink[]
+  isActive: (href: string) => boolean
 }) {
-  const [hovered, setHovered] = useState<Page | null>(null)
+  const [hovered, setHovered] = useState<string | null>(null)
 
   return (
     <div
@@ -185,36 +190,36 @@ function DesktopLinks({ items, currentPage, onNavigate }: {
       className="hidden min-w-0 flex-1 flex-row items-center justify-center gap-0.5 lg:flex"
     >
       {items.map(item => (
-        <button
-          key={item.page}
-          onMouseEnter={() => setHovered(item.page)}
-          onClick={() => onNavigate(item.page)}
+        <Link
+          key={item.href}
+          href={item.href}
+          onMouseEnter={() => setHovered(item.href)}
           className="relative shrink-0 whitespace-nowrap px-2 py-2 transition-colors duration-150"
           style={{
             fontFamily: 'var(--font-inter), Inter, sans-serif',
             fontSize: '0.8125rem',
             fontWeight: 600,
-            color: currentPage === item.page
+            color: isActive(item.href)
               ? '#eeeeff'
-              : hovered === item.page
+              : hovered === item.href
                 ? '#eeeeff'
                 : 'rgba(238,238,255,0.65)',
           }}
         >
-          {hovered === item.page && (
+          {hovered === item.href && (
             <motion.div
               layoutId="nav-hover"
               className="absolute inset-0 rounded-full bg-[rgba(255,255,255,0.06)]"
             />
           )}
-          {currentPage === item.page && (
+          {isActive(item.href) && (
             <motion.div
               layoutId="nav-active"
               className="absolute inset-0 rounded-full bg-[rgba(238,238,255,0.1)]"
             />
           )}
-          <span className="relative z-10">{item.name}</span>
-        </button>
+          <span className="relative z-10">{item.label}</span>
+        </Link>
       ))}
     </div>
   )
