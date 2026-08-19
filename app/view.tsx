@@ -9,7 +9,6 @@ import { GridPattern } from '@/components/ui/grid-pattern'
 import { AnimatedContainer, Hero, TextStagger } from '@/components/ui/hero-animated'
 import { HorizontalPinned } from '@/components/ui/horizontal-pinned'
 import { HoverGlowButton } from '@/components/ui/hover-glow-button'
-import { MagneticButton } from '@/components/ui/magnetic-button'
 import { Marquee } from '@/components/ui/marquee'
 import { ParallaxLayer } from '@/components/ui/parallax-layer'
 import { ScrollLegend } from '@/components/ui/scroll-legend'
@@ -123,19 +122,18 @@ export function HomeView() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
-          {/* Spinning logo */}
-          <AnimatedContainer transition={{ delay: 0.1, duration: 0.6 }}>
+          {/* Logo — static, no entrance animation */}
+          <div className="relative z-10">
             <SpinningLogo size={160} />
-          </AnimatedContainer>
+          </div>
 
-          {/* Staggered headline */}
-          <TextStagger
-            text="The Next Generation of Blockchain Builders."
-            stagger={0.03}
-            direction="bottom"
-            className="text-[clamp(2.75rem,6vw,5rem)] leading-[1.05] tracking-[-0.03em] font-extrabold"
+          {/* Headline — static, no entrance animation */}
+          <span
+            className="relative text-[clamp(2.75rem,6vw,5rem)] leading-[1.05] tracking-[-0.03em] font-extrabold"
             style={{ fontFamily: T.manrope, color: T.dark }}
-          />
+          >
+            The Next Generation of Blockchain Builders.
+          </span>
 
           {/* Subtitle */}
           <AnimatedContainer transition={{ delay: 0.5 }}>
@@ -149,38 +147,33 @@ export function HomeView() {
 
           {/* CTAs */}
           <AnimatedContainer transition={{ delay: 0.65 }} className="flex gap-3 flex-wrap justify-center">
-            <MagneticButton>
-              <HoverGlowButton
-                onClick={() => { track('button_click', 'home', { button: 'join_hero' }); router.push('/register') }}
-                background={T.accent}
-                textColor={T.ctaText}
-                style={{
-                  fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600,
-                  borderRadius: 12, padding: '13px 30px',
-                  boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
-                }}
-              >
-                Join the Movement →
-              </HoverGlowButton>
-            </MagneticButton>
-            <MagneticButton strength={0.25}>
-              <button
-                onClick={() => router.push('/about')}
-                style={{
-                  fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500,
-                  background: 'rgba(238,238,255,0.05)', color: T.dark,
-                  border: `1.5px solid ${T.border}`, borderRadius: 12,
-                  padding: '13px 26px', cursor: 'pointer',
-                  transition: 'border-color 0.2s, background 0.2s, transform 0.12s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = 'rgba(238,238,255,0.08)' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'rgba(238,238,255,0.05)'; e.currentTarget.style.transform = '' }}
-                onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-                onMouseUp={e => (e.currentTarget.style.transform = '')}
-              >
-                See Our Goals
-              </button>
-            </MagneticButton>
+            <HoverGlowButton
+              className="btn-press"
+              onClick={() => { track('button_click', 'home', { button: 'join_hero' }); router.push('/register') }}
+              background={T.accent}
+              textColor={T.ctaText}
+              style={{
+                fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600,
+                borderRadius: 12, padding: '13px 30px',
+                boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
+              }}
+            >
+              Join the Movement →
+            </HoverGlowButton>
+            <button
+              className="btn-press"
+              onClick={() => router.push('/about')}
+              style={{
+                fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 500,
+                background: 'rgba(238,238,255,0.05)', color: T.dark,
+                border: `1.5px solid ${T.border}`, borderRadius: 12,
+                padding: '13px 26px', cursor: 'pointer',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = T.borderHover; e.currentTarget.style.background = 'rgba(238,238,255,0.08)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.background = 'rgba(238,238,255,0.05)' }}
+            >
+              See Our Goals
+            </button>
           </AnimatedContainer>
         </div>
       </Hero>
@@ -260,16 +253,15 @@ export function HomeView() {
             </p>
           </BlurFade>
           <BlurFade delay={0.2} inView yOffset={8}>
-            <MagneticButton>
-              <HoverGlowButton
-                onClick={() => router.push('/register')}
-                background={T.cta}
-                textColor={T.ctaText}
-                style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
-              >
-                Apply Now →
-              </HoverGlowButton>
-            </MagneticButton>
+            <HoverGlowButton
+              className="btn-press"
+              onClick={() => router.push('/register')}
+              background={T.cta}
+              textColor={T.ctaText}
+              style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
+            >
+              Apply Now →
+            </HoverGlowButton>
           </BlurFade>
         </div>
       </section>

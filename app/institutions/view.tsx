@@ -7,7 +7,6 @@ import { BlurFade } from '@/components/ui/blur-fade'
 import { GlowCard } from '@/components/ui/glow-card'
 import { TextStagger } from '@/components/ui/hero-animated'
 import { HoverGlowButton } from '@/components/ui/hover-glow-button'
-import { MagneticButton } from '@/components/ui/magnetic-button'
 import { T } from '@/lib/theme'
 import { track } from '@/lib/track'
 import { useRouter } from 'next/navigation'
@@ -193,16 +192,15 @@ export function InstitutionsView() {
                 Sponsorship funds hackathon prizes, workshop materials, and speaker travel — and puts your team in front of students who will be building in this industry for the next decade.
               </p>
               <div style={{ marginTop: '1.75rem' }}>
-                <MagneticButton>
-                  <HoverGlowButton
-                    onClick={() => { track('button_click', 'institutions', { button: 'become_sponsor' }); router.push('/contact') }}
-                    background={T.cta}
-                    textColor={T.ctaText}
-                    style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
-                  >
-                    Become a Sponsor →
-                  </HoverGlowButton>
-                </MagneticButton>
+                <HoverGlowButton
+                  className="btn-press"
+                  onClick={() => { track('button_click', 'institutions', { button: 'become_sponsor' }); router.push('/contact') }}
+                  background={T.cta}
+                  textColor={T.ctaText}
+                  style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
+                >
+                  Become a Sponsor →
+                </HoverGlowButton>
               </div>
             </div>
           </BlurFade>
