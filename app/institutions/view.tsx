@@ -6,18 +6,16 @@ import { Badge } from '@/components/site/badge'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { GlowCard } from '@/components/ui/glow-card'
 import { TextStagger } from '@/components/ui/hero-animated'
-import { HoverGlowButton } from '@/components/ui/hover-glow-button'
 import { T } from '@/lib/theme'
-import { track } from '@/lib/track'
-import { useRouter } from 'next/navigation'
 
 type Partner = {
   name: string
   url: string
   logo: string
+  logoBackground?: string
   tagline: string
   kind: string
-  stats: { value: string; label: string }[]
+  stats?: { value: string; label: string }[]
   body: string[]
 }
 
@@ -39,6 +37,18 @@ const PARTNERS: Partner[] = [
       'Our first year together focuses on three things: routing YBA members into college.xyz chapters at the schools they commit to, opening their opportunity feed and speaker network to our Guest Speaker Series, and building a shared judging bench so YBA Hackathon projects are reviewed by the same people hiring in the industry.',
     ],
   },
+  {
+    name: 'Compound Foundation',
+    url: 'https://www.compound.xyz/',
+    logo: '/partners/compound-foundation.png',
+    logoBackground: '#020b0d',
+    tagline: 'Ecosystem growth and stewardship for Compound.',
+    kind: 'DeFi · Foundation',
+    body: [
+      'Compound is a decentralized finance protocol for earning yield and borrowing against digital assets. Its Foundation supports the ecosystem through strategic planning, development, partnerships, governance coordination, and community engagement.',
+      'For YBA students, Compound is a real example of decentralized lending, protocol security, and community governance. Compound Foundation joins YBA as both a partner and a sponsor.',
+    ],
+  },
 ]
 
 function PartnerCard({ p }: { p: Partner }) {
@@ -58,7 +68,7 @@ function PartnerCard({ p }: { p: Partner }) {
       }}
     >
       <div>
-        <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 16, overflow: 'hidden', background: T.alt, border: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 16, overflow: 'hidden', background: p.logoBackground ?? T.alt, border: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Image
             src={p.logo}
             alt={`${p.name} logo`}
@@ -91,14 +101,16 @@ function PartnerCard({ p }: { p: Partner }) {
           {p.tagline}
         </p>
 
-        <div style={{ display: 'flex', gap: 'clamp(1.25rem,3vw,2.5rem)', flexWrap: 'wrap', margin: '1.5rem 0', paddingTop: '1.25rem', borderTop: `1px solid ${T.border}` }}>
-          {p.stats.map(s => (
-            <div key={s.label}>
-              <div style={{ fontFamily: T.manrope, fontSize: '1.5rem', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{s.value}</div>
-              <div style={{ fontFamily: T.inter, fontSize: '0.8125rem', color: T.muted, marginTop: '0.25rem' }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
+        {p.stats && (
+          <div style={{ display: 'flex', gap: 'clamp(1.25rem,3vw,2.5rem)', flexWrap: 'wrap', margin: '1.5rem 0', paddingTop: '1.25rem', borderTop: `1px solid ${T.border}` }}>
+            {p.stats.map(s => (
+              <div key={s.label}>
+                <div style={{ fontFamily: T.manrope, fontSize: '1.5rem', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{s.value}</div>
+                <div style={{ fontFamily: T.inter, fontSize: '0.8125rem', color: T.muted, marginTop: '0.25rem' }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {p.body.map((para, i) => (
           <p key={i} style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75, marginTop: i === 0 ? 0 : '1rem' }}>
@@ -111,7 +123,6 @@ function PartnerCard({ p }: { p: Partner }) {
 }
 
 export function InstitutionsView() {
-  const router = useRouter()
   return (
     <div>
       {/* Page intro */}
@@ -170,7 +181,7 @@ export function InstitutionsView() {
               style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', color: T.dark }}
             />
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.75rem' }}>
-              YBA is free for every student, and it stays that way because sponsors cover the cost of running it.
+              Sponsors help keep YBA free for every student.
             </p>
           </BlurFade>
 
@@ -178,29 +189,38 @@ export function InstitutionsView() {
             <div
               style={{
                 marginTop: '2rem',
-                border: `1px dashed ${T.borderHover}`,
+                border: `1px solid ${T.border}`,
                 borderRadius: 20,
                 padding: 'clamp(2rem,4vw,3rem)',
-                textAlign: 'center',
-                background: T.accentLight,
+                background: T.surface,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'clamp(1.5rem,4vw,3rem)',
+                flexWrap: 'wrap',
               }}
             >
-              <p style={{ fontFamily: T.manrope, fontSize: 'clamp(1.125rem,2.5vw,1.5rem)', fontWeight: 700, color: T.dark, letterSpacing: '-0.015em', lineHeight: 1.35, maxWidth: '40ch', margin: '0 auto' }}>
-                Our first sponsor slot is open.
-              </p>
-              <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', margin: '0.875rem auto 0' }}>
-                Sponsorship funds hackathon prizes, workshop materials, and speaker travel — and puts your team in front of students who will be building in this industry for the next decade.
-              </p>
-              <div style={{ marginTop: '1.75rem' }}>
-                <HoverGlowButton
-                  className="btn-press"
-                  onClick={() => { track('button_click', 'institutions', { button: 'become_sponsor' }); router.push('/contact') }}
-                  background={T.cta}
-                  textColor={T.ctaText}
-                  style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
-                >
-                  Become a Sponsor →
-                </HoverGlowButton>
+              <div style={{ background: '#020b0d', borderRadius: 12, padding: '1rem', width: 'min(100%, 300px)', flexShrink: 0 }}>
+                <Image
+                  src="/partners/compound-foundation.png"
+                  alt="Compound Foundation logo"
+                  width={328}
+                  height={96}
+                  style={{ display: 'block', width: '100%', height: 'auto' }}
+                />
+              </div>
+              <div style={{ flex: '1 1 260px' }}>
+                <span style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.muted }}>
+                  YBA sponsor
+                </span>
+                <h3 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.1, marginTop: '0.5rem' }}>
+                  Compound Foundation
+                </h3>
+                <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, marginTop: '0.875rem' }}>
+                  Supporting YBA&apos;s work to make blockchain education accessible to high school students.
+                </p>
+                <a href="https://www.compound.xyz/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark, marginTop: '1rem', textDecoration: 'underline', textUnderlineOffset: 4 }}>
+                  Visit Compound ↗
+                </a>
               </div>
             </div>
           </BlurFade>
