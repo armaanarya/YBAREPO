@@ -11,7 +11,6 @@ import { HorizontalPinned } from '@/components/ui/horizontal-pinned'
 import { HoverGlowButton } from '@/components/ui/hover-glow-button'
 import { Marquee } from '@/components/ui/marquee'
 import { ParallaxLayer } from '@/components/ui/parallax-layer'
-import { ScrollLegend } from '@/components/ui/scroll-legend'
 import { TiltCard } from '@/components/ui/tilt-card'
 import { T } from '@/lib/theme'
 import { track } from '@/lib/track'
@@ -95,15 +94,6 @@ export function HomeView() {
   const router = useRouter()
   return (
     <div>
-      <ScrollLegend
-        activeColor="#eeeeff"
-        items={[
-          { id: 'hero', name: 'Intro' },
-          { id: 'pillars', name: 'Pillars' },
-          { id: 'curriculum-preview', name: 'Curriculum' },
-          { id: 'apply', name: 'Apply' },
-        ]}
-      />
       {/* ─── Hero ─────────────────────────────────────────────────────────── */}
       <div id="hero">
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">

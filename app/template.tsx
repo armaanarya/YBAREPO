@@ -8,10 +8,6 @@ import React from 'react'
 // failed, the entire page would be invisible. The CSS keyframe fails the other
 // way: no animation means the element simply renders at opacity 1. It also
 // keeps this a server component, so no JS ships for it at all.
-//
-// OPACITY ONLY — never add translate/transform here. ScrollLegend on the home
-// page is position: fixed, and a transform on any ancestor would make this
-// wrapper its containing block, re-anchoring it from the viewport.
 export default function Template({ children }: { children: React.ReactNode }) {
   return <div className="route-transition">{children}</div>
 }
