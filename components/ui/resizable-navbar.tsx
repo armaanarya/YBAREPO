@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 import type { NavLink } from '@/lib/site-nav'
+import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
 
 interface YBANavProps {
   items: NavLink[]
@@ -83,8 +84,8 @@ export function YBANav({ items, className }: YBANavProps) {
         <DesktopLinks items={items} isActive={isActive} />
 
         {/* CTA */}
-        <Link
-          href="/register"
+        <a
+          href={REGISTRATION_FORM_URL}
           className={cn(
             'relative z-[61] shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200',
             'bg-[#eeeeff] text-[#09090f] hover:bg-[#d4d4d8] active:scale-95',
@@ -92,7 +93,7 @@ export function YBANav({ items, className }: YBANavProps) {
           style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
         >
           Join YBA
-        </Link>
+        </a>
       </motion.div>
 
       {/* Mobile nav */}
@@ -162,14 +163,14 @@ export function YBANav({ items, className }: YBANavProps) {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/register"
+              <a
+                href={REGISTRATION_FORM_URL}
                 onClick={() => setMobileOpen(false)}
                 className="mt-3 w-full rounded-xl bg-[#eeeeff] py-3 text-center text-sm font-semibold text-[#09090f] transition-colors hover:bg-[#d4d4d8]"
                 style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
               >
                 Join YBA
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

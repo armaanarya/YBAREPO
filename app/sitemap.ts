@@ -5,7 +5,7 @@ import { ARTICLES } from '@/lib/articles'
 const BASE = 'https://joinyba.org'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // /register is not in NAV_LINKS (it is reached via the CTA), so add it here.
+  // Keep the standalone registration page in the sitemap for direct visitors.
   const pages = [...NAV_LINKS.map(l => l.href), '/register'].map(href => ({
     url: `${BASE}${href === '/' ? '' : href}`,
     changeFrequency: 'monthly' as const,

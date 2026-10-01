@@ -14,6 +14,7 @@ import { ParallaxLayer } from '@/components/ui/parallax-layer'
 import { TiltCard } from '@/components/ui/tilt-card'
 import { T } from '@/lib/theme'
 import { track } from '@/lib/track'
+import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 
@@ -139,7 +140,7 @@ export function HomeView() {
           <AnimatedContainer transition={{ delay: 0.65 }} className="flex gap-3 flex-wrap justify-center">
             <HoverGlowButton
               className="btn-press"
-              onClick={() => { track('button_click', 'home', { button: 'join_hero' }); router.push('/register') }}
+              onClick={() => { track('button_click', 'home', { button: 'join_hero' }); window.location.assign(REGISTRATION_FORM_URL) }}
               background={T.accent}
               textColor={T.ctaText}
               style={{
@@ -245,7 +246,7 @@ export function HomeView() {
           <BlurFade delay={0.2} inView yOffset={8}>
             <HoverGlowButton
               className="btn-press"
-              onClick={() => router.push('/register')}
+              onClick={() => window.location.assign(REGISTRATION_FORM_URL)}
               background={T.cta}
               textColor={T.ctaText}
               style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}

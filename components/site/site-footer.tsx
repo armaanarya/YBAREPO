@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { T } from '@/lib/theme'
 import { NAV_LINKS } from '@/lib/site-nav'
+import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
 
 const linkStyle: React.CSSProperties = {
   display: 'block', fontFamily: T.inter, fontSize: '0.875rem', color: T.muted,
@@ -64,7 +65,7 @@ export function SiteFooter() {
         </div>
         <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: `1px solid ${T.border}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: T.dark, opacity: 0.35 }}>© 2026 Youth Blockchain Association. All rights reserved.</p>
-          <Link href="/register"
+          <a href={REGISTRATION_FORM_URL}
             style={{ fontFamily: T.inter, fontSize: '0.8125rem', fontWeight: 600, background: T.cta, color: T.ctaText, borderRadius: 8, padding: '8px 20px', transition: 'background 0.2s, transform 0.12s' }}
             onMouseEnter={e => (e.currentTarget.style.background = T.ctaHover)}
             onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = '' }}
@@ -72,7 +73,7 @@ export function SiteFooter() {
             onMouseUp={e => (e.currentTarget.style.transform = '')}
           >
             Join YBA →
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

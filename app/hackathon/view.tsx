@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/site/section-heading'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { TextStagger } from '@/components/ui/hero-animated'
 import { T } from '@/lib/theme'
+import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
 
 const STEPS = [
   { num: '01', title: 'Form Your Team', desc: 'Collaborate across schools and disciplines to tackle real blockchain challenges.' },
@@ -17,8 +18,6 @@ const WORKSHOPS = [
   { num: '02', title: 'Real World Impact',    desc: 'See how blockchain already powers finance, digital identity, supply chains, and more far beyond the hype.' },
   { num: '03', title: 'Hands On Building',     desc: 'Set up a wallet, explore a testnet, and write your first simple smart contract in a guided session.' },
 ]
-
-const SIGNUP_FORM = 'https://forms.gle/3SSYakeDvPaR4eYc9'
 
 export function HackathonView() {
   return (
@@ -95,7 +94,7 @@ export function HackathonView() {
               </div>
             ))}
           </div>
-          <a href={SIGNUP_FORM} target="_blank" rel="noopener noreferrer"
+          <a href={REGISTRATION_FORM_URL} target="_blank" rel="noopener noreferrer"
             style={{ display: 'inline-block', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, textDecoration: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '2rem', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
             onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 4px 16px rgba(238,238,255,0.18)' }}
             onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.4)' }}
@@ -139,7 +138,7 @@ export function HackathonView() {
               </div>
             ))}
           </div>
-          <a href={SIGNUP_FORM} target="_blank" rel="noopener noreferrer"
+          <a href={REGISTRATION_FORM_URL} target="_blank" rel="noopener noreferrer"
             style={{ display: 'inline-block', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, background: T.cta, color: T.ctaText, textDecoration: 'none', borderRadius: 10, padding: '12px 28px', cursor: 'pointer', marginTop: '2rem', transition: 'background 0.2s, transform 0.12s', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
             onMouseEnter={e => { e.currentTarget.style.background = T.ctaHover; e.currentTarget.style.boxShadow = '0 4px 16px rgba(238,238,255,0.18)' }}
             onMouseLeave={e => { e.currentTarget.style.background = T.cta; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.4)' }}
