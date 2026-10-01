@@ -162,7 +162,7 @@ export function AboutView() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={o.photo}
-                          alt={`${o.name} — ${o.role}`}
+                          alt={`${o.name}, ${o.role}`}
                           loading="lazy"
                           decoding="async"
                           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block', background: T.alt }}

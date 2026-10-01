@@ -12,22 +12,22 @@ const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], 
 export const metadata: Metadata = {
   metadataBase: new URL('https://joinyba.org'),
   // Per-route `metadata` exports override the default; the template appends the
-  // site name so child routes read e.g. "Institutions — YBA".
+  // site name so child routes read e.g. "Institutions, YBA".
   title: {
-    default: 'YBA — Youth Blockchain Association',
-    template: '%s — YBA',
+    default: 'YBA, Youth Blockchain Association',
+    template: '%s, YBA',
   },
   description: 'Join YBA, a student-led community for high schoolers learning about blockchain through peer lessons, projects, and events.',
   keywords: 'blockchain, youth, high school, DeFi, cryptocurrency, education, hackathon',
   openGraph: {
-    title: 'YBA — Youth Blockchain Association',
+    title: 'YBA, Youth Blockchain Association',
     description: 'Blockchain learning and projects for high school students.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'YBA — Youth Blockchain Association',
+    title: 'YBA, Youth Blockchain Association',
     description: 'Blockchain learning and projects for high school students.',
     images: ['/twitter-image.png'],
   },

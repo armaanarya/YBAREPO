@@ -124,9 +124,9 @@ export function WhatIsBitcoinArticle() {
         <ul style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.7, marginTop: '1rem', paddingLeft: '1.25rem', display: 'grid', gap: '0.625rem', listStyle: 'disc', wordBreak: 'break-word' }}>
           <li><a style={srcLink} href="https://bitcoin.org/en/how-it-works" target="_blank" rel="noopener noreferrer">Bitcoin.org: how transactions work</a></li>
           <li><a style={srcLink} href="https://bitcoin.org/en/you-need-to-know" target="_blank" rel="noopener noreferrer">Bitcoin.org: risks to understand</a></li>
-          <li><a style={srcLink} href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer"><strong>Yahoo Finance — Bitcoin (BTC-USD)</strong></a><strong>:</strong> the live price, recent news, and price history.</li>
-          <li><a style={srcLink} href="https://www.nerdwallet.com/article/investing/what-is-bitcoin" target="_blank" rel="noopener noreferrer"><strong>NerdWallet — What Is Bitcoin?</strong></a><strong>:</strong> a clear, beginner-friendly overview.</li>
-          <li><a style={srcLink} href="https://www.coinbase.com/learn/crypto-basics/what-is-bitcoin" target="_blank" rel="noopener noreferrer"><strong>Coinbase Learn — What is Bitcoin?</strong></a><strong>:</strong> the basics, explained simply.</li>
+          <li><a style={srcLink} href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer"><strong>Yahoo Finance, Bitcoin (BTC-USD)</strong></a><strong>:</strong> the live price, recent news, and price history.</li>
+          <li><a style={srcLink} href="https://www.nerdwallet.com/article/investing/what-is-bitcoin" target="_blank" rel="noopener noreferrer"><strong>NerdWallet, What Is Bitcoin?</strong></a><strong>:</strong> a clear, beginner-friendly overview.</li>
+          <li><a style={srcLink} href="https://www.coinbase.com/learn/crypto-basics/what-is-bitcoin" target="_blank" rel="noopener noreferrer"><strong>Coinbase Learn, What is Bitcoin?</strong></a><strong>:</strong> the basics, explained simply.</li>
         </ul>
 
         <p style={body}>
