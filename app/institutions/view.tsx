@@ -12,7 +12,6 @@ type Partner = {
   name: string
   url: string
   logo: string
-  logoBackground?: string
   tagline: string
   kind: string
   stats?: { value: string; label: string }[]
@@ -32,21 +31,20 @@ const PARTNERS: Partner[] = [
       { value: '100+',   label: 'Bounties hosted' },
     ],
     body: [
-      'college.xyz is a nonprofit that connects undergraduates to the crypto industry — bounties from companies like Coinbase and Solana, research and developer programs, conference subsidies, and the annual University Blockchain Conference, the longest-running student-led conference in the space.',
-      'They start where we stop. YBA teaches blockchain literacy in grades 9–12; college.xyz turns that literacy into paid bounties, internships, and industry rooms once students reach campus. Together that is one continuous pipeline — a student can meet Web3 as a sophomore in high school and be shipping against a real company bounty by their freshman year of college.',
-      'Our first year together focuses on three things: routing YBA members into college.xyz chapters at the schools they commit to, opening their opportunity feed and speaker network to our Guest Speaker Series, and building a shared judging bench so YBA Hackathon projects are reviewed by the same people hiring in the industry.',
+      'college.xyz is a nonprofit connecting undergraduates to crypto through company bounties, research and developer programs, conference support, and the student-led University Blockchain Conference.',
+      'YBA introduces blockchain literacy in grades 9–12; college.xyz carries that work into campus chapters, paid projects, internships, and industry connections. Students can begin with YBA in high school and keep building in college.',
+      'In our first year together, we plan to connect YBA members with college.xyz chapters, share its opportunities and speakers with students, and bring its network into judging YBA Hackathon projects.',
     ],
   },
   {
     name: 'Compound Foundation',
     url: 'https://www.compound.xyz/',
-    logo: '/partners/compound-foundation.png',
-    logoBackground: '#020b0d',
-    tagline: 'Ecosystem growth and stewardship for Compound.',
+    logo: '/partners/compound-foundation-square.png',
+    tagline: 'Bringing DeFi closer to high school builders.',
     kind: 'DeFi · Foundation',
     body: [
-      'Compound is a decentralized finance protocol for earning yield and borrowing against digital assets. Its Foundation supports the ecosystem through strategic planning, development, partnerships, governance coordination, and community engagement.',
-      'For YBA students, Compound is a real example of decentralized lending, protocol security, and community governance. Compound Foundation joins YBA as both a partner and a sponsor.',
+      'Compound was one of the first lending protocols in DeFi. YBA is partnering with the Foundation behind it to give students a closer look at the people building in decentralized finance.',
+      'Compound Foundation is also sponsoring YBA HACKS, our hackathon for Bay Area high school students. The event will feature a guest speaker from the Foundation.',
     ],
   },
 ]
@@ -68,7 +66,7 @@ function PartnerCard({ p }: { p: Partner }) {
       }}
     >
       <div>
-        <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 16, overflow: 'hidden', background: p.logoBackground ?? T.alt, border: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 16, overflow: 'hidden', background: T.alt, border: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Image
             src={p.logo}
             alt={`${p.name} logo`}
@@ -181,7 +179,7 @@ export function InstitutionsView() {
               style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', color: T.dark }}
             />
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.75rem' }}>
-              Sponsors help keep YBA free for every student.
+              Organizations supporting YBA HACKS and our students.
             </p>
           </BlurFade>
 
@@ -199,7 +197,7 @@ export function InstitutionsView() {
                 flexWrap: 'wrap',
               }}
             >
-              <div style={{ background: '#020b0d', borderRadius: 12, padding: '1rem', width: 'min(100%, 300px)', flexShrink: 0 }}>
+              <div style={{ background: '#020b0d', borderRadius: 12, overflow: 'hidden', width: 'min(100%, 300px)', flexShrink: 0 }}>
                 <Image
                   src="/partners/compound-foundation.png"
                   alt="Compound Foundation logo"
@@ -210,13 +208,13 @@ export function InstitutionsView() {
               </div>
               <div style={{ flex: '1 1 260px' }}>
                 <span style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.muted }}>
-                  YBA sponsor
+                  YBA HACKS sponsor
                 </span>
                 <h3 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.1, marginTop: '0.5rem' }}>
                   Compound Foundation
                 </h3>
                 <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, marginTop: '0.875rem' }}>
-                  Supporting YBA&apos;s work to make blockchain education accessible to high school students.
+                  Compound Foundation is sponsoring YBA HACKS. A guest speaker from the Foundation will join the event. Thank you to the Foundation and <a href="https://www.linkedin.com/in/steven-liu1/" target="_blank" rel="noopener noreferrer" style={{ color: T.dark, textDecoration: 'underline', textUnderlineOffset: 3 }}>Steven Liu</a> for supporting our students.
                 </p>
                 <a href="https://www.compound.xyz/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark, marginTop: '1rem', textDecoration: 'underline', textUnderlineOffset: 4 }}>
                   Visit Compound ↗
