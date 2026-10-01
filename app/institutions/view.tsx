@@ -192,12 +192,13 @@ export function InstitutionsView() {
                 padding: 'clamp(2rem,4vw,3rem)',
                 background: T.surface,
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                gap: 'clamp(1.5rem,4vw,3rem)',
-                flexWrap: 'wrap',
+                gap: 'clamp(1.5rem,4vw,2rem)',
+                textAlign: 'center',
               }}
             >
-              <div style={{ background: '#020b0d', borderRadius: 12, overflow: 'hidden', width: 'min(100%, 300px)', flexShrink: 0 }}>
+              <div style={{ background: '#020b0d', borderRadius: 12, overflow: 'hidden', width: 'min(100%, 300px)' }}>
                 <Image
                   src="/partners/compound-foundation.png"
                   alt="Compound Foundation logo"
@@ -206,7 +207,7 @@ export function InstitutionsView() {
                   style={{ display: 'block', width: '100%', height: 'auto' }}
                 />
               </div>
-              <div style={{ flex: '1 1 260px' }}>
+              <div style={{ maxWidth: 680 }}>
                 <span style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: T.muted }}>
                   YBA HACKS sponsor
                 </span>
@@ -214,7 +215,7 @@ export function InstitutionsView() {
                   Compound Foundation
                 </h3>
                 <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, marginTop: '0.875rem' }}>
-                  Compound Foundation is sponsoring YBA HACKS. A guest speaker from the Foundation will join the event. Thank you to the Foundation and <a href="https://www.linkedin.com/in/steven-liu1/" target="_blank" rel="noopener noreferrer" style={{ color: T.dark, textDecoration: 'underline', textUnderlineOffset: 3 }}>Steven Liu</a> for supporting our students.
+                  YBA HACKS will feature a guest speaker from Compound Foundation. Thank you to Compound Foundation and <a href="https://www.linkedin.com/in/steven-liu1/" target="_blank" rel="noopener noreferrer" style={{ color: T.dark, textDecoration: 'underline', textUnderlineOffset: 3 }}>Steven Liu</a> for sponsoring YBA HACKS and supporting our students.
                 </p>
                 <a href="https://www.compound.xyz/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark, marginTop: '1rem', textDecoration: 'underline', textUnderlineOffset: 4 }}>
                   Visit Compound ↗
