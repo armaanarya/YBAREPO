@@ -198,12 +198,12 @@ export function InstitutionsView() {
                 textAlign: 'center',
               }}
             >
-              <div style={{ background: '#020b0d', borderRadius: 12, overflow: 'hidden', width: 'min(100%, 300px)' }}>
+              <div style={{ background: '#030d0f', borderRadius: 12, overflow: 'hidden', width: 'min(100%, 300px)' }}>
                 <Image
-                  src="/partners/compound-foundation.png"
+                  src="/partners/compound-foundation-sponsor.png"
                   alt="Compound Foundation logo"
-                  width={328}
-                  height={96}
+                  width={304}
+                  height={94}
                   style={{ display: 'block', width: '100%', height: 'auto' }}
                 />
               </div>
