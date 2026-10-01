@@ -221,7 +221,16 @@ html {
   background: #f6f6f0;
 }
 img:not([src$='.svg']),
-video {
+video,
+.yba-spline canvas {
   filter: invert(1) hue-rotate(180deg);
 }
+/* The hero scene's canvas spans the first screen; it must never take clicks. */
+.yba-spline,
+.yba-spline * {
+  pointer-events: none !important;
+}
+/* The Spline hero scene is authored for this light page (ink mark on #f5f5fb, the color this page renders),
+   so its canvas is re-inverted above to show true colors. If you go back to
+   dark, restyle the scene's "YBA Ink" material and background in Spline. */
 

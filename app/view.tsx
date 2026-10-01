@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { Badge } from '@/components/site/badge'
-import { SpinningLogo } from '@/components/site/spinning-logo'
+import { HeroMark3D } from '@/components/site/hero-mark-3d'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { GlowCard } from '@/components/ui/glow-card'
 import { GridPattern } from '@/components/ui/grid-pattern'
@@ -96,7 +96,7 @@ export function HomeView() {
   return (
     <div>
       {/* ─── Hero ─────────────────────────────────────────────────────────── */}
-      <div id="hero">
+      <div id="hero" className="relative">
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
         {/* Animated dot grid */}
         <GridPattern />
@@ -113,9 +113,9 @@ export function HomeView() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
-          {/* Logo — static, no entrance animation */}
+          {/* Logo — live Spline scene that bursts across the first screen, then settles here */}
           <div className="relative z-10">
-            <SpinningLogo size={160} />
+            <HeroMark3D />
           </div>
 
           {/* Headline — static, no entrance animation */}
