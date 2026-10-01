@@ -53,60 +53,56 @@ export function WhatIsBitcoinArticle() {
         </figure>
 
         <p style={body}>
-          On May 22, 2010, a programmer named Laszlo Hanyecz paid <strong>10,000 bitcoins for two pizzas</strong>. At the time, it felt like a fair trade. Today, those same 10,000 bitcoins would be worth <em>hundreds of millions of dollars</em>. People now jokingly celebrate the date as “Bitcoin Pizza Day,” and it’s a perfect reminder of how strange, new, and fast-moving this whole thing is.
-        </p>
-        <p style={body}>
-          So what did Lasso end up spending?
+          On May 22, 2010, programmer Laszlo Hanyecz paid <strong>10,000 bitcoins for two pizzas</strong>. The purchase is remembered as Bitcoin Pizza Day. It is an early example of someone using bitcoin to buy something.
         </p>
 
-        <h3 style={h3}>So what is Bitcoin?</h3>
+
+        <h3 style={h3}>What is Bitcoin?</h3>
         <p style={body}>
-          Bitcoin is virtual currency and is unlike currencies such as dollars or euros, which you can physically own. Bitcoins are simply deleted or exchanged online; eliminating the need for physical money. Bitcoin has been around since 2009, when it was invented by someone using the pseudonym of Satoshi Nakamoto.
+          Bitcoin is digital money. It launched in 2009 under the name Satoshi Nakamoto. You can send it online, and the network records the transfer without moving physical coins or notes.
         </p>
         <p style={body}>
-          Bitcoin differs from fiat currency, as there is no financial institution or other third party providing approval when sending money through Bitcoin. Instead, as Coinbase (a digital currency exchange, also referred to as a cryptocurrency) explains, “it enables peer-to-peer funds transfer independent of the need for a financial or third-party institution’s involvement”.
+          A Bitcoin payment does not require a bank to approve it. Instead, computers on the network check the transaction against shared rules. A service such as Coinbase is a cryptocurrency exchange, where people can buy or sell bitcoin; it is not the currency itself.
         </p>
         <p style={body}>
-          <strong>Warning</strong>: investing in and using cryptocurrencies, including Bitcoin, is a speculative investment; we will discuss this later.
+          <strong>Risk</strong>: Bitcoin can lose value quickly. Understanding how it works does not make buying it a safe investment.
         </p>
 
-        <h3 style={h3}>How does it actually work? Meet the “blockchain”</h3>
+        <h3 style={h3}>How the blockchain works</h3>
         <p style={body}>
-          The blockchain is a global and public ledger(organized system tracking documents financial transactions) of all Bitcoin transactions that have occurred throughout history. It operates similar to a traditional bank’s ledger but can be accessed by everyone on Earth.
+          Bitcoin's blockchain is a public record of confirmed transactions. Anyone can inspect it. Unlike a bank's internal ledger, copies are stored and checked by independent computers called nodes.
         </p>
         <p style={body}>
-          To better understand how the blockchain works, think of a shared Google Document that everyone globally can view, but no one has the capability to edit or delete anything previously written inside of it.
+          Think of a shared document whose earlier entries are difficult to change. The analogy is limited: Bitcoin uses cryptographic links and proof of work to protect its history, rather than document permissions.
         </p>
         <p style={body}>
-          The blockchain is designed in such a way that there exist thousands of computer nodes, each keeping their own copy of the same blockchain; these nodes are located throughout the world and function independently, while continually validating one another’s activities. If an individual were attempting to corrupt the Bitcoin transaction, their altered duplicate would produce a discrepancy among the 1,000s of other copies of the blockchain (i.e. node copies). As a result of an established and internationally accepted (300 million+) set of users, the validity/legitimacy of Bitcoin transactions is validated through the blockchain.
+          Each full node checks transactions and blocks against the network's rules. An altered copy does not become valid because one computer presents it. Changing confirmed history requires recreating the proof of work and competing with the rest of the network, as the <a style={srcLink} href="https://developer.bitcoin.org/devguide/block_chain.html" target="_blank" rel="noopener noreferrer">Bitcoin developer guide</a> explains.
         </p>
         <p style={body}>
-          A transaction is recreated in a “block” approximately every-ten-minutes from a large pool of transactions that are combined from around the world in real-time by networks of computers (mining) that are trying to solve a competitive mathematical operation, with the first computer completing the operation receiving newly generated bitcoin as a reward for their efforts.
+          Miners compete to add a block by finding a hash that meets the network's difficulty target. Other nodes check the proposed block. A valid block lets its miner claim a reward that includes newly issued bitcoin and transaction fees. Blocks arrive about every ten minutes on average, though any one block may take longer or less time.
         </p>
         <p style={body}>
-          One last detail worth knowing: there will only <em>ever</em> be <strong>21 million bitcoins</strong> — that limit is built into the code. About 20 million already exist. Because the supply is capped, some people call Bitcoin “digital gold” and hold onto it, hoping it grows in value over time.
-        </p>
-
-        <h3 style={h3}>What does “decentralized” mean?</h3>
-        <p style={body}>
-          This is the single biggest idea behind Bitcoin, so it’s worth slowing down for.
-        </p>
-        <p style={body}>
-          All banking is centralized. There is one centralized entity that controls all banking activity. A centralized entity, such as a bank, keeping official records of your accounts means that all transactions are maintained by that single entity (the bank). For the most part, this is okay, but centralization inherently presents risks of freezing, fees, human error, and hacks, along with the required level of trust in the central entity.
-        </p>
-        <p style={body}>
-          Bitcoin is a decentralized form of currency. Therefore, there is no singular organization that controls Bitcoin. Trust is placed in multiple computers that follow the same publicly defined rules.
-        </p>
-        <p style={body}>
-          Decentralization is similar to the way a group project can be done. In a group project, if one person is in charge they can easily change any of the work done by all of the other group members (without telling them). If there are fixed rules set by the group prior to the project and all group members maintain their own copy of the final project document, then no one individual can make a change without the group being notified and everyone being in agreement about the change being made. The same principle holds true for decentralization, where there is no concentration of centralized power.
-        </p>
-        <p style={body}>
-          Decentralization is important because decentralization makes it much more difficult to shut down a network, much more difficult to censor the activities on a network and completely accessible to everyone with an internet connection. The rules of the network are coded into the network and do not require approval from a CEO or other type of politician to make modifications to the operations and rules of the network.
+          Bitcoin's current rules cap the supply at <strong>21 million coins</strong>. That limit is one reason people compare it with gold. A limited supply does not guarantee that its price will rise.
         </p>
 
-        <h3 style={h3}>The Catch</h3>
+        <h3 style={h3}>What decentralization means</h3>
+
         <p style={body}>
-          While decentralization can be very attractive, there are real risks and trade-offs to decentralization. Since no one entity controls the public blockchain, there is no customer service to contact if you are scammed or send funds to an incorrect address. Bitcoin has a reputation for being very volatile in terms of price, i.e., it will vary in value quite dramatically from day to day. According to <a style={srcLink} href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Yahoo’s real-time BTC-USD price page</a>, as of mid-2026, one bitcoin is worth approximately $64,000, but it has reached as high as approximately $126,000 and has dropped approximately 20% in value in the last month. Finally, bitcoin mining consumes a lot of electricity, which is a legitimate environmental concern.
+          A bank maintains its customers' account records and decides whether to process payments. Using a bank means relying on its systems and policies, including its handling of fees, errors, and account restrictions.
+        </p>
+        <p style={body}>
+          Bitcoin has no single organization approving every transaction. Independent computers follow shared rules to check the record.
+        </p>
+        <p style={body}>
+          In a group project, one person might control the only copy of the document. Sharing copies lets others notice a change. Bitcoin adds rules for accepting changes and proof of work to make rewriting history costly. Agreement comes from those rules, not a vote by every person who owns bitcoin.
+        </p>
+        <p style={body}>
+          Without one central operator, Bitcoin is harder to shut down at a single point. People can propose changes to its software, but participants choose which software and rules to run. Decentralization does not mean the rules can change without agreement.
+        </p>
+
+        <h3 style={h3}>Risks to understand</h3>
+        <p style={body}>
+          Bitcoin payments generally cannot be reversed by a central support team. If you send money to the wrong person, you may need the recipient to refund it. The price can also change sharply. You can check current prices and historical changes on <a style={srcLink} href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Yahoo Finance's Bitcoin page</a>. Mining also uses electricity. These risks matter even if you understand the technology.
         </p>
 
         <figure style={{ margin: '2.5rem 0 0' }}>
@@ -116,16 +112,18 @@ export function WhatIsBitcoinArticle() {
           </figcaption>
         </figure>
 
-        <h3 style={h3}>The bottom line</h3>
+        <h3 style={h3}>Questions to ask before using Bitcoin</h3>
         <p style={body}>
-          Bitcoin is an electronic form of currency using a global network rather than one institution (i.e., the banking system) to make transactions. With the blockchain as the underlying infrastructure for this digital currency, it makes it very difficult to commit fraud using Bitcoin as a means of payment. Additionally, since Bitcoin has been built upon a decentralized architecture, there is no authority or institution that has absolute control over it.
+          Bitcoin uses a public transaction record and a network of independent computers to process payments. It makes some kinds of record tampering difficult, but it does not prevent scams or guarantee that funds are safe.
         </p>
         <p style={body}>
-          This raises questions about whether this new way to transact will become a viable alternative to traditional financial systems, or if it’s just one big risk. The answer is not black and white, depending on who you ask. Either way, now you know exactly how much Laszlo paid for his two pizzas using Bitcoin, which I think puts you further ahead of the learning curve with Bitcoin than most of the people who utilize it.
+          The useful questions are practical. Who controls your wallet? What happens if you lose access? What does a payment cost, and how long might confirmation take? Learning the answers is a better starting point than assuming the technology solves every problem.
         </p>
 
-        <h3 style={h3}>Want to dig deeper?</h3>
+        <h3 style={h3}>Further reading</h3>
         <ul style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.7, marginTop: '1rem', paddingLeft: '1.25rem', display: 'grid', gap: '0.625rem', listStyle: 'disc', wordBreak: 'break-word' }}>
+          <li><a style={srcLink} href="https://bitcoin.org/en/how-it-works" target="_blank" rel="noopener noreferrer">Bitcoin.org: how transactions work</a></li>
+          <li><a style={srcLink} href="https://bitcoin.org/en/you-need-to-know" target="_blank" rel="noopener noreferrer">Bitcoin.org: risks to understand</a></li>
           <li><a style={srcLink} href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer"><strong>Yahoo Finance — Bitcoin (BTC-USD)</strong></a><strong>:</strong> the live price, recent news, and price history.</li>
           <li><a style={srcLink} href="https://www.nerdwallet.com/article/investing/what-is-bitcoin" target="_blank" rel="noopener noreferrer"><strong>NerdWallet — What Is Bitcoin?</strong></a><strong>:</strong> a clear, beginner-friendly overview.</li>
           <li><a style={srcLink} href="https://www.coinbase.com/learn/crypto-basics/what-is-bitcoin" target="_blank" rel="noopener noreferrer"><strong>Coinbase Learn — What is Bitcoin?</strong></a><strong>:</strong> the basics, explained simply.</li>

@@ -3,7 +3,7 @@ import { InstitutionsView } from './view'
 
 export const metadata: Metadata = {
   title: 'Institutions',
-  description: 'Our partners and sponsors — the institutions bridging YBA students into the Web3 industry.',
+  description: 'Meet the organizations partnering with YBA and sponsoring student events.',
   alternates: { canonical: '/institutions' },
 }
 

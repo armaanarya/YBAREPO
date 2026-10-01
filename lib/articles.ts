@@ -19,7 +19,7 @@ export const ARTICLES: ArticleMeta[] = [
     dateISO: '2026-07-01',
     image: '/articles/blockchain-hero.png',
     imageW: 562, imageH: 574,
-    excerpt: 'Most people think blockchain is just a confusing crypto thing that doesn’t affect real life. But strip away the finance jargon, and it comes down to one question: who gets to control the truth when something goes wrong?',
+    excerpt: 'A blockchain is a shared record that computers check using agreed rules. Here is how it works, where it can be useful, and what it cannot guarantee.',
   },
   {
     slug: 'what-is-bitcoin-a-guide-to-digital-money-and-decentralization',

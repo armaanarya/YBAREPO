@@ -9,13 +9,13 @@ import { T } from '@/lib/theme'
 import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
 
 const STEPS = [
-  { num: '01', title: 'Form Your Team', desc: 'Collaborate across schools and disciplines to tackle real blockchain challenges.' },
-  { num: '02', title: 'Build Something Real', desc: '24 to 48 hours to prototype a smart contract or DApp addressing a social or economic problem.' },
-  { num: '03', title: 'Pitch to Judges', desc: 'Present to industry professionals for feedback, mentorship, and competitive recognition.' },
+  { num: '01', title: 'Form a team', desc: 'Team up with students from other schools to choose a problem to work on.' },
+  { num: '02', title: 'Build a prototype', desc: 'Spend 24 to 48 hours building a smart contract or decentralized app around your chosen problem.' },
+  { num: '03', title: 'Present to judges', desc: 'Explain what you built and get feedback from industry professionals.' },
 ]
 const WORKSHOPS = [
-  { num: '01', title: 'How Blockchain Works', desc: 'Blocks, nodes, hashing, and consensus explained from the ground up until the fundamentals finally click.' },
-  { num: '02', title: 'Real World Impact',    desc: 'See how blockchain already powers finance, digital identity, supply chains, and more far beyond the hype.' },
+  { num: '01', title: 'How Blockchain Works', desc: 'Learn how blocks link together and how computers check transactions.' },
+  { num: '02', title: 'Real World Impact',    desc: 'Compare uses in finance, digital identity, and supply chains. Discuss what works and what does not.' },
   { num: '03', title: 'Hands On Building',     desc: 'Set up a wallet, explore a testnet, and write your first simple smart contract in a guided session.' },
 ]
 
@@ -26,7 +26,7 @@ export function HackathonView() {
       <section style={{ maxWidth: 1160, margin: '0 auto', padding: 'clamp(5rem,10vw,8rem) clamp(1.25rem,4vw,3rem) 2rem' }}>
         <BlurFade inView delay={0.05} yOffset={12}>
           <TextStagger
-            text="Build It. Pitch It. Learn It."
+            text="Hackathons, workshops, and speakers"
             stagger={0.025}
             direction="bottom"
             as="h2"
@@ -34,7 +34,7 @@ export function HackathonView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', color: T.dark }}
           />
           <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '1.25rem' }}>
-            Our hackathons, workshops, and speaker sessions put you in the room with real builders. Learn how blockchain actually works, then use it to ship something that matters.
+            We are planning events where high school students can build blockchain projects and ask questions of people in the field.
           </p>
         </BlurFade>
       </section>
@@ -45,14 +45,14 @@ export function HackathonView() {
           <BlurFade inView delay={0.05} yOffset={10}>
             <Badge>Coming Soon</Badge>
             <SectionHeading size="sm">
-              <span style={{ display: 'block', marginTop: '0.875rem' }}>The Bridge to Industry</span>
+              <span style={{ display: 'block', marginTop: '0.875rem' }}>Guest Speaker Series</span>
             </SectionHeading>
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
-              Direct access to developers, founders, VCs, and tokenomics specialists. Build your network years ahead of your peers.
+              Ask developers and founders about their projects, the problems they face, and careers in blockchain.
             </p>
           </BlurFade>
           <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-            {['Direct Q&A','Career Pathfinding','Network Before You Graduate'].map((t, i) => (
+            {['Direct Q&A','Explore careers','Meet guest speakers'].map((t, i) => (
               <BlurFade key={t} inView delay={0.2 + i * 0.08} yOffset={6}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0, display: 'inline-block' }}/>
@@ -79,7 +79,7 @@ export function HackathonView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.25rem)', color: T.dark, marginTop: '1rem' }}
           />
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '58ch', marginTop: '0.875rem' }}>
-            Blockchain hackathons built for teams that mirror agile startup environments. Members rapidly prototype smart contracts and DApps, then pitch to industry judges for feedback and mentorship.
+            Build a smart contract or decentralized app with a team, then present your prototype to industry judges for feedback.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: '1.125rem', marginTop: '2rem' }}>
             {STEPS.map((s) => (
@@ -123,7 +123,7 @@ export function HackathonView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.25rem)', color: T.dark, marginTop: '1rem' }}
           />
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '58ch', marginTop: '0.875rem' }}>
-            Interactive sessions that show you how blockchain actually works and why it matters. We go past the buzzwords and into what the technology does today, plus where it can take the world tomorrow.
+            Our planned workshops cover blockchain basics and guided exercises, including setting up a wallet and testing a simple smart contract.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: '1.125rem', marginTop: '2rem' }}>
             {WORKSHOPS.map((s) => (

@@ -3,7 +3,7 @@ import { PodcastView } from './view'
 
 export const metadata: Metadata = {
   title: 'Podcast',
-  description: 'The YBA podcast — conversations with builders, founders, and students in Web3.',
+  description: 'The upcoming YBA podcast: student-hosted conversations about blockchain.',
   alternates: { canonical: '/podcast' },
 }
 

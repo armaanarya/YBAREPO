@@ -3,7 +3,7 @@ import { HomeView } from './view'
 
 export const metadata: Metadata = {
   title: 'YBA — Youth Blockchain Association',
-  description: 'Empowering the next generation of blockchain builders. High school students learning DeFi, smart contracts, and real-world blockchain applications.',
+  description: 'YBA is a student-led community for high schoolers learning about blockchain through peer lessons, projects, and events.',
   alternates: { canonical: '/' },
 }
 

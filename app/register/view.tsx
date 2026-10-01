@@ -53,7 +53,7 @@ export function RegisterView() {
       setDone(true)
     } catch (err) {
       console.error(err)
-      setErrors({ submit: 'Something went wrong — please try again.' })
+      setErrors({ submit: 'We could not submit your registration. Please try again.' })
     } finally {
       setLoading(false)
     }
@@ -77,7 +77,7 @@ export function RegisterView() {
       </motion.div>
       <div>
         <TextStagger as="h2" text="You're in." stagger={0.04} direction="bottom" style={{ fontFamily: T.manrope, fontSize: '2.5rem', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em' }} />
-        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '34ch', marginTop: '0.75rem' }}>Welcome to YBA. We'll reach out with your next steps shortly.</p>
+        <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '34ch', marginTop: '0.75rem' }}>Your registration has been received. We will email you with meeting details and next steps.</p>
       </div>
       <button
         onClick={() => router.push('/')}
@@ -102,12 +102,12 @@ export function RegisterView() {
         <BlurFade inView delay={0.05} yOffset={12}>
         <div style={{ paddingTop: '0.5rem' }}>
           <Badge>Registration 2026</Badge>
-          <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.05, marginTop: '1rem' }}>Join the<br/>Movement.</h1>
+          <h1 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.5rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.05, marginTop: '1rem' }}>Join<br/>YBA.</h1>
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '34ch', marginTop: '1.125rem' }}>
-            Become part of the next generation of blockchain builders. Your journey into decentralized technology starts here.
+            Join other high school students learning about blockchain. Fill out the form and we will contact you with meeting details.
           </p>
           <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {['No experience required','Real events & hackathons','Direct industry access'].map(f => (
+            {['No experience required','Projects and hackathons','Guest speaker sessions'].map(f => (
               <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.accent} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 <span style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark }}>{f}</span>
@@ -161,8 +161,8 @@ export function RegisterView() {
                 </div>
               </div>
               <div style={{ marginBottom: '1.25rem' }}>
-                <label htmlFor="reg-build" style={labelStyle}>What do you want to build? (Put N/A if you don't know)</label>
-                <textarea id="reg-build" name="build" rows={3} placeholder="I want to build a decentralized app that..."
+                <label htmlFor="reg-build" style={labelStyle}>What would you like to build? (Optional)</label>
+                <textarea id="reg-build" name="build" rows={3} placeholder="Share a project idea, or leave this blank."
                   style={{ ...fieldStyle, resize: 'none' }}
                   onFocus={e => (e.target.style.borderColor = focusBorder)} onBlur={e => (e.target.style.borderColor = 'transparent')} />
               </div>
@@ -178,7 +178,7 @@ export function RegisterView() {
                 aria-busy={loading}
               >
                 {loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ animation: 'spin 0.8s linear infinite' }}><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>}
-                {loading ? 'Processing…' : 'Complete Registration'}
+                {loading ? 'Submitting…' : 'Submit registration'}
               </button>
               <p style={{ fontFamily: T.inter, fontSize: '0.75rem', color: '#55555f', textAlign: 'center', marginTop: '1rem' }}>
                 By joining, you agree to our Terms of Service and Privacy Policy.
@@ -202,7 +202,7 @@ export function RegisterView() {
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.95)'; e.currentTarget.style.borderColor = 'rgba(22,28,37,0.2)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = T.border }}
           >
-            <span>Interested in Being a YBA Officer?</span>
+            <span>Apply to be a YBA officer</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>

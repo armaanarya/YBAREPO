@@ -23,7 +23,7 @@ const PARTNERS: Partner[] = [
     name: 'college.xyz',
     url: 'https://college.xyz',
     logo: '/partners/collegexyz.webp',
-    tagline: 'Bridging the gap between talent and industry.',
+    tagline: 'Blockchain opportunities for college students.',
     kind: 'Collegiate Network · Nonprofit',
     stats: [
       { value: '100+',   label: 'Campus clubs' },
@@ -31,19 +31,19 @@ const PARTNERS: Partner[] = [
       { value: '100+',   label: 'Bounties hosted' },
     ],
     body: [
-      'college.xyz is a nonprofit connecting undergraduates to crypto through company bounties, research and developer programs, conference support, and the student-led University Blockchain Conference.',
-      'YBA introduces blockchain literacy in grades 9–12; college.xyz carries that work into campus chapters, paid projects, internships, and industry connections. Students can begin with YBA in high school and keep building in college.',
-      'In our first year together, we plan to connect YBA members with college.xyz chapters, share its opportunities and speakers with students, and bring its network into judging YBA Hackathon projects.',
+      'college.xyz is a nonprofit that connects college students with crypto projects. Its programs include company bounties, research opportunities, and conference support, including the student-led University Blockchain Conference.',
+      'YBA introduces blockchain in high school. Through college.xyz, students can find campus chapters and explore paid projects or internships as they move into college.',
+      'In our first year together, we plan to introduce members to college.xyz chapters and share its opportunities. We also plan to invite people from its network to speak at YBA and judge hackathon projects.',
     ],
   },
   {
     name: 'Compound Foundation',
     url: 'https://www.compound.xyz/',
     logo: '/partners/compound-foundation-square.png',
-    tagline: 'Bringing DeFi closer to high school builders.',
+    tagline: 'Learn about decentralized lending.',
     kind: 'DeFi · Foundation',
     body: [
-      'Compound was one of the first lending protocols in DeFi. YBA is partnering with the Foundation behind it to give students a closer look at the people building in decentralized finance.',
+      'Compound is a decentralized lending protocol. Our partnership with Compound Foundation gives students a chance to learn from people working in decentralized finance.',
       'Compound Foundation is also sponsoring YBA HACKS, our hackathon for Bay Area high school students. The event will feature a guest speaker from the Foundation.',
     ],
   },
@@ -128,7 +128,7 @@ export function InstitutionsView() {
         <BlurFade inView delay={0.05} yOffset={12}>
           <Badge>Institutions</Badge>
           <TextStagger
-            text="The Bridge to Industry."
+            text="Our partners and sponsors"
             stagger={0.025}
             direction="bottom"
             as="h1"
@@ -136,7 +136,7 @@ export function InstitutionsView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', color: T.dark, marginTop: '1rem' }}
           />
           <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '56ch', marginTop: '1.25rem' }}>
-            A high schooler learning Web3 alone hits a wall: there is nowhere to take it next. We close that gap by partnering with the institutions already inside the industry — so the path from a first smart contract to a real role is a straight line, not a guess.
+            Our partners help us connect students with blockchain projects and people in the field. Our sponsors support YBA events, including YBA HACKS.
           </p>
         </BlurFade>
       </section>
@@ -153,7 +153,7 @@ export function InstitutionsView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', color: T.dark }}
           />
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.75rem', marginBottom: '2rem' }}>
-            Organizations we build with — shared programming, shared talent, shared pipeline.
+            Organizations working with us on student programs and events.
           </p>
         </BlurFade>
 

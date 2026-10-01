@@ -18,13 +18,13 @@ export function ArticlesView() {
       <BlurFade inView delay={0.05} yOffset={12}>
         <Badge>Articles</Badge>
         <TextStagger
-          text="Read. Learn. Build."
+          text="Articles by YBA students"
           as="h1"
           className="font-extrabold tracking-[-0.025em] leading-[1.07]"
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-          Every article we publish, written by YBA students for students. Pick one below, or read them all on Medium.
+          Read our introductions to blockchain and Bitcoin below. You can also find them on Medium.
         </p>
         <a
           href={MEDIUM_PUB} target="_blank" rel="noopener noreferrer"

@@ -13,7 +13,7 @@ export function PodcastView() {
       <BlurFade inView delay={0.05} yOffset={12}>
         <Badge>Coming Soon</Badge>
         <TextStagger
-          text="The YBA Podcast."
+          text="The YBA podcast"
           stagger={0.025}
           direction="bottom"
           as="h1"
@@ -21,7 +21,7 @@ export function PodcastView() {
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '50ch', marginTop: '1.25rem' }}>
-          Conversations with the builders, thinkers, and founders shaping the decentralized world — hosted by the next generation asking the real questions.
+          Our upcoming podcast will feature student-hosted conversations with people working in blockchain. Follow YBA for episode announcements.
         </p>
       </BlurFade>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>

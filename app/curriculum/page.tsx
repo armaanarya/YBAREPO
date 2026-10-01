@@ -3,7 +3,7 @@ import { CurriculumView } from './view'
 
 export const metadata: Metadata = {
   title: 'Curriculum',
-  description: 'Peer-reviewed blockchain curriculum built for high schoolers, plus our meeting calendar and frequently asked questions.',
+  description: 'Preview our upcoming blockchain video lessons, see the weekly meeting calendar, and find answers to questions about joining YBA.',
   alternates: { canonical: '/curriculum' },
 }
 

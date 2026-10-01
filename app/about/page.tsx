@@ -3,7 +3,7 @@ import { AboutView } from './view'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Meet Armaan Arya and the student officers building the Youth Blockchain Association — plus our vision and Year One goals.',
+  description: 'Meet YBA founder Armaan Arya and our student officers. Read about our plans for chapters, events, and blockchain lessons.',
   alternates: { canonical: '/about' },
 }
 

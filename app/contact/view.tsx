@@ -90,7 +90,7 @@ export function ContactView() {
           We'd love to<br />hear from you.
         </h1>
         <p className="animate-fade-up-2" style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '48ch', marginTop: '1.25rem' }}>
-          Questions about YBA, our events, or how to get involved? Reach out through any of the channels below — we respond quickly.
+          Contact us with questions about membership or events. For partnerships and sponsorship, email us using the address below.
         </p>
       </section>
 

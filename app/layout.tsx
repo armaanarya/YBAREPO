@@ -17,18 +17,18 @@ export const metadata: Metadata = {
     default: 'YBA — Youth Blockchain Association',
     template: '%s — YBA',
   },
-  description: 'Empowering the next generation of blockchain builders. Join high school students learning DeFi, smart contracts, and real-world blockchain applications.',
+  description: 'Join YBA, a student-led community for high schoolers learning about blockchain through peer lessons, projects, and events.',
   keywords: 'blockchain, youth, high school, DeFi, cryptocurrency, education, hackathon',
   openGraph: {
     title: 'YBA — Youth Blockchain Association',
-    description: 'Empowering the next generation of blockchain builders.',
+    description: 'Blockchain learning and projects for high school students.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'YBA — Youth Blockchain Association',
-    description: 'Empowering the next generation of blockchain builders.',
+    description: 'Blockchain learning and projects for high school students.',
     images: ['/twitter-image.png'],
   },
   icons: {

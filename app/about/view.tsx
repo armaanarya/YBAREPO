@@ -29,7 +29,7 @@ const YEAR_ONE = [
   'Host 10 Guest Speaker sessions in Year 1',
   'Establish YBA chapters at 5+ schools',
   'Partner with collegiate blockchain associations',
-  'Create a certified blockchain literacy curriculum for high schoolers',
+  'Create a certified blockchain literacy curriculum for high school students',
 ]
 
 export function AboutView() {
@@ -45,8 +45,8 @@ export function AboutView() {
           <Badge>Founder &amp; President</Badge>
           <TextStagger as="h1" text="Armaan Arya" stagger={0.03} direction="bottom" style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,4.5vw,3.25rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.025em', lineHeight: 1.08, marginTop: '1rem' }} />
           <div style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75, marginTop: '1.25rem' }}>
-            <p>A high school student with a mission to bring blockchain literacy to the next generation. Where most students first encounter decentralized technology in college — if at all — Armaan saw the gap and decided to fill it.</p>
-            <p style={{ marginTop: '1rem' }}>The Youth Blockchain Association was born from a simple belief: teenagers shouldn't have to wait until university to understand the technology that will define their careers.</p>
+            <p>Armaan founded YBA to help high school students learn about blockchain before college.</p>
+            <p style={{ marginTop: '1rem' }}>YBA gives students a place to study the technology together and try building with it.</p>
           </div>
           <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem', flexWrap: 'wrap' }}>
             {[
@@ -76,7 +76,7 @@ export function AboutView() {
         </BlurFade>
         <BlurFade inView delay={0.18} yOffset={10}>
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.75 }}>
-            Blockchain isn't just a financial tool — it's a foundational shift in how the world handles data, ownership, and trust. By introducing these concepts early, YBA prepares young adults to be creators — not just consumers — of the digital economy.
+            At YBA, students learn how blockchains record transactions and manage digital ownership. Projects give members a chance to test those ideas and understand their limits.
           </p>
         </BlurFade>
       </section>
@@ -86,7 +86,7 @@ export function AboutView() {
         <BlurFade inView delay={0.05} yOffset={8}>
           <p style={{ fontFamily: T.inter, fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: T.dark, opacity: 0.4, marginBottom: '1rem' }}>Our Vision</p>
           <p style={{ fontFamily: T.manrope, fontSize: 'clamp(1.375rem,3vw,2rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.35, maxWidth: '38ch', margin: '0 auto' }}>
-            A global network of YBA chapters where teenagers are the primary drivers of decentralized innovation.
+            We want students to start YBA chapters at their schools, share lessons, and work on blockchain projects together.
           </p>
         </BlurFade>
       </section>
@@ -106,7 +106,7 @@ export function AboutView() {
           </BlurFade>
           <BlurFade delay={0.18} inView yOffset={6}>
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.65, marginTop: '0.875rem', maxWidth: '54ch' }}>
-              Three teams, one mission — Curriculum, Marketing, and Operations. The students building YBA from the ground up.
+              Meet the students who run our lessons, outreach, and events.
             </p>
           </BlurFade>
         </div>
@@ -209,7 +209,7 @@ export function AboutView() {
         </BlurFade>
         <BlurFade inView delay={0.1} yOffset={12}>
           <TextStagger
-            text="Where Learning Meets Building."
+            text="What we plan to build"
             stagger={0.025}
             direction="bottom"
             as="h2"
@@ -217,7 +217,7 @@ export function AboutView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', color: T.dark }}
           />
           <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-            YBA is action-driven. We organize real events where members apply knowledge under pressure, collaborate in teams, and ship real blockchain projects.
+            Our goals include hackathons where members work in teams, test what they have learned, and present their projects.
           </p>
         </BlurFade>
       </section>

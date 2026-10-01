@@ -89,10 +89,10 @@ function YBACalendar() {
       {/* Info card */}
       <div style={{ marginTop: '1.25rem', padding: '1.25rem 1.5rem', background: T.alt, borderRadius: 14, border: `1px solid ${T.border}` }}>
         <p style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.dark, lineHeight: 1.7 }}>
-          This calendar reflects all YBA activities for 2026 — weekly meetings, seminars, guest speaker sessions, hackathons, and everything in between.
+          This calendar shows our weekly Sunday meetings for 2026. We will share dates for other events as they are confirmed.
         </p>
         <p style={{ fontFamily: T.inter, fontSize: '0.875rem', color: T.muted, lineHeight: 1.7, marginTop: '0.625rem' }}>
-          If Sundays don't work for your schedule, we're always open to a change — reach out and we'll make it work.
+          If Sundays do not work for you, contact us to discuss scheduling.
         </p>
       </div>
     </div>
@@ -105,13 +105,13 @@ export function CurriculumView() {
       <BlurFade inView delay={0.05} yOffset={12}>
         <Badge>Coming Soon</Badge>
         <TextStagger
-          text="Blockchain Content coming soon."
+          text="Blockchain lessons are on the way."
           as="h1"
           className="font-extrabold tracking-[-0.025em] leading-[1.07]"
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-          Our full curriculum is on the way, and it will be mainly videos. Clear and engaging video lessons made by students, for students, taking you from the fundamentals of blockchain all the way to the frontier of Web3.
+          We are preparing video lessons made by students for high schoolers. The curriculum will start with blockchain basics.
         </p>
       </BlurFade>
 
@@ -125,16 +125,16 @@ export function CurriculumView() {
           Common questions
         </p>
         <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3.5vw,2.5rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-          What students ask us most.
+          Questions about joining YBA
         </h2>
       </BlurFade>
       <BlurFade inView delay={0.2} yOffset={12}>
         <AnimatedAccordion
           items={[
-            { question: 'Who is YBA for?', answer: 'High school students (grades 9–12) curious about blockchain, decentralized finance, and the broader Web3 industry. No prior technical background required — we meet you where you are.' },
-            { question: 'Is there a cost to participate?', answer: 'No. YBA is free to join. We are funded through partner sponsorships and grants so the program stays accessible to every student.' },
+            { question: 'Who is YBA for?', answer: 'YBA is for high school students in grades 9–12 who are curious about blockchain. No technical background is required.' },
+            { question: 'Is there a cost to participate?', answer: 'No. YBA is free to join, with support from partner sponsorships and grants.' },
             { question: 'Do I need to know how to code?', answer: 'No coding experience is required.' },
-            { question: 'What happens after I apply?', answer: 'We\'ll reach out soon with a schedule for events, podcasts, and meetings. For now, everything is on Sundays.' },
+            { question: 'What happens after I apply?', answer: 'We will contact you with meeting details and event updates. Our current meetings are on Sundays.' },
           ]}
           style={{ maxWidth: 760 }}
         />

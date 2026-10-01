@@ -34,10 +34,10 @@ function ScrollRevealSection() {
         <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center', marginBottom: '3rem' }}>
           <Badge>Curriculum</Badge>
           <h2 style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', fontWeight: 800, color: T.dark, letterSpacing: '-0.02em', lineHeight: 1.08, marginTop: '1rem' }}>
-            The curriculum that<br />changes everything.
+            Learn blockchain<br />with other students.
           </h2>
           <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.65, maxWidth: '48ch', margin: '1.25rem auto 0' }}>
-            Peer-reviewed, built for high schoolers, inspired by the world's top blockchain programs.
+            Student-made lessons for high schoolers, starting with how blockchains work.
           </p>
         </div>
       </motion.div>
@@ -66,13 +66,13 @@ function ScrollRevealSection() {
             <div style={{ padding: 'clamp(1.75rem,3vw,2.5rem)' }}>
               <BlurFade inView delay={0.15} yOffset={6}>
                 <p style={{ fontFamily: T.inter, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, maxWidth: '56ch' }}>
-                  Our full curriculum is coming soon, and it will be built mainly around videos. Until then, start with our first article, written by students for students.
+                  We are preparing a curriculum built around video lessons. For now, read our student-written articles on blockchain and Bitcoin.
                 </p>
                 <button
                   onClick={() => { track('button_click', 'home', { button: 'articles_preview' }); router.push('/articles') }}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer', padding: '0 0 2px' }}
                 >
-                  Read our first article →
+                  Read our articles →
                 </button>
               </BlurFade>
             </div>
@@ -84,9 +84,9 @@ function ScrollRevealSection() {
 }
 
 const PILLARS = [
-  { icon: '◈', title: 'Foundational Literacy', desc: 'Peer-to-peer learning that breaks down blockchain barriers — decentralization, immutability, and transparency made accessible for teenagers.' },
-  { icon: '◉', title: 'Real-World Application', desc: 'From DeFi and CBDCs to digital identity and supply chain — we study how blockchain is actively reshaping global industries right now.' },
-  { icon: '◎', title: "Build, Don't Just Learn", desc: 'Hackathons, guest speakers, team-based projects, and professional networking — all before you graduate high school.' },
+  { icon: '◈', title: 'Blockchain basics', desc: 'Learn how a shared transaction record works, why past entries are hard to change, and what decentralization means.' },
+  { icon: '◉', title: 'Blockchain in use', desc: 'Study blockchain uses in finance, digital identity, and supply chains, including where the technology falls short.' },
+  { icon: '◎', title: "Student projects", desc: 'Work on projects with other students and hear from people building in blockchain.' },
 ]
 const CHIPS = ['Capital Markets','Digital Identity','CBDCs','Supply Chain','Healthcare','Media','DeFi','Stablecoins','Web3','NFTs']
 
@@ -123,7 +123,7 @@ export function HomeView() {
             className="relative text-[clamp(2.75rem,6vw,5rem)] leading-[1.05] tracking-[-0.03em] font-extrabold"
             style={{ fontFamily: T.manrope, color: T.dark }}
           >
-            The Next Generation of Blockchain Builders.
+            Learn blockchain. Build with other students.
           </span>
 
           {/* Subtitle */}
@@ -132,7 +132,7 @@ export function HomeView() {
               fontFamily: T.inter, fontSize: 'clamp(1rem,1.6vw,1.125rem)',
               color: T.muted, lineHeight: 1.75, maxWidth: '52ch',
             }}>
-              YBA empowers high school students to understand, build, and lead within the decentralized future — through peer learning, real events, and direct industry access.
+              YBA is a student-led community for high schoolers curious about blockchain. Learn the basics together, work on projects, and meet people in the field.
             </p>
           </AnimatedContainer>
 
@@ -149,7 +149,7 @@ export function HomeView() {
                 boxShadow: '0 0 0 1px rgba(238,238,255,0.18), 0 4px 24px rgba(238,238,255,0.12)',
               }}
             >
-              Join the Movement →
+              Join YBA →
             </HoverGlowButton>
             <button
               className="btn-press"
@@ -232,7 +232,7 @@ export function HomeView() {
         <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem', position: 'relative', zIndex: 1 }}>
           <BlurFade delay={0.05} inView yOffset={12} className="flex-1 min-w-[260px]">
             <TextStagger
-              text="We Don't Just Study the Future. We Build It."
+              text="Hear from people building in blockchain."
               stagger={0.02}
               direction="bottom"
               as="h2"
@@ -240,7 +240,7 @@ export function HomeView() {
               style={{ fontFamily: T.manrope, fontSize: 'clamp(2rem,4vw,3rem)', color: T.dark }}
             />
             <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '1.125rem' }}>
-              Our Guest Speaker Series connects members with developers, founders, and VCs from the blockchain world — Q&A sessions, career pathfinding, and network-building before you even graduate.
+              Our planned Guest Speaker Series will give members a chance to ask blockchain developers and founders about their work and how they got started.
             </p>
           </BlurFade>
           <BlurFade delay={0.2} inView yOffset={8}>
@@ -251,7 +251,7 @@ export function HomeView() {
               textColor={T.ctaText}
               style={{ fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, borderRadius: 10, padding: '14px 32px', whiteSpace: 'nowrap', boxShadow: '0 0 0 1px rgba(238,238,255,0.18)' }}
             >
-              Apply Now →
+              Join YBA →
             </HoverGlowButton>
           </BlurFade>
         </div>
