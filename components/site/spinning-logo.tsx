@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function SpinningLogo({ size = 220 }: { size?: number }) {
+export function SpinningLogo({ size = 220 }: { size?: number | string }) {
   return (
     <div
       style={{ width: size, height: size, flexShrink: 0, filter: 'invert(1) brightness(2)' }}

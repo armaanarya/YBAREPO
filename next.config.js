@@ -13,11 +13,15 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
+      // Spline: the runtime compiles WebAssembly and runs the scene's motion
+      // script in a blob: iframe/worker; scenes load from prod.spline.design.
+      `script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob:${isDev ? " 'unsafe-eval'" : ''}`,
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self'",
-      "img-src 'self' data: https://*.medium.com https://miro.medium.com https://cdn-images-1.medium.com",
-      `connect-src 'self' https://*.supabase.co${isDev ? ' ws:' : ''}`,
+      "img-src 'self' data: blob: https://*.medium.com https://miro.medium.com https://cdn-images-1.medium.com",
+      `connect-src 'self' https://*.supabase.co https://prod.spline.design https://*.spline.design https://unpkg.com blob: data:${isDev ? ' ws:' : ''}`,
+      "worker-src 'self' blob:",
+      "frame-src 'self' blob: https://*.spline.design",
       "object-src 'none'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
