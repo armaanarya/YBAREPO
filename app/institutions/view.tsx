@@ -215,7 +215,7 @@ export function InstitutionsView() {
                   Compound Foundation
                 </h3>
                 <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, marginTop: '0.875rem' }}>
-                  YBA HACKS will feature a guest speaker from Compound Foundation. Thank you to Compound Foundation and <a href="https://www.linkedin.com/in/steven-liu1/" target="_blank" rel="noopener noreferrer" style={{ color: T.dark, textDecoration: 'underline', textUnderlineOffset: 3 }}>Steven Liu</a> for sponsoring YBA HACKS and supporting our students.
+                  YBA HACKS will feature a guest speaker from Compound Foundation. Thank you to Compound Foundation for sponsoring YBA HACKS and supporting our students.
                 </p>
                 <a href="https://www.compound.xyz/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark, marginTop: '1rem', textDecoration: 'underline', textUnderlineOffset: 4 }}>
                   Visit Compound ↗
