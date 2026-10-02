@@ -1,0 +1,53 @@
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  min-height: 300px;
+  margin-inline: auto;
+  overflow: hidden;
+  contain: layout paint;
+  perspective: 700px;
+}
+
+.cube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  transform-style: preserve-3d;
+  transform: translate3d(var(--home-x), var(--home-y), 0) rotateX(-20deg) rotateY(-30deg);
+  animation: burst 6s var(--delay) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-play-state: paused;
+}
+
+.scene[data-active='true'] .cube {
+  animation-play-state: running;
+}
+
+.front, .back, .top, .bottom, .side, .left {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+/* The site inverts its root to light: white faces become black ink. */
+.front { background: #fff; transform: translateZ(7.5px); }
+.back { background: #fff; transform: rotateY(180deg) translateZ(7.5px); }
+.top { background: #c8c8c8; transform: rotateX(90deg) translateZ(7.5px); }
+.bottom { background: #c8c8c8; transform: rotateX(-90deg) translateZ(7.5px); }
+.side { background: #999; transform: rotateY(90deg) translateZ(7.5px); }
+.left { background: #999; transform: rotateY(-90deg) translateZ(7.5px); }
+
+@keyframes burst {
+  0%, 10%, 82%, 100% {
+    transform: translate3d(var(--home-x), var(--home-y), 0) rotateX(-20deg) rotateY(-30deg);
+  }
+  35%, 53% {
+    transform: translate3d(var(--burst-x), var(--burst-y), 35px) rotateX(25deg) rotateY(var(--turn)) rotateZ(var(--turn));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cube { animation: none; }
+}

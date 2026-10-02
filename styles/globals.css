@@ -231,8 +231,135 @@ video,
 .yba-spline * {
   pointer-events: none !important;
 }
-/* The Spline hero scene is authored for this light page (ink mark on #f5f5fb, the color this page renders),
-   so its canvas is re-inverted above to show true colors, as is the hero dot
-   flow's canvas (blue on light). If you go back to dark, restyle the scene's
-   "YBA Burst Ink" material and background in Spline. */
+/* Stored Spline scenes and the black dot canvas retain their authored colors. */
 
+.hero-logo {
+  display: grid;
+  place-items: center;
+  width: 24vh;
+  height: 24vh;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.officers-grid {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.5rem;
+}
+
+.officers-grid > div,
+.officers-grid .officer-card { height: 100%; }
+
+.goals-with-animation {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hackathon-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.hackathon-stage {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 16px;
+  background: rgba(238, 238, 255, 0.035);
+  overflow: hidden;
+}
+
+.hackathon-stage::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  top: -100px;
+  border: 48px solid rgba(238, 238, 255, 0.04);
+  transform: rotate(35deg);
+  pointer-events: none;
+}
+
+.glass-step-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  list-style: none;
+}
+
+.glass-step-card {
+  position: relative;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 1px solid rgba(238, 238, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(17, 17, 24, 0.58);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.glass-step-card:hover {
+  background: rgba(17, 17, 24, 0.82);
+  border-color: rgba(238, 238, 255, 0.3);
+}
+
+.glass-step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  background: rgba(238, 238, 255, 0.08);
+  color: var(--dark);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.glass-step-card h3 {
+  color: var(--dark);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.glass-step-card p {
+  margin-top: 0.75rem;
+  color: rgba(238, 238, 255, 0.72);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.event-signup {
+  display: inline-flex;
+  margin-top: 2rem;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: var(--cta);
+  color: var(--cta-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .goals-with-animation,
+  .hackathon-intro,
+  .glass-step-grid { grid-template-columns: 1fr; }
+  .goals-with-animation { gap: 1rem; }
+  .hackathon-intro { gap: 0; }
+  .glass-step-number { margin-bottom: 1rem; }
+}

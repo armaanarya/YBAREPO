@@ -6,8 +6,8 @@ import { Badge } from '@/components/site/badge'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { GlowCard } from '@/components/ui/glow-card'
 import { TextStagger } from '@/components/ui/hero-animated'
-import { HorizontalPinned } from '@/components/ui/horizontal-pinned'
 import { TiltCard } from '@/components/ui/tilt-card'
+import { BoxBurst } from '@/ANIMATION STORAGE/box-burst'
 import { T } from '@/lib/theme'
 
 type OfficerTeam = 'Curriculum' | 'Marketing' | 'Operations'
@@ -91,7 +91,7 @@ export function AboutView() {
         </BlurFade>
       </section>
 
-      {/* Officers — horizontal scroll-pinned reel grouped by team */}
+      {/* Officers — a wrapping grid in the normal page flow */}
       <section id="officers" aria-label="Officers" style={{ paddingTop: 'clamp(4rem,8vw,7rem)' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', padding: '0 clamp(1.25rem,4vw,3rem) clamp(1.5rem,3vw,2.5rem)' }}>
           <BlurFade delay={0.05} inView yOffset={4}>
@@ -111,16 +111,11 @@ export function AboutView() {
           </BlurFade>
         </div>
 
-        <HorizontalPinned heightVh={200} travelPercent={72} className="">
+        <div className="officers-grid">
           {OFFICERS.map((o, i) => {
             const accent = TEAM_ACCENT[o.team]
-            const prev = OFFICERS[i - 1]
-            const isFirstOfTeam = !prev || prev.team !== o.team
             return (
-              <div key={o.name} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexShrink: 0 }}>
-                {isFirstOfTeam && i !== 0 && (
-                  <div aria-hidden="true" style={{ width: 1, height: 220, background: T.border, flexShrink: 0 }} />
-                )}
+              <div key={o.name}>
                 <BlurFade delay={i * 0.06} inView>
                   <TiltCard maxTilt={6}>
                     <GlowCard
@@ -132,9 +127,7 @@ export function AboutView() {
                         border: `1px solid ${T.border}`,
                         borderTop: `2px solid ${accent}`,
                         boxShadow: '0 2px 16px rgba(0,0,0,0.4)',
-                        width: 'min(78vw, 320px)',
-                        flexShrink: 0,
-                        scrollSnapAlign: 'center',
+                        width: '100%',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -197,7 +190,7 @@ export function AboutView() {
               </div>
             )
           })}
-        </HorizontalPinned>
+        </div>
       </section>
 
       {/* Goals — closing section of About */}
@@ -234,19 +227,24 @@ export function AboutView() {
             style={{ fontFamily: T.manrope, fontSize: 'clamp(1.75rem,3vw,2.25rem)', color: T.dark, marginBottom: '1.75rem' }}
           />
         </BlurFade>
-        {YEAR_ONE.map((g, i) => (
-          <BlurFade key={i} inView delay={0.1 + i * 0.05} yOffset={8}>
-            <div
-              className="goal-row"
-              style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
-              onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
-            >
-              <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.dark, opacity: 0.4, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
-              <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
-            </div>
-          </BlurFade>
-        ))}
+        <div className="goals-with-animation">
+          <div>
+            {YEAR_ONE.map((g, i) => (
+              <BlurFade key={g} inView delay={0.1 + i * 0.05} yOffset={8}>
+                <div
+                  className="goal-row"
+                  style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', padding: '1.125rem 0.75rem', borderBottom: `1px solid ${T.border}`, borderRadius: 10, marginLeft: '-0.75rem', marginRight: '-0.75rem' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = T.accentLight; e.currentTarget.style.paddingLeft = '1.25rem' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.paddingLeft = '0.75rem' }}
+                >
+                  <span style={{ fontFamily: T.manrope, fontWeight: 800, fontSize: '0.8125rem', color: T.dark, opacity: 0.4, minWidth: '2rem', paddingTop: '0.1rem' }}>{String(i+1).padStart(2,'0')}</span>
+                  <span style={{ fontFamily: T.inter, fontSize: '1rem', color: T.dark, lineHeight: 1.6 }}>{g}</span>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+          <BoxBurst />
+        </div>
       </section>
     </div>
   )

@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/about/view.tsx"
+        ],
+        "createdAt": "2026-10-02T02:50:06.510Z",
+        "reason": "Agent: the only finding is the existing founder blockquote quotation rule, unchanged from HEAD. It marks quoted text rather than decorating a card."
+      }
+    ]
+  }
+}

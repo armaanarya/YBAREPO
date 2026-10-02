@@ -9,13 +9,20 @@ import { onHeroBurst, type HeroBurst } from '@/lib/hero-burst'
 // grid dot lights up along with one dot between each pair.
 const SPACING = 14
 
-// The canvas is re-inverted in globals.css, so this renders as black ink.
-const DOT_COLOR = '#000000'
+// Leading edge → trailing glow. The canvas is re-inverted, but the page's
+// invert + hue-rotate pair is lossy for saturated colors (#2b2bff comes out
+// #3f3f88), so these are the drawn values that land on clear blues:
+// #3e6ed7, #5971e8, #7078ff, #a7a7ff.
+const COLORS = ['#3868ff', '#5870ef', '#7078ff', '#a7a7ff']
+// How far behind the front (px) each color gives way to the next; one entry
+// fewer than COLORS, the last color takes the rest of the trail.
+const COLOR_BANDS_PX = [14, 34, 70]
 const ALPHA_STEPS = 8
 const FRONT_PX = 8 // sharpness of the wave's leading edge
 const TRAIL_PX = 55 // how far the glow trails behind it
 
-// Three outward pulses and one returning pulse, independent of the boxes.
+// Rings sent out by one burst: three outward pulses as the blocks fly out,
+// one inward pulse as they rush back into the logo.
 const OUT_MS = 1300
 const OUT_RINGS = [
   { delay: 0, strength: 1 },
@@ -40,8 +47,10 @@ const smoothstep = (a: number, b: number, x: number) => {
 }
 
 /**
- * A black dotted shockwave over the hero grid. The logo announces a wave
- * on mount and every click; a new wave cancels and restarts the current one.
+ * A dotted shockwave over the hero grid, after base.org's "Where the world
+ * transacts onchain" section: rings of lit dots flow out from the logo when
+ * the 3D mark bursts into blocks, and one flows back in as they return.
+ * Renders nothing until the hero mark announces a burst.
  */
 export function HeroDotFlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -119,7 +128,7 @@ export function HeroDotFlow() {
       }
 
       if (live.length) {
-        const buckets: Path2D[] = Array.from({ length: ALPHA_STEPS }, () => new Path2D())
+        const buckets: Path2D[] = Array.from({ length: COLORS.length * ALPHA_STEPS }, () => new Path2D())
         const used = new Uint8Array(buckets.length)
         const { xs, ys, grain } = dots
         for (let k = 0; k < xs.length; k++) {
@@ -127,6 +136,7 @@ export function HeroDotFlow() {
           const dy = ys[k] - oy
           const d = Math.sqrt(dx * dx + dy * dy)
           let best = 0
+          let bestX = 0
           for (const ring of live) {
             // Distance behind the front: outward rings trail inward, inward rings trail outward.
             const x = ring.inward ? d - ring.r : ring.r - d
@@ -136,12 +146,15 @@ export function HeroDotFlow() {
             const a = shape * ring.s * lobes
             if (a > best) {
               best = a
+              bestX = Math.max(0, x)
             }
           }
           const alpha = best * grain[k]
           if (alpha < 0.05) continue
+          let color = 0
+          while (color < COLOR_BANDS_PX.length && bestX >= COLOR_BANDS_PX[color]) color++
           const step = Math.min(ALPHA_STEPS - 1, Math.floor(alpha * ALPHA_STEPS))
-          const b = step
+          const b = color * ALPHA_STEPS + step
           const radius = 1.2 + 1.6 * Math.min(1, best)
           buckets[b].moveTo(xs[k] + radius, ys[k])
           buckets[b].arc(xs[k], ys[k], radius, 0, Math.PI * 2)
@@ -150,7 +163,7 @@ export function HeroDotFlow() {
         for (let b = 0; b < buckets.length; b++) {
           if (!used[b]) continue
           ctx.globalAlpha = ((b % ALPHA_STEPS) + 1) / ALPHA_STEPS
-          ctx.fillStyle = DOT_COLOR
+          ctx.fillStyle = COLORS[Math.floor(b / ALPHA_STEPS)]
           ctx.fill(buckets[b])
         }
         ctx.globalAlpha = 1
@@ -159,16 +172,7 @@ export function HeroDotFlow() {
       raf = requestAnimationFrame(() => draw(burst, rings, endAt))
     }
 
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const stop = () => {
-      cancelAnimationFrame(raf)
-      ctx.clearRect(0, 0, size.w, size.h)
-      drewLast = false
-      raf = 0
-    }
-    const onMotionChange = () => { if (motion.matches) stop() }
     const unsubscribe = onHeroBurst((burst) => {
-      if (motion.matches) return
       const rings: Ring[] = OUT_RINGS.map((r, i) => ({
         at: burst.burstAt + r.delay, dur: OUT_MS, strength: r.strength, inward: false, phase: i * 2.1,
       }))
@@ -177,12 +181,10 @@ export function HeroDotFlow() {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => draw(burst, rings, endAt))
     })
-    motion.addEventListener('change', onMotionChange)
 
     return () => {
       unsubscribe()
-      motion.removeEventListener('change', onMotionChange)
-      stop()
+      cancelAnimationFrame(raf)
     }
   }, [])
 

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { Badge } from '@/components/site/badge'
-import { HeroMark3D } from '@/components/site/hero-mark-3d'
+import { HeroMark } from '@/components/site/hero-mark'
 import { PillarOrbit } from '@/components/site/pillar-orbit'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { GridPattern } from '@/components/ui/grid-pattern'
@@ -99,7 +99,7 @@ export function HomeView() {
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
         {/* Animated dot grid */}
         <GridPattern />
-        {/* Dotted shockwave that flows out with the logo's burst */}
+        {/* Black dotted shockwave, replayed on logo clicks */}
         <HeroDotFlow />
 
         {/* Noise grain overlay for premium texture */}
@@ -114,9 +114,9 @@ export function HomeView() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
-          {/* Logo — live Spline scene that bursts across the first screen, then settles here */}
+          {/* Logo with a replayable dot wave; the box burst is in ANIMATION STORAGE */}
           <div className="relative z-10">
-            <HeroMark3D />
+            <HeroMark />
           </div>
 
           {/* Headline — static, no entrance animation */}
@@ -138,7 +138,7 @@ export function HomeView() {
           </AnimatedContainer>
 
           {/* CTAs */}
-          <AnimatedContainer transition={{ delay: 0.65 }} className="flex gap-3 flex-wrap justify-center">
+          <div className="relative z-10 flex gap-3 flex-wrap justify-center">
             <HoverGlowButton
               className="btn-press"
               onClick={() => { track('button_click', 'home', { button: 'join_hero' }); window.location.assign(REGISTRATION_FORM_URL) }}
@@ -166,7 +166,7 @@ export function HomeView() {
             >
               See Our Goals
             </button>
-          </AnimatedContainer>
+          </div>
         </div>
       </Hero>
       </div>

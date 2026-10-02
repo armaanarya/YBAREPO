@@ -1,7 +1,7 @@
 // ─── Hero burst timing ────────────────────────────────────────────────────────
-// The 3D hero mark announces its burst timeline here once the Spline scene's
-// intro clock starts; other hero layers (the dot flow) sync to it. Times are
-// performance.now() milliseconds; origin() is the logo's center in viewport px.
+// The homepage mark announces a dot wave on mount and on every click. The
+// stored Spline integration can use the same timing channel when restored.
+// Times are performance.now() milliseconds; origin() is in viewport px.
 
 export interface HeroBurst {
   burstAt: number
