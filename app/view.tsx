@@ -6,6 +6,7 @@ import { HeroMark3D } from '@/components/site/hero-mark-3d'
 import { PillarOrbit } from '@/components/site/pillar-orbit'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { GridPattern } from '@/components/ui/grid-pattern'
+import { HeroDotFlow } from '@/components/site/hero-dot-flow'
 import { AnimatedContainer, Hero, TextStagger } from '@/components/ui/hero-animated'
 import { HoverGlowButton } from '@/components/ui/hover-glow-button'
 import { Marquee } from '@/components/ui/marquee'
@@ -98,6 +99,8 @@ export function HomeView() {
       <Hero layout="default" className="min-h-[92svh] pt-20 pb-16 px-6">
         {/* Animated dot grid */}
         <GridPattern />
+        {/* Dotted shockwave that flows out with the logo's burst */}
+        <HeroDotFlow />
 
         {/* Noise grain overlay for premium texture */}
         <div

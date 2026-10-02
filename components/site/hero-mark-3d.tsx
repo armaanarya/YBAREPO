@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import type { Application, SPEObject } from '@splinetool/runtime'
 import { SpinningLogo } from '@/components/site/spinning-logo'
 import { SPLINE_HERO_SCENE } from '@/lib/spline'
+import { announceHeroBurst, clearHeroBurst, type HeroBurst } from '@/lib/hero-burst'
 
 // The scene's Hero Camera (fov 45°, z 5392) frames 4467 world units of height
 // at the logo's depth, and the mark is 1072 units tip to tip. On a canvas one
@@ -12,8 +13,15 @@ import { SPLINE_HERO_SCENE } from '@/lib/spline'
 const VIEW_H = 4467
 const LOGO_VH = (1072 / VIEW_H) * 100
 
-// Cursor tilt eases in once the burst has settled back into the logo.
-const TILT_DELAY_MS = 4200
+// The scene's timeline, measured from when it sets introStarted: the mark
+// shatters into node blocks at 0.92s, they rush home at 3.1s and lock at
+// 3.65s. Keep in step with T_BURST / T_RETURN / T_LOCK in the scene script.
+const BURST_AT_MS = 920
+const RETURN_AT_MS = 3100
+const LOCK_AT_MS = 3650
+
+// Cursor tilt eases in once the blocks have locked back into the logo.
+const TILT_DELAY_MS = LOCK_AT_MS + 550
 const TILT_RAMP_MS = 1200
 const MAX_TILT_X = 0.12
 const MAX_TILT_Y = 0.2
@@ -54,8 +62,10 @@ function canRender3D() {
 }
 
 /**
- * The YBA mark as a live Spline scene. The bars flow in, burst across the whole
- * landing screen for a couple of seconds, then snap back into the logo.
+ * The YBA mark as a live Spline scene. The bars flow in, then the mark breaks
+ * into hundreds of node blocks that fill the whole landing screen for a couple
+ * of seconds before rushing back into the logo. The burst timing is announced
+ * for the hero's dot flow (see lib/hero-burst.ts).
  *
  * The 3D canvas covers the first screen of the page (portaled into #hero) and
  * ignores the pointer; the camera is shifted so the logo lands exactly on the
@@ -86,6 +96,7 @@ export function HeroMark3D() {
     let raf = 0
     let loadedAt = 0
     let revealed = false
+    let burst: HeroBurst | null = null
     let size = { w: 0, h: 0 }
     const pointer = { x: 0, y: 0 }
     const tilt = { x: 0, y: 0 }
@@ -99,6 +110,9 @@ export function HeroMark3D() {
     const frame = (now: number) => {
       raf = requestAnimationFrame(frame)
       if (!app) return
+      // Time everything from the first rendered frame: a tab loaded in the
+      // background gets no frames until it is shown.
+      if (!loadedAt) loadedAt = now
       const lr = layer.getBoundingClientRect()
       const sr = slot.getBoundingClientRect()
       if (lr.width !== size.w || lr.height !== size.h) {
@@ -110,12 +124,25 @@ export function HeroMark3D() {
         cam.position.x = -(sr.left + sr.width / 2 - (lr.left + lr.width / 2)) * unitsPerPx
         cam.position.y = (sr.top + sr.height / 2 - (lr.top + lr.height / 2)) * unitsPerPx
       }
-      if (!revealed && (now - loadedAt > REVEAL_TIMEOUT_MS || introStarted(app))) {
+      if (!burst && introStarted(app)) {
+        burst = {
+          burstAt: now + BURST_AT_MS,
+          returnAt: now + RETURN_AT_MS,
+          lockAt: now + LOCK_AT_MS,
+          origin: () => {
+            const r = slot.getBoundingClientRect()
+            return { x: r.left + r.width / 2, y: r.top + r.height / 2 }
+          },
+        }
+        announceHeroBurst(burst)
+      }
+      if (!revealed && (burst || now - loadedAt > REVEAL_TIMEOUT_MS)) {
         revealed = true
         setStarted(true)
       }
       if (rig) {
-        const ramp = Math.min(1, Math.max(0, (now - loadedAt - TILT_DELAY_MS) / TILT_RAMP_MS))
+        const introAt = burst ? burst.burstAt - BURST_AT_MS : loadedAt
+        const ramp = Math.min(1, Math.max(0, (now - introAt - TILT_DELAY_MS) / TILT_RAMP_MS))
         tilt.x += (pointer.y * MAX_TILT_X * ramp - tilt.x) * 0.06
         tilt.y += (pointer.x * MAX_TILT_Y * ramp - tilt.y) * 0.06
         rig.rotation.x = tilt.x
@@ -146,7 +173,6 @@ export function HeroMark3D() {
       cam = instance.findObjectByName('Hero Camera')
       rig = instance.findObjectByName('Tilt Rig')
       app = instance
-      loadedAt = performance.now()
       raf = requestAnimationFrame(frame)
     })().catch(() => {
       // The scene failed to load; the static mark stays in place.
@@ -157,6 +183,7 @@ export function HeroMark3D() {
       cancelAnimationFrame(raf)
       visibility.disconnect()
       window.removeEventListener('pointermove', onPointer)
+      if (burst) clearHeroBurst(burst)
       app?.dispose()
     }
   }, [host])
