@@ -222,7 +222,8 @@ html {
 }
 img:not([src$='.svg']),
 video,
-.yba-spline canvas {
+.yba-spline canvas,
+.yba-dots canvas {
   filter: invert(1) hue-rotate(180deg);
 }
 /* The hero scene's canvas spans the first screen; it must never take clicks. */
@@ -231,6 +232,7 @@ video,
   pointer-events: none !important;
 }
 /* The Spline hero scene is authored for this light page (ink mark on #f5f5fb, the color this page renders),
-   so its canvas is re-inverted above to show true colors. If you go back to
-   dark, restyle the scene's "YBA Ink" material and background in Spline. */
+   so its canvas is re-inverted above to show true colors, as is the hero dot
+   flow's canvas (blue on light). If you go back to dark, restyle the scene's
+   "YBA Burst Ink" material and background in Spline. */
 
