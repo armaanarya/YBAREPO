@@ -54,7 +54,7 @@
 }
 
 /* ─── Explore careers: each traveler enters, vanishes into the session, and
-       leaves recolored down a different lane ─────────────────────────────── */
+       leaves in a new shade down a different lane ─────────────────────────────── */
 
 .carIn { animation: car-in 6s linear infinite; }
 @keyframes car-in {

@@ -32,7 +32,7 @@ export function Sq({ x, y, size = 8, fill, rotate, className, style }: { x: numb
 }
 
 /** Selection handles on the four corners of a box, as in a design tool. */
-export function Handles({ x, y, w, h, size = 6, fill = C.blue, fills, className, style }: {
+export function Handles({ x, y, w, h, size = 6, fill = C.signal, fills, className, style }: {
   x: number; y: number; w: number; h: number; size?: number; fill?: string; fills?: readonly string[]
 } & Cls) {
   const corners = [[x, y], [x + w, y], [x, y + h], [x + w, y + h]]
@@ -78,15 +78,15 @@ export function Mic({ x, y, color, fill = color }: { x: number; y: number; color
   )
 }
 
-/** Four gray rays and four blue diagonals around a sand core. */
+/** Four light rays and four dark diagonals around a mid-gray core. */
 export function Sparkle({ x, y }: { x: number; y: number }) {
   const ray = (angle: number, r1: number, r2: number) =>
     `M${polar(x, y, r1, angle).join(',')} L${polar(x, y, r2, angle).join(',')}`
   return (
     <g className={s.twinkle} strokeWidth={2} strokeLinecap="round">
       <path d={[0, 90, 180, 270].map(a => ray(a, 9, 15)).join(' ')} stroke={C.line} />
-      <path d={[45, 135, 225, 315].map(a => ray(a, 8, 12)).join(' ')} stroke={C.blue} />
-      <Sq x={x} y={y} size={7} fill={C.sand} />
+      <path d={[45, 135, 225, 315].map(a => ray(a, 8, 12)).join(' ')} stroke={C.signal} />
+      <Sq x={x} y={y} size={7} fill={C.marker} />
     </g>
   )
 }
