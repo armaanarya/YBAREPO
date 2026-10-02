@@ -3,16 +3,14 @@
 import React, { useRef } from 'react'
 import { Badge } from '@/components/site/badge'
 import { HeroMark3D } from '@/components/site/hero-mark-3d'
+import { PillarOrbit } from '@/components/site/pillar-orbit'
 import { BlurFade } from '@/components/ui/blur-fade'
-import { GlowCard } from '@/components/ui/glow-card'
 import { GridPattern } from '@/components/ui/grid-pattern'
 import { HeroDotFlow } from '@/components/site/hero-dot-flow'
 import { AnimatedContainer, Hero, TextStagger } from '@/components/ui/hero-animated'
-import { HorizontalPinned } from '@/components/ui/horizontal-pinned'
 import { HoverGlowButton } from '@/components/ui/hover-glow-button'
 import { Marquee } from '@/components/ui/marquee'
 import { ParallaxLayer } from '@/components/ui/parallax-layer'
-import { TiltCard } from '@/components/ui/tilt-card'
 import { T } from '@/lib/theme'
 import { track } from '@/lib/track'
 import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
@@ -85,9 +83,9 @@ function ScrollRevealSection() {
 }
 
 const PILLARS = [
-  { icon: '◈', title: 'Blockchain basics', desc: 'Learn how a shared transaction record works, why past entries are hard to change, and what decentralization means.' },
-  { icon: '◉', title: 'Blockchain in use', desc: 'Study blockchain uses in finance, digital identity, and supply chains, including where the technology falls short.' },
-  { icon: '◎', title: "Student projects", desc: 'Work on projects with other students and hear from people building in blockchain.' },
+  { title: 'Blockchain basics', desc: 'Learn how a shared transaction record works, why past entries are hard to change, and what decentralization means.' },
+  { title: 'Blockchain in use', desc: 'Study blockchain uses in finance, digital identity, and supply chains, including where the technology falls short.' },
+  { title: 'Student projects', desc: 'Work on projects with other students and hear from people building in blockchain.' },
 ]
 const CHIPS = ['Capital Markets','Digital Identity','CBDCs','Supply Chain','Healthcare','Media','DeFi','Stablecoins','Web3','NFTs']
 
@@ -173,27 +171,7 @@ export function HomeView() {
       </Hero>
       </div>
 
-      {/* Pillar Cards — horizontal scroll-pinned reel */}
-      <div id="pillars">
-      <HorizontalPinned heightVh={200} travelPercent={70} className="">
-        {PILLARS.map((p, i) => (
-          <BlurFade key={i} delay={i * 0.1} inView>
-            <TiltCard maxTilt={6}>
-              <GlowCard
-                className="pillar-card glow-hover-lift"
-                style={{ background: 'rgba(17,17,24,0.8)', borderRadius: 16, padding: '2rem', border: `1px solid ${T.border}`, borderLeft: '3px solid transparent', boxShadow: '0 2px 16px rgba(0,0,0,0.4)', height: 'auto', minHeight: 360, width: 'min(85vw, 480px)', flexShrink: 0, scrollSnapAlign: 'center', transition: 'transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, border-left-color 0.22s' }}
-              >
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: T.accentLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                  <span style={{ fontFamily: T.manrope, fontSize: '1.25rem', fontWeight: 800, color: T.accent }}>{p.icon}</span>
-                </div>
-                <div style={{ fontFamily: T.manrope, fontSize: '1.125rem', fontWeight: 700, color: T.dark, letterSpacing: '-0.01em', marginBottom: '0.625rem' }}>{p.title}</div>
-                <div style={{ fontFamily: T.inter, fontSize: '0.9375rem', color: T.muted, lineHeight: 1.65 }}>{p.desc}</div>
-              </GlowCard>
-            </TiltCard>
-          </BlurFade>
-        ))}
-      </HorizontalPinned>
-      </div>
+      <PillarOrbit items={PILLARS} />
 
       {/* Scroll-reveal curriculum section */}
       <div id="curriculum-preview">
