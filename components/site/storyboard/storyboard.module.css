@@ -1,0 +1,113 @@
+/* Storyboard grid: illustrated panels with a title and description beneath.
+   Every loop in the illustrations pauses until its panel is on screen, and the
+   paused frame is a complete drawing, so nothing is hidden if scripts fail. */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 3.75rem) clamp(1rem, 2.5vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  list-style: none;
+}
+
+.card {
+  min-width: 0;
+}
+
+.panel {
+  border: 1px solid rgba(238, 238, 255, 0.1);
+  border-radius: 14px;
+  /* Renders as white through the root inversion. */
+  background: #000;
+  overflow: hidden;
+}
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  margin-top: 1.25rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--dark);
+  text-wrap: balance;
+}
+
+.desc {
+  margin-top: 0.5rem;
+  max-width: 46ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(238, 238, 255, 0.72);
+  text-wrap: pretty;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Playback gate ──────────────────────────────────────────────────────── */
+
+.panel:not([data-active='true']) * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel * { animation: none !important; }
+}
+
+/* ─── Shared motion ──────────────────────────────────────────────────────── */
+
+/* A single-dash stroke that travels its path: the cap draws a square or dot. */
+.token {
+  fill: none;
+  stroke-dasharray: 0.001 200;
+  opacity: 0;
+}
+
+.flow {
+  animation: sb-flow 5s linear infinite;
+}
+
+@keyframes sb-flow {
+  0%   { stroke-dashoffset: 0; opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { stroke-dashoffset: -100; opacity: 0; }
+}
+
+.flicker {
+  animation: sb-flicker 2.4s steps(1, end) infinite;
+}
+
+@keyframes sb-flicker {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.15; }
+}
+
+.spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sb-spin 14s linear infinite;
+}
+
+@keyframes sb-spin {
+  to { transform: rotate(360deg); }
+}
+
+.twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sb-twinkle 2.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes sb-twinkle {
+  0%, 100% { transform: scale(0.82) rotate(0deg); }
+  50%      { transform: scale(1.08) rotate(45deg); }
+}

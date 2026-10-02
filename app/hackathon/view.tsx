@@ -3,6 +3,8 @@
 import { Badge } from '@/components/site/badge'
 import { BoxBurst } from '@/ANIMATION STORAGE/box-burst'
 import { GlassStepCard } from '@/components/ui/glass-step-card'
+import { StoryboardGrid, type StoryboardItem } from '@/components/site/storyboard/storyboard-grid'
+import { CareersArt, MeetArt, QAArt, SessionsArt } from '@/components/site/storyboard/speaker-art'
 import { T } from '@/lib/theme'
 import { REGISTRATION_FORM_URL } from '@/lib/registration-link'
 
@@ -16,6 +18,13 @@ const WORKSHOPS = [
   { num: '01', title: 'How Blockchain Works', desc: 'Learn how blocks link together and how computers check transactions.' },
   { num: '02', title: 'Real World Impact', desc: 'Compare uses in finance, digital identity, and supply chains. Discuss what works and what does not.' },
   { num: '03', title: 'Hands On Building', desc: 'Set up a wallet, explore a testnet, and write your first simple smart contract in a guided session.' },
+]
+
+const SPEAKER_SERIES: readonly StoryboardItem[] = [
+  { title: 'Direct Q&A', desc: 'Put your own questions to the developers and founders doing the work.', Art: QAArt },
+  { title: 'Explore careers', desc: 'Hear how each speaker got started and where a career in blockchain can lead.', Art: CareersArt },
+  { title: 'Meet guest speakers', desc: 'Meet the people building blockchain projects and learn what their work involves.', Art: MeetArt },
+  { title: 'Ten sessions in year one', desc: 'Our goal is to host 10 guest speaker sessions in our first year.', Art: SessionsArt },
 ]
 
 const sectionStyle = {
@@ -66,14 +75,7 @@ export function HackathonView() {
           <p style={{ fontFamily: T.inter, fontSize: '1rem', color: T.muted, lineHeight: 1.7, maxWidth: '54ch', marginTop: '0.875rem' }}>
             Ask developers and founders about their projects, the problems they face, and careers in blockchain.
           </p>
-          <ul style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap', listStyle: 'none' }}>
-            {['Direct Q&A', 'Explore careers', 'Meet guest speakers'].map(text => (
-              <li key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.dark }}>
-                <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: '50%', background: T.accent, flexShrink: 0 }} />
-                {text}
-              </li>
-            ))}
-          </ul>
+          <StoryboardGrid items={SPEAKER_SERIES} label="What the Guest Speaker Series offers" />
         </div>
       </section>
 

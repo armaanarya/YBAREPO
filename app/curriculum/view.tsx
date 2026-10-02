@@ -6,7 +6,16 @@ import { AnimatedAccordion } from '@/components/ui/animated-accordion'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { TextStagger } from '@/components/ui/hero-animated'
 import { ParallaxLayer } from '@/components/ui/parallax-layer'
+import { StoryboardGrid, type StoryboardItem } from '@/components/site/storyboard/storyboard-grid'
+import { ChainArt, PeersArt, SundaysArt, VideoArt } from '@/components/site/storyboard/curriculum-art'
 import { T } from '@/lib/theme'
+
+const CURRICULUM: readonly StoryboardItem[] = [
+  { title: 'Video lessons', desc: 'The curriculum is built around video lessons for high schoolers.', Art: VideoArt },
+  { title: 'Starts with the basics', desc: 'The first lessons cover how blockchains work. No coding experience is required.', Art: ChainArt },
+  { title: 'Made by students', desc: 'YBA students make the lessons for other students their age.', Art: PeersArt },
+  { title: 'Weekly Sunday meetings', desc: 'We meet every Sunday. The calendar below lists the 2026 dates.', Art: SundaysArt },
+]
 
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December']
 const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
@@ -114,6 +123,8 @@ export function CurriculumView() {
           We are preparing video lessons made by students for high schoolers. The curriculum will start with blockchain basics.
         </p>
       </BlurFade>
+
+      <StoryboardGrid items={CURRICULUM} label="What the curriculum includes" headingLevel="h2" />
 
       <ParallaxLayer speed={0.15}>
         <YBACalendar />

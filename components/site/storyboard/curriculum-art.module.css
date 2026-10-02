@@ -1,0 +1,241 @@
+/* Curriculum illustrations. Base styles hold the composed still frame shown
+   with reduced motion; keyframes tell each loop's story. */
+
+/* ─── Video lessons: 9s; chapters at 14% and 36%, reset from 88% ─────────── */
+
+.vLink { stroke-dashoffset: 0; }
+.vLink1 { animation: v-link1 9s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+@keyframes v-link1 {
+  0%, 8%    { stroke-dashoffset: 100; opacity: 1; }
+  14%, 88%  { stroke-dashoffset: 0; opacity: 1; }
+  94%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+.vLink2 { animation: v-link2 9s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+@keyframes v-link2 {
+  0%, 30%   { stroke-dashoffset: 100; opacity: 1; }
+  36%, 88%  { stroke-dashoffset: 0; opacity: 1; }
+  94%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.vBlock { transform-box: fill-box; transform-origin: center; }
+.vBlock2 { animation: v-block2 9s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+@keyframes v-block2 {
+  0%, 14%   { opacity: 0; transform: scale(0.6); }
+  20%, 88%  { opacity: 1; transform: scale(1); }
+  94%, 100% { opacity: 0; transform: scale(1); }
+}
+.vBlock3 { animation: v-block3 9s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+@keyframes v-block3 {
+  0%, 36%   { opacity: 0; transform: scale(0.6); }
+  42%, 88%  { opacity: 1; transform: scale(1); }
+  94%, 100% { opacity: 0; transform: scale(1); }
+}
+
+.vSelect {
+  transform: translateX(116px);
+  animation: v-select 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes v-select {
+  0%, 14%   { transform: translateX(0); }
+  18%, 36%  { transform: translateX(58px); }
+  40%, 90%  { transform: translateX(116px); }
+  96%, 100% { transform: translateX(0); }
+}
+
+.vProg { stroke-dashoffset: 38; animation: v-prog 9s linear infinite; }
+@keyframes v-prog {
+  0%        { stroke-dashoffset: 100; opacity: 1; }
+  88%       { stroke-dashoffset: 0; opacity: 1; }
+  94%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.vKnob { transform: translateX(99px); animation: v-knob 9s linear infinite; }
+@keyframes v-knob {
+  0%   { transform: translateX(0); opacity: 1; }
+  88%  { transform: translateX(160px); opacity: 1; }
+  93%  { transform: translateX(160px); opacity: 0; }
+  95%  { transform: translateX(0); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.vCh1 { animation: v-ch1 9s steps(1, end) infinite; }
+@keyframes v-ch1 {
+  0%        { opacity: 0; }
+  14%       { opacity: 1; }
+  92%, 100% { opacity: 0; }
+}
+.vCh2 { animation: v-ch2 9s steps(1, end) infinite; }
+@keyframes v-ch2 {
+  0%        { opacity: 0; }
+  36%       { opacity: 1; }
+  92%, 100% { opacity: 0; }
+}
+
+/* Playing shows pause; the reset shows play. The still frame is paused. */
+.vPlay { animation: v-play 9s steps(1, end) infinite; }
+@keyframes v-play {
+  0%        { opacity: 0; }
+  89%, 100% { opacity: 1; }
+}
+.vPause { opacity: 0; animation: v-pause 9s steps(1, end) infinite; }
+@keyframes v-pause {
+  0%        { opacity: 1; }
+  89%, 100% { opacity: 0; }
+}
+
+.vEq {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(0.6);
+  animation: v-eq 0.8s ease-in-out infinite alternate;
+}
+@keyframes v-eq {
+  from { transform: scaleY(0.25); }
+  to   { transform: scaleY(1); }
+}
+
+/* Five lessons, one per 9s loop. */
+.vNext { animation: v-next 45s steps(5, end) infinite; }
+@keyframes v-next {
+  from { transform: translateX(0); }
+  to   { transform: translateX(190px); }
+}
+
+/* ─── Starts with the basics: 6s; drop, mine, seal, link, shift ──────────── */
+
+.chDrop { opacity: 0; animation: ch-drop 6s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+@keyframes ch-drop {
+  0%        { opacity: 0; transform: translateY(0); }
+  5%, 10%   { opacity: 1; transform: translateY(0); }
+  21%       { opacity: 1; transform: translateY(78px); }
+  25%, 100% { opacity: 0; transform: translateY(78px); }
+}
+
+.chSelect { opacity: 0; animation: ch-select 6s ease-in-out infinite; }
+@keyframes ch-select {
+  0%, 8%    { opacity: 0; }
+  12%, 54%  { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+
+.chMine {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ch-mine 6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes ch-mine {
+  0%, 18%   { opacity: 0; transform: scale(0.7); }
+  24%, 46%  { opacity: 1; transform: scale(1); }
+  52%, 100% { opacity: 0; transform: scale(1); }
+}
+
+.chSettle { animation: ch-settle 6s ease-out infinite; }
+@keyframes ch-settle {
+  0%, 46%   { opacity: 0; }
+  52%, 100% { opacity: 1; }
+}
+
+.chLink { stroke-dashoffset: 0; animation: ch-link 6s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+@keyframes ch-link {
+  0%, 50%   { stroke-dashoffset: 100; }
+  58%, 100% { stroke-dashoffset: 0; }
+}
+
+/* One block-width shift; the end frame matches the start frame exactly. */
+.chMove { animation: ch-move 6s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+@keyframes ch-move {
+  0%, 64%   { transform: translateX(0); }
+  84%, 100% { transform: translateX(-100px); }
+}
+
+/* ─── Made by students: 7.2s, a new student every 1.2s ───────────────────── */
+
+.pOrbit { animation: p-orbit 7.2s linear infinite; }
+@keyframes p-orbit {
+  from { stroke-dashoffset: 0; opacity: 1; }
+  to   { stroke-dashoffset: -100; opacity: 1; }
+}
+
+.pNode, .pLit { opacity: 0; animation: p-node 7.2s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+.pNode.pNodeStatic { opacity: 1; }
+@keyframes p-node {
+  0%        { opacity: 0; }
+  3%, 15%   { opacity: 1; }
+  22%, 100% { opacity: 0; }
+}
+
+.pSend { animation: p-send 7.2s linear infinite; }
+@keyframes p-send {
+  0%, 2%    { stroke-dashoffset: 0; opacity: 0; }
+  4%, 12%   { opacity: 1; }
+  14%, 100% { stroke-dashoffset: -100; opacity: 0; }
+}
+
+/* The lesson grows a little each time a contribution lands. */
+.pCard {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: p-card 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes p-card {
+  0%, 48%   { transform: scale(1); }
+  58%       { transform: scale(1.045); }
+  80%, 100% { transform: scale(1); }
+}
+
+/* ─── Weekly Sunday meetings: 2.4s weeks, five Sundays per 12s month ────── */
+
+.sFill {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: s-fill 12s steps(5, start) infinite;
+}
+@keyframes s-fill {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+.sRow { animation: s-row 12s steps(5, end) infinite; }
+@keyframes s-row {
+  from { transform: translateY(0); }
+  to   { transform: translateY(117.5px); }
+}
+
+/* Sunday holds for 40% of the week, then one step per weekday. */
+.sDay { animation: s-day 2.4s steps(1, end) infinite; }
+@keyframes s-day {
+  0%   { transform: translateX(0); }
+  40%  { transform: translateX(23.5px); }
+  50%  { transform: translateX(47px); }
+  60%  { transform: translateX(70.5px); }
+  70%  { transform: translateX(94px); }
+  80%  { transform: translateX(117.5px); }
+  90%, 100% { transform: translateX(141px); }
+}
+
+.sSunday { opacity: 0; animation: s-sunday 2.4s steps(1, end) infinite; }
+@keyframes s-sunday {
+  0%        { opacity: 1; }
+  40%, 100% { opacity: 0; }
+}
+
+.sSend { animation: s-travel 2.4s linear infinite; }
+.sArrive { animation: s-travel 2.4s linear infinite; }
+@keyframes s-travel {
+  0%        { stroke-dashoffset: 0; opacity: 0; }
+  4%, 26%   { opacity: 1; }
+  30%, 100% { stroke-dashoffset: -100; opacity: 0; }
+}
+
+.sPulse {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: s-pulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes s-pulse {
+  0%, 28%   { opacity: 0; transform: scale(1); }
+  31%       { opacity: 0.85; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(1.35); }
+}
