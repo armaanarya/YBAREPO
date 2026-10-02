@@ -3,6 +3,8 @@
 import React, { useEffect, useRef } from 'react'
 import { onHeroBurst, type HeroBurst } from '@/lib/hero-burst'
 
+// gstack-shortcut(dec-927a2e29-ff05-4c6e-abcb-9354e14c643b): browser-verified only, no unit tests; upgrade when the repo adopts a test runner
+
 // Half of GridPattern's 28px step, starting at the canvas corner, so every
 // grid dot lights up along with one dot between each pair.
 const SPACING = 14
@@ -12,6 +14,9 @@ const SPACING = 14
 // #3f3f88), so these are the drawn values that land on clear blues:
 // #3e6ed7, #5971e8, #7078ff, #a7a7ff.
 const COLORS = ['#3868ff', '#5870ef', '#7078ff', '#a7a7ff']
+// How far behind the front (px) each color gives way to the next; one entry
+// fewer than COLORS, the last color takes the rest of the trail.
+const COLOR_BANDS_PX = [14, 34, 70]
 const ALPHA_STEPS = 8
 const FRONT_PX = 8 // sharpness of the wave's leading edge
 const TRAIL_PX = 55 // how far the glow trails behind it
@@ -19,12 +24,12 @@ const TRAIL_PX = 55 // how far the glow trails behind it
 // Rings sent out by one burst: three outward pulses as the blocks fly out,
 // one inward pulse as they rush back into the logo.
 const OUT_MS = 1300
-const IN_MS = 550
 const OUT_RINGS = [
   { delay: 0, strength: 1 },
   { delay: 280, strength: 0.7 },
   { delay: 560, strength: 0.45 },
 ]
+const IN_RING = { strength: 0.85, phase: 0.7 }
 
 interface Ring {
   at: number
@@ -56,6 +61,7 @@ export function HeroDotFlow() {
     if (!canvas || !ctx) return
 
     let raf = 0
+    let drewLast = false
     let dots = { xs: new Float32Array(0), ys: new Float32Array(0), grain: new Float32Array(0) }
     let size = { w: 0, h: 0 }
 
@@ -85,12 +91,25 @@ export function HeroDotFlow() {
 
     const draw = (burst: HeroBurst, rings: Ring[], endAt: number) => {
       const now = performance.now()
-      layout()
-      ctx.clearRect(0, 0, size.w, size.h)
       if (now > endAt) {
+        // Free the backing store; the next burst sizes it again.
+        canvas.width = 0
+        canvas.height = 0
+        size = { w: 0, h: 0 }
+        drewLast = false
         raf = 0
         return
       }
+      // Between rings there is nothing to draw: clear once, then idle.
+      if (!rings.some((ring) => now >= ring.at && now <= ring.at + ring.dur)) {
+        if (drewLast) ctx.clearRect(0, 0, size.w, size.h)
+        drewLast = false
+        raf = requestAnimationFrame(() => draw(burst, rings, endAt))
+        return
+      }
+      layout()
+      ctx.clearRect(0, 0, size.w, size.h)
+      drewLast = true
 
       const rect = canvas.getBoundingClientRect()
       const o = burst.origin()
@@ -132,7 +151,8 @@ export function HeroDotFlow() {
           }
           const alpha = best * grain[k]
           if (alpha < 0.05) continue
-          const color = bestX < 14 ? 0 : bestX < 34 ? 1 : bestX < 70 ? 2 : 3
+          let color = 0
+          while (color < COLOR_BANDS_PX.length && bestX >= COLOR_BANDS_PX[color]) color++
           const step = Math.min(ALPHA_STEPS - 1, Math.floor(alpha * ALPHA_STEPS))
           const b = color * ALPHA_STEPS + step
           const radius = 1.2 + 1.6 * Math.min(1, best)
@@ -156,7 +176,7 @@ export function HeroDotFlow() {
       const rings: Ring[] = OUT_RINGS.map((r, i) => ({
         at: burst.burstAt + r.delay, dur: OUT_MS, strength: r.strength, inward: false, phase: i * 2.1,
       }))
-      rings.push({ at: burst.lockAt - IN_MS, dur: IN_MS, strength: 0.85, inward: true, phase: 0.7 })
+      rings.push({ at: burst.returnAt, dur: burst.lockAt - burst.returnAt, inward: true, ...IN_RING })
       const endAt = Math.max(...rings.map((r) => r.at + r.dur)) + 50
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => draw(burst, rings, endAt))

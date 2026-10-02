@@ -20,9 +20,14 @@ export function announceHeroBurst(burst: HeroBurst) {
   listeners.forEach((listener) => listener(burst))
 }
 
-/** Calls back for the current burst (if one already started) and any later one. */
+/** Forgets a burst when its announcer unmounts, so it is never replayed. */
+export function clearHeroBurst(burst: HeroBurst) {
+  if (current === burst) current = null
+}
+
+/** Calls back for the burst still playing (if any) and any later one. */
 export function onHeroBurst(listener: Listener) {
-  if (current) listener(current)
+  if (current && performance.now() < current.lockAt) listener(current)
   listeners.add(listener)
   return () => {
     listeners.delete(listener)

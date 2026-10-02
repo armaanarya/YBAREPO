@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import type { Application, SPEObject } from '@splinetool/runtime'
 import { SpinningLogo } from '@/components/site/spinning-logo'
 import { SPLINE_HERO_SCENE } from '@/lib/spline'
-import { announceHeroBurst } from '@/lib/hero-burst'
+import { announceHeroBurst, clearHeroBurst, type HeroBurst } from '@/lib/hero-burst'
 
 // The scene's Hero Camera (fov 45°, z 5392) frames 4467 world units of height
 // at the logo's depth, and the mark is 1072 units tip to tip. On a canvas one
@@ -13,23 +13,21 @@ import { announceHeroBurst } from '@/lib/hero-burst'
 const VIEW_H = 4467
 const LOGO_VH = (1072 / VIEW_H) * 100
 
-// Cursor tilt eases in once the burst has settled back into the logo.
-const TILT_DELAY_MS = 4200
-const TILT_RAMP_MS = 1200
-const MAX_TILT_X = 0.12
-const MAX_TILT_Y = 0.2
-
-// Fallback if the scene never reports that its intro started.
-const REVEAL_TIMEOUT_MS = 2500
-
 // The scene's timeline, measured from when it sets introStarted: the mark
 // shatters into node blocks at 0.92s, they rush home at 3.1s and lock at
 // 3.65s. Keep in step with T_BURST / T_RETURN / T_LOCK in the scene script.
 const BURST_AT_MS = 920
 const RETURN_AT_MS = 3100
 const LOCK_AT_MS = 3650
-// Stop polling for introStarted if the scene never sets it.
-const INTRO_POLL_MS = 6000
+
+// Cursor tilt eases in once the blocks have locked back into the logo.
+const TILT_DELAY_MS = LOCK_AT_MS + 550
+const TILT_RAMP_MS = 1200
+const MAX_TILT_X = 0.12
+const MAX_TILT_Y = 0.2
+
+// Fallback if the scene never reports that its intro started.
+const REVEAL_TIMEOUT_MS = 2500
 
 function removeSplineBadge(app: Application) {
   // Runtime 2.0.65 draws the badge in its render pipeline, inside the canvas.
@@ -98,7 +96,7 @@ export function HeroMark3D() {
     let raf = 0
     let loadedAt = 0
     let revealed = false
-    let announced = false
+    let burst: HeroBurst | null = null
     let size = { w: 0, h: 0 }
     const pointer = { x: 0, y: 0 }
     const tilt = { x: 0, y: 0 }
@@ -126,9 +124,8 @@ export function HeroMark3D() {
         cam.position.x = -(sr.left + sr.width / 2 - (lr.left + lr.width / 2)) * unitsPerPx
         cam.position.y = (sr.top + sr.height / 2 - (lr.top + lr.height / 2)) * unitsPerPx
       }
-      if (!announced && now - loadedAt < INTRO_POLL_MS && introStarted(app)) {
-        announced = true
-        announceHeroBurst({
+      if (!burst && introStarted(app)) {
+        burst = {
           burstAt: now + BURST_AT_MS,
           returnAt: now + RETURN_AT_MS,
           lockAt: now + LOCK_AT_MS,
@@ -136,14 +133,16 @@ export function HeroMark3D() {
             const r = slot.getBoundingClientRect()
             return { x: r.left + r.width / 2, y: r.top + r.height / 2 }
           },
-        })
+        }
+        announceHeroBurst(burst)
       }
-      if (!revealed && (announced || now - loadedAt > REVEAL_TIMEOUT_MS)) {
+      if (!revealed && (burst || now - loadedAt > REVEAL_TIMEOUT_MS)) {
         revealed = true
         setStarted(true)
       }
       if (rig) {
-        const ramp = Math.min(1, Math.max(0, (now - loadedAt - TILT_DELAY_MS) / TILT_RAMP_MS))
+        const introAt = burst ? burst.burstAt - BURST_AT_MS : loadedAt
+        const ramp = Math.min(1, Math.max(0, (now - introAt - TILT_DELAY_MS) / TILT_RAMP_MS))
         tilt.x += (pointer.y * MAX_TILT_X * ramp - tilt.x) * 0.06
         tilt.y += (pointer.x * MAX_TILT_Y * ramp - tilt.y) * 0.06
         rig.rotation.x = tilt.x
@@ -184,6 +183,7 @@ export function HeroMark3D() {
       cancelAnimationFrame(raf)
       visibility.disconnect()
       window.removeEventListener('pointermove', onPointer)
+      if (burst) clearHeroBurst(burst)
       app?.dispose()
     }
   }, [host])
