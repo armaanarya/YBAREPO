@@ -68,7 +68,7 @@ function ScrollRevealSection() {
                   Our first video lesson is available now. Watch "What is blockchain?" and start learning the basics with us.
                 </p>
                 <button
-                  onClick={() => { track('button_click', 'home', { button: 'curriculum_preview' }); router.push('/curriculum') }}
+                  onClick={() => { track('button_click', 'home', { button: 'curriculum_preview' }); router.push('/curriculum/lessons') }}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer', padding: '0 0 2px' }}
                 >
                   Watch the first lesson →

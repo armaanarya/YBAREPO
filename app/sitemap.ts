@@ -6,7 +6,7 @@ const BASE = 'https://joinyba.org'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Keep the standalone registration page in the sitemap for direct visitors.
-  const pages = [...NAV_LINKS.map(l => l.href), '/register'].map(href => ({
+  const pages = [...NAV_LINKS.map(l => l.href), '/register', '/curriculum/lessons'].map(href => ({
     url: `${BASE}${href === '/' ? '' : href}`,
     changeFrequency: 'monthly' as const,
     priority: href === '/' ? 1 : 0.8,
