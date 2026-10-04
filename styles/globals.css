@@ -222,6 +222,7 @@ html {
 }
 img:not([src$='.svg']),
 video,
+iframe[src^='https://www.youtube.com/embed/'],
 .yba-spline canvas,
 .yba-dots canvas {
   filter: invert(1) hue-rotate(180deg);
