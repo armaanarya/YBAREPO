@@ -65,13 +65,13 @@ function ScrollRevealSection() {
             <div style={{ padding: 'clamp(1.75rem,3vw,2.5rem)' }}>
               <BlurFade inView delay={0.15} yOffset={6}>
                 <p style={{ fontFamily: T.inter, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, maxWidth: '56ch' }}>
-                  We are preparing a curriculum built around video lessons. For now, read our student-written articles on blockchain and Bitcoin.
+                  Our first video lesson is available now. Watch "What is blockchain?" and start learning the basics with us.
                 </p>
                 <button
-                  onClick={() => { track('button_click', 'home', { button: 'articles_preview' }); router.push('/articles') }}
+                  onClick={() => { track('button_click', 'home', { button: 'curriculum_preview' }); router.push('/curriculum') }}
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', fontFamily: T.inter, fontWeight: 600, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.9)', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer', padding: '0 0 2px' }}
                 >
-                  Read our articles →
+                  Watch the first lesson →
                 </button>
               </BlurFade>
             </div>
