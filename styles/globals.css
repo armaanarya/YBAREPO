@@ -245,26 +245,6 @@ iframe[src^='https://www.youtube.com/embed/'],
   cursor: pointer;
 }
 
-.glass-logo {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.glass-logo-fallback,
-.glass-logo-scene {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.glass-logo-scene canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .officers-grid {
   max-width: 1160px;
   margin: 0 auto;

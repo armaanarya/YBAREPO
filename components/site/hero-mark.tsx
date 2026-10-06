@@ -1,10 +1,10 @@
 'use client'
 
 import { useCallback, useEffect, useRef } from 'react'
-import { GlassLogo } from '@/components/site/glass-logo'
+import { SpinningLogo } from '@/components/site/spinning-logo'
 import { announceHeroBurst, clearHeroBurst, type HeroBurst } from '@/lib/hero-burst'
 
-/** The assembled glass mark triggers dots independently of the archived burst. */
+/** The homepage mark triggers dots independently of the stored Spline burst. */
 export function HeroMark() {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const burstRef = useRef<HeroBurst | null>(null)
@@ -44,7 +44,7 @@ export function HeroMark() {
       aria-label="Play YBA logo dot animation"
       title="Click to replay the dots"
     >
-      <GlassLogo />
+      <SpinningLogo size="100%" />
     </button>
   )
 }
