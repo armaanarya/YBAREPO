@@ -1,0 +1,146 @@
+[
+ {
+  "id": 0,
+  "text": "Say",
+  "start": 0,
+  "end": 0.221
+ },
+ {
+  "id": 1,
+  "text": "you",
+  "start": 0.255,
+  "end": 0.337
+ },
+ {
+  "id": 2,
+  "text": "lend",
+  "start": 0.43,
+  "end": 0.569
+ },
+ {
+  "id": 3,
+  "text": "your",
+  "start": 0.615,
+  "end": 0.731
+ },
+ {
+  "id": 4,
+  "text": "friend",
+  "start": 0.766,
+  "end": 0.975
+ },
+ {
+  "id": 5,
+  "text": "Sam",
+  "start": 1.045,
+  "end": 1.312
+ },
+ {
+  "id": 6,
+  "text": "five",
+  "start": 1.393,
+  "end": 1.672
+ },
+ {
+  "id": 7,
+  "text": "dollars.",
+  "start": 1.707,
+  "end": 2.345
+ },
+ {
+  "id": 8,
+  "text": "Sam",
+  "start": 2.682,
+  "end": 2.949
+ },
+ {
+  "id": 9,
+  "text": "promises",
+  "start": 3.019,
+  "end": 3.425
+ },
+ {
+  "id": 10,
+  "text": "to",
+  "start": 3.46,
+  "end": 3.518
+ },
+ {
+  "id": 11,
+  "text": "pay",
+  "start": 3.576,
+  "end": 3.704
+ },
+ {
+  "id": 12,
+  "text": "you",
+  "start": 3.75,
+  "end": 3.82
+ },
+ {
+  "id": 13,
+  "text": "back",
+  "start": 3.889,
+  "end": 4.087
+ },
+ {
+  "id": 14,
+  "text": "on",
+  "start": 4.145,
+  "end": 4.214
+ },
+ {
+  "id": 15,
+  "text": "Friday.",
+  "start": 4.284,
+  "end": 4.934
+ },
+ {
+  "id": 16,
+  "text": "Friday",
+  "start": 5.666,
+  "end": 5.979
+ },
+ {
+  "id": 17,
+  "text": "comes,",
+  "start": 6.049,
+  "end": 6.629
+ },
+ {
+  "id": 18,
+  "text": "and",
+  "start": 6.664,
+  "end": 6.815
+ },
+ {
+  "id": 19,
+  "text": "Sam",
+  "start": 6.896,
+  "end": 7.175
+ },
+ {
+  "id": 20,
+  "text": "says,",
+  "start": 7.245,
+  "end": 7.767
+ },
+ {
+  "id": 21,
+  "text": "what",
+  "start": 8.231,
+  "end": 8.475
+ },
+ {
+  "id": 22,
+  "text": "five",
+  "start": 8.557,
+  "end": 8.905
+ },
+ {
+  "id": 23,
+  "text": "dollars?",
+  "start": 8.951,
+  "end": 10.31
+ }
+]

@@ -1,0 +1,152 @@
+[
+ {
+  "id": 0,
+  "text": "Your",
+  "start": 0,
+  "end": 0.209
+ },
+ {
+  "id": 1,
+  "text": "message",
+  "start": 0.255,
+  "end": 0.58
+ },
+ {
+  "id": 2,
+  "text": "goes",
+  "start": 0.615,
+  "end": 0.755
+ },
+ {
+  "id": 3,
+  "text": "out",
+  "start": 0.789,
+  "end": 0.894
+ },
+ {
+  "id": 4,
+  "text": "to",
+  "start": 0.917,
+  "end": 0.964
+ },
+ {
+  "id": 5,
+  "text": "the",
+  "start": 1.01,
+  "end": 1.08
+ },
+ {
+  "id": 6,
+  "text": "computers",
+  "start": 1.115,
+  "end": 1.567
+ },
+ {
+  "id": 7,
+  "text": "that",
+  "start": 1.591,
+  "end": 1.695
+ },
+ {
+  "id": 8,
+  "text": "keep",
+  "start": 1.741,
+  "end": 1.904
+ },
+ {
+  "id": 9,
+  "text": "copies",
+  "start": 1.974,
+  "end": 2.322
+ },
+ {
+  "id": 10,
+  "text": "of",
+  "start": 2.357,
+  "end": 2.415
+ },
+ {
+  "id": 11,
+  "text": "the",
+  "start": 2.461,
+  "end": 2.531
+ },
+ {
+  "id": 12,
+  "text": "notebook.",
+  "start": 2.577,
+  "end": 3.146
+ },
+ {
+  "id": 13,
+  "text": "Each",
+  "start": 3.437,
+  "end": 3.657
+ },
+ {
+  "id": 14,
+  "text": "one",
+  "start": 3.738,
+  "end": 3.936
+ },
+ {
+  "id": 15,
+  "text": "checks.",
+  "start": 3.982,
+  "end": 4.609
+ },
+ {
+  "id": 16,
+  "text": "Is",
+  "start": 5.341,
+  "end": 5.526
+ },
+ {
+  "id": 17,
+  "text": "the",
+  "start": 5.573,
+  "end": 5.654
+ },
+ {
+  "id": 18,
+  "text": "signature",
+  "start": 5.712,
+  "end": 6.165
+ },
+ {
+  "id": 19,
+  "text": "real?",
+  "start": 6.223,
+  "end": 6.815
+ },
+ {
+  "id": 20,
+  "text": "Do",
+  "start": 6.954,
+  "end": 7.047
+ },
+ {
+  "id": 21,
+  "text": "you",
+  "start": 7.082,
+  "end": 7.152
+ },
+ {
+  "id": 22,
+  "text": "have",
+  "start": 7.21,
+  "end": 7.349
+ },
+ {
+  "id": 23,
+  "text": "five",
+  "start": 7.407,
+  "end": 7.697
+ },
+ {
+  "id": 24,
+  "text": "dollars?",
+  "start": 7.732,
+  "end": 9.195
+ }
+]

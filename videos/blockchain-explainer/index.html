@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>What is a blockchain?</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #f6f6f2; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #f6f6f2; }
+      #board {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse at 50% 42%, #fbfbf8 0%, #f5f5f0 62%, #e9e9e3 100%);
+      }
+      #bug { position: absolute; left: 36px; bottom: 30px; width: 64px; height: 64px; opacity: 0.72; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="114.75" data-width="1920" data-height="1080">
+      <div id="board" class="clip" data-start="0" data-duration="114.75" data-track-index="0"></div>
+      <div id="s01" data-composition-id="s01" data-composition-src="compositions/frames/01-the-iou.html"
+        data-start="0" data-duration="10.835" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s02" data-composition-id="s02" data-composition-src="compositions/frames/02-one-notebook.html"
+        data-start="10.835" data-duration="8.361" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s03" data-composition-id="s03" data-composition-src="compositions/frames/03-everyone-gets-a-copy.html"
+        data-start="19.196" data-duration="9.98" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s04" data-composition-id="s04" data-composition-src="compositions/frames/04-pages-are-blocks.html"
+        data-start="29.176" data-duration="5.214" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s05" data-composition-id="s05" data-composition-src="compositions/frames/05-the-fingerprint.html"
+        data-start="34.39" data-duration="9.792" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s06" data-composition-id="s06" data-composition-src="compositions/frames/06-linking-the-chain.html"
+        data-start="44.182" data-duration="12.381" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s07" data-composition-id="s07" data-composition-src="compositions/frames/07-sam-tries-to-cheat.html"
+        data-start="56.563" data-duration="16.2" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s08" data-composition-id="s08" data-composition-src="compositions/frames/08-why-it-matters.html"
+        data-start="72.763" data-duration="8.634" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s09" data-composition-id="s09" data-composition-src="compositions/frames/09-where-it-s-used.html"
+        data-start="81.397" data-duration="13.505" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s10" data-composition-id="s10" data-composition-src="compositions/frames/10-it-s-not-magic.html"
+        data-start="94.902" data-duration="9.858" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s11" data-composition-id="s11" data-composition-src="compositions/frames/11-learn-more.html"
+        data-start="104.76" data-duration="9.99" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <img id="bug" class="clip" src="assets/yba-mark.svg" alt="YBA" data-start="0" data-duration="105.36" data-track-index="2" />
+      <audio id="vo-s01" src="assets/voice/s01.mp3" data-start="0.300" data-duration="10.310" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s02" src="assets/voice/s02.mp3" data-start="11.135" data-duration="8.061" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s03" src="assets/voice/s03.mp3" data-start="19.496" data-duration="9.427" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s04" src="assets/voice/s04.mp3" data-start="29.476" data-duration="4.830" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s05" src="assets/voice/s05.mp3" data-start="34.690" data-duration="9.149" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s06" src="assets/voice/s06.mp3" data-start="44.482" data-duration="11.656" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s07" src="assets/voice/s07.mp3" data-start="56.863" data-duration="15.418" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s08" src="assets/voice/s08.mp3" data-start="73.063" data-duration="8.220" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s09" src="assets/voice/s09.mp3" data-start="81.697" data-duration="13.189" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s10" src="assets/voice/s10.mp3" data-start="95.202" data-duration="9.558" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s11" src="assets/voice/s11.mp3" data-start="105.060" data-duration="7.663" data-track-index="3" data-volume="1"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#bug", { opacity: 0.72 }, { opacity: 0, duration: 0.5, ease: "power1.out" }, 104.76);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

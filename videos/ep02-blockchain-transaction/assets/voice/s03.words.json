@@ -1,0 +1,122 @@
+[
+ {
+  "id": 0,
+  "text": "Only",
+  "start": 0,
+  "end": 0.302
+ },
+ {
+  "id": 1,
+  "text": "you",
+  "start": 0.36,
+  "end": 0.464
+ },
+ {
+  "id": 2,
+  "text": "have",
+  "start": 0.522,
+  "end": 0.65
+ },
+ {
+  "id": 3,
+  "text": "the",
+  "start": 0.673,
+  "end": 0.743
+ },
+ {
+  "id": 4,
+  "text": "key",
+  "start": 0.813,
+  "end": 1.033
+ },
+ {
+  "id": 5,
+  "text": "that",
+  "start": 1.103,
+  "end": 1.231
+ },
+ {
+  "id": 6,
+  "text": "opens",
+  "start": 1.277,
+  "end": 1.579
+ },
+ {
+  "id": 7,
+  "text": "it.",
+  "start": 1.637,
+  "end": 1.881
+ },
+ {
+  "id": 8,
+  "text": "That's",
+  "start": 2.519,
+  "end": 2.752
+ },
+ {
+  "id": 9,
+  "text": "called",
+  "start": 2.786,
+  "end": 2.984
+ },
+ {
+  "id": 10,
+  "text": "your",
+  "start": 3.007,
+  "end": 3.1
+ },
+ {
+  "id": 11,
+  "text": "private",
+  "start": 3.158,
+  "end": 3.506
+ },
+ {
+  "id": 12,
+  "text": "key.",
+  "start": 3.553,
+  "end": 4.098
+ },
+ {
+  "id": 13,
+  "text": "Whoever",
+  "start": 4.83,
+  "end": 5.201
+ },
+ {
+  "id": 14,
+  "text": "has",
+  "start": 5.259,
+  "end": 5.445
+ },
+ {
+  "id": 15,
+  "text": "it",
+  "start": 5.503,
+  "end": 5.584
+ },
+ {
+  "id": 16,
+  "text": "controls",
+  "start": 5.642,
+  "end": 6.049
+ },
+ {
+  "id": 17,
+  "text": "the",
+  "start": 6.084,
+  "end": 6.153
+ },
+ {
+  "id": 18,
+  "text": "money",
+  "start": 6.2,
+  "end": 6.397
+ },
+ {
+  "id": 19,
+  "text": "inside.",
+  "start": 6.478,
+  "end": 7.988
+ }
+]

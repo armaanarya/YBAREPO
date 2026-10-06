@@ -1,0 +1,128 @@
+[
+ {
+  "id": 0,
+  "text": "You",
+  "start": 0,
+  "end": 0.163
+ },
+ {
+  "id": 1,
+  "text": "also",
+  "start": 0.244,
+  "end": 0.488
+ },
+ {
+  "id": 2,
+  "text": "add",
+  "start": 0.569,
+  "end": 0.731
+ },
+ {
+  "id": 3,
+  "text": "a",
+  "start": 0.766,
+  "end": 0.789
+ },
+ {
+  "id": 4,
+  "text": "small",
+  "start": 0.859,
+  "end": 1.149
+ },
+ {
+  "id": 5,
+  "text": "fee,",
+  "start": 1.231,
+  "end": 1.73
+ },
+ {
+  "id": 6,
+  "text": "like",
+  "start": 1.8,
+  "end": 1.962
+ },
+ {
+  "id": 7,
+  "text": "a",
+  "start": 1.985,
+  "end": 2.009
+ },
+ {
+  "id": 8,
+  "text": "stamp",
+  "start": 2.09,
+  "end": 2.461
+ },
+ {
+  "id": 9,
+  "text": "on",
+  "start": 2.531,
+  "end": 2.612
+ },
+ {
+  "id": 10,
+  "text": "a",
+  "start": 2.659,
+  "end": 2.682
+ },
+ {
+  "id": 11,
+  "text": "letter.",
+  "start": 2.74,
+  "end": 3.193
+ },
+ {
+  "id": 12,
+  "text": "When",
+  "start": 3.657,
+  "end": 3.831
+ },
+ {
+  "id": 13,
+  "text": "the",
+  "start": 3.866,
+  "end": 3.936
+ },
+ {
+  "id": 14,
+  "text": "network",
+  "start": 3.994,
+  "end": 4.342
+ },
+ {
+  "id": 15,
+  "text": "is",
+  "start": 4.389,
+  "end": 4.47
+ },
+ {
+  "id": 16,
+  "text": "busy,",
+  "start": 4.551,
+  "end": 4.923
+ },
+ {
+  "id": 17,
+  "text": "the",
+  "start": 4.957,
+  "end": 5.05
+ },
+ {
+  "id": 18,
+  "text": "stamp",
+  "start": 5.108,
+  "end": 5.41
+ },
+ {
+  "id": 19,
+  "text": "costs",
+  "start": 5.468,
+  "end": 5.851
+ },
+ {
+  "id": 20,
+  "text": "more.",
+  "start": 5.921,
+  "end": 7.059
+ }
+]

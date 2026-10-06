@@ -1,0 +1,164 @@
+[
+ {
+  "id": 0,
+  "text": "Here's",
+  "start": 0,
+  "end": 0.267
+ },
+ {
+  "id": 1,
+  "text": "the",
+  "start": 0.302,
+  "end": 0.372
+ },
+ {
+  "id": 2,
+  "text": "clever",
+  "start": 0.418,
+  "end": 0.697
+ },
+ {
+  "id": 3,
+  "text": "part.",
+  "start": 0.766,
+  "end": 1.3
+ },
+ {
+  "id": 4,
+  "text": "Each",
+  "start": 2.032,
+  "end": 2.241
+ },
+ {
+  "id": 5,
+  "text": "new",
+  "start": 2.322,
+  "end": 2.461
+ },
+ {
+  "id": 6,
+  "text": "block",
+  "start": 2.519,
+  "end": 2.833
+ },
+ {
+  "id": 7,
+  "text": "copies",
+  "start": 2.902,
+  "end": 3.251
+ },
+ {
+  "id": 8,
+  "text": "down",
+  "start": 3.286,
+  "end": 3.448
+ },
+ {
+  "id": 9,
+  "text": "the",
+  "start": 3.483,
+  "end": 3.553
+ },
+ {
+  "id": 10,
+  "text": "fingerprint",
+  "start": 3.599,
+  "end": 4.075
+ },
+ {
+  "id": 11,
+  "text": "of",
+  "start": 4.11,
+  "end": 4.168
+ },
+ {
+  "id": 12,
+  "text": "the",
+  "start": 4.214,
+  "end": 4.284
+ },
+ {
+  "id": 13,
+  "text": "block",
+  "start": 4.319,
+  "end": 4.609
+ },
+ {
+  "id": 14,
+  "text": "before",
+  "start": 4.679,
+  "end": 5.004
+ },
+ {
+  "id": 15,
+  "text": "it.",
+  "start": 5.039,
+  "end": 5.399
+ },
+ {
+  "id": 16,
+  "text": "That",
+  "start": 5.863,
+  "end": 6.084
+ },
+ {
+  "id": 17,
+  "text": "links",
+  "start": 6.153,
+  "end": 6.385
+ },
+ {
+  "id": 18,
+  "text": "the",
+  "start": 6.42,
+  "end": 6.49
+ },
+ {
+  "id": 19,
+  "text": "pages",
+  "start": 6.536,
+  "end": 6.827
+ },
+ {
+  "id": 20,
+  "text": "together,",
+  "start": 6.873,
+  "end": 7.314
+ },
+ {
+  "id": 21,
+  "text": "like",
+  "start": 7.361,
+  "end": 7.535
+ },
+ {
+  "id": 22,
+  "text": "a",
+  "start": 7.57,
+  "end": 7.593
+ },
+ {
+  "id": 23,
+  "text": "chain.",
+  "start": 7.651,
+  "end": 8.29
+ },
+ {
+  "id": 24,
+  "text": "Block,",
+  "start": 8.928,
+  "end": 9.485
+ },
+ {
+  "id": 25,
+  "text": "chain.",
+  "start": 9.613,
+  "end": 10.194
+ },
+ {
+  "id": 26,
+  "text": "Blockchain.",
+  "start": 10.321,
+  "end": 11.656
+ }
+]

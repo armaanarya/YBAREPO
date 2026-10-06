@@ -1,0 +1,158 @@
+[
+ {
+  "id": 0,
+  "text": "To",
+  "start": 0,
+  "end": 0.151
+ },
+ {
+  "id": 1,
+  "text": "pay",
+  "start": 0.221,
+  "end": 0.395
+ },
+ {
+  "id": 2,
+  "text": "Sam,",
+  "start": 0.476,
+  "end": 1.08
+ },
+ {
+  "id": 3,
+  "text": "you",
+  "start": 1.242,
+  "end": 1.347
+ },
+ {
+  "id": 4,
+  "text": "write",
+  "start": 1.416,
+  "end": 1.625
+ },
+ {
+  "id": 5,
+  "text": "a",
+  "start": 1.649,
+  "end": 1.672
+ },
+ {
+  "id": 6,
+  "text": "message.",
+  "start": 1.73,
+  "end": 2.357
+ },
+ {
+  "id": 7,
+  "text": "Five",
+  "start": 2.821,
+  "end": 3.135
+ },
+ {
+  "id": 8,
+  "text": "dollars",
+  "start": 3.181,
+  "end": 3.518
+ },
+ {
+  "id": 9,
+  "text": "to",
+  "start": 3.564,
+  "end": 3.634
+ },
+ {
+  "id": 10,
+  "text": "Sam's",
+  "start": 3.704,
+  "end": 4.017
+ },
+ {
+  "id": 11,
+  "text": "address.",
+  "start": 4.04,
+  "end": 4.656
+ },
+ {
+  "id": 12,
+  "text": "Your",
+  "start": 4.737,
+  "end": 4.911
+ },
+ {
+  "id": 13,
+  "text": "key",
+  "start": 4.981,
+  "end": 5.178
+ },
+ {
+  "id": 14,
+  "text": "signs",
+  "start": 5.259,
+  "end": 5.596
+ },
+ {
+  "id": 15,
+  "text": "it.",
+  "start": 5.654,
+  "end": 5.956
+ },
+ {
+  "id": 16,
+  "text": "Anyone",
+  "start": 6.594,
+  "end": 7.036
+ },
+ {
+  "id": 17,
+  "text": "can",
+  "start": 7.07,
+  "end": 7.187
+ },
+ {
+  "id": 18,
+  "text": "check",
+  "start": 7.233,
+  "end": 7.43
+ },
+ {
+  "id": 19,
+  "text": "that",
+  "start": 7.477,
+  "end": 7.605
+ },
+ {
+  "id": 20,
+  "text": "signature,",
+  "start": 7.663,
+  "end": 8.197
+ },
+ {
+  "id": 21,
+  "text": "but",
+  "start": 8.231,
+  "end": 8.359
+ },
+ {
+  "id": 22,
+  "text": "nobody",
+  "start": 8.429,
+  "end": 8.754
+ },
+ {
+  "id": 23,
+  "text": "can",
+  "start": 8.8,
+  "end": 8.916
+ },
+ {
+  "id": 24,
+  "text": "fake",
+  "start": 8.986,
+  "end": 9.265
+ },
+ {
+  "id": 25,
+  "text": "it.",
+  "start": 9.3,
+  "end": 10.31
+ }
+]

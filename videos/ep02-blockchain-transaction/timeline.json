@@ -1,0 +1,110 @@
+[
+ {
+  "sid": "s01",
+  "title": "Hit send",
+  "file": "compositions/frames/01-hit-send.html",
+  "start": 0,
+  "dur": 8.994,
+  "speechEnd": 7.694,
+  "voice": 8.684
+ },
+ {
+  "sid": "s02",
+  "title": "Your wallet",
+  "file": "compositions/frames/02-your-wallet.html",
+  "start": 8.994,
+  "dur": 7.58,
+  "speechEnd": 6.28,
+  "voice": 7.198
+ },
+ {
+  "sid": "s03",
+  "title": "Private key",
+  "file": "compositions/frames/03-private-key.html",
+  "start": 16.574,
+  "dur": 8.471,
+  "speechEnd": 7.171,
+  "voice": 7.988
+ },
+ {
+  "sid": "s04",
+  "title": "Signing",
+  "file": "compositions/frames/04-signing.html",
+  "start": 25.045,
+  "dur": 10.769,
+  "speechEnd": 9.469,
+  "voice": 10.31
+ },
+ {
+  "sid": "s05",
+  "title": "The fee",
+  "file": "compositions/frames/05-the-fee.html",
+  "start": 35.814,
+  "dur": 7.534,
+  "speechEnd": 6.234,
+  "voice": 7.059
+ },
+ {
+  "sid": "s06",
+  "title": "Everyone checks",
+  "file": "compositions/frames/06-everyone-checks.html",
+  "start": 43.348,
+  "dur": 9.525,
+  "speechEnd": 8.225,
+  "voice": 9.195
+ },
+ {
+  "sid": "s07",
+  "title": "Sam tries it",
+  "file": "compositions/frames/07-sam-tries-it.html",
+  "start": 52.873,
+  "dur": 15.445,
+  "speechEnd": 14.145,
+  "voice": 15
+ },
+ {
+  "sid": "s08",
+  "title": "Into the block",
+  "file": "compositions/frames/08-into-the-block.html",
+  "start": 68.318,
+  "dur": 10.3,
+  "speechEnd": 9,
+  "voice": 10.031
+ },
+ {
+  "sid": "s09",
+  "title": "Pizza, 2010",
+  "file": "compositions/frames/09-pizza-2010.html",
+  "start": 78.618,
+  "dur": 11.228,
+  "speechEnd": 9.928,
+  "voice": 10.681
+ },
+ {
+  "sid": "s10",
+  "title": "No undo",
+  "file": "compositions/frames/10-no-undo.html",
+  "start": 89.846,
+  "dur": 11.319,
+  "speechEnd": 10.019,
+  "voice": 10.913
+ },
+ {
+  "sid": "s11",
+  "title": "Your turn",
+  "file": "compositions/frames/11-your-turn.html",
+  "start": 101.165,
+  "dur": 12.214,
+  "speechEnd": 8.964,
+  "voice": 9.195
+ },
+ {
+  "sid": "s12",
+  "title": "Learn more",
+  "file": "compositions/frames/12-learn-more.html",
+  "start": 113.379,
+  "dur": 10.141,
+  "speechEnd": 7.441,
+  "voice": 7.802
+ }
+]

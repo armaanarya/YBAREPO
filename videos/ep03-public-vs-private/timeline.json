@@ -1,0 +1,110 @@
+[
+ {
+  "sid": "s01",
+  "title": "Who gets in?",
+  "file": "compositions/frames/01-who-gets-in.html",
+  "start": 0,
+  "dur": 9.25,
+  "speechEnd": 7.95,
+  "voice": 8.545
+ },
+ {
+  "sid": "s02",
+  "title": "The wall notebook",
+  "file": "compositions/frames/02-the-wall-notebook.html",
+  "start": 9.25,
+  "dur": 10.885,
+  "speechEnd": 9.585,
+  "voice": 10.124
+ },
+ {
+  "sid": "s03",
+  "title": "Visa",
+  "file": "compositions/frames/03-visa.html",
+  "start": 20.135,
+  "dur": 12.013,
+  "speechEnd": 10.713,
+  "voice": 11.517
+ },
+ {
+  "sid": "s04",
+  "title": "PayPal",
+  "file": "compositions/frames/04-paypal.html",
+  "start": 32.148,
+  "dur": 8.323,
+  "speechEnd": 7.023,
+  "voice": 7.848
+ },
+ {
+  "sid": "s05",
+  "title": "The club notebook",
+  "file": "compositions/frames/05-the-club-notebook.html",
+  "start": 40.471,
+  "dur": 9.284,
+  "speechEnd": 7.984,
+  "voice": 8.499
+ },
+ {
+  "sid": "s06",
+  "title": "Why lock it?",
+  "file": "compositions/frames/06-why-lock-it.html",
+  "start": 49.755,
+  "dur": 8.683,
+  "speechEnd": 7.383,
+  "voice": 8.173
+ },
+ {
+  "sid": "s07",
+  "title": "J.P. Morgan",
+  "file": "compositions/frames/07-j-p-morgan.html",
+  "start": 58.438,
+  "dur": 14.803,
+  "speechEnd": 13.503,
+  "voice": 14.396
+ },
+ {
+  "sid": "s08",
+  "title": "Walmart",
+  "file": "compositions/frames/08-walmart.html",
+  "start": 73.241,
+  "dur": 8.203,
+  "speechEnd": 6.903,
+  "voice": 7.709
+ },
+ {
+  "sid": "s09",
+  "title": "Who's in charge?",
+  "file": "compositions/frames/09-who-s-in-charge.html",
+  "start": 81.444,
+  "dur": 13.265,
+  "speechEnd": 11.965,
+  "voice": 12.817
+ },
+ {
+  "sid": "s10",
+  "title": "Which is better?",
+  "file": "compositions/frames/10-which-is-better.html",
+  "start": 94.709,
+  "dur": 14.286,
+  "speechEnd": 12.986,
+  "voice": 13.932
+ },
+ {
+  "sid": "s11",
+  "title": "Your turn",
+  "file": "compositions/frames/11-your-turn.html",
+  "start": 108.995,
+  "dur": 12.865,
+  "speechEnd": 9.615,
+  "voice": 9.892
+ },
+ {
+  "sid": "s12",
+  "title": "Learn more",
+  "file": "compositions/frames/12-learn-more.html",
+  "start": 121.86,
+  "dur": 9.87,
+  "speechEnd": 7.17,
+  "voice": 7.523
+ }
+]

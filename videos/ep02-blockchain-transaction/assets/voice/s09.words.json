@@ -1,0 +1,164 @@
+[
+ {
+  "id": 0,
+  "text": "This",
+  "start": 0,
+  "end": 0.209
+ },
+ {
+  "id": 1,
+  "text": "really",
+  "start": 0.337,
+  "end": 0.615
+ },
+ {
+  "id": 2,
+  "text": "happens.",
+  "start": 0.673,
+  "end": 1.382
+ },
+ {
+  "id": 3,
+  "text": "In",
+  "start": 1.846,
+  "end": 1.974
+ },
+ {
+  "id": 4,
+  "text": "2010,",
+  "start": 2.032,
+  "end": 2.926
+ },
+ {
+  "id": 5,
+  "text": "a",
+  "start": 2.972,
+  "end": 3.03
+ },
+ {
+  "id": 6,
+  "text": "programmer",
+  "start": 3.111,
+  "end": 3.564
+ },
+ {
+  "id": 7,
+  "text": "paid",
+  "start": 3.622,
+  "end": 3.82
+ },
+ {
+  "id": 8,
+  "text": "ten",
+  "start": 3.866,
+  "end": 4.075
+ },
+ {
+  "id": 9,
+  "text": "thousand",
+  "start": 4.133,
+  "end": 4.458
+ },
+ {
+  "id": 10,
+  "text": "bitcoins",
+  "start": 4.505,
+  "end": 5.004
+ },
+ {
+  "id": 11,
+  "text": "for",
+  "start": 5.05,
+  "end": 5.155
+ },
+ {
+  "id": 12,
+  "text": "two",
+  "start": 5.213,
+  "end": 5.387
+ },
+ {
+  "id": 13,
+  "text": "pizzas.",
+  "start": 5.457,
+  "end": 6.188
+ },
+ {
+  "id": 14,
+  "text": "That",
+  "start": 6.653,
+  "end": 6.85
+ },
+ {
+  "id": 15,
+  "text": "transaction",
+  "start": 6.885,
+  "end": 7.512
+ },
+ {
+  "id": 16,
+  "text": "is",
+  "start": 7.57,
+  "end": 7.628
+ },
+ {
+  "id": 17,
+  "text": "still",
+  "start": 7.674,
+  "end": 7.883
+ },
+ {
+  "id": 18,
+  "text": "on",
+  "start": 7.93,
+  "end": 7.976
+ },
+ {
+  "id": 19,
+  "text": "the",
+  "start": 8.011,
+  "end": 8.081
+ },
+ {
+  "id": 20,
+  "text": "blockchain,",
+  "start": 8.104,
+  "end": 8.766
+ },
+ {
+  "id": 21,
+  "text": "and",
+  "start": 8.824,
+  "end": 8.975
+ },
+ {
+  "id": 22,
+  "text": "anyone",
+  "start": 9.056,
+  "end": 9.392
+ },
+ {
+  "id": 23,
+  "text": "can",
+  "start": 9.427,
+  "end": 9.532
+ },
+ {
+  "id": 24,
+  "text": "look",
+  "start": 9.567,
+  "end": 9.706
+ },
+ {
+  "id": 25,
+  "text": "it",
+  "start": 9.741,
+  "end": 9.799
+ },
+ {
+  "id": 26,
+  "text": "up.",
+  "start": 9.845,
+  "end": 10.681
+ }
+]

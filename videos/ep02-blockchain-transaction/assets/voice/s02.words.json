@@ -1,0 +1,140 @@
+[
+ {
+  "id": 0,
+  "text": "First,",
+  "start": 0,
+  "end": 0.418
+ },
+ {
+  "id": 1,
+  "text": "you",
+  "start": 0.476,
+  "end": 0.557
+ },
+ {
+  "id": 2,
+  "text": "need",
+  "start": 0.604,
+  "end": 0.72
+ },
+ {
+  "id": 3,
+  "text": "a",
+  "start": 0.755,
+  "end": 0.778
+ },
+ {
+  "id": 4,
+  "text": "wallet.",
+  "start": 0.824,
+  "end": 1.37
+ },
+ {
+  "id": 5,
+  "text": "Think",
+  "start": 1.776,
+  "end": 1.974
+ },
+ {
+  "id": 6,
+  "text": "of",
+  "start": 2.009,
+  "end": 2.055
+ },
+ {
+  "id": 7,
+  "text": "a",
+  "start": 2.09,
+  "end": 2.113
+ },
+ {
+  "id": 8,
+  "text": "mailbox.",
+  "start": 2.159,
+  "end": 2.961
+ },
+ {
+  "id": 9,
+  "text": "Its",
+  "start": 3.042,
+  "end": 3.228
+ },
+ {
+  "id": 10,
+  "text": "slot",
+  "start": 3.251,
+  "end": 3.553
+ },
+ {
+  "id": 11,
+  "text": "has",
+  "start": 3.587,
+  "end": 3.68
+ },
+ {
+  "id": 12,
+  "text": "an",
+  "start": 3.715,
+  "end": 3.773
+ },
+ {
+  "id": 13,
+  "text": "address",
+  "start": 3.796,
+  "end": 4.122
+ },
+ {
+  "id": 14,
+  "text": "anyone",
+  "start": 4.156,
+  "end": 4.423
+ },
+ {
+  "id": 15,
+  "text": "can",
+  "start": 4.458,
+  "end": 4.574
+ },
+ {
+  "id": 16,
+  "text": "see,",
+  "start": 4.644,
+  "end": 4.969
+ },
+ {
+  "id": 17,
+  "text": "so",
+  "start": 5.004,
+  "end": 5.12
+ },
+ {
+  "id": 18,
+  "text": "anyone",
+  "start": 5.201,
+  "end": 5.48
+ },
+ {
+  "id": 19,
+  "text": "can",
+  "start": 5.515,
+  "end": 5.619
+ },
+ {
+  "id": 20,
+  "text": "send",
+  "start": 5.654,
+  "end": 5.805
+ },
+ {
+  "id": 21,
+  "text": "you",
+  "start": 5.851,
+  "end": 5.921
+ },
+ {
+  "id": 22,
+  "text": "money.",
+  "start": 5.991,
+  "end": 7.198
+ }
+]

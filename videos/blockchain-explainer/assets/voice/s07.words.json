@@ -1,0 +1,218 @@
+[
+ {
+  "id": 0,
+  "text": "Now",
+  "start": 0,
+  "end": 0.163
+ },
+ {
+  "id": 1,
+  "text": "say",
+  "start": 0.232,
+  "end": 0.418
+ },
+ {
+  "id": 2,
+  "text": "Sam",
+  "start": 0.499,
+  "end": 0.813
+ },
+ {
+  "id": 3,
+  "text": "sneaks",
+  "start": 0.882,
+  "end": 1.196
+ },
+ {
+  "id": 4,
+  "text": "in",
+  "start": 1.254,
+  "end": 1.405
+ },
+ {
+  "id": 5,
+  "text": "and",
+  "start": 1.474,
+  "end": 1.579
+ },
+ {
+  "id": 6,
+  "text": "erases",
+  "start": 1.637,
+  "end": 2.148
+ },
+ {
+  "id": 7,
+  "text": "the",
+  "start": 2.206,
+  "end": 2.276
+ },
+ {
+  "id": 8,
+  "text": "five",
+  "start": 2.334,
+  "end": 2.601
+ },
+ {
+  "id": 9,
+  "text": "dollars.",
+  "start": 2.635,
+  "end": 3.332
+ },
+ {
+  "id": 10,
+  "text": "That",
+  "start": 3.866,
+  "end": 4.087
+ },
+ {
+  "id": 11,
+  "text": "changes",
+  "start": 4.145,
+  "end": 4.493
+ },
+ {
+  "id": 12,
+  "text": "the",
+  "start": 4.54,
+  "end": 4.609
+ },
+ {
+  "id": 13,
+  "text": "page's",
+  "start": 4.656,
+  "end": 4.957
+ },
+ {
+  "id": 14,
+  "text": "fingerprint,",
+  "start": 5.016,
+  "end": 5.584
+ },
+ {
+  "id": 15,
+  "text": "so",
+  "start": 5.619,
+  "end": 5.724
+ },
+ {
+  "id": 16,
+  "text": "the",
+  "start": 5.782,
+  "end": 5.851
+ },
+ {
+  "id": 17,
+  "text": "chain",
+  "start": 5.921,
+  "end": 6.235
+ },
+ {
+  "id": 18,
+  "text": "breaks.",
+  "start": 6.327,
+  "end": 7.012
+ },
+ {
+  "id": 19,
+  "text": "And",
+  "start": 7.651,
+  "end": 7.814
+ },
+ {
+  "id": 20,
+  "text": "everyone",
+  "start": 7.872,
+  "end": 8.173
+ },
+ {
+  "id": 21,
+  "text": "else's",
+  "start": 8.197,
+  "end": 8.475
+ },
+ {
+  "id": 22,
+  "text": "copy",
+  "start": 8.545,
+  "end": 8.882
+ },
+ {
+  "id": 23,
+  "text": "still",
+  "start": 8.94,
+  "end": 9.183
+ },
+ {
+  "id": 24,
+  "text": "shows",
+  "start": 9.253,
+  "end": 9.59
+ },
+ {
+  "id": 25,
+  "text": "the",
+  "start": 9.648,
+  "end": 9.718
+ },
+ {
+  "id": 26,
+  "text": "five",
+  "start": 9.776,
+  "end": 10.054
+ },
+ {
+  "id": 27,
+  "text": "dollars.",
+  "start": 10.089,
+  "end": 10.762
+ },
+ {
+  "id": 28,
+  "text": "One",
+  "start": 11.401,
+  "end": 11.645
+ },
+ {
+  "id": 29,
+  "text": "notebook",
+  "start": 11.691,
+  "end": 12.051
+ },
+ {
+  "id": 30,
+  "text": "against",
+  "start": 12.098,
+  "end": 12.341
+ },
+ {
+  "id": 31,
+  "text": "the",
+  "start": 12.365,
+  "end": 12.434
+ },
+ {
+  "id": 32,
+  "text": "whole",
+  "start": 12.481,
+  "end": 12.725
+ },
+ {
+  "id": 33,
+  "text": "class.",
+  "start": 12.771,
+  "end": 13.456
+ },
+ {
+  "id": 34,
+  "text": "Sam",
+  "start": 13.862,
+  "end": 14.211
+ },
+ {
+  "id": 35,
+  "text": "loses.",
+  "start": 14.292,
+  "end": 15.418
+ }
+]

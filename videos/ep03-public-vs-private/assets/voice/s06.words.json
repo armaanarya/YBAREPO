@@ -1,0 +1,134 @@
+[
+ {
+  "id": 0,
+  "text": "Why",
+  "start": 0,
+  "end": 0.221
+ },
+ {
+  "id": 1,
+  "text": "lock",
+  "start": 0.302,
+  "end": 0.522
+ },
+ {
+  "id": 2,
+  "text": "it?",
+  "start": 0.58,
+  "end": 0.836
+ },
+ {
+  "id": 3,
+  "text": "Some",
+  "start": 1.3,
+  "end": 1.498
+ },
+ {
+  "id": 4,
+  "text": "records",
+  "start": 1.533,
+  "end": 1.823
+ },
+ {
+  "id": 5,
+  "text": "shouldn't",
+  "start": 1.846,
+  "end": 2.101
+ },
+ {
+  "id": 6,
+  "text": "be",
+  "start": 2.136,
+  "end": 2.229
+ },
+ {
+  "id": 7,
+  "text": "public,",
+  "start": 2.287,
+  "end": 2.647
+ },
+ {
+  "id": 8,
+  "text": "like",
+  "start": 2.682,
+  "end": 2.821
+ },
+ {
+  "id": 9,
+  "text": "a",
+  "start": 2.844,
+  "end": 2.868
+ },
+ {
+  "id": 10,
+  "text": "bank's",
+  "start": 2.914,
+  "end": 3.158
+ },
+ {
+  "id": 11,
+  "text": "payments.",
+  "start": 3.193,
+  "end": 3.855
+ },
+ {
+  "id": 12,
+  "text": "And",
+  "start": 4.191,
+  "end": 4.331
+ },
+ {
+  "id": 13,
+  "text": "with",
+  "start": 4.377,
+  "end": 4.505
+ },
+ {
+  "id": 14,
+  "text": "fewer",
+  "start": 4.563,
+  "end": 4.795
+ },
+ {
+  "id": 15,
+  "text": "checkers,",
+  "start": 4.853,
+  "end": 5.445
+ },
+ {
+  "id": 16,
+  "text": "a",
+  "start": 5.573,
+  "end": 5.642
+ },
+ {
+  "id": 17,
+  "text": "private",
+  "start": 5.724,
+  "end": 6.06
+ },
+ {
+  "id": 18,
+  "text": "chain",
+  "start": 6.095,
+  "end": 6.374
+ },
+ {
+  "id": 19,
+  "text": "can",
+  "start": 6.444,
+  "end": 6.56
+ },
+ {
+  "id": 20,
+  "text": "run",
+  "start": 6.606,
+  "end": 6.757
+ },
+ {
+  "id": 21,
+  "text": "faster.",
+  "start": 6.827,
+  "end": 8.173
+ }
+]

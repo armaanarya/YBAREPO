@@ -1,0 +1,182 @@
+[
+ {
+  "id": 0,
+  "text": "Sam",
+  "start": 0,
+  "end": 0.29
+ },
+ {
+  "id": 1,
+  "text": "tries",
+  "start": 0.348,
+  "end": 0.58
+ },
+ {
+  "id": 2,
+  "text": "something",
+  "start": 0.615,
+  "end": 0.882
+ },
+ {
+  "id": 3,
+  "text": "sneaky.",
+  "start": 0.952,
+  "end": 1.741
+ },
+ {
+  "id": 4,
+  "text": "Your",
+  "start": 2.38,
+  "end": 2.566
+ },
+ {
+  "id": 5,
+  "text": "address",
+  "start": 2.601,
+  "end": 2.937
+ },
+ {
+  "id": 6,
+  "text": "is",
+  "start": 2.984,
+  "end": 3.065
+ },
+ {
+  "id": 7,
+  "text": "public,",
+  "start": 3.146,
+  "end": 3.564
+ },
+ {
+  "id": 8,
+  "text": "so",
+  "start": 3.587,
+  "end": 3.762
+ },
+ {
+  "id": 9,
+  "text": "Sam",
+  "start": 3.855,
+  "end": 4.122
+ },
+ {
+  "id": 10,
+  "text": "writes,",
+  "start": 4.156,
+  "end": 4.725
+ },
+ {
+  "id": 11,
+  "text": "send",
+  "start": 5.364,
+  "end": 5.573
+ },
+ {
+  "id": 12,
+  "text": "all",
+  "start": 5.619,
+  "end": 5.712
+ },
+ {
+  "id": 13,
+  "text": "your",
+  "start": 5.759,
+  "end": 5.851
+ },
+ {
+  "id": 14,
+  "text": "money",
+  "start": 5.898,
+  "end": 6.072
+ },
+ {
+  "id": 15,
+  "text": "to",
+  "start": 6.13,
+  "end": 6.2
+ },
+ {
+  "id": 16,
+  "text": "Sam.",
+  "start": 6.281,
+  "end": 6.873
+ },
+ {
+  "id": 17,
+  "text": "But",
+  "start": 7.732,
+  "end": 7.895
+ },
+ {
+  "id": 18,
+  "text": "without",
+  "start": 7.93,
+  "end": 8.22
+ },
+ {
+  "id": 19,
+  "text": "your",
+  "start": 8.29,
+  "end": 8.429
+ },
+ {
+  "id": 20,
+  "text": "key,",
+  "start": 8.522,
+  "end": 9.218
+ },
+ {
+  "id": 21,
+  "text": "Sam",
+  "start": 9.474,
+  "end": 9.787
+ },
+ {
+  "id": 22,
+  "text": "can't",
+  "start": 9.868,
+  "end": 10.136
+ },
+ {
+  "id": 23,
+  "text": "make",
+  "start": 10.205,
+  "end": 10.403
+ },
+ {
+  "id": 24,
+  "text": "your",
+  "start": 10.449,
+  "end": 10.588
+ },
+ {
+  "id": 25,
+  "text": "signature.",
+  "start": 10.646,
+  "end": 11.378
+ },
+ {
+  "id": 26,
+  "text": "Every",
+  "start": 12.376,
+  "end": 12.666
+ },
+ {
+  "id": 27,
+  "text": "computer",
+  "start": 12.713,
+  "end": 13.224
+ },
+ {
+  "id": 28,
+  "text": "says",
+  "start": 13.293,
+  "end": 13.56
+ },
+ {
+  "id": 29,
+  "text": "no.",
+  "start": 13.688,
+  "end": 15
+ }
+]

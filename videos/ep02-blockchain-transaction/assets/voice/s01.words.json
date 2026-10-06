@@ -1,0 +1,152 @@
+[
+ {
+  "id": 0,
+  "text": "Last",
+  "start": 0,
+  "end": 0.279
+ },
+ {
+  "id": 1,
+  "text": "time,",
+  "start": 0.313,
+  "end": 0.615
+ },
+ {
+  "id": 2,
+  "text": "Sam",
+  "start": 0.743,
+  "end": 0.975
+ },
+ {
+  "id": 3,
+  "text": "owed",
+  "start": 1.022,
+  "end": 1.126
+ },
+ {
+  "id": 4,
+  "text": "you",
+  "start": 1.149,
+  "end": 1.219
+ },
+ {
+  "id": 5,
+  "text": "five",
+  "start": 1.277,
+  "end": 1.498
+ },
+ {
+  "id": 6,
+  "text": "dollars.",
+  "start": 1.533,
+  "end": 2.101
+ },
+ {
+  "id": 7,
+  "text": "Now",
+  "start": 2.438,
+  "end": 2.566
+ },
+ {
+  "id": 8,
+  "text": "you",
+  "start": 2.612,
+  "end": 2.694
+ },
+ {
+  "id": 9,
+  "text": "owe",
+  "start": 2.775,
+  "end": 2.879
+ },
+ {
+  "id": 10,
+  "text": "Sam,",
+  "start": 2.926,
+  "end": 3.332
+ },
+ {
+  "id": 11,
+  "text": "and",
+  "start": 3.367,
+  "end": 3.46
+ },
+ {
+  "id": 12,
+  "text": "you're",
+  "start": 3.495,
+  "end": 3.646
+ },
+ {
+  "id": 13,
+  "text": "paying",
+  "start": 3.669,
+  "end": 3.924
+ },
+ {
+  "id": 14,
+  "text": "on",
+  "start": 3.971,
+  "end": 4.029
+ },
+ {
+  "id": 15,
+  "text": "a",
+  "start": 4.052,
+  "end": 4.075
+ },
+ {
+  "id": 16,
+  "text": "blockchain.",
+  "start": 4.122,
+  "end": 4.853
+ },
+ {
+  "id": 17,
+  "text": "So",
+  "start": 5.492,
+  "end": 5.666
+ },
+ {
+  "id": 18,
+  "text": "what",
+  "start": 5.724,
+  "end": 5.898
+ },
+ {
+  "id": 19,
+  "text": "actually",
+  "start": 5.944,
+  "end": 6.293
+ },
+ {
+  "id": 20,
+  "text": "happens",
+  "start": 6.351,
+  "end": 6.687
+ },
+ {
+  "id": 21,
+  "text": "when",
+  "start": 6.722,
+  "end": 6.827
+ },
+ {
+  "id": 22,
+  "text": "you",
+  "start": 6.861,
+  "end": 6.931
+ },
+ {
+  "id": 23,
+  "text": "hit",
+  "start": 7.012,
+  "end": 7.198
+ },
+ {
+  "id": 24,
+  "text": "send?",
+  "start": 7.279,
+  "end": 8.684
+ }
+]

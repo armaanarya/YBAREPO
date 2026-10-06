@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>No undo</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #s10-root { position: absolute; inset: 0; }
+        #s10-wipe { position: absolute; inset: 0; }
+        #s10-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+        #s10-edge {
+          position: absolute; top: 0; left: 0; width: 120px; height: 100%; opacity: 0;
+          background: linear-gradient(90deg, rgba(246,246,242,0) 0%, rgba(110,110,104,0.12) 50%, rgba(246,246,242,0) 100%);
+        }
+        #s10-hand { filter: drop-shadow(10px 16px 12px rgba(0, 0, 0, 0.16)); }
+      </style>
+      <div id="s10-root" data-composition-id="s10" data-width="1920" data-height="1080">
+        <div id="s10-wipe">
+          <svg id="s10-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+            <g id="s10-content"><g id="s10-undo"><path id="s10-_p1" class="ink" d="M360.1 144.5 C424.8 145.4, 489.5 146.3, 600.6 145.2 M600 145 C617.4 145.1, 630.4 159.2, 629.1 174.1 M630.2 175.7 C629.6 189.7, 629.0 203.2, 629.6 225.5 M630 225 C629.2 241.1, 615.9 255.7, 599.2 255.4 M600.1 255.4 C530.1 255.6, 459.7 255.4, 360.3 255.8 M360 255 C344.2 254.3, 330.0 241.8, 329.6 224.6 M329.0 224.2 C329.2 210.2, 329.5 195.4, 330.2 175.1 M330 175 C330.6 157.6, 343.0 145.9, 360.0 146.0" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g id="s10-_t2"><path id="s10-_p3" class="ink" d="M426.2 185.9 L424.5 195.8 L423.7 203.4 L423.8 208.2 L425.6 212.2 L427.8 214.7 L433.0 215.1 L438.1 212.7 L442.1 208.9 L444.5 201.8 L445.6 195.7 L445.2 185.4 L445.6 214.8" fill="none" stroke="#161616" stroke-width="3.234" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p4" class="ink" d="M452.0 214.8 L452.3 204.9 L452.3 196.3 L452.2 187.1 L452.9 185.7 L457.9 191.0 L463.9 198.5 L471.5 208.2 L475.7 213.7 L475.8 208.3 L475.6 197.8 L475.3 184.6" fill="none" stroke="#161616" stroke-width="3.234" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p5" class="ink" d="M482.5 186.1 L482.5 217.2 L486.7 216.7 L491.9 215.1 L497.2 212.3 L501.6 209.3 L505.1 205.8 L507.9 201.7 L508.8 198.4 L508.4 194.6 L505.3 191.0 L500.2 188.2 L495.3 186.9 L490.2 186.5 L486.4 187.0 L482.6 187.9" fill="none" stroke="#161616" stroke-width="3.234" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p6" class="ink" d="M526.2 185.5 L522.4 186.3 L518.4 189.0 L515.3 193.0 L513.0 198.1 L512.8 204.1 L515.0 210.3 L518.3 213.3 L521.8 215.1 L526.8 215.4 L532.8 214.7 L537.7 211.3 L540.7 205.8 L540.7 200.2 L539.8 194.9 L536.8 190.5 L535.0 188.0 L532.2 186.5 L528.8 185.4 L526.2 185.5" fill="none" stroke="#161616" stroke-width="3.234" stroke-linecap="round" stroke-linejoin="round"/></g></g><g id="s10-x1"><path id="s10-_p7" class="ink" d="M411.6 132.9 C460.9 180.9, 509.0 228.7, 547.2 268.0" fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p8" class="ink" d="M546.9 132.2 C507.0 173.2, 465.4 213.5, 412.8 267.6" fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g><g id="s10-forgot"><path id="s10-_p9" class="ink" d="M909.7 145.2 C1033.0 145.6, 1156.3 145.1, 1450.3 144.9 M1450 145 C1467.2 145.6, 1480.9 159.4, 1479.6 175.3 M1480.8 174.8 C1480.8 192.2, 1480.5 211.0, 1481.0 225.7 M1480 225 C1479.8 240.8, 1466.2 255.6, 1450.1 255.6 M1450.3 254.6 C1258.3 255.5, 1066.7 255.5, 910.1 254.6 M910 255 C893.5 256.0, 880.7 241.1, 880.6 226.0 M880.1 224.6 C880.1 210.1, 879.8 196.2, 880.0 175.1 M880 175 C880.9 157.7, 892.7 145.6, 910.4 144.4" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g id="s10-_t10"><path id="s10-_p11" class="ink" d="M997.8 189.5 L993.3 184.8 L988.1 182.6 L984.6 182.3 L980.6 185.1 L978.7 189.4 L978.8 193.9 L979.7 198.2 L981.6 207.7 L982.4 215.6 L980.9 204.1 L971.6 205.7 L989.3 203.0 L997.4 201.8" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p12" class="ink" d="M1014.9 193.7 L1008.6 196.6 L1005.4 201.4 L1003.2 206.1 L1004.4 212.4 L1006.5 215.8 L1013.2 216.9 L1018.7 215.4 L1024.3 211.7 L1027.3 205.8 L1026.1 198.6 L1023.6 195.8 L1020.7 194.1 L1014.9 193.7" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p13" class="ink" d="M1032.2 193.8 L1031.4 216.4 L1033.1 203.7 L1036.9 198.8 L1041.8 196.1 L1045.8 194.5 L1047.5 194.4 L1052.7 194.9 L1053.3 195.4" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p14" class="ink" d="M1079.4 203.9 L1076.1 209.6 L1070.2 214.3 L1063.7 216.7 L1059.1 216.8 L1057.7 214.4 L1059.6 208.4 L1064.3 201.3 L1069.6 196.9 L1073.0 195.1 L1076.5 195.6 L1079.3 197.8 L1080.2 220.1 L1079.7 227.7 L1077.9 232.4 L1075.8 235.6 L1073.7 237.3 L1071.0 237.8 L1069.0 238.0 L1063.3 237.9" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p15" class="ink" d="M1096.5 195.4 L1090.2 198.2 L1086.9 203.0 L1084.8 207.7 L1085.9 214.0 L1087.9 217.4 L1094.6 218.5 L1100.1 217.1 L1105.7 213.5 L1108.9 207.6 L1107.7 200.4 L1105.2 197.6 L1102.4 195.8 L1096.5 195.4" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p16" class="ink" d="M1121.6 184.0 L1121.6 217.2 L1121.6 198.6 L1112.0 198.4 L1129.9 198.7" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p17" class="ink" d="M1152.6 195.6 L1152.1 236.5 L1152.7 198.7 L1158.4 195.7 L1164.9 194.4 L1172.1 195.6 L1174.4 199.1 L1173.9 204.4 L1171.5 208.1 L1166.9 211.9 L1162.2 214.2 L1152.7 216.4" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p18" class="ink" d="M1199.2 203.3 L1196.5 209.7 L1192.0 214.0 L1188.7 215.9 L1185.6 217.1 L1181.2 216.7 L1178.8 215.2 L1178.0 210.3 L1180.4 205.4 L1183.4 200.6 L1188.4 197.1 L1192.1 195.2 L1195.0 195.2 L1198.4 195.8 L1199.1 198.1 L1200.1 217.0" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p19" class="ink" d="M1224.1 195.7 L1222.5 194.1 L1217.8 194.1 L1212.4 195.3 L1207.6 197.9 L1205.6 201.2 L1205.6 204.8 L1207.7 206.4 L1212.2 206.3 L1217.1 205.3 L1220.3 205.5 L1222.8 206.4 L1224.4 207.8 L1224.0 210.1 L1219.1 214.0 L1212.8 215.8 L1209.2 217.2 L1207.6 217.1" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p20" class="ink" d="M1247.1 197.0 L1245.5 195.4 L1240.8 195.5 L1235.4 196.8 L1230.6 199.4 L1228.6 202.8 L1228.7 206.4 L1230.8 207.9 L1235.4 207.8 L1240.2 206.7 L1243.4 206.8 L1245.9 207.7 L1247.5 209.1 L1247.2 211.4 L1242.3 215.3 L1236.1 217.2 L1232.5 218.7 L1230.9 218.6" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p21" class="ink" d="M1251.9 194.5 L1255.2 205.8 L1258.4 212.7 L1260.7 216.4 L1261.7 215.8 L1266.4 202.2 L1267.3 199.2 L1269.3 200.7 L1277.0 215.7 L1279.0 217.0 L1286.7 195.5" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p22" class="ink" d="M1301.9 194.0 L1295.6 196.8 L1292.3 201.6 L1290.1 206.3 L1291.2 212.6 L1293.3 216.1 L1299.9 217.1 L1305.4 215.7 L1311.1 212.1 L1314.2 206.2 L1313.1 199.0 L1310.6 196.2 L1307.7 194.4 L1301.9 194.0" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p23" class="ink" d="M1318.5 194.5 L1318.2 217.2 L1319.6 204.4 L1323.3 199.5 L1328.2 196.6 L1332.1 195.0 L1333.8 194.8 L1339.1 195.3 L1339.7 195.7" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p24" class="ink" d="M1366.0 185.9 L1365.3 199.2 L1365.0 207.7 L1365.4 214.6 L1365.6 217.6 L1365.2 209.4 L1360.7 214.3 L1353.3 217.6 L1348.1 218.0 L1344.5 216.0 L1343.3 210.6 L1346.0 205.4 L1352.4 200.9 L1358.2 200.0 L1362.6 200.6 L1365.5 203.6" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p25" class="ink" d="M1370.4 186.3 L1375.4 185.1 L1380.9 184.4 L1384.8 184.3 L1389.0 185.5 L1391.7 187.1 L1392.6 189.4 L1392.3 191.9 L1390.1 194.1 L1387.3 196.4 L1382.0 200.1 L1376.7 202.8 L1377.9 204.0 L1381.0 204.6 L1383.7 204.5 M1382.4 217.4 L1383.7 217.4" fill="none" stroke="#161616" stroke-width="3.5000000000000004" stroke-linecap="round" stroke-linejoin="round"/></g></g><g id="s10-x2"><path id="s10-_p26" class="ink" d="M1111.5 131.7 C1164.1 182.7, 1214.8 233.8, 1247.8 268.7" fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p27" class="ink" d="M1247.1 133.5 C1204.3 177.4, 1158.1 221.9, 1111.5 268.4" fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g><g id="s10-mbox"><path id="s10-_p28" class="ink" d="M519.5 749.7 C521.1 675.3, 521.2 600.6, 520.3 537.8 M520 537.2 C599.1 451.1, 679.6 451.5, 761.0 537.7 M760.0 537.0 C759.3 583.3, 760.2 628.7, 759.4 750.1 M759.5 749.9 C681.4 751.3, 602.2 751.5, 520.8 749.9" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p29" class="ink" d="M567.8 547.6 C606.3 548.5, 645.6 549.0, 711.7 548.2 M712.7 549.0 C712.3 554.6, 711.9 558.7, 711.6 567.4 M712.6 568.0 C668.3 567.3, 624.8 567.4, 567.5 568.3 M568.0 568.2 C568.6 563.4, 568.5 557.8, 567.3 548.9" fill="none" stroke="#161616" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p30" class="ink" d="M554.0 592.5 C613.2 593.4, 671.9 594.0, 726.0 593.8 M726.0 593.4 C725.6 643.6, 726.0 693.0, 727.1 726.8 M726.0 727.6 C687.6 727.6, 650.8 728.5, 553.5 727.4 M553.2 727.9 C552.8 674.5, 554.3 620.5, 553.2 593.2" fill="none" stroke="#161616" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p31" class="ink" d="M626.5 749.9 C625.7 788.8, 625.4 826.9, 626.0 880.4" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p32" class="ink" d="M654.0 750.1 C654.2 785.9, 653.5 821.9, 654.2 880.6" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g><g id="s10-wrong"><g id="s10-_t33"><path id="s10-_p34" class="ink" d="M625.4 636.2 L633.9 634.2 L643.2 633.1 L649.7 633.0 L656.6 635.0 L661.2 637.8 L662.6 641.5 L662.1 645.7 L658.4 649.5 L653.7 653.2 L644.8 659.5 L635.9 663.8 L637.8 665.9 L643.1 666.9 L647.6 666.9 M645.2 688.6 L647.3 688.5" fill="none" stroke="#161616" stroke-width="5.880000000000001" stroke-linecap="round" stroke-linejoin="round"/></g><g id="s10-_coin35"><path id="s10-_p36" class="ink" d="M302.0 460.2 C309.0 460.0, 318.0 464.2, 323.7 468.4 C329.4 472.5, 333.7 478.5, 336.2 485.0 C338.7 491.5, 340.1 500.2, 338.8 507.2 C337.5 514.2, 333.4 521.6, 328.5 526.9 C323.5 532.2, 315.9 537.3, 309.0 539.0 C302.1 540.7, 293.9 539.8, 287.2 537.4 C280.5 535.0, 273.3 530.3, 268.9 524.6 C264.5 519.0, 261.5 510.7, 260.8 503.5 C260.1 496.3, 261.4 487.9, 264.7 481.5 C267.9 475.2, 273.7 469.0, 280.5 465.5 C287.2 462.0, 300.6 461.2, 305.0 460.6 C309.5 460.0, 307.2 461.1, 307.0 461.7" fill="none" stroke="#161616" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><g id="s10-_t37"><path id="s10-_p38" class="ink" d="M313.0 488.6 L303.1 489.0 L297.9 490.2 L293.3 492.5 L291.3 494.9 L291.2 497.1 L292.5 499.4 L295.8 500.4 L304.4 500.4 L310.5 499.8 L314.0 500.7 L314.7 502.7 L314.0 504.9 L310.2 507.2 L306.1 509.3 L300.2 510.3 L293.4 510.6 M301.4 477.8 L304.5 519.6" fill="none" stroke="#161616" stroke-width="3.3600000000000003" stroke-linecap="round" stroke-linejoin="round"/></g></g><g id="s10-_a39"><path id="s10-_p40" class="ink" d="M339.4 524.2 C354.1 523.4, 392.6 515.4, 429.4 520.9 C466.2 526.4, 538.2 551.2, 560.1 557.5" fill="none" stroke="#161616" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p41" class="ink" d="M542.1 539.7 C545.5 544.0, 549.3 547.3, 559.4 558.4 M559.5 558.1 C553.7 559.1, 548.1 561.2, 534.2 564.2" fill="none" stroke="#161616" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g></g><g id="s10-gone"><path id="s10-_p42" class="ink" d="M287.8 839.5 L282.1 848.9 L272.0 856.6 L261.0 860.4 L253.3 860.3 L251.0 856.2 L254.4 846.3 L262.5 834.5 L271.7 827.3 L277.5 824.4 L283.4 825.4 L288.0 829.2 L288.6 866.8 L287.4 879.4 L284.3 887.3 L280.5 892.6 L277.0 895.3 L272.5 896.1 L269.0 896.3 L259.5 895.9" fill="none" stroke="#161616" stroke-width="5.880000000000001" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p43" class="ink" d="M317.0 821.4 L306.3 825.9 L300.6 833.8 L296.8 841.6 L298.4 852.3 L301.7 858.2 L312.9 860.2 L322.2 858.0 L331.8 852.1 L337.2 842.4 L335.6 830.2 L331.5 825.4 L326.8 822.4 L317.0 821.4" fill="none" stroke="#161616" stroke-width="5.880000000000001" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p44" class="ink" d="M341.3 823.8 L341.6 860.0 L341.3 834.4 L351.1 828.0 L360.6 823.5 L366.7 822.9 L371.2 823.4 L374.1 826.6 L376.3 835.9 L376.0 860.8" fill="none" stroke="#161616" stroke-width="5.880000000000001" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p45" class="ink" d="M386.3 834.1 L396.9 833.9 L409.1 833.8 L417.0 832.5 L418.4 829.6 L417.3 826.7 L410.5 820.5 L401.7 820.4 L393.8 823.3 L388.2 828.3 L384.1 838.5 L382.8 844.6 L382.5 848.8 L386.9 854.7 L394.3 858.5 L402.8 858.0 L411.8 856.0 L418.2 852.9 L420.5 850.0" fill="none" stroke="#161616" stroke-width="5.880000000000001" stroke-linecap="round" stroke-linejoin="round"/></g><path id="s10-hole" class="ink" d="M1274.5 820.7 C1293.7 820.5, 1315.1 822.7, 1332.8 824.6 C1350.6 826.5, 1367.2 829.0, 1380.8 832.1 C1394.5 835.1, 1406.3 838.8, 1414.9 842.8 C1423.5 846.8, 1430.2 851.9, 1432.4 856.2 C1434.7 860.4, 1432.8 864.6, 1428.4 868.6 C1423.9 872.6, 1416.0 876.5, 1405.7 880.0 C1395.4 883.6, 1381.9 887.2, 1366.6 889.9 C1351.4 892.6, 1332.8 894.7, 1314.2 896.1 C1295.5 897.6, 1274.7 898.5, 1254.9 898.7 C1235.2 898.8, 1214.4 898.3, 1195.5 897.0 C1176.6 895.8, 1157.5 893.8, 1141.6 891.2 C1125.6 888.7, 1111.3 885.3, 1100.0 881.8 C1088.6 878.4, 1078.8 874.8, 1073.3 870.8 C1067.8 866.8, 1065.7 861.9, 1066.9 857.6 C1068.0 853.4, 1072.6 849.0, 1080.0 845.2 C1087.4 841.3, 1098.2 837.5, 1111.1 834.3 C1124.1 831.2, 1140.5 828.6, 1157.8 826.5 C1175.1 824.3, 1194.9 822.5, 1215.1 821.6 C1235.3 820.6, 1267.7 820.8, 1279.0 820.9 C1290.3 820.9, 1283.4 821.0, 1282.8 821.7" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><g id="s10-key"><path id="s10-_p46" class="ink" d="M1139.4 552.7 C1146.4 552.2, 1156.1 555.0, 1162.0 559.3 C1167.8 563.6, 1172.4 571.6, 1174.6 578.7 C1176.8 585.8, 1177.5 594.8, 1175.3 601.8 C1173.1 608.7, 1167.2 616.0, 1161.4 620.4 C1155.5 624.8, 1147.5 628.4, 1140.2 628.4 C1133.0 628.4, 1124.0 625.2, 1118.0 620.7 C1112.0 616.2, 1106.4 608.5, 1104.3 601.4 C1102.2 594.4, 1102.9 585.3, 1105.2 578.3 C1107.4 571.4, 1111.8 564.0, 1117.7 559.6 C1123.6 555.2, 1136.6 552.9, 1140.6 551.9 C1144.6 550.9, 1141.7 552.9, 1141.8 553.5" fill="none" stroke="#161616" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p47" class="ink" d="M1141.3 578.6 C1143.4 578.8, 1146.2 580.7, 1147.8 582.5 C1149.4 584.2, 1150.9 586.8, 1151.0 589.2 C1151.1 591.6, 1150.0 594.9, 1148.5 596.8 C1147.0 598.8, 1144.2 600.3, 1142.0 600.9 C1139.7 601.5, 1136.9 601.2, 1134.9 600.2 C1132.9 599.2, 1130.9 597.1, 1130.1 594.8 C1129.3 592.6, 1129.5 589.1, 1130.2 586.7 C1130.8 584.3, 1132.0 581.8, 1134.0 580.5 C1136.0 579.2, 1140.7 579.3, 1142.3 579.1 C1144.0 578.9, 1143.8 579.2, 1143.9 579.4" fill="none" stroke="#161616" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p48" class="ink" d="M1162.0 619.6 C1183.5 667.2, 1205.3 715.3, 1227.4 765.6 M1227.4 765.6 C1217.1 770.5, 1206.8 775.2, 1192.7 781.2 M1192.7 781.2 C1190.5 777.5, 1189.1 773.5, 1184.5 762.9 M1184.5 762.9 C1189.7 760.8, 1194.3 758.2, 1199.1 756.4 M1199.1 756.4 C1196.5 750.7, 1194.7 745.2, 1191.8 739.9 M1191.8 739.9 C1186.5 742.0, 1180.6 744.2, 1177.2 746.5 M1177.2 746.5 C1175.3 741.1, 1172.8 737.2, 1169.0 728.2 M1169.0 728.2 C1176.0 725.3, 1183.8 721.6, 1189.1 719.2 M1189.1 719.2 C1179.1 695.6, 1168.4 672.7, 1147.4 626.1" fill="none" stroke="#161616" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></g><g id="s10-lock"><path id="s10-_p49" class="ink" d="M1596.4 608.5 C1596.0 602.0, 1598.1 594.5, 1600.0 588.2 C1601.9 581.9, 1604.4 575.6, 1607.7 570.7 C1610.9 565.7, 1615.2 561.7, 1619.7 558.5 C1624.1 555.3, 1629.4 552.4, 1634.3 551.5 C1639.3 550.6, 1644.7 551.6, 1649.4 553.2 C1654.2 554.7, 1658.6 557.2, 1662.8 560.7 C1667.0 564.3, 1671.4 569.1, 1674.5 574.5 C1677.6 579.8, 1680.0 586.9, 1681.6 592.9 C1683.1 599.0, 1683.2 607.9, 1683.6 610.9" fill="none" stroke="#161616" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p50" class="ink" d="M1596.5 611.1 C1596.1 621.1, 1596.7 631.7, 1596.3 642.9" fill="none" stroke="#161616" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p51" class="ink" d="M1683.8 611.1 C1684.0 618.8, 1683.5 625.9, 1683.4 642.9" fill="none" stroke="#161616" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p52" class="ink" d="M1573.2 640.2 C1617.4 640.3, 1664.3 639.3, 1707.0 640.5 M1708.2 640.3 C1709.0 668.1, 1706.4 697.2, 1708.0 746.5 M1706.4 748.3 C1674.5 746.4, 1642.9 747.8, 1574.4 744.9 M1574.1 748.3 C1571.3 723.6, 1572.7 699.7, 1574.7 639.3" fill="none" stroke="#161616" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p53" class="ink" d="M1636.8 670.5 C1639.3 669.7, 1642.5 670.2, 1644.9 671.2 C1647.4 672.2, 1650.2 674.2, 1651.4 676.5 C1652.7 678.9, 1653.0 682.5, 1652.4 685.2 C1651.7 687.9, 1649.4 691.0, 1647.3 692.5 C1645.1 694.0, 1642.2 694.5, 1639.5 694.3 C1636.9 694.1, 1633.6 693.3, 1631.5 691.5 C1629.4 689.7, 1627.5 686.0, 1627.0 683.3 C1626.5 680.7, 1627.0 677.8, 1628.6 675.6 C1630.2 673.4, 1635.0 671.1, 1636.6 670.1 C1638.2 669.1, 1637.9 669.7, 1638.0 669.8" fill="none" stroke="#161616" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path id="s10-_p54" class="ink" d="M1640.3 693.8 C1639.8 700.3, 1640.3 707.0, 1640.3 721.4" fill="none" stroke="#161616" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+            <g id="s10-hand">
+<g class="hand-art" transform="scale(0.86)">
+  <!-- forearm in a sleeve, long enough to leave the frame from any nib position -->
+  <path d="M 330,-40 L 2600,640 L 2540,930 L 300,110 Z" fill="#efeeea" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M 452,-6 L 2600,640 L 2540,930 L 410,150 C 452,104 470,44 452,-6 Z" fill="#555" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M 482,6 C 500,56 486,118 446,160" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+  <!-- back of the hand -->
+  <path d="M 200,-40 C 240,-70 312,-76 350,-52 C 414,-26 460,6 462,46 C 464,92 420,138 360,130 C 298,124 250,100 214,70 Z"
+        fill="#efeeea" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- marker: nib, collar, barrel resting in the web of the hand -->
+  <path d="M 0,0 L 22,-8 L 22,8 Z" fill="#111" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="21" y="-11" width="16" height="22" rx="2" fill="#3c3c3c" stroke="#111" stroke-width="2"/>
+  <rect x="36" y="-15" width="290" height="30" rx="9" fill="#262626" stroke="#111" stroke-width="2"/>
+  <path d="M 48,-7 L 318,-7" stroke="#6a6a6a" stroke-width="3" stroke-linecap="round"/>
+  <!-- middle finger tucked under -->
+  <path d="M 236,60 C 196,62 160,62 140,70 C 124,78 132,100 152,98 C 186,94 220,92 246,90 Z"
+        fill="#efeeea" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- thumb pinching the lower half of the barrel -->
+  <path d="M 232,8 C 190,6 142,4 114,6 C 92,8 90,38 110,42 C 148,50 196,60 236,64 Z"
+        fill="#efeeea" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M 112,14 C 118,10 128,11 132,17" fill="none" stroke="#9a9a96" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- index finger over the top of the barrel -->
+  <path d="M 226,-40 C 182,-44 128,-40 96,-32 C 74,-26 70,-2 88,2 C 128,4 180,2 226,4 Z"
+        fill="#efeeea" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M 90,-22 C 96,-27 106,-26 110,-20" fill="none" stroke="#9a9a96" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 168,-38 C 172,-30 172,-22 168,-14" fill="none" stroke="#9a9a96" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- knuckle creases -->
+  <path d="M 262,-56 C 268,-48 268,-40 262,-32" fill="none" stroke="#9a9a96" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 296,-60 C 302,-52 302,-44 296,-36" fill="none" stroke="#9a9a96" stroke-width="2.5" stroke-linecap="round"/>
+</g></g>
+          </svg>
+        </div>
+        <div id="s10-edge"></div>
+      </div>
+      <script>
+(function () {
+  // Whiteboard draw-on engine (from the whiteboard-animation skill): every
+  // stroke's dashoffset and the hand position are pure functions of scene time t,
+  // driven by one paused GSAP tween, so any frame can be seeked exactly.
+  var SID = "s10";
+  var S = {"dur":11.319,"beats":[{"t":["undo"],"a":0.5,"b":2.367,"hand":true,"parallel":false},{"t":["x1"],"a":2.367,"b":2.869,"hand":true,"parallel":false},{"t":["forgot"],"a":2.889,"b":4.548,"hand":true,"parallel":false},{"t":["x2"],"a":4.568,"b":5.037,"hand":true,"parallel":false},{"t":["mbox"],"a":5.037,"b":5.801,"hand":true,"parallel":false},{"t":["wrong"],"a":5.821,"b":6.521,"hand":true,"parallel":false},{"t":["gone"],"a":6.541,"b":7.461,"hand":true,"parallel":false},{"t":["hole"],"a":7.7,"b":8.218,"hand":true,"parallel":false},{"t":["key"],"a":8.218,"b":9.061,"hand":true,"parallel":false},{"t":["lock"],"a":9.205,"b":10.669,"hand":true,"parallel":false}],"tweens":[{"t":"wipe","p":"wipe","f":0,"to":100,"a":10.869,"b":11.319,"e":"io"}]};
+  var ANGLE = 34;
+  var REST = { x: 2080, y: 1260 };
+  var $ = function (id) {
+    return document.getElementById(SID + "-" + id);
+  };
+  var hand = $("hand");
+  var wipe = $("wipe");
+  var edge = $("edge");
+  var clamp = function (v) {
+    return v < 0 ? 0 : v > 1 ? 1 : v;
+  };
+  var EASE = {
+    lin: function (k) { return k; },
+    out: function (k) { return 1 - (1 - k) * (1 - k); },
+    io: function (k) { return k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; },
+  };
+
+  function pathsOf(id) {
+    var el = $(id);
+    if (!el) throw new Error(SID + ": missing #" + id);
+    if (el.tagName.toLowerCase() === "path") return [el];
+    return Array.prototype.slice.call(el.querySelectorAll("path.ink"));
+  }
+
+  var strokes = [];
+  var handStrokes = [];
+  S.beats.forEach(function (bt) {
+    var ps = [];
+    bt.t.forEach(function (id) { ps = ps.concat(pathsOf(id)); });
+    var lens = ps.map(function (p) { return p.getTotalLength(); });
+    if (bt.parallel) {
+      ps.forEach(function (p, i) { strokes.push({ el: p, len: lens[i], a: bt.a, b: bt.b }); });
+      return;
+    }
+    var n = ps.length;
+    var span = bt.b - bt.a;
+    var gap = n > 1 ? Math.min(bt.gap != null ? bt.gap : 0.09, (span * 0.3) / (n - 1)) : 0;
+    var wts = lens.map(function (l) { return l + 18; });
+    var W = wts.reduce(function (x, y) { return x + y; }, 0);
+    var D = span - gap * (n - 1);
+    var t = bt.a;
+    ps.forEach(function (p, i) {
+      var d = (D * wts[i]) / W;
+      var s = { el: p, len: lens[i], a: t, b: t + d };
+      strokes.push(s);
+      if (bt.hand) handStrokes.push(s);
+      t += d + gap;
+    });
+  });
+  handStrokes.sort(function (x, y) { return x.a - y.a; });
+  strokes.forEach(function (s) {
+    s.el.style.strokeDasharray = s.len + " " + (s.len + 4);
+    s.p0 = s.el.getPointAtLength(0);
+    s.p1 = s.el.getPointAtLength(s.len);
+  });
+
+  var groups = {};
+  S.tweens.forEach(function (x) {
+    var k = x.t + "|" + x.p;
+    (groups[k] = groups[k] || []).push(x);
+  });
+  var tweenGroups = Object.keys(groups).map(function (k) {
+    var parts = k.split("|");
+    var list = groups[k].sort(function (a, b) { return a.a - b.a; });
+    return { el: parts[0] === "wipe" ? wipe : $(parts[0]), p: parts[1], list: list };
+  });
+
+  function pt(s, k) {
+    if (k <= 0) return s.p0;
+    if (k >= 1) return s.p1;
+    return s.el.getPointAtLength(s.len * k);
+  }
+  function lerp(a, b, u, lift) {
+    return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, lift: lift || 0 };
+  }
+
+  function handPos(t) {
+    var H = handStrokes;
+    if (!H.length) return { x: REST.x, y: REST.y, lift: 0 };
+    var i = -1;
+    for (var j = 0; j < H.length; j++) {
+      if (H[j].a <= t) i = j;
+      else break;
+    }
+    if (i >= 0 && t <= H[i].b) {
+      var p = pt(H[i], clamp((t - H[i].a) / (H[i].b - H[i].a)));
+      return { x: p.x, y: p.y, lift: 0 };
+    }
+    var prev = i >= 0 ? H[i] : null;
+    var next = H[i + 1] || null;
+    var from = prev ? prev.p1 : REST;
+    var to = next ? next.p0 : REST;
+    var t0 = prev ? prev.b : -10;
+    var t1 = next ? next.a : S.dur + 10;
+    var gap = t1 - t0;
+    if (prev && next && gap <= 0.9) {
+      var u = EASE.io(clamp((t - t0) / gap));
+      var dist = Math.hypot(to.x - from.x, to.y - from.y);
+      return lerp(from, to, u, Math.sin(Math.PI * u) * Math.min(16, 3 + dist * 0.03));
+    }
+    var EX = 0.45;
+    if (prev && t < t0 + EX) return lerp(from, REST, EASE.io(clamp((t - t0) / EX)));
+    if (next && t > t1 - EX) return lerp(REST, to, EASE.io(clamp((t - (t1 - EX)) / EX)));
+    return { x: REST.x, y: REST.y, lift: 0 };
+  }
+
+  function apply(el, p, v) {
+    if (p === "opacity") el.style.opacity = v;
+    else if (p === "wipe") {
+      el.style.clipPath = v <= 0 ? "none" : "inset(0 0 0 " + v + "%)";
+      edge.style.opacity = v > 0 && v < 100 ? 1 : 0;
+      edge.style.transform = "translateX(" + (v * 19.2 - 60) + "px)";
+    }
+  }
+
+  function render(t) {
+    for (var i = 0; i < strokes.length; i++) {
+      var s = strokes[i];
+      var k = clamp((t - s.a) / (s.b - s.a));
+      s.el.style.strokeDashoffset = s.len * (1 - k);
+      s.el.style.visibility = k > 0 ? "visible" : "hidden";
+    }
+    tweenGroups.forEach(function (g) {
+      var v = g.list[0].f;
+      g.list.forEach(function (x) {
+        if (t >= x.a) v = x.f + (x.to - x.f) * EASE[x.e || "io"](clamp((t - x.a) / Math.max(1e-6, x.b - x.a)));
+      });
+      apply(g.el, g.p, v);
+    });
+    var h = handPos(t);
+    var ang = ANGLE + ((h.x - 960) / 960) * 4 - ((h.y - 540) / 540) * 2;
+    hand.setAttribute(
+      "transform",
+      "translate(" + h.x.toFixed(2) + " " + (h.y - h.lift).toFixed(2) + ") rotate(" + ang.toFixed(2) + ")",
+    );
+  }
+
+  // A getter/setter clock: GSAP assigns clock.t on every seek, which repaints the board.
+  var now = 0;
+  var clock = {};
+  Object.defineProperty(clock, "t", {
+    get: function () { return now; },
+    set: function (v) { now = v; render(v); },
+  });
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo(clock, { t: 0 }, { t: S.dur, duration: S.dur, ease: "none" }, 0);
+  render(0);
+  window.__debugBoards = window.__debugBoards || {};
+  window.__debugBoards[SID] = { render: render, strokes: strokes, hand: handStrokes };
+  window.__timelines[SID] = tl;
+})();
+
+      </script>
+    </template>
+  </body>
+</html>

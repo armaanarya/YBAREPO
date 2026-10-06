@@ -1,0 +1,16 @@
+{
+  "name": "blockchain-explainer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.119 preview",
+    "check": "npx --yes hyperframes@0.8.119 check",
+    "render": "npx --yes hyperframes@0.8.119 render",
+    "publish": "npx --yes hyperframes@0.8.119 publish"
+  },
+  "devDependencies": {
+    "hersheytext": "^2.0.0",
+    "roughjs": "^4.6.6",
+    "svgpath": "^2.6.0"
+  }
+}

@@ -1,0 +1,101 @@
+[
+ {
+  "sid": "s01",
+  "title": "The IOU",
+  "file": "compositions/frames/01-the-iou.html",
+  "start": 0,
+  "dur": 10.835,
+  "speechEnd": 9.535,
+  "voice": 10.31
+ },
+ {
+  "sid": "s02",
+  "title": "One notebook",
+  "file": "compositions/frames/02-one-notebook.html",
+  "start": 10.835,
+  "dur": 8.361,
+  "speechEnd": 7.061,
+  "voice": 8.127
+ },
+ {
+  "sid": "s03",
+  "title": "Everyone gets a copy",
+  "file": "compositions/frames/03-everyone-gets-a-copy.html",
+  "start": 19.196,
+  "dur": 9.98,
+  "speechEnd": 8.68,
+  "voice": 9.427
+ },
+ {
+  "sid": "s04",
+  "title": "Pages are blocks",
+  "file": "compositions/frames/04-pages-are-blocks.html",
+  "start": 29.176,
+  "dur": 5.214,
+  "speechEnd": 3.914,
+  "voice": 4.83
+ },
+ {
+  "sid": "s05",
+  "title": "The fingerprint",
+  "file": "compositions/frames/05-the-fingerprint.html",
+  "start": 34.39,
+  "dur": 9.792,
+  "speechEnd": 8.492,
+  "voice": 9.149
+ },
+ {
+  "sid": "s06",
+  "title": "Linking the chain",
+  "file": "compositions/frames/06-linking-the-chain.html",
+  "start": 44.182,
+  "dur": 12.381,
+  "speechEnd": 11.081,
+  "voice": 11.656
+ },
+ {
+  "sid": "s07",
+  "title": "Sam tries to cheat",
+  "file": "compositions/frames/07-sam-tries-to-cheat.html",
+  "start": 56.563,
+  "dur": 16.2,
+  "speechEnd": 14.9,
+  "voice": 15.418
+ },
+ {
+  "sid": "s08",
+  "title": "Why it matters",
+  "file": "compositions/frames/08-why-it-matters.html",
+  "start": 72.763,
+  "dur": 8.634,
+  "speechEnd": 7.334,
+  "voice": 8.22
+ },
+ {
+  "sid": "s09",
+  "title": "Where it's used",
+  "file": "compositions/frames/09-where-it-s-used.html",
+  "start": 81.397,
+  "dur": 13.505,
+  "speechEnd": 12.205,
+  "voice": 13.189
+ },
+ {
+  "sid": "s10",
+  "title": "It's not magic",
+  "file": "compositions/frames/10-it-s-not-magic.html",
+  "start": 94.902,
+  "dur": 9.858,
+  "speechEnd": 8.558,
+  "voice": 9.567
+ },
+ {
+  "sid": "s11",
+  "title": "Learn more",
+  "file": "compositions/frames/11-learn-more.html",
+  "start": 104.76,
+  "dur": 9.99,
+  "speechEnd": 7.29,
+  "voice": 7.663
+ }
+]

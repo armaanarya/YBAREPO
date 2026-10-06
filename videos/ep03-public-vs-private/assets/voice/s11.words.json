@@ -1,0 +1,134 @@
+[
+ {
+  "id": 0,
+  "text": "Your",
+  "start": 0,
+  "end": 0.255
+ },
+ {
+  "id": 1,
+  "text": "turn.",
+  "start": 0.313,
+  "end": 0.871
+ },
+ {
+  "id": 2,
+  "text": "Pause",
+  "start": 1.057,
+  "end": 1.416
+ },
+ {
+  "id": 3,
+  "text": "the",
+  "start": 1.451,
+  "end": 1.521
+ },
+ {
+  "id": 4,
+  "text": "video.",
+  "start": 1.567,
+  "end": 2.241
+ },
+ {
+  "id": 5,
+  "text": "Your",
+  "start": 2.577,
+  "end": 2.775
+ },
+ {
+  "id": 6,
+  "text": "school",
+  "start": 2.833,
+  "end": 3.146
+ },
+ {
+  "id": 7,
+  "text": "wants",
+  "start": 3.216,
+  "end": 3.425
+ },
+ {
+  "id": 8,
+  "text": "to",
+  "start": 3.46,
+  "end": 3.529
+ },
+ {
+  "id": 9,
+  "text": "track",
+  "start": 3.587,
+  "end": 3.831
+ },
+ {
+  "id": 10,
+  "text": "library",
+  "start": 3.924,
+  "end": 4.296
+ },
+ {
+  "id": 11,
+  "text": "books",
+  "start": 4.354,
+  "end": 4.574
+ },
+ {
+  "id": 12,
+  "text": "on",
+  "start": 4.621,
+  "end": 4.69
+ },
+ {
+  "id": 13,
+  "text": "a",
+  "start": 4.725,
+  "end": 4.748
+ },
+ {
+  "id": 14,
+  "text": "blockchain.",
+  "start": 4.795,
+  "end": 5.573
+ },
+ {
+  "id": 15,
+  "text": "Should",
+  "start": 6.304,
+  "end": 6.536
+ },
+ {
+  "id": 16,
+  "text": "it",
+  "start": 6.571,
+  "end": 6.629
+ },
+ {
+  "id": 17,
+  "text": "be",
+  "start": 6.687,
+  "end": 6.827
+ },
+ {
+  "id": 18,
+  "text": "public",
+  "start": 6.896,
+  "end": 7.245
+ },
+ {
+  "id": 19,
+  "text": "or",
+  "start": 7.326,
+  "end": 7.5
+ },
+ {
+  "id": 20,
+  "text": "private?",
+  "start": 7.581,
+  "end": 8.243
+ },
+ {
+  "id": 21,
+  "text": "Why?",
+  "start": 9.102,
+  "end": 9.892
+ }
+]

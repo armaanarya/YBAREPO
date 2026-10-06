@@ -1,0 +1,2058 @@
+{
+ "voice": "bIHbv24MWmeRgasZH58o",
+ "model": "eleven_multilingual_v2",
+ "scenes": [
+  {
+   "id": "s01",
+   "title": "Who gets in?",
+   "file": "assets/voice/s01.mp3",
+   "duration": 8.545,
+   "words": [
+    {
+     "id": 0,
+     "text": "So",
+     "start": 0,
+     "end": 0.209
+    },
+    {
+     "id": 1,
+     "text": "far,",
+     "start": 0.279,
+     "end": 0.522
+    },
+    {
+     "id": 2,
+     "text": "everyone",
+     "start": 0.557,
+     "end": 0.894
+    },
+    {
+     "id": 3,
+     "text": "in",
+     "start": 0.917,
+     "end": 0.975
+    },
+    {
+     "id": 4,
+     "text": "class",
+     "start": 1.033,
+     "end": 1.347
+    },
+    {
+     "id": 5,
+     "text": "has",
+     "start": 1.37,
+     "end": 1.463
+    },
+    {
+     "id": 6,
+     "text": "had",
+     "start": 1.498,
+     "end": 1.579
+    },
+    {
+     "id": 7,
+     "text": "a",
+     "start": 1.614,
+     "end": 1.637
+    },
+    {
+     "id": 8,
+     "text": "copy",
+     "start": 1.695,
+     "end": 1.985
+    },
+    {
+     "id": 9,
+     "text": "of",
+     "start": 2.02,
+     "end": 2.067
+    },
+    {
+     "id": 10,
+     "text": "the",
+     "start": 2.113,
+     "end": 2.183
+    },
+    {
+     "id": 11,
+     "text": "notebook.",
+     "start": 2.218,
+     "end": 2.752
+    },
+    {
+     "id": 12,
+     "text": "But",
+     "start": 3.286,
+     "end": 3.437
+    },
+    {
+     "id": 13,
+     "text": "who",
+     "start": 3.471,
+     "end": 3.576
+    },
+    {
+     "id": 14,
+     "text": "gets",
+     "start": 3.622,
+     "end": 3.785
+    },
+    {
+     "id": 15,
+     "text": "to",
+     "start": 3.831,
+     "end": 3.901
+    },
+    {
+     "id": 16,
+     "text": "read",
+     "start": 4.029,
+     "end": 4.238
+    },
+    {
+     "id": 17,
+     "text": "it,",
+     "start": 4.296,
+     "end": 4.458
+    },
+    {
+     "id": 18,
+     "text": "write",
+     "start": 4.551,
+     "end": 4.853
+    },
+    {
+     "id": 19,
+     "text": "in",
+     "start": 4.899,
+     "end": 4.981
+    },
+    {
+     "id": 20,
+     "text": "it,",
+     "start": 5.027,
+     "end": 5.155
+    },
+    {
+     "id": 21,
+     "text": "and",
+     "start": 5.178,
+     "end": 5.306
+    },
+    {
+     "id": 22,
+     "text": "check",
+     "start": 5.375,
+     "end": 5.619
+    },
+    {
+     "id": 23,
+     "text": "it?",
+     "start": 5.677,
+     "end": 5.968
+    },
+    {
+     "id": 24,
+     "text": "That",
+     "start": 6.606,
+     "end": 6.803
+    },
+    {
+     "id": 25,
+     "text": "depends",
+     "start": 6.838,
+     "end": 7.152
+    },
+    {
+     "id": 26,
+     "text": "on",
+     "start": 7.175,
+     "end": 7.221
+    },
+    {
+     "id": 27,
+     "text": "the",
+     "start": 7.256,
+     "end": 7.326
+    },
+    {
+     "id": 28,
+     "text": "blockchain.",
+     "start": 7.349,
+     "end": 8.545
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "title": "The wall notebook",
+   "file": "assets/voice/s02.mp3",
+   "duration": 10.124,
+   "words": [
+    {
+     "id": 0,
+     "text": "Some",
+     "start": 0,
+     "end": 0.197
+    },
+    {
+     "id": 1,
+     "text": "blockchains",
+     "start": 0.221,
+     "end": 0.673
+    },
+    {
+     "id": 2,
+     "text": "are",
+     "start": 0.697,
+     "end": 0.766
+    },
+    {
+     "id": 3,
+     "text": "like",
+     "start": 0.789,
+     "end": 0.917
+    },
+    {
+     "id": 4,
+     "text": "a",
+     "start": 0.94,
+     "end": 0.964
+    },
+    {
+     "id": 5,
+     "text": "notebook",
+     "start": 1.045,
+     "end": 1.405
+    },
+    {
+     "id": 6,
+     "text": "pinned",
+     "start": 1.463,
+     "end": 1.695
+    },
+    {
+     "id": 7,
+     "text": "to",
+     "start": 1.718,
+     "end": 1.765
+    },
+    {
+     "id": 8,
+     "text": "the",
+     "start": 1.811,
+     "end": 1.881
+    },
+    {
+     "id": 9,
+     "text": "classroom",
+     "start": 1.916,
+     "end": 2.31
+    },
+    {
+     "id": 10,
+     "text": "wall.",
+     "start": 2.357,
+     "end": 2.891
+    },
+    {
+     "id": 11,
+     "text": "Anyone",
+     "start": 3.297,
+     "end": 3.634
+    },
+    {
+     "id": 12,
+     "text": "can",
+     "start": 3.657,
+     "end": 3.762
+    },
+    {
+     "id": 13,
+     "text": "read",
+     "start": 3.82,
+     "end": 3.994
+    },
+    {
+     "id": 14,
+     "text": "it,",
+     "start": 4.04,
+     "end": 4.18
+    },
+    {
+     "id": 15,
+     "text": "add",
+     "start": 4.226,
+     "end": 4.435
+    },
+    {
+     "id": 16,
+     "text": "a",
+     "start": 4.47,
+     "end": 4.493
+    },
+    {
+     "id": 17,
+     "text": "line,",
+     "start": 4.551,
+     "end": 4.888
+    },
+    {
+     "id": 18,
+     "text": "or",
+     "start": 4.911,
+     "end": 5.016
+    },
+    {
+     "id": 19,
+     "text": "help",
+     "start": 5.108,
+     "end": 5.271
+    },
+    {
+     "id": 20,
+     "text": "check",
+     "start": 5.317,
+     "end": 5.526
+    },
+    {
+     "id": 21,
+     "text": "it.",
+     "start": 5.584,
+     "end": 5.782
+    },
+    {
+     "id": 22,
+     "text": "That's",
+     "start": 5.968,
+     "end": 6.165
+    },
+    {
+     "id": 23,
+     "text": "a",
+     "start": 6.2,
+     "end": 6.223
+    },
+    {
+     "id": 24,
+     "text": "public",
+     "start": 6.293,
+     "end": 6.606
+    },
+    {
+     "id": 25,
+     "text": "blockchain.",
+     "start": 6.641,
+     "end": 7.372
+    },
+    {
+     "id": 26,
+     "text": "Bitcoin",
+     "start": 7.709,
+     "end": 8.197
+    },
+    {
+     "id": 27,
+     "text": "and",
+     "start": 8.243,
+     "end": 8.313
+    },
+    {
+     "id": 28,
+     "text": "Ethereum",
+     "start": 8.371,
+     "end": 8.8
+    },
+    {
+     "id": 29,
+     "text": "work",
+     "start": 8.847,
+     "end": 8.998
+    },
+    {
+     "id": 30,
+     "text": "this",
+     "start": 9.044,
+     "end": 9.183
+    },
+    {
+     "id": 31,
+     "text": "way.",
+     "start": 9.242,
+     "end": 10.124
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "title": "Visa",
+   "file": "assets/voice/s03.mp3",
+   "duration": 11.517,
+   "words": [
+    {
+     "id": 0,
+     "text": "Big",
+     "start": 0,
+     "end": 0.244
+    },
+    {
+     "id": 1,
+     "text": "companies",
+     "start": 0.313,
+     "end": 0.731
+    },
+    {
+     "id": 2,
+     "text": "use",
+     "start": 0.801,
+     "end": 0.964
+    },
+    {
+     "id": 3,
+     "text": "public",
+     "start": 1.01,
+     "end": 1.324
+    },
+    {
+     "id": 4,
+     "text": "chains",
+     "start": 1.382,
+     "end": 1.765
+    },
+    {
+     "id": 5,
+     "text": "too.",
+     "start": 1.846,
+     "end": 2.438
+    },
+    {
+     "id": 6,
+     "text": "Visa,",
+     "start": 3.077,
+     "end": 3.611
+    },
+    {
+     "id": 7,
+     "text": "the",
+     "start": 3.634,
+     "end": 3.704
+    },
+    {
+     "id": 8,
+     "text": "card",
+     "start": 3.773,
+     "end": 4.017
+    },
+    {
+     "id": 9,
+     "text": "company,",
+     "start": 4.075,
+     "end": 4.702
+    },
+    {
+     "id": 10,
+     "text": "has",
+     "start": 4.865,
+     "end": 4.992
+    },
+    {
+     "id": 11,
+     "text": "paid",
+     "start": 5.062,
+     "end": 5.283
+    },
+    {
+     "id": 12,
+     "text": "some",
+     "start": 5.329,
+     "end": 5.48
+    },
+    {
+     "id": 13,
+     "text": "partners",
+     "start": 5.526,
+     "end": 5.909
+    },
+    {
+     "id": 14,
+     "text": "in",
+     "start": 5.956,
+     "end": 6.014
+    },
+    {
+     "id": 15,
+     "text": "digital",
+     "start": 6.095,
+     "end": 6.455
+    },
+    {
+     "id": 16,
+     "text": "dollars",
+     "start": 6.513,
+     "end": 6.908
+    },
+    {
+     "id": 17,
+     "text": "over",
+     "start": 6.954,
+     "end": 7.129
+    },
+    {
+     "id": 18,
+     "text": "public",
+     "start": 7.21,
+     "end": 7.512
+    },
+    {
+     "id": 19,
+     "text": "blockchains.",
+     "start": 7.57,
+     "end": 8.348
+    },
+    {
+     "id": 20,
+     "text": "That",
+     "start": 8.684,
+     "end": 8.893
+    },
+    {
+     "id": 21,
+     "text": "helps",
+     "start": 8.951,
+     "end": 9.172
+    },
+    {
+     "id": 22,
+     "text": "money",
+     "start": 9.242,
+     "end": 9.439
+    },
+    {
+     "id": 23,
+     "text": "cross",
+     "start": 9.497,
+     "end": 9.764
+    },
+    {
+     "id": 24,
+     "text": "borders",
+     "start": 9.822,
+     "end": 10.147
+    },
+    {
+     "id": 25,
+     "text": "faster.",
+     "start": 10.205,
+     "end": 11.517
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "title": "PayPal",
+   "file": "assets/voice/s04.mp3",
+   "duration": 7.848,
+   "words": [
+    {
+     "id": 0,
+     "text": "PayPal",
+     "start": 0,
+     "end": 0.441
+    },
+    {
+     "id": 1,
+     "text": "made",
+     "start": 0.499,
+     "end": 0.65
+    },
+    {
+     "id": 2,
+     "text": "its",
+     "start": 0.673,
+     "end": 0.778
+    },
+    {
+     "id": 3,
+     "text": "own",
+     "start": 0.836,
+     "end": 1.08
+    },
+    {
+     "id": 4,
+     "text": "digital",
+     "start": 1.149,
+     "end": 1.486
+    },
+    {
+     "id": 5,
+     "text": "dollar",
+     "start": 1.533,
+     "end": 1.834
+    },
+    {
+     "id": 6,
+     "text": "on",
+     "start": 1.892,
+     "end": 1.962
+    },
+    {
+     "id": 7,
+     "text": "Ethereum.",
+     "start": 2.009,
+     "end": 2.728
+    },
+    {
+     "id": 8,
+     "text": "Anyone",
+     "start": 3.367,
+     "end": 3.727
+    },
+    {
+     "id": 9,
+     "text": "with",
+     "start": 3.75,
+     "end": 3.866
+    },
+    {
+     "id": 10,
+     "text": "a",
+     "start": 3.901,
+     "end": 3.924
+    },
+    {
+     "id": 11,
+     "text": "wallet",
+     "start": 3.982,
+     "end": 4.319
+    },
+    {
+     "id": 12,
+     "text": "can",
+     "start": 4.365,
+     "end": 4.481
+    },
+    {
+     "id": 13,
+     "text": "hold",
+     "start": 4.551,
+     "end": 4.748
+    },
+    {
+     "id": 14,
+     "text": "it",
+     "start": 4.807,
+     "end": 4.876
+    },
+    {
+     "id": 15,
+     "text": "or",
+     "start": 4.946,
+     "end": 5.074
+    },
+    {
+     "id": 16,
+     "text": "send",
+     "start": 5.155,
+     "end": 5.387
+    },
+    {
+     "id": 17,
+     "text": "it,",
+     "start": 5.445,
+     "end": 5.596
+    },
+    {
+     "id": 18,
+     "text": "even",
+     "start": 5.654,
+     "end": 5.863
+    },
+    {
+     "id": 19,
+     "text": "when",
+     "start": 5.898,
+     "end": 6.026
+    },
+    {
+     "id": 20,
+     "text": "banks",
+     "start": 6.095,
+     "end": 6.362
+    },
+    {
+     "id": 21,
+     "text": "are",
+     "start": 6.397,
+     "end": 6.49
+    },
+    {
+     "id": 22,
+     "text": "closed.",
+     "start": 6.525,
+     "end": 7.848
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "title": "The club notebook",
+   "file": "assets/voice/s05.mp3",
+   "duration": 8.499,
+   "words": [
+    {
+     "id": 0,
+     "text": "Other",
+     "start": 0,
+     "end": 0.244
+    },
+    {
+     "id": 1,
+     "text": "blockchains",
+     "start": 0.279,
+     "end": 0.778
+    },
+    {
+     "id": 2,
+     "text": "are",
+     "start": 0.801,
+     "end": 0.894
+    },
+    {
+     "id": 3,
+     "text": "like",
+     "start": 0.917,
+     "end": 1.033
+    },
+    {
+     "id": 4,
+     "text": "a",
+     "start": 1.068,
+     "end": 1.091
+    },
+    {
+     "id": 5,
+     "text": "club",
+     "start": 1.138,
+     "end": 1.347
+    },
+    {
+     "id": 6,
+     "text": "notebook",
+     "start": 1.416,
+     "end": 1.765
+    },
+    {
+     "id": 7,
+     "text": "in",
+     "start": 1.811,
+     "end": 1.869
+    },
+    {
+     "id": 8,
+     "text": "a",
+     "start": 1.904,
+     "end": 1.927
+    },
+    {
+     "id": 9,
+     "text": "locked",
+     "start": 1.974,
+     "end": 2.218
+    },
+    {
+     "id": 10,
+     "text": "cabinet.",
+     "start": 2.264,
+     "end": 2.949
+    },
+    {
+     "id": 11,
+     "text": "The",
+     "start": 3.355,
+     "end": 3.471
+    },
+    {
+     "id": 12,
+     "text": "club",
+     "start": 3.518,
+     "end": 3.715
+    },
+    {
+     "id": 13,
+     "text": "decides",
+     "start": 3.773,
+     "end": 4.214
+    },
+    {
+     "id": 14,
+     "text": "who",
+     "start": 4.249,
+     "end": 4.354
+    },
+    {
+     "id": 15,
+     "text": "can",
+     "start": 4.4,
+     "end": 4.516
+    },
+    {
+     "id": 16,
+     "text": "read,",
+     "start": 4.586,
+     "end": 4.946
+    },
+    {
+     "id": 17,
+     "text": "write,",
+     "start": 4.992,
+     "end": 5.341
+    },
+    {
+     "id": 18,
+     "text": "and",
+     "start": 5.364,
+     "end": 5.48
+    },
+    {
+     "id": 19,
+     "text": "check.",
+     "start": 5.538,
+     "end": 6.06
+    },
+    {
+     "id": 20,
+     "text": "That's",
+     "start": 6.792,
+     "end": 7.012
+    },
+    {
+     "id": 21,
+     "text": "a",
+     "start": 7.047,
+     "end": 7.07
+    },
+    {
+     "id": 22,
+     "text": "private",
+     "start": 7.105,
+     "end": 7.384
+    },
+    {
+     "id": 23,
+     "text": "blockchain.",
+     "start": 7.407,
+     "end": 8.499
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "title": "Why lock it?",
+   "file": "assets/voice/s06.mp3",
+   "duration": 8.173,
+   "words": [
+    {
+     "id": 0,
+     "text": "Why",
+     "start": 0,
+     "end": 0.221
+    },
+    {
+     "id": 1,
+     "text": "lock",
+     "start": 0.302,
+     "end": 0.522
+    },
+    {
+     "id": 2,
+     "text": "it?",
+     "start": 0.58,
+     "end": 0.836
+    },
+    {
+     "id": 3,
+     "text": "Some",
+     "start": 1.3,
+     "end": 1.498
+    },
+    {
+     "id": 4,
+     "text": "records",
+     "start": 1.533,
+     "end": 1.823
+    },
+    {
+     "id": 5,
+     "text": "shouldn't",
+     "start": 1.846,
+     "end": 2.101
+    },
+    {
+     "id": 6,
+     "text": "be",
+     "start": 2.136,
+     "end": 2.229
+    },
+    {
+     "id": 7,
+     "text": "public,",
+     "start": 2.287,
+     "end": 2.647
+    },
+    {
+     "id": 8,
+     "text": "like",
+     "start": 2.682,
+     "end": 2.821
+    },
+    {
+     "id": 9,
+     "text": "a",
+     "start": 2.844,
+     "end": 2.868
+    },
+    {
+     "id": 10,
+     "text": "bank's",
+     "start": 2.914,
+     "end": 3.158
+    },
+    {
+     "id": 11,
+     "text": "payments.",
+     "start": 3.193,
+     "end": 3.855
+    },
+    {
+     "id": 12,
+     "text": "And",
+     "start": 4.191,
+     "end": 4.331
+    },
+    {
+     "id": 13,
+     "text": "with",
+     "start": 4.377,
+     "end": 4.505
+    },
+    {
+     "id": 14,
+     "text": "fewer",
+     "start": 4.563,
+     "end": 4.795
+    },
+    {
+     "id": 15,
+     "text": "checkers,",
+     "start": 4.853,
+     "end": 5.445
+    },
+    {
+     "id": 16,
+     "text": "a",
+     "start": 5.573,
+     "end": 5.642
+    },
+    {
+     "id": 17,
+     "text": "private",
+     "start": 5.724,
+     "end": 6.06
+    },
+    {
+     "id": 18,
+     "text": "chain",
+     "start": 6.095,
+     "end": 6.374
+    },
+    {
+     "id": 19,
+     "text": "can",
+     "start": 6.444,
+     "end": 6.56
+    },
+    {
+     "id": 20,
+     "text": "run",
+     "start": 6.606,
+     "end": 6.757
+    },
+    {
+     "id": 21,
+     "text": "faster.",
+     "start": 6.827,
+     "end": 8.173
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "title": "J.P. Morgan",
+   "file": "assets/voice/s07.mp3",
+   "duration": 14.396,
+   "words": [
+    {
+     "id": 0,
+     "text": "J.P.",
+     "start": 0,
+     "end": 0.534
+    },
+    {
+     "id": 1,
+     "text": "Morgan,",
+     "start": 0.569,
+     "end": 0.998
+    },
+    {
+     "id": 2,
+     "text": "one",
+     "start": 1.033,
+     "end": 1.149
+    },
+    {
+     "id": 3,
+     "text": "of",
+     "start": 1.173,
+     "end": 1.219
+    },
+    {
+     "id": 4,
+     "text": "the",
+     "start": 1.254,
+     "end": 1.324
+    },
+    {
+     "id": 5,
+     "text": "biggest",
+     "start": 1.393,
+     "end": 1.683
+    },
+    {
+     "id": 6,
+     "text": "banks",
+     "start": 1.741,
+     "end": 2.02
+    },
+    {
+     "id": 7,
+     "text": "in",
+     "start": 2.055,
+     "end": 2.101
+    },
+    {
+     "id": 8,
+     "text": "the",
+     "start": 2.136,
+     "end": 2.206
+    },
+    {
+     "id": 9,
+     "text": "world,",
+     "start": 2.264,
+     "end": 2.821
+    },
+    {
+     "id": 10,
+     "text": "runs",
+     "start": 3.077,
+     "end": 3.32
+    },
+    {
+     "id": 11,
+     "text": "a",
+     "start": 3.355,
+     "end": 3.379
+    },
+    {
+     "id": 12,
+     "text": "private",
+     "start": 3.448,
+     "end": 3.796
+    },
+    {
+     "id": 13,
+     "text": "blockchain",
+     "start": 3.82,
+     "end": 4.319
+    },
+    {
+     "id": 14,
+     "text": "called",
+     "start": 4.4,
+     "end": 4.656
+    },
+    {
+     "id": 15,
+     "text": "Kinexys.",
+     "start": 4.714,
+     "end": 5.747
+    },
+    {
+     "id": 16,
+     "text": "Companies",
+     "start": 6.385,
+     "end": 6.815
+    },
+    {
+     "id": 17,
+     "text": "use",
+     "start": 6.885,
+     "end": 7.117
+    },
+    {
+     "id": 18,
+     "text": "it",
+     "start": 7.152,
+     "end": 7.233
+    },
+    {
+     "id": 19,
+     "text": "to",
+     "start": 7.279,
+     "end": 7.338
+    },
+    {
+     "id": 20,
+     "text": "move",
+     "start": 7.407,
+     "end": 7.593
+    },
+    {
+     "id": 21,
+     "text": "money",
+     "start": 7.651,
+     "end": 7.848
+    },
+    {
+     "id": 22,
+     "text": "between",
+     "start": 7.906,
+     "end": 8.197
+    },
+    {
+     "id": 23,
+     "text": "their",
+     "start": 8.231,
+     "end": 8.382
+    },
+    {
+     "id": 24,
+     "text": "accounts",
+     "start": 8.417,
+     "end": 8.766
+    },
+    {
+     "id": 25,
+     "text": "in",
+     "start": 8.8,
+     "end": 8.858
+    },
+    {
+     "id": 26,
+     "text": "different",
+     "start": 8.916,
+     "end": 9.183
+    },
+    {
+     "id": 27,
+     "text": "countries,",
+     "start": 9.218,
+     "end": 9.729
+    },
+    {
+     "id": 28,
+     "text": "any",
+     "start": 9.787,
+     "end": 10.019
+    },
+    {
+     "id": 29,
+     "text": "time",
+     "start": 10.089,
+     "end": 10.333
+    },
+    {
+     "id": 30,
+     "text": "of",
+     "start": 10.368,
+     "end": 10.426
+    },
+    {
+     "id": 31,
+     "text": "day.",
+     "start": 10.495,
+     "end": 10.983
+    },
+    {
+     "id": 32,
+     "text": "It",
+     "start": 11.517,
+     "end": 11.656
+    },
+    {
+     "id": 33,
+     "text": "handles",
+     "start": 11.703,
+     "end": 12.04
+    },
+    {
+     "id": 34,
+     "text": "billions",
+     "start": 12.121,
+     "end": 12.55
+    },
+    {
+     "id": 35,
+     "text": "of",
+     "start": 12.597,
+     "end": 12.643
+    },
+    {
+     "id": 36,
+     "text": "dollars",
+     "start": 12.701,
+     "end": 13.05
+    },
+    {
+     "id": 37,
+     "text": "daily.",
+     "start": 13.108,
+     "end": 14.396
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "title": "Walmart",
+   "file": "assets/voice/s08.mp3",
+   "duration": 7.709,
+   "words": [
+    {
+     "id": 0,
+     "text": "And",
+     "start": 0,
+     "end": 0.186
+    },
+    {
+     "id": 1,
+     "text": "the",
+     "start": 0.232,
+     "end": 0.302
+    },
+    {
+     "id": 2,
+     "text": "mangoes",
+     "start": 0.372,
+     "end": 0.824
+    },
+    {
+     "id": 3,
+     "text": "from",
+     "start": 0.871,
+     "end": 0.998
+    },
+    {
+     "id": 4,
+     "text": "episode",
+     "start": 1.068,
+     "end": 1.509
+    },
+    {
+     "id": 5,
+     "text": "one?",
+     "start": 1.567,
+     "end": 2.02
+    },
+    {
+     "id": 6,
+     "text": "Walmart",
+     "start": 2.752,
+     "end": 3.228
+    },
+    {
+     "id": 7,
+     "text": "tracked",
+     "start": 3.262,
+     "end": 3.599
+    },
+    {
+     "id": 8,
+     "text": "them",
+     "start": 3.646,
+     "end": 3.808
+    },
+    {
+     "id": 9,
+     "text": "on",
+     "start": 3.866,
+     "end": 3.936
+    },
+    {
+     "id": 10,
+     "text": "a",
+     "start": 3.971,
+     "end": 3.994
+    },
+    {
+     "id": 11,
+     "text": "private",
+     "start": 4.063,
+     "end": 4.447
+    },
+    {
+     "id": 12,
+     "text": "blockchain",
+     "start": 4.481,
+     "end": 4.992
+    },
+    {
+     "id": 13,
+     "text": "that",
+     "start": 5.039,
+     "end": 5.143
+    },
+    {
+     "id": 14,
+     "text": "only",
+     "start": 5.19,
+     "end": 5.352
+    },
+    {
+     "id": 15,
+     "text": "invited",
+     "start": 5.399,
+     "end": 5.828
+    },
+    {
+     "id": 16,
+     "text": "companies",
+     "start": 5.898,
+     "end": 6.304
+    },
+    {
+     "id": 17,
+     "text": "could",
+     "start": 6.351,
+     "end": 6.49
+    },
+    {
+     "id": 18,
+     "text": "use.",
+     "start": 6.56,
+     "end": 7.709
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "title": "Who's in charge?",
+   "file": "assets/voice/s09.mp3",
+   "duration": 12.817,
+   "words": [
+    {
+     "id": 0,
+     "text": "Here's",
+     "start": 0,
+     "end": 0.29
+    },
+    {
+     "id": 1,
+     "text": "the",
+     "start": 0.325,
+     "end": 0.395
+    },
+    {
+     "id": 2,
+     "text": "catch.",
+     "start": 0.43,
+     "end": 0.964
+    },
+    {
+     "id": 3,
+     "text": "Somebody",
+     "start": 1.37,
+     "end": 1.695
+    },
+    {
+     "id": 4,
+     "text": "runs",
+     "start": 1.753,
+     "end": 1.962
+    },
+    {
+     "id": 5,
+     "text": "the",
+     "start": 2.009,
+     "end": 2.078
+    },
+    {
+     "id": 6,
+     "text": "club.",
+     "start": 2.125,
+     "end": 2.647
+    },
+    {
+     "id": 7,
+     "text": "Say",
+     "start": 2.902,
+     "end": 3.077
+    },
+    {
+     "id": 8,
+     "text": "it's",
+     "start": 3.111,
+     "end": 3.228
+    },
+    {
+     "id": 9,
+     "text": "Sam.",
+     "start": 3.262,
+     "end": 3.889
+    },
+    {
+     "id": 10,
+     "text": "Sam",
+     "start": 4.423,
+     "end": 4.702
+    },
+    {
+     "id": 11,
+     "text": "picks",
+     "start": 4.772,
+     "end": 5.004
+    },
+    {
+     "id": 12,
+     "text": "who",
+     "start": 5.027,
+     "end": 5.132
+    },
+    {
+     "id": 13,
+     "text": "gets",
+     "start": 5.19,
+     "end": 5.375
+    },
+    {
+     "id": 14,
+     "text": "in,",
+     "start": 5.445,
+     "end": 5.793
+    },
+    {
+     "id": 15,
+     "text": "and",
+     "start": 5.828,
+     "end": 5.979
+    },
+    {
+     "id": 16,
+     "text": "if",
+     "start": 6.026,
+     "end": 6.084
+    },
+    {
+     "id": 17,
+     "text": "the",
+     "start": 6.13,
+     "end": 6.2
+    },
+    {
+     "id": 18,
+     "text": "members",
+     "start": 6.258,
+     "end": 6.594
+    },
+    {
+     "id": 19,
+     "text": "team",
+     "start": 6.641,
+     "end": 6.861
+    },
+    {
+     "id": 20,
+     "text": "up,",
+     "start": 6.931,
+     "end": 7.233
+    },
+    {
+     "id": 21,
+     "text": "they",
+     "start": 7.361,
+     "end": 7.5
+    },
+    {
+     "id": 22,
+     "text": "can",
+     "start": 7.535,
+     "end": 7.651
+    },
+    {
+     "id": 23,
+     "text": "rewrite",
+     "start": 7.721,
+     "end": 8.115
+    },
+    {
+     "id": 24,
+     "text": "the",
+     "start": 8.15,
+     "end": 8.22
+    },
+    {
+     "id": 25,
+     "text": "notebook.",
+     "start": 8.266,
+     "end": 8.87
+    },
+    {
+     "id": 26,
+     "text": "You",
+     "start": 9.601,
+     "end": 9.752
+    },
+    {
+     "id": 27,
+     "text": "have",
+     "start": 9.892,
+     "end": 10.136
+    },
+    {
+     "id": 28,
+     "text": "to",
+     "start": 10.182,
+     "end": 10.252
+    },
+    {
+     "id": 29,
+     "text": "trust",
+     "start": 10.321,
+     "end": 10.704
+    },
+    {
+     "id": 30,
+     "text": "whoever",
+     "start": 10.751,
+     "end": 11.111
+    },
+    {
+     "id": 31,
+     "text": "is",
+     "start": 11.169,
+     "end": 11.25
+    },
+    {
+     "id": 32,
+     "text": "in",
+     "start": 11.308,
+     "end": 11.366
+    },
+    {
+     "id": 33,
+     "text": "charge.",
+     "start": 11.436,
+     "end": 12.817
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Which is better?",
+   "file": "assets/voice/s10.mp3",
+   "duration": 13.932,
+   "words": [
+    {
+     "id": 0,
+     "text": "So",
+     "start": 0,
+     "end": 0.163
+    },
+    {
+     "id": 1,
+     "text": "which",
+     "start": 0.209,
+     "end": 0.36
+    },
+    {
+     "id": 2,
+     "text": "one",
+     "start": 0.406,
+     "end": 0.499
+    },
+    {
+     "id": 3,
+     "text": "is",
+     "start": 0.534,
+     "end": 0.604
+    },
+    {
+     "id": 4,
+     "text": "better?",
+     "start": 0.685,
+     "end": 1.173
+    },
+    {
+     "id": 5,
+     "text": "It",
+     "start": 1.811,
+     "end": 1.927
+    },
+    {
+     "id": 6,
+     "text": "depends",
+     "start": 1.974,
+     "end": 2.299
+    },
+    {
+     "id": 7,
+     "text": "on",
+     "start": 2.345,
+     "end": 2.403
+    },
+    {
+     "id": 8,
+     "text": "the",
+     "start": 2.438,
+     "end": 2.508
+    },
+    {
+     "id": 9,
+     "text": "job.",
+     "start": 2.554,
+     "end": 3.1
+    },
+    {
+     "id": 10,
+     "text": "Public",
+     "start": 3.738,
+     "end": 4.063
+    },
+    {
+     "id": 11,
+     "text": "chains",
+     "start": 4.122,
+     "end": 4.4
+    },
+    {
+     "id": 12,
+     "text": "are",
+     "start": 4.435,
+     "end": 4.54
+    },
+    {
+     "id": 13,
+     "text": "open,",
+     "start": 4.586,
+     "end": 4.981
+    },
+    {
+     "id": 14,
+     "text": "but",
+     "start": 5.016,
+     "end": 5.155
+    },
+    {
+     "id": 15,
+     "text": "so",
+     "start": 5.213,
+     "end": 5.329
+    },
+    {
+     "id": 16,
+     "text": "is",
+     "start": 5.399,
+     "end": 5.48
+    },
+    {
+     "id": 17,
+     "text": "everything",
+     "start": 5.561,
+     "end": 5.991
+    },
+    {
+     "id": 18,
+     "text": "you",
+     "start": 6.049,
+     "end": 6.13
+    },
+    {
+     "id": 19,
+     "text": "write.",
+     "start": 6.177,
+     "end": 6.641
+    },
+    {
+     "id": 20,
+     "text": "Private",
+     "start": 7.279,
+     "end": 7.628
+    },
+    {
+     "id": 21,
+     "text": "chains",
+     "start": 7.651,
+     "end": 7.93
+    },
+    {
+     "id": 22,
+     "text": "keep",
+     "start": 7.988,
+     "end": 8.162
+    },
+    {
+     "id": 23,
+     "text": "secrets,",
+     "start": 8.22,
+     "end": 8.905
+    },
+    {
+     "id": 24,
+     "text": "but",
+     "start": 9.033,
+     "end": 9.183
+    },
+    {
+     "id": 25,
+     "text": "someone",
+     "start": 9.242,
+     "end": 9.532
+    },
+    {
+     "id": 26,
+     "text": "holds",
+     "start": 9.567,
+     "end": 9.787
+    },
+    {
+     "id": 27,
+     "text": "the",
+     "start": 9.845,
+     "end": 9.915
+    },
+    {
+     "id": 28,
+     "text": "key.",
+     "start": 9.973,
+     "end": 10.484
+    },
+    {
+     "id": 29,
+     "text": "J.P.",
+     "start": 11.343,
+     "end": 11.703
+    },
+    {
+     "id": 30,
+     "text": "Morgan",
+     "start": 11.726,
+     "end": 12.028
+    },
+    {
+     "id": 31,
+     "text": "now",
+     "start": 12.086,
+     "end": 12.214
+    },
+    {
+     "id": 32,
+     "text": "uses",
+     "start": 12.283,
+     "end": 12.539
+    },
+    {
+     "id": 33,
+     "text": "both.",
+     "start": 12.608,
+     "end": 13.932
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Your turn",
+   "file": "assets/voice/s11.mp3",
+   "duration": 9.892,
+   "words": [
+    {
+     "id": 0,
+     "text": "Your",
+     "start": 0,
+     "end": 0.255
+    },
+    {
+     "id": 1,
+     "text": "turn.",
+     "start": 0.313,
+     "end": 0.871
+    },
+    {
+     "id": 2,
+     "text": "Pause",
+     "start": 1.057,
+     "end": 1.416
+    },
+    {
+     "id": 3,
+     "text": "the",
+     "start": 1.451,
+     "end": 1.521
+    },
+    {
+     "id": 4,
+     "text": "video.",
+     "start": 1.567,
+     "end": 2.241
+    },
+    {
+     "id": 5,
+     "text": "Your",
+     "start": 2.577,
+     "end": 2.775
+    },
+    {
+     "id": 6,
+     "text": "school",
+     "start": 2.833,
+     "end": 3.146
+    },
+    {
+     "id": 7,
+     "text": "wants",
+     "start": 3.216,
+     "end": 3.425
+    },
+    {
+     "id": 8,
+     "text": "to",
+     "start": 3.46,
+     "end": 3.529
+    },
+    {
+     "id": 9,
+     "text": "track",
+     "start": 3.587,
+     "end": 3.831
+    },
+    {
+     "id": 10,
+     "text": "library",
+     "start": 3.924,
+     "end": 4.296
+    },
+    {
+     "id": 11,
+     "text": "books",
+     "start": 4.354,
+     "end": 4.574
+    },
+    {
+     "id": 12,
+     "text": "on",
+     "start": 4.621,
+     "end": 4.69
+    },
+    {
+     "id": 13,
+     "text": "a",
+     "start": 4.725,
+     "end": 4.748
+    },
+    {
+     "id": 14,
+     "text": "blockchain.",
+     "start": 4.795,
+     "end": 5.573
+    },
+    {
+     "id": 15,
+     "text": "Should",
+     "start": 6.304,
+     "end": 6.536
+    },
+    {
+     "id": 16,
+     "text": "it",
+     "start": 6.571,
+     "end": 6.629
+    },
+    {
+     "id": 17,
+     "text": "be",
+     "start": 6.687,
+     "end": 6.827
+    },
+    {
+     "id": 18,
+     "text": "public",
+     "start": 6.896,
+     "end": 7.245
+    },
+    {
+     "id": 19,
+     "text": "or",
+     "start": 7.326,
+     "end": 7.5
+    },
+    {
+     "id": 20,
+     "text": "private?",
+     "start": 7.581,
+     "end": 8.243
+    },
+    {
+     "id": 21,
+     "text": "Why?",
+     "start": 9.102,
+     "end": 9.892
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Learn more",
+   "file": "assets/voice/s12.mp3",
+   "duration": 7.523,
+   "words": [
+    {
+     "id": 0,
+     "text": "Want",
+     "start": 0,
+     "end": 0.221
+    },
+    {
+     "id": 1,
+     "text": "to",
+     "start": 0.244,
+     "end": 0.29
+    },
+    {
+     "id": 2,
+     "text": "learn",
+     "start": 0.313,
+     "end": 0.476
+    },
+    {
+     "id": 3,
+     "text": "more?",
+     "start": 0.511,
+     "end": 0.952
+    },
+    {
+     "id": 4,
+     "text": "In",
+     "start": 1.358,
+     "end": 1.509
+    },
+    {
+     "id": 5,
+     "text": "high",
+     "start": 1.579,
+     "end": 1.73
+    },
+    {
+     "id": 6,
+     "text": "school,",
+     "start": 1.753,
+     "end": 2.043
+    },
+    {
+     "id": 7,
+     "text": "you",
+     "start": 2.078,
+     "end": 2.159
+    },
+    {
+     "id": 8,
+     "text": "can",
+     "start": 2.206,
+     "end": 2.31
+    },
+    {
+     "id": 9,
+     "text": "join",
+     "start": 2.368,
+     "end": 2.566
+    },
+    {
+     "id": 10,
+     "text": "the",
+     "start": 2.612,
+     "end": 2.682
+    },
+    {
+     "id": 11,
+     "text": "Youth",
+     "start": 2.74,
+     "end": 2.961
+    },
+    {
+     "id": 12,
+     "text": "Blockchain",
+     "start": 3.019,
+     "end": 3.46
+    },
+    {
+     "id": 13,
+     "text": "Association.",
+     "start": 3.506,
+     "end": 4.365
+    },
+    {
+     "id": 14,
+     "text": "Find",
+     "start": 4.702,
+     "end": 4.934
+    },
+    {
+     "id": 15,
+     "text": "us",
+     "start": 4.992,
+     "end": 5.085
+    },
+    {
+     "id": 16,
+     "text": "at",
+     "start": 5.155,
+     "end": 5.283
+    },
+    {
+     "id": 17,
+     "text": "join",
+     "start": 5.364,
+     "end": 5.666
+    },
+    {
+     "id": 18,
+     "text": "Y",
+     "start": 5.747,
+     "end": 5.933
+    },
+    {
+     "id": 19,
+     "text": "B",
+     "start": 6.026,
+     "end": 6.107
+    },
+    {
+     "id": 20,
+     "text": "A",
+     "start": 6.327,
+     "end": 6.49
+    },
+    {
+     "id": 21,
+     "text": "dot",
+     "start": 6.583,
+     "end": 6.827
+    },
+    {
+     "id": 22,
+     "text": "org.",
+     "start": 6.885,
+     "end": 7.523
+    }
+   ]
+  }
+ ]
+}

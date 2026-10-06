@@ -114,7 +114,7 @@ export function HomeView() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
-          {/* Logo with a replayable dot wave; the box burst is in ANIMATION STORAGE */}
+          {/* Assembled glass logo with a replayable dot wave */}
           <div className="relative z-10">
             <HeroMark />
           </div>

@@ -1,0 +1,158 @@
+[
+ {
+  "id": 0,
+  "text": "A",
+  "start": 0,
+  "end": 0.116
+ },
+ {
+  "id": 1,
+  "text": "blockchain",
+  "start": 0.197,
+  "end": 0.662
+ },
+ {
+  "id": 2,
+  "text": "does",
+  "start": 0.72,
+  "end": 0.859
+ },
+ {
+  "id": 3,
+  "text": "something",
+  "start": 0.894,
+  "end": 1.173
+ },
+ {
+  "id": 4,
+  "text": "different.",
+  "start": 1.231,
+  "end": 1.788
+ },
+ {
+  "id": 5,
+  "text": "It",
+  "start": 2.194,
+  "end": 2.31
+ },
+ {
+  "id": 6,
+  "text": "gives",
+  "start": 2.357,
+  "end": 2.543
+ },
+ {
+  "id": 7,
+  "text": "everybody",
+  "start": 2.612,
+  "end": 3.077
+ },
+ {
+  "id": 8,
+  "text": "their",
+  "start": 3.123,
+  "end": 3.274
+ },
+ {
+  "id": 9,
+  "text": "own",
+  "start": 3.332,
+  "end": 3.448
+ },
+ {
+  "id": 10,
+  "text": "copy",
+  "start": 3.506,
+  "end": 3.785
+ },
+ {
+  "id": 11,
+  "text": "of",
+  "start": 3.82,
+  "end": 3.866
+ },
+ {
+  "id": 12,
+  "text": "the",
+  "start": 3.901,
+  "end": 3.971
+ },
+ {
+  "id": 13,
+  "text": "notebook.",
+  "start": 4.017,
+  "end": 4.574
+ },
+ {
+  "id": 14,
+  "text": "When",
+  "start": 5.108,
+  "end": 5.259
+ },
+ {
+  "id": 15,
+  "text": "you",
+  "start": 5.294,
+  "end": 5.364
+ },
+ {
+  "id": 16,
+  "text": "lend",
+  "start": 5.433,
+  "end": 5.584
+ },
+ {
+  "id": 17,
+  "text": "Sam",
+  "start": 5.666,
+  "end": 5.921
+ },
+ {
+  "id": 18,
+  "text": "five",
+  "start": 6.014,
+  "end": 6.316
+ },
+ {
+  "id": 19,
+  "text": "dollars,",
+  "start": 6.351,
+  "end": 6.954
+ },
+ {
+  "id": 20,
+  "text": "the",
+  "start": 7.036,
+  "end": 7.14
+ },
+ {
+  "id": 21,
+  "text": "whole",
+  "start": 7.21,
+  "end": 7.465
+ },
+ {
+  "id": 22,
+  "text": "class",
+  "start": 7.512,
+  "end": 7.86
+ },
+ {
+  "id": 23,
+  "text": "writes",
+  "start": 7.895,
+  "end": 8.127
+ },
+ {
+  "id": 24,
+  "text": "it",
+  "start": 8.173,
+  "end": 8.231
+ },
+ {
+  "id": 25,
+  "text": "down.",
+  "start": 8.278,
+  "end": 9.427
+ }
+]

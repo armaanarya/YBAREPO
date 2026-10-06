@@ -1,0 +1,146 @@
+[
+ {
+  "id": 0,
+  "text": "Every",
+  "start": 0,
+  "end": 0.302
+ },
+ {
+  "id": 1,
+  "text": "block",
+  "start": 0.348,
+  "end": 0.65
+ },
+ {
+  "id": 2,
+  "text": "gets",
+  "start": 0.708,
+  "end": 0.882
+ },
+ {
+  "id": 3,
+  "text": "a",
+  "start": 0.917,
+  "end": 0.94
+ },
+ {
+  "id": 4,
+  "text": "fingerprint.",
+  "start": 0.998,
+  "end": 1.776
+ },
+ {
+  "id": 5,
+  "text": "That's",
+  "start": 2.241,
+  "end": 2.508
+ },
+ {
+  "id": 6,
+  "text": "a",
+  "start": 2.531,
+  "end": 2.566
+ },
+ {
+  "id": 7,
+  "text": "short",
+  "start": 2.624,
+  "end": 2.868
+ },
+ {
+  "id": 8,
+  "text": "code",
+  "start": 2.926,
+  "end": 3.204
+ },
+ {
+  "id": 9,
+  "text": "made",
+  "start": 3.239,
+  "end": 3.413
+ },
+ {
+  "id": 10,
+  "text": "from",
+  "start": 3.437,
+  "end": 3.553
+ },
+ {
+  "id": 11,
+  "text": "everything",
+  "start": 3.611,
+  "end": 3.924
+ },
+ {
+  "id": 12,
+  "text": "on",
+  "start": 3.959,
+  "end": 4.017
+ },
+ {
+  "id": 13,
+  "text": "the",
+  "start": 4.04,
+  "end": 4.11
+ },
+ {
+  "id": 14,
+  "text": "page.",
+  "start": 4.145,
+  "end": 4.737
+ },
+ {
+  "id": 15,
+  "text": "Change",
+  "start": 5.271,
+  "end": 5.631
+ },
+ {
+  "id": 16,
+  "text": "even",
+  "start": 5.689,
+  "end": 5.979
+ },
+ {
+  "id": 17,
+  "text": "one",
+  "start": 6.072,
+  "end": 6.293
+ },
+ {
+  "id": 18,
+  "text": "letter,",
+  "start": 6.339,
+  "end": 6.641
+ },
+ {
+  "id": 19,
+  "text": "and",
+  "start": 6.664,
+  "end": 6.757
+ },
+ {
+  "id": 20,
+  "text": "the",
+  "start": 6.803,
+  "end": 6.873
+ },
+ {
+  "id": 21,
+  "text": "fingerprint",
+  "start": 6.931,
+  "end": 7.419
+ },
+ {
+  "id": 22,
+  "text": "changes",
+  "start": 7.465,
+  "end": 7.814
+ },
+ {
+  "id": 23,
+  "text": "completely.",
+  "start": 7.872,
+  "end": 9.149
+ }
+]

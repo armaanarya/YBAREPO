@@ -1,0 +1,146 @@
+[
+ {
+  "id": 0,
+  "text": "Your",
+  "start": 0,
+  "end": 0.244
+ },
+ {
+  "id": 1,
+  "text": "turn.",
+  "start": 0.313,
+  "end": 0.836
+ },
+ {
+  "id": 2,
+  "text": "Pause",
+  "start": 1.242,
+  "end": 1.567
+ },
+ {
+  "id": 3,
+  "text": "the",
+  "start": 1.602,
+  "end": 1.672
+ },
+ {
+  "id": 4,
+  "text": "video.",
+  "start": 1.718,
+  "end": 2.345
+ },
+ {
+  "id": 5,
+  "text": "Sam",
+  "start": 2.879,
+  "end": 3.251
+ },
+ {
+  "id": 6,
+  "text": "asks",
+  "start": 3.32,
+  "end": 3.611
+ },
+ {
+  "id": 7,
+  "text": "to",
+  "start": 3.657,
+  "end": 3.727
+ },
+ {
+  "id": 8,
+  "text": "see",
+  "start": 3.785,
+  "end": 3.913
+ },
+ {
+  "id": 9,
+  "text": "your",
+  "start": 3.947,
+  "end": 4.04
+ },
+ {
+  "id": 10,
+  "text": "private",
+  "start": 4.087,
+  "end": 4.412
+ },
+ {
+  "id": 11,
+  "text": "key,",
+  "start": 4.458,
+  "end": 4.772
+ },
+ {
+  "id": 12,
+  "text": "just",
+  "start": 4.83,
+  "end": 5.085
+ },
+ {
+  "id": 13,
+  "text": "for",
+  "start": 5.132,
+  "end": 5.248
+ },
+ {
+  "id": 14,
+  "text": "a",
+  "start": 5.294,
+  "end": 5.317
+ },
+ {
+  "id": 15,
+  "text": "second.",
+  "start": 5.375,
+  "end": 5.968
+ },
+ {
+  "id": 16,
+  "text": "Do",
+  "start": 6.502,
+  "end": 6.606
+ },
+ {
+  "id": 17,
+  "text": "you",
+  "start": 6.664,
+  "end": 6.745
+ },
+ {
+  "id": 18,
+  "text": "share",
+  "start": 6.815,
+  "end": 7.059
+ },
+ {
+  "id": 19,
+  "text": "it?",
+  "start": 7.105,
+  "end": 7.465
+ },
+ {
+  "id": 20,
+  "text": "What",
+  "start": 7.802,
+  "end": 7.976
+ },
+ {
+  "id": 21,
+  "text": "about",
+  "start": 7.999,
+  "end": 8.162
+ },
+ {
+  "id": 22,
+  "text": "your",
+  "start": 8.197,
+  "end": 8.301
+ },
+ {
+  "id": 23,
+  "text": "address?",
+  "start": 8.336,
+  "end": 9.195
+ }
+]

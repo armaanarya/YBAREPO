@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Public vs. private blockchains</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #f6f6f2; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #f6f6f2; }
+      #board {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse at 50% 42%, #fbfbf8 0%, #f5f5f0 62%, #e9e9e3 100%);
+      }
+      #bug { position: absolute; left: 36px; bottom: 30px; width: 64px; height: 64px; opacity: 0.72; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="131.73" data-width="1920" data-height="1080">
+      <div id="board" class="clip" data-start="0" data-duration="131.73" data-track-index="0"></div>
+      <div id="s01" data-composition-id="s01" data-composition-src="compositions/frames/01-who-gets-in.html"
+        data-start="0" data-duration="9.25" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s02" data-composition-id="s02" data-composition-src="compositions/frames/02-the-wall-notebook.html"
+        data-start="9.25" data-duration="10.885" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s03" data-composition-id="s03" data-composition-src="compositions/frames/03-visa.html"
+        data-start="20.135" data-duration="12.013" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s04" data-composition-id="s04" data-composition-src="compositions/frames/04-paypal.html"
+        data-start="32.148" data-duration="8.323" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s05" data-composition-id="s05" data-composition-src="compositions/frames/05-the-club-notebook.html"
+        data-start="40.471" data-duration="9.284" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s06" data-composition-id="s06" data-composition-src="compositions/frames/06-why-lock-it.html"
+        data-start="49.755" data-duration="8.683" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s07" data-composition-id="s07" data-composition-src="compositions/frames/07-j-p-morgan.html"
+        data-start="58.438" data-duration="14.803" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s08" data-composition-id="s08" data-composition-src="compositions/frames/08-walmart.html"
+        data-start="73.241" data-duration="8.203" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s09" data-composition-id="s09" data-composition-src="compositions/frames/09-who-s-in-charge.html"
+        data-start="81.444" data-duration="13.265" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s10" data-composition-id="s10" data-composition-src="compositions/frames/10-which-is-better.html"
+        data-start="94.709" data-duration="14.286" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s11" data-composition-id="s11" data-composition-src="compositions/frames/11-your-turn.html"
+        data-start="108.995" data-duration="12.865" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s12" data-composition-id="s12" data-composition-src="compositions/frames/12-learn-more.html"
+        data-start="121.86" data-duration="9.87" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <img id="bug" class="clip" src="assets/yba-mark.svg" alt="YBA" data-start="0" data-duration="122.46" data-track-index="2" />
+      <audio id="vo-s01" src="assets/voice/s01.mp3" data-start="0.300" data-duration="8.545" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s02" src="assets/voice/s02.mp3" data-start="9.550" data-duration="10.124" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s03" src="assets/voice/s03.mp3" data-start="20.435" data-duration="11.517" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s04" src="assets/voice/s04.mp3" data-start="32.448" data-duration="7.848" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s05" src="assets/voice/s05.mp3" data-start="40.771" data-duration="8.499" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s06" src="assets/voice/s06.mp3" data-start="50.055" data-duration="8.173" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s07" src="assets/voice/s07.mp3" data-start="58.738" data-duration="14.396" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s08" src="assets/voice/s08.mp3" data-start="73.541" data-duration="7.709" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s09" src="assets/voice/s09.mp3" data-start="81.744" data-duration="12.817" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s10" src="assets/voice/s10.mp3" data-start="95.009" data-duration="13.932" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s11" src="assets/voice/s11.mp3" data-start="109.295" data-duration="9.892" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-s12" src="assets/voice/s12.mp3" data-start="122.160" data-duration="7.523" data-track-index="3" data-volume="1"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#bug", { opacity: 0.72 }, { opacity: 0, duration: 0.5, ease: "power1.out" }, 121.86);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

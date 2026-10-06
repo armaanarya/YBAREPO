@@ -1,0 +1,7 @@
+node_modules/
+renders/
+.env
+.cache/
+snapshots/
+review/
+*.mp4

@@ -1,0 +1,176 @@
+[
+ {
+  "id": 0,
+  "text": "Here's",
+  "start": 0,
+  "end": 0.29
+ },
+ {
+  "id": 1,
+  "text": "the",
+  "start": 0.313,
+  "end": 0.383
+ },
+ {
+  "id": 2,
+  "text": "catch.",
+  "start": 0.43,
+  "end": 1.022
+ },
+ {
+  "id": 3,
+  "text": "There's",
+  "start": 1.207,
+  "end": 1.44
+ },
+ {
+  "id": 4,
+  "text": "no",
+  "start": 1.474,
+  "end": 1.567
+ },
+ {
+  "id": 5,
+  "text": "undo",
+  "start": 1.695,
+  "end": 2.009
+ },
+ {
+  "id": 6,
+  "text": "button",
+  "start": 2.067,
+  "end": 2.345
+ },
+ {
+  "id": 7,
+  "text": "and",
+  "start": 2.415,
+  "end": 2.519
+ },
+ {
+  "id": 8,
+  "text": "no",
+  "start": 2.589,
+  "end": 2.682
+ },
+ {
+  "id": 9,
+  "text": "forgot",
+  "start": 2.763,
+  "end": 3.088
+ },
+ {
+  "id": 10,
+  "text": "password",
+  "start": 3.146,
+  "end": 3.576
+ },
+ {
+  "id": 11,
+  "text": "button.",
+  "start": 3.611,
+  "end": 4.098
+ },
+ {
+  "id": 12,
+  "text": "Send",
+  "start": 4.737,
+  "end": 4.946
+ },
+ {
+  "id": 13,
+  "text": "to",
+  "start": 4.981,
+  "end": 5.027
+ },
+ {
+  "id": 14,
+  "text": "the",
+  "start": 5.085,
+  "end": 5.155
+ },
+ {
+  "id": 15,
+  "text": "wrong",
+  "start": 5.201,
+  "end": 5.433
+ },
+ {
+  "id": 16,
+  "text": "address,",
+  "start": 5.503,
+  "end": 5.921
+ },
+ {
+  "id": 17,
+  "text": "and",
+  "start": 5.944,
+  "end": 6.037
+ },
+ {
+  "id": 18,
+  "text": "it's",
+  "start": 6.095,
+  "end": 6.223
+ },
+ {
+  "id": 19,
+  "text": "gone.",
+  "start": 6.293,
+  "end": 6.861
+ },
+ {
+  "id": 20,
+  "text": "Lose",
+  "start": 7.5,
+  "end": 7.732
+ },
+ {
+  "id": 21,
+  "text": "your",
+  "start": 7.755,
+  "end": 7.86
+ },
+ {
+  "id": 22,
+  "text": "private",
+  "start": 7.918,
+  "end": 8.266
+ },
+ {
+  "id": 23,
+  "text": "key,",
+  "start": 8.313,
+  "end": 8.661
+ },
+ {
+  "id": 24,
+  "text": "and",
+  "start": 8.696,
+  "end": 8.824
+ },
+ {
+  "id": 25,
+  "text": "nobody",
+  "start": 8.905,
+  "end": 9.195
+ },
+ {
+  "id": 26,
+  "text": "can",
+  "start": 9.242,
+  "end": 9.358
+ },
+ {
+  "id": 27,
+  "text": "reset",
+  "start": 9.416,
+  "end": 9.787
+ },
+ {
+  "id": 28,
+  "text": "it.",
+  "start": 9.834,
+  "end": 10.913
+ }
+]

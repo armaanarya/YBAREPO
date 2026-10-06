@@ -27,4 +27,6 @@ import { HeroMark3D } from '@/ANIMATION STORAGE/hero-mark-3d'
 
 Keep `HeroDotFlow` mounted to retain the current black dots. The archived integration still loads the URL in `lib/spline.ts`. To use the preserved scene independently of Spline hosting, copy `original-scene.splinecode` into `public/animations/` and change `SPLINE_HERO_SCENE` to `/animations/original-scene.splinecode`.
 
-The active homepage uses its static logo to announce a dot wave on page load and on every click, so it needs no Spline scene.
+The active homepage renders `components/site/glass-logo.tsx` using `/animations/glass-logo.splinecode`. This local scene is derived from `original-scene.splinecode`, with the embedded motion script, Nodes mesh, and introStarted variable removed. Its camera is reframed for the logo-sized canvas. The original bars and lights remain; the archived black material is retuned to frosted glass with transmission, brighter edge reflections, and a smoother finish. It uses WebGL with mesh shadows disabled to avoid the runtime's shadow shader errors. It renders on demand and stays assembled, including with reduced motion. The SVG remains as a fallback when the scene fails or data saving is enabled.
+
+`HeroMark` still announces a dot wave on page load and on every click. The original exploding scene above remains archived independently.

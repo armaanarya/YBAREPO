@@ -115,13 +115,13 @@ export function CurriculumView() {
       <BlurFade inView delay={0.05} yOffset={12}>
         <Badge>Available Now</Badge>
         <TextStagger
-          text="Your first blockchain lesson is here."
+          text="Your first three blockchain lessons are here."
           as="h1"
           className="font-extrabold tracking-[-0.025em] leading-[1.07]"
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-          Watch our first video lesson on blockchain basics, made by students for high schoolers. More lessons are on the way.
+          Watch our first three video lessons on blockchain basics, transactions, and public vs. private blockchains, made by students for high schoolers. More lessons are on the way.
         </p>
         <Link
           href="/curriculum/lessons"
