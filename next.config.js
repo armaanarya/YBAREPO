@@ -32,6 +32,9 @@ const securityHeaders = [
 
 const nextConfig = {
   turbopack: { root: __dirname },
+  async redirects() {
+    return [{ source: '/podcast', destination: '/newsletters', permanent: true }]
+  },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
