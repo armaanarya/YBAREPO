@@ -20,7 +20,7 @@ export function BlockchainForTeensArticle() {
         <Link
           href="/articles"
           onClick={() => track('button_click', 'articles', { button: 'back_to_articles' })}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.muted, padding: '4px 0', marginBottom: '1.5rem', transition: 'color 0.2s' }}
+          style={{ display: 'flex', width: 'fit-content', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', fontFamily: T.inter, fontSize: '0.9375rem', fontWeight: 600, color: T.muted, padding: '4px 0', marginBottom: '1.5rem', transition: 'color 0.2s' }}
           onMouseEnter={e => (e.currentTarget.style.color = T.dark)}
           onMouseLeave={e => (e.currentTarget.style.color = T.muted)}
         >
