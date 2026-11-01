@@ -105,7 +105,7 @@ export function OctoberUpdateView() {
 
         <h2 style={h2}>Growing the YBA community</h2>
         <p style={body}>
-          Nearly <strong style={strong}>100 high school students have already expressed interest</strong> in YBA and the programs we&apos;re building.
+          Nearly <strong style={strong}>100 high school students have already expressed interest</strong>{' '}in YBA and the programs we&apos;re building.
         </p>
         <p style={body}>
           We&apos;re continuing outreach to schools across the Bay Area while developing workshops, curriculum, student-written content, and opportunities to learn directly from people working in blockchain, fintech, AI, and related industries.
