@@ -64,7 +64,7 @@ export function OctoberUpdateView() {
           We expect YBA HACKS and our related programming to need approximately <strong style={strong}>$6,500</strong>. This budget covers the venue, food, prizes, student AI access, workshops, equipment, and the tools YBA uses throughout the year.
         </p>
         <p style={body}>
-          So far, we&apos;ve raised approximately <strong style={strong}>$2,700</strong>, putting us over 40% of the way toward our goal.
+          So far, we&apos;ve raised almost <strong style={strong}>$3,000</strong>, putting us over 40% of the way toward our goal.
         </p>
 
         <h2 style={h2}>Our new curriculum series</h2>
