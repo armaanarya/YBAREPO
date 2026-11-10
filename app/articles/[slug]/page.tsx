@@ -5,12 +5,14 @@ import { BlockchainForTeensArticle } from '@/components/articles/blockchain-for-
 import { WhatIsBitcoinArticle } from '@/components/articles/what-is-bitcoin'
 import { GlimpseIntoEthereumArticle } from '@/components/articles/glimpse-into-ethereum'
 import { WhatAreSmartContractsArticle } from '@/components/articles/what-are-smart-contracts'
+import { StablecoinsArticle } from '@/components/articles/stablecoins'
 
 const BODIES: Record<string, React.ComponentType> = {
   'what-is-blockchain-for-teens': BlockchainForTeensArticle,
   'what-is-bitcoin-a-guide-to-digital-money-and-decentralization': WhatIsBitcoinArticle,
   'a-glimpse-into-ethereum': GlimpseIntoEthereumArticle,
   'what-are-smart-contracts-programs-that-keep-their-promises': WhatAreSmartContractsArticle,
+  'stablecoins-what-they-are-and-why-people-care': StablecoinsArticle,
 }
 
 export function generateStaticParams() {

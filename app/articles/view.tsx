@@ -24,7 +24,7 @@ export function ArticlesView() {
           style={{ fontFamily: T.manrope, fontSize: 'clamp(2.25rem,5vw,3.75rem)', color: T.dark, marginTop: '1rem' }}
         />
         <p style={{ fontFamily: T.inter, fontSize: '1.0625rem', color: T.muted, lineHeight: 1.7, maxWidth: '52ch', marginTop: '1.25rem' }}>
-          Read our introductions to blockchain and Bitcoin below. You can also find them on Medium.
+          Read our introductions to blockchain, Bitcoin, Ethereum, smart contracts and stablecoins below. You can also find them on Medium.
         </p>
         <a
           href={MEDIUM_PUB} target="_blank" rel="noopener noreferrer"

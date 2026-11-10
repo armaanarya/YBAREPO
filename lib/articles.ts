@@ -51,4 +51,14 @@ export const ARTICLES: ArticleMeta[] = [
     imageW: 1400, imageH: 788,
     excerpt: 'How a vending machine explains the code running Ethereum, what it can do, and where it breaks.',
   },
+  {
+    slug: 'stablecoins-what-they-are-and-why-people-care',
+    title: 'Stablecoins: What They Are and Why People Care',
+    author: 'Sumedh Seetharaman',
+    date: 'Nov 9, 2026',
+    dateISO: '2026-11-09',
+    image: '/articles/stablecoins-hero.png',
+    imageW: 1400, imageH: 788,
+    excerpt: 'A stablecoin is a cryptocurrency built to stay worth one dollar. Here is how it holds that price, why people use it to send money home, and what can go wrong.',
+  },
 ]
