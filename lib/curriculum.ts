@@ -155,6 +155,7 @@ export const LESSONS: Lesson[] = [
     slug: 'smart-contracts',
     number: 4,
     title: 'What is a smart contract?',
+    youtubeId: 'MWrXFHb7L3Q',
     quiz: [
       {
         q: 'The video compares a smart contract to which everyday machine?',
@@ -198,6 +199,7 @@ export const LESSONS: Lesson[] = [
     slug: 'tokens',
     number: 5,
     title: 'What is a token?',
+    youtubeId: 'iw43lOD7S5I',
     quiz: [
       {
         q: 'Why does an arcade token mean "one game" inside the arcade?',
