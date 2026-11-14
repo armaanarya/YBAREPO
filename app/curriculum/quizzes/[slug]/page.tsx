@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { PUBLISHED_LESSONS } from '@/lib/curriculum'
+import { QUIZ_LESSONS } from '@/lib/curriculum'
 import { QuizView } from './view'
 
 export function generateStaticParams() {
-  return PUBLISHED_LESSONS.map(l => ({ slug: l.slug }))
+  return QUIZ_LESSONS.map(l => ({ slug: l.slug }))
 }
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
 ): Promise<Metadata> {
   const { slug } = await params
-  const lesson = PUBLISHED_LESSONS.find(l => l.slug === slug)
+  const lesson = QUIZ_LESSONS.find(l => l.slug === slug)
   if (!lesson) return {}
 
   return {
@@ -23,7 +23,7 @@ export async function generateMetadata(
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const lesson = PUBLISHED_LESSONS.find(l => l.slug === slug)
+  const lesson = QUIZ_LESSONS.find(l => l.slug === slug)
   if (!lesson) notFound()
   return <QuizView lesson={lesson} />
 }

@@ -127,9 +127,11 @@ export function QuizView({ lesson }: { lesson: Lesson }) {
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1.75rem' }}>
                 <button type="button" onClick={restart} className="btn-press" style={ctaStyle}>Retake quiz</button>
-                <a href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`} target="_blank" rel="noopener noreferrer" className="btn-press" style={ghostStyle}>
-                  Rewatch the video ↗
-                </a>
+                {lesson.youtubeId && (
+                  <a href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`} target="_blank" rel="noopener noreferrer" className="btn-press" style={ghostStyle}>
+                    Rewatch the video ↗
+                  </a>
+                )}
               </div>
               <Link href="/curriculum/lessons?tab=quizzes" style={{ ...linkStyle, marginTop: '1.5rem' }}>
                 Try another quiz →

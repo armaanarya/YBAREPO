@@ -1,7 +1,7 @@
 // ─── Curriculum lessons + quizzes ────────────────────────────────────────────
 // Each lesson is one video in the YBA blockchain series. Questions come from
-// the episode scripts in videos/*/SCRIPT.md. A lesson without a youtubeId is
-// not shown on the site yet; add the ID once the video is uploaded.
+// the episode scripts in videos/*/SCRIPT.md. A lesson's video shows on the
+// site once it has a youtubeId; its quiz shows right away.
 
 export type QuizQuestion = {
   q: string
@@ -237,6 +237,53 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
+  {
+    slug: 'crypto-vs-blockchain',
+    number: 6,
+    title: 'Is crypto just another word for blockchain?',
+    quiz: [
+      {
+        q: 'If a blockchain is a road, what is the road?',
+        options: ['The coin drivers pay with', 'The network of computers keeping the shared notebook', 'A shop built along the road', 'A company that sells tokens'],
+        answer: 1,
+        why: 'The road is the network: all the computers keeping the shared notebook.',
+      },
+      {
+        q: 'On a public road, why do drivers pay a toll in the road\'s own coin?',
+        options: ['The computers that check each page need to get paid', 'To buy a piece of the road', 'To become an owner of the company', 'Because the government says so'],
+        answer: 0,
+        why: 'The toll pays the computers that check each page. That coin is the crypto.',
+      },
+      {
+        q: 'What is the difference between "Bitcoin" and "bitcoin"?',
+        options: ['There is no difference', 'Big B is the coin, small b is the road', 'Big B is the road, small b is the coin', 'Big B is a company, small b is an app'],
+        answer: 2,
+        why: 'With a big B, it\'s the road. With a small b, it\'s the coin.',
+      },
+      {
+        q: 'Broadridge runs a private blockchain where banks lend each other cash. What does it show?',
+        options: ['Every blockchain needs a coin', 'Banks can\'t use blockchains', 'Private blockchains only move small amounts', 'Some blockchains have no coin at all'],
+        answer: 3,
+        why: 'By late 2025 it moved hundreds of billions of dollars a day. No coin needed.',
+      },
+      {
+        q: 'In 2022, the price of ether fell by about two thirds. That same year, an upgrade cut Ethereum\'s energy use by more than 99%. What does this show?',
+        options: ['The upgrade broke Ethereum', 'The coin\'s price said nothing about the road', 'Ethereum shut down that year', 'Ether and Ethereum are the same thing'],
+        answer: 1,
+        why: 'The coin and the road are different things, so the price alone can fool you.',
+      },
+      {
+        q: 'In 2017, Long Island Iced Tea renamed itself Long Blockchain. What happened next?',
+        options: ['It built a blockchain for drinks', 'It made its own coin', 'It still sold iced tea, but its stock price shot up anyway', 'It stopped selling iced tea'],
+        answer: 2,
+        why: 'A name with "blockchain" in it doesn\'t make something worth more.',
+      },
+    ],
+  },
 ]
 
+// Lessons whose video is on YouTube (Videos tab, home page, curriculum page).
 export const PUBLISHED_LESSONS = LESSONS.filter(l => l.youtubeId)
+
+// Lessons whose quiz is live (Quizzes tab and /curriculum/quizzes/[slug]).
+export const QUIZ_LESSONS = LESSONS.filter(l => l.quiz.length > 0)

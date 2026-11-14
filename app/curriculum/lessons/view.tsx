@@ -6,7 +6,7 @@ import { Badge } from '@/components/site/badge'
 import { BlurFade } from '@/components/ui/blur-fade'
 import { TextStagger } from '@/components/ui/hero-animated'
 import { T } from '@/lib/theme'
-import { PUBLISHED_LESSONS } from '@/lib/curriculum'
+import { PUBLISHED_LESSONS, QUIZ_LESSONS } from '@/lib/curriculum'
 
 type Tab = 'videos' | 'quizzes'
 
@@ -98,7 +98,7 @@ function VideosPanel() {
 function QuizzesPanel() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
-      {PUBLISHED_LESSONS.map((lesson, i) => (
+      {QUIZ_LESSONS.map((lesson, i) => (
         <BlurFade key={lesson.slug} inView delay={0.05 + i * 0.05} yOffset={12}>
           <Link
             href={`/curriculum/quizzes/${lesson.slug}`}
