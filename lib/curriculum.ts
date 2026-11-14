@@ -282,6 +282,49 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
+  {
+    slug: 'stablecoins',
+    number: 7,
+    title: 'How can a crypto token stay worth $1?',
+    quiz: [
+      {
+        q: 'A company locks your dollar in a vault and hands you one token. Why does that token stay worth a dollar?',
+        options: ['The company says so', 'You can bring it back any time and get your dollar back', 'Its price is set by Bitcoin', 'Tokens can never change price'],
+        answer: 1,
+        why: 'Nobody sells a dollar for ninety cents, so the token stays worth a dollar.',
+      },
+      {
+        q: 'What are the dollars in the vault called?',
+        options: ['Reserves', 'The issuer', 'Stablecoins', 'Tolls'],
+        answer: 0,
+        why: 'The company is the issuer, the dollars in the vault are reserves, and the token is a stablecoin.',
+      },
+      {
+        q: 'Circle makes a stablecoin called USDC. Who checks its vault, and how often?',
+        options: ['Nobody checks it', 'Circle\'s own customers, once a year', 'An outside accounting firm, every month', 'Shoppers, each time they pay'],
+        answer: 2,
+        why: 'Every month, an outside accounting firm checks the vault.',
+      },
+      {
+        q: 'TerraUSD tried to hold one dollar with computer code and a sister coin called Luna. What was missing?',
+        options: ['A name with "USD" in it', 'A blockchain to run on', 'People who wanted to buy it', 'A dollar for each token'],
+        answer: 3,
+        why: 'It had no dollar for each token. In May 2022 it collapsed to almost zero, and about $40 billion was wiped out.',
+      },
+      {
+        q: 'Why did USDC drop to about 88 cents over one weekend in March 2023?',
+        options: ['Circle changed its price on purpose', '$3.3 billion of its reserves sat in a bank that failed', 'It never had any reserves', 'A new law made it illegal'],
+        answer: 1,
+        why: 'Even a real vault can wobble. USDC came back after the government said the bank\'s customers would get their money.',
+      },
+      {
+        q: 'In 2025 a new U.S. law, the GENIUS Act, set rules for issuers. What does it require?',
+        options: ['Every token must be worth more each year', 'Issuers must keep their reserves secret', 'At least one dollar of reserves for every token, and a public report every month', 'Only banks may hold stablecoins'],
+        answer: 2,
+        why: 'A stablecoin is only as stable as its vault, so the law is about what\'s in the vault and showing it.',
+      },
+    ],
+  },
 ]
 
 // Lessons whose video is on YouTube (Videos tab, home page, curriculum page).
