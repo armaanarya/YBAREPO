@@ -242,7 +242,8 @@ export const LESSONS: Lesson[] = [
   {
     slug: 'crypto-vs-blockchain',
     number: 6,
-    title: 'Is crypto just another word for blockchain?',
+    title: 'Crypto vs Blockchain',
+    youtubeId: '2-AadJzopA4',
     quiz: [
       {
         q: 'If a blockchain is a road, what is the road?',
