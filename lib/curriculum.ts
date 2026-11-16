@@ -326,6 +326,49 @@ export const LESSONS: Lesson[] = [
       },
     ],
   },
+  {
+    slug: 'custody',
+    number: 8,
+    title: 'Who really holds your crypto?',
+    quiz: [
+      {
+        q: 'In episode two we met the private key. What does holding crypto really mean?',
+        options: ['Having a crypto app on your phone', 'Holding a key', 'Knowing your address', 'Owning a computer on the network'],
+        answer: 1,
+        why: 'Whoever has the private key can move the coins, so holding crypto really means holding a key.',
+      },
+      {
+        q: 'Your wallet gives you twelve or twenty-four secret words. What are they called, and what can they do?',
+        options: ['A password, which the wallet company can reset', 'An address, which anyone can send coins to', 'A seed phrase, which can rebuild your key', 'A fee, which pays the network'],
+        answer: 2,
+        why: 'The words are a seed phrase. Holding the key yourself is called self-custody, and many people keep it on a hardware wallet that stays off the internet.',
+      },
+      {
+        q: 'What is the catch with holding the key yourself?',
+        options: ['You pay a fee every month', 'A company can freeze your account', 'Your coins are worth less each day', 'There\'s no forgot-password button, and anyone who sees your words can take everything'],
+        answer: 3,
+        why: 'In October 2026, thieves hid tiny chips inside devices sold by one outside shop and read the words right off the screen.',
+      },
+      {
+        q: 'BlackRock runs the biggest bitcoin fund in the world. Who holds its keys, and how?',
+        options: ['Coinbase, on machines kept offline', 'BlackRock, in a phone app', 'Each investor, on a piece of paper', 'Nobody, because the fund has no keys'],
+        answer: 0,
+        why: 'A company that holds the key for you is called a custodian. Keeping keys on machines that are offline is called cold storage.',
+      },
+      {
+        q: 'In November 2022, a crypto exchange called FTX stopped letting customers take their money out. What had happened?',
+        options: ['A thief guessed its seed phrase', 'Its founder had secretly spent more than $8 billion of customers\' money', 'The blockchain was switched off', 'Customers had lost their own keys'],
+        answer: 1,
+        why: 'With a custodian, you have to trust the vault. The founder got 25 years in prison, and customers waited over two years to be paid back.',
+      },
+      {
+        q: 'A multisig chest has three locks and opens with any two keys. You lose one key. What happens?',
+        options: ['The coins are gone for good', 'Whoever finds your key can open it alone', 'The chest still opens with the other two keys', 'The chest opens with no keys at all'],
+        answer: 2,
+        why: 'Lose one key, and the chest still opens. Steal one key, and it doesn\'t. A company called BitGo builds wallets this way.',
+      },
+    ],
+  },
 ]
 
 // Lessons whose video is on YouTube (Videos tab, home page, curriculum page).
