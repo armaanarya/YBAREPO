@@ -287,6 +287,7 @@ export const LESSONS: Lesson[] = [
     slug: 'stablecoins',
     number: 7,
     title: 'How can a crypto token stay worth $1?',
+    youtubeId: 'akqpL0o9QeY',
     quiz: [
       {
         q: 'A company locks your dollar in a vault and hands you one token. Why does that token stay worth a dollar?',
